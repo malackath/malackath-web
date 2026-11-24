@@ -400,6 +400,15 @@ def trabajo():
         (RAVEKIT_STITCH, "RaveKit: pedidos de reseñas por WhatsApp y QR", ""),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
+    # Alinear tarjetas de la misma fila (pedido de Ber): con subgrid, imagen y texto de cada
+    # tarjeta comparten las filas de la grilla, así los bloques de texto arrancan a la misma altura.
+    s = s.replace('class="project-card md:col-span-', 'class="project-card md:row-span-2 md:grid md:grid-rows-subgrid md:gap-0 md:col-span-')
+    s = rep(s, 'class="relative w-full aspect-[4/5] overflow-hidden', 'class="relative w-full aspect-[4/5] md:aspect-auto md:h-full overflow-hidden', 2)
+    # la foto no tiene que estirar la fila: en md+ va absoluta dentro de su caja
+    s = re.sub(r'(md:aspect-auto md:h-full overflow-hidden[^>]*>\s*<img[^>]*class=")w-full h-full', r'\1md:absolute md:inset-0 w-full h-full', s)
+    # mismo aire arriba y abajo que las tarjetas grandes, para que rótulos y flechas queden en línea
+    s = re.sub(r'(md:col-span-4 .*?class="p-space-lg) (flex flex-col justify-between flex-1)', r'\1 md:py-space-xl \2', s, flags=re.S)
+    s = rep(s, "card.style.display = 'flex';", "card.style.display = '';")
     guardar("trabajo.html", s)
 
 
