@@ -23,14 +23,20 @@ PUBLICOS = [
       logo='RuVIA-logo-oscuro-transparente.png', fondo='oscuro'),
  dict(c='banana-team', n='The Banana Team', t='Empresa', d='Helping customers go live.',
       logo='02-logo-sobre-negro.png', fondo='lamina'),
+ dict(c='nunca-te-falla', n='Nunca Te Falla', t='App', d='Marketplace de oficios: el cliente pide presupuesto y reserva, el profesional gestiona desde su panel.',
+      logo='ntf-logo-horizontal-negativo-2000.png', fondo='oscuro'),
+ dict(c='ravekit', n='RaveKit', t='App', d='Autonomous reputation.', logo='01-logo-fondo-oscuro.png', fondo='lamina'),
+ dict(c='ecos', n='ECOS', t='App', d='Ecos de vos: comunidad de contención emocional.', logo='logo-02-fondo-oscuro.png', fondo='lamina'),
+ dict(c='velvet', n='Velvet', t='App', d='Perfiles, agenda y reservas con seña en custodia.', logo='velvet-logo-light-outline-tight.png', fondo='oscuro'),
+ dict(c='patovava', n='PatovaVa', t='App', d='Acompañantes verificadas que llevan y traen a tus hijos de noche.', logo='lockup-color-fondo-oscuro.png', fondo='oscuro'),
+ dict(c='jip', n='JIP', t='Tienda', d='Jamás lo permitiría: remeras con configurador y fábulas.', logo='B_parche_sobre_negro.png', fondo='lamina'),
+ dict(c='coat-n-nest', n='Coat n Nest', t='Empresa', d='Tienda online. Incluye la marca Zoomi.', logo='coatnnest-una-tinta.png', fondo='oscuro'),
+ dict(c='sitios-gastro', n='Sitios Gastro', t='Sitios web', d='5 sitios de restaurantes: Botánica Bistro, Brisa & Marea, Fuego & Puerto, Fuego Silvestre y Oceánica.',
+      logo='fuego-puerto__logo__para-fondo-oscuro__con-fondo.png', fondo='oscuro'),
+ dict(c='la-gloria', n='La Gloria', t='Sitio web', d='Sitio del restaurante La Gloria.', logo=None, fondo='lamina'),
+ dict(c='usa-storefront', n='UsaStorefront', t='Empresa', d='Tienda de insumos de tapicería en EE. UU. (Upholstery Supplies of America).', logo=None, fondo='lamina'),
+ dict(c='web-arnelli', n='Web Arnelli', t='Sitio web', d='Sitio del artista plástico Bernardo Arnelli: obras, exposiciones y contacto.', logo=None, fondo='lamina'),
 ]
 
-# Esperan el OK de Ber para salir (no se publican):
-# Nunca Te Falla, RaveKit, ECOS, Velvet, PatovaVa, JIP, Coat n Nest, Sitios Gastro.
-# Sin logo (fuera): La Gloria, UsaStorefront, Web Arnelli.
-PENDIENTES = {
- 'nunca-te-falla': dict(n='Nunca Te Falla', t='App', d='Marketplace de oficios: el cliente pide presupuesto y reserva, el profesional gestiona desde su panel.',
-      logo='ntf-logo-horizontal-negativo-2000.png', fondo='oscuro'),
- 'ravekit': dict(n='RaveKit', t='App', d='Autonomous reputation.', logo='01-logo-fondo-oscuro.png', fondo='lamina'),
- 'ecos': dict(n='ECOS', t='App', d='Ecos de vos: comunidad de contención emocional.', logo='logo-02-fondo-oscuro.png', fondo='lamina'),
-}
+# Sin logo propio (La Gloria, UsaStorefront, Web Arnelli): el recuadro usa la primera captura de escritorio.
+PENDIENTES = {}

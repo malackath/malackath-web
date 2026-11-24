@@ -27,7 +27,7 @@ e = html.escape
 tarjetas, secciones = [], []
 for n, p in enumerate(lista, 1):
     d = json.load(open(os.path.join(SRC, p['c'] + '.json')))
-    logo = next(l for l in d['logos'] if l['nombre'] == p['logo'])
+    logo = next(l for l in d['logos'] if l['nombre'] == p['logo']) if p['logo'] else d['desk'][0]
     lsrc, lw, lh = guardar(p['c'], logo, 'logo')
     vistos, desk, mob = set(), [], []
     for k, dest in (('desk', desk), ('mob', mob)):
