@@ -265,20 +265,23 @@ def seccion_marcas():
 
     def tarjeta(m, i):
         if m["imagen"]:
-            dentro = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" loading="lazy" '
-                      'class="max-h-14 md:max-h-16 max-w-[70%] object-contain grayscale opacity-70 '
-                      'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
+            logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" loading="lazy" '
+                    'class="max-h-20 max-w-[70%] object-contain grayscale opacity-80 '
+                    'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
         else:
             forma = FORMAS_PROVISORIAS[i % len(FORMAS_PROVISORIAS)]
-            dentro = (f'<span class="flex items-center gap-space-sm text-on-surface-variant group-hover:text-primary-container transition-colors duration-300">'
-                      f'<svg viewBox="0 0 40 40" class="w-9 h-9" aria-hidden="true">{forma}</svg>'
-                      f'<span class="font-label-lg text-label-lg uppercase">{_h.escape(m["nombre"])}</span></span>')
-        clase = ('group shrink-0 w-56 h-32 md:w-64 md:h-36 rounded-xl bg-surface-container border border-outline-variant/40 '
-                 'flex items-center justify-center transition-all duration-300 hover:border-primary-container '
-                 'hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(202,243,0,0.18)]')
+            logo = (f'<span class="flex items-center gap-space-sm text-on-surface-variant group-hover:text-primary-container transition-colors duration-300">'
+                    f'<svg viewBox="0 0 40 40" class="w-10 h-10" aria-hidden="true">{forma}</svg>'
+                    f'<span class="font-label-lg text-label-lg uppercase">{_h.escape(m["nombre"])}</span></span>')
+        dentro = (f'<div class="w-full h-40 md:h-44 rounded-lg bg-surface-container-lowest flex items-center justify-center overflow-hidden">{logo}</div>'
+                  f'<div class="flex flex-col gap-space-xs">'
+                  f'<span class="font-label-sm text-label-sm uppercase text-primary-container">{_h.escape(m["tipo"])}</span>'
+                  f'<p class="font-body-sm text-body-sm text-on-surface-variant">{_h.escape(m["descripcion"])}</p></div>')
+        clase = ('group shrink-0 w-72 md:w-80 rounded-xl bg-surface-container p-space-md md:p-space-lg flex flex-col gap-space-md '
+                 'shadow-lg hover:bg-surface-container-high hover:-translate-y-1 transition-all duration-300')
         if m.get("url"):
             return f'<a class="{clase}" href="{m["url"]}">{dentro}</a>'
-        return f'<div class="{clase}">{dentro}</div>'
+        return f'<article class="{clase}">{dentro}</article>'
 
     def fila(lista, reversa, desde):
         items = "".join(tarjeta(m, desde + k) for k, m in enumerate(lista))
@@ -304,9 +307,9 @@ def seccion_marcas():
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>
 </div>
-<div class="marcas-pista flex flex-col gap-space-lg">
-<div class="overflow-hidden">{fila(marcas.FILA_1, False, 0)}</div>
-<div class="overflow-hidden">{fila(marcas.FILA_2, True, 2)}</div>
+<div class="marcas-pista flex flex-col gap-space-sm">
+<div class="overflow-hidden py-space-sm">{fila(marcas.FILA_1, False, 0)}</div>
+<div class="overflow-hidden py-space-sm">{fila(marcas.FILA_2, True, 2)}</div>
 </div>
 </section>"""
 
