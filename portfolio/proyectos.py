@@ -15,7 +15,7 @@ PUBLICOS = [
       logo='logo-MareAlta-transparente-para-fondo-oscuro.png', fondo='oscuro'),
  dict(c='marealta-consultora', n='Marea Alta Consultoría y Escuela', t='Empresa', d='Consultoría gastronómica y escuela de cocina profesional en Pernambuco, Brasil.',
       logo=None, fondo='oscuro', logo_archivo='assets/marealta-logo-oscuro.png'),
- dict(c='mesaluma', n='Mesaluma', t='App', d='Reservas inteligentes, prepedido y coordinación salón-cocina para restaurantes.',
+ dict(c='mesaluma', n='Mesaluma', t='App', d='Sistema de salón, reservas y comandas para restaurantes: app para mozos, reservas web y panel de cocina.',
       logo='mesaluma-horizontal.png', fondo='claro'),
  dict(c='palquear', n='Palquear', t='App', d='Marketplace de palcos para partidos: comprador, titular del palco y panel del club.',
       logo='logo-transparente-para-fondo-oscuro.png', fondo='oscuro'),
