@@ -19,6 +19,8 @@ OUT = Path(sys.argv[2])
 
 MAIL = "hola@malackath.com"          # elegido por Ber; la casilla falta crearla
 WHATSAPP = "https://wa.me/59894202607"  # WhatsApp de Ber
+# Vista previa: no indexar en buscadores. Pasar a False el día del lanzamiento.
+BORRADOR = True
 
 
 def leer(nombre):
@@ -166,6 +168,8 @@ def comun(s, pre, titulo, descripcion, activo=None):
 
 
 def guardar(nombre, s):
+    if BORRADOR:
+        s = s.replace("</head>", '<meta name="robots" content="noindex, nofollow"/></head>', 1)
     # celular: el botón del menú no entra junto al selector de idioma; queda el ícono de contacto
     i, j = s.find("<header"), s.find("</header>")
     if i >= 0:
