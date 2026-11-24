@@ -1254,8 +1254,154 @@
   ]
  },
  "mesaluma": {
-  "d": [],
-  "m": []
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/03-reservas-web-restaurante.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/04-reservas-experiencia.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/05-reservas-confirmada.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/06-reservas-mail-confirmada.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/07-panel-recepcion-plano.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/08-panel-pase-qr-walkin.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/09-panel-cocina-cola.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/10-panel-cocina-estaciones.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/11-panel-cocina-mise.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/12-panel-tablero-turno.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/13-panel-mesas-plano.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/14-panel-carta-agotados.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/01-mozo-mis-mesas.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/02-mozo-detalle-mesa.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/03-mozo-mesa-postre.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/04-reservas-web-restaurante.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/05-reservas-portada.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/06-reservas-mesa-y-turno.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/07-reservas-experiencia.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/08-reservas-alergias.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/09-reservas-prepedido-carta.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/10-reservas-confirmar.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/11-reservas-confirmada.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/12-reservas-mis-reservas.png"
+   }
+  ]
  },
  "nunca-te-falla": {
   "d": [
