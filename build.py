@@ -263,9 +263,10 @@ def home():
 @media (min-width: 1280px) {
   .hero-grilla { pointer-events: none; }
   .hero-grilla a { pointer-events: auto; }
-  #showcase-viewport { position: absolute; top: 166px; right: 1.455vw; width: 1160px; height: auto; min-height: 680px; margin: 0;
+  .hero-grilla h1 { font-size: 5.5556vw !important; line-height: 5.8333vw !important; }
+  #showcase-viewport { position: absolute; top: calc(86px + 5.5556vw); right: 1.455vw; width: 1160px; height: auto; min-height: 680px; margin: 0;
     z-index: 0; transform: scale(var(--esc)); transform-origin: top right; }
-  section:has(> #showcase-viewport) { min-height: calc(166px + 640px * var(--esc) + 40px); }
+  section:has(> #showcase-viewport) { min-height: calc(86px + 5.5556vw + 640px * var(--esc) + 40px); }
 }
 @media (min-width: 1280px) { section:has(> #showcase-viewport) { --esc: 0.745; } }
 @media (min-width: 1366px) { section:has(> #showcase-viewport) { --esc: 0.795; } }
@@ -302,6 +303,20 @@ def home():
     s = s[:i] + "</div>\n" + bloque + "\n" + s[j:]   # </div> cierra la grilla del texto
     s = s.replace("</style>", css + "</style>", 1)
     s = s.replace("</body>", "<script>\n(function () {\n  " + js + "})();\n</script></body>", 1)
+    s = s.replace("</body>", """<script>
+(function () {
+  // proporción de la captura de Ber (1440 px): el collage escala con el ancho, igual que el titular
+  var sec = document.getElementById('showcase-viewport');
+  if (!sec) return;
+  sec = sec.closest('section');
+  function ajustar() {
+    if (innerWidth >= 1280) sec.style.setProperty('--esc', (0.838 * innerWidth / 1440).toFixed(4));
+    else sec.style.removeProperty('--esc');
+  }
+  ajustar();
+  addEventListener('resize', ajustar);
+})();
+</script></body>""", 1)
     guardar("index.html", s)
 
 
