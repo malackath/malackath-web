@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio · Malackath</title>
+<meta name="description" content="Marcas, apps y sitios diseñados por Malackath, estudio de diseño y producto digital.">
+<meta property="og:title" content="Portfolio · Malackath">
+<meta property="og:description" content="Marcas, apps y sitios diseñados por Malackath.">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Space+Mono:wght@400;700&display=swap">
+<style>
+:root{--bg:#131315;--panel:#1B1B1E;--panel2:#232327;--line:#2E2E33;--fg:#F1F1EC;--muted:#A3A39B;--dim:#6F6F69;--lima:#D4FF00;--claro:#F3F2EC;
+--display:"Syne","Helvetica Neue",Arial,sans-serif;--texto:"DM Sans",system-ui,sans-serif;--mono:"Space Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--lima);outline-offset:3px}
+.ancho{max-width:1280px;margin:0 auto;padding:0 24px}
+/* barra */
+.barra{position:sticky;top:0;z-index:10;background:rgba(19,19,21,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.barra .ancho{display:flex;align-items:center;justify-content:space-between;height:72px}
+.barra img{height:30px;width:auto}
+.barra span{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+/* portada */
+.portada{padding-top:88px;padding-bottom:56px}
+.eyebrow{font:400 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lima);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lima)}
+h1{font:800 clamp(48px,9vw,128px)/.9 var(--display);letter-spacing:-.04em;margin:18px 0 22px}
+.bajada{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:46ch;margin:0}
+/* grilla de tarjetas */
+.grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding-bottom:96px}
+.tarjeta{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;transition:border-color .2s,transform .2s}
+.tarjeta:hover{border-color:var(--lima);transform:translateY(-3px)}
+.logo{position:relative;aspect-ratio:16/10;background:#0D0D0F;overflow:hidden}
+.logo img{position:absolute;inset:14% 12%;width:76%;height:72%;object-fit:contain}
+.logo.f-claro{background:var(--claro)}
+.logo.f-lamina img{inset:0;width:100%;height:100%;object-fit:cover}
+.info{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px}
+.tipo{font:700 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--lima)}
+.tarjeta h3{font:700 22px/1.1 var(--display);margin:0;letter-spacing:-.01em}
+.tarjeta p{margin:0;color:var(--muted);font-size:14.5px}
+/* proyectos */
+.proyecto{border-top:1px solid var(--line);padding:72px 0}
+.cab{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:32px;align-items:center;margin-bottom:36px}
+.cab .logo{border-radius:14px;border:1px solid var(--line)}
+.num{font:400 12px var(--mono);color:var(--dim);margin-right:14px}
+.cab h2{font:800 clamp(36px,5vw,64px)/.95 var(--display);letter-spacing:-.03em;margin:10px 0 12px}
+.cab p{margin:0;font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:52ch}
+.tira{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;margin-bottom:22px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.tira figure{margin:0;flex:none;scroll-snap-align:start;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+.tira .desk{width:min(640px,82vw)}
+.tira .mob{width:min(230px,52vw)}
+.tira img{width:100%}
+/* pie */
+.pie{border-top:1px solid var(--line);padding:40px 0 56px}
+.pie .ancho{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dim);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.arriba{color:var(--lima);text-decoration:none}
+@media (max-width:760px){
+ .ancho{padding:0 16px}
+ .portada{padding-top:56px;padding-bottom:40px}
+ .cab{grid-template-columns:minmax(0,1fr);gap:20px}
+ .proyecto{padding:52px 0}
+ .barra .ancho{height:64px}.barra img{height:26px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tarjeta{transition:none}}
+</style>
+</head>
+<body>
+<nav class="barra"><div class="ancho"><a href="#top" aria-label="Malackath"><img src="img/logo.svg" alt="Malackath" width="160" height="30"></a><span>Portfolio</span></div></nav>
+<main id="top">
+<section class="portada ancho">
+  <div class="eyebrow">Malackath · {{CANTIDAD}} proyectos</div>
+  <h1>Portfolio</h1>
+  <p class="bajada">Marcas, apps y sitios que diseñamos y construimos.</p>
+</section>
+<div class="grilla ancho">
+{{TARJETAS}}
+</div>
+<div class="ancho">
+{{SECCIONES}}
+</div>
+</main>
+<footer class="pie"><div class="ancho"><span>© 2026 Malackath · Estudio de diseño y producto digital</span><a class="arriba" href="#top">Volver arriba ↑</a></div></footer>
+</body>
+</html>

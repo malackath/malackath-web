@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio · Malackath</title>
+<meta name="description" content="Marcas, apps y sitios diseñados por Malackath, estudio de diseño y producto digital.">
+<meta property="og:title" content="Portfolio · Malackath">
+<meta property="og:description" content="Marcas, apps y sitios diseñados por Malackath.">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Space+Mono:wght@400;700&display=swap">
+<style>
+:root{--bg:#131315;--panel:#1B1B1E;--panel2:#232327;--line:#2E2E33;--fg:#F1F1EC;--muted:#A3A39B;--dim:#6F6F69;--lima:#D4FF00;--claro:#F3F2EC;
+--display:"Syne","Helvetica Neue",Arial,sans-serif;--texto:"DM Sans",system-ui,sans-serif;--mono:"Space Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 var(--texto);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--lima);outline-offset:3px}
+.ancho{max-width:1280px;margin:0 auto;padding:0 24px}
+/* barra */
+.barra{position:sticky;top:0;z-index:10;background:rgba(19,19,21,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.barra .ancho{display:flex;align-items:center;justify-content:space-between;height:72px}
+.barra img{height:30px;width:auto}
+.barra span{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+/* portada */
+.portada{padding-top:88px;padding-bottom:56px}
+.eyebrow{font:400 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lima);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lima)}
+h1{font:800 clamp(48px,9vw,128px)/.9 var(--display);letter-spacing:-.04em;margin:18px 0 22px}
+.bajada{font-size:clamp(18px,2vw,22px);color:var(--muted);max-width:46ch;margin:0}
+/* grilla de tarjetas */
+.grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding-bottom:96px}
+.tarjeta{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;transition:border-color .2s,transform .2s}
+.tarjeta:hover{border-color:var(--lima);transform:translateY(-3px)}
+.logo{position:relative;aspect-ratio:16/10;background:#0D0D0F;overflow:hidden}
+.logo img{position:absolute;inset:14% 12%;width:76%;height:72%;object-fit:contain}
+.logo.f-claro{background:var(--claro)}
+.logo.f-lamina img{inset:0;width:100%;height:100%;object-fit:cover}
+.info{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px}
+.tipo{font:700 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--lima)}
+.tarjeta h3{font:700 22px/1.1 var(--display);margin:0;letter-spacing:-.01em}
+.tarjeta p{margin:0;color:var(--muted);font-size:14.5px}
+/* proyectos */
+.proyecto{border-top:1px solid var(--line);padding:72px 0}
+.cab{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:32px;align-items:center;margin-bottom:36px}
+.cab .logo{border-radius:14px;border:1px solid var(--line)}
+.num{font:400 12px var(--mono);color:var(--dim);margin-right:14px}
+.cab h2{font:800 clamp(36px,5vw,64px)/.95 var(--display);letter-spacing:-.03em;margin:10px 0 12px}
+.cab p{margin:0;font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:52ch}
+.tira{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;margin-bottom:22px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.tira figure{margin:0;flex:none;scroll-snap-align:start;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+.tira .desk{width:min(640px,82vw)}
+.tira .mob{width:min(230px,52vw)}
+.tira img{width:100%}
+/* pie */
+.pie{border-top:1px solid var(--line);padding:40px 0 56px}
+.pie .ancho{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dim);font:400 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.arriba{color:var(--lima);text-decoration:none}
+@media (max-width:760px){
+ .ancho{padding:0 16px}
+ .portada{padding-top:56px;padding-bottom:40px}
+ .cab{grid-template-columns:minmax(0,1fr);gap:20px}
+ .proyecto{padding:52px 0}
+ .barra .ancho{height:64px}.barra img{height:26px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tarjeta{transition:none}}
+</style>
+</head>
+<body>
+<nav class="barra"><div class="ancho"><a href="#top" aria-label="Malackath"><img src="img/logo.svg" alt="Malackath" width="160" height="30"></a><span>Portfolio</span></div></nav>
+<main id="top">
+<section class="portada ancho">
+  <div class="eyebrow">Malackath · 10 proyectos</div>
+  <h1>Portfolio</h1>
+  <p class="bajada">Marcas, apps y sitios que diseñamos y construimos.</p>
+</section>
+<div class="grilla ancho">
+<a class="tarjeta" href="#arma-partido"><div class="logo f-oscuro"><img src="img/p/arma-partido-logo-104d6027.webp" width="560" height="217" alt="Armá Partido" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>Armá Partido</h3><p>Reservas, partidos y torneos de pádel para clubes.</p></div></a>
+<a class="tarjeta" href="#barajala"><div class="logo f-lamina"><img src="img/p/barajala-logo-ff86665c.webp" width="480" height="320" alt="Barajala" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>Barajala</h3><p>Juegos de cartas con baraja española: truco, escoba, tute, canasta y más.</p></div></a>
+<a class="tarjeta" href="#cartelera"><div class="logo f-lamina"><img src="img/p/cartelera-logo-8ada72ce.webp" width="427" height="320" alt="Cartelera Uruguay" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>Cartelera Uruguay</h3><p>Agenda cultural de los 19 departamentos, con mapa, calendario y fichas de evento.</p></div></a>
+<a class="tarjeta" href="#coinciva"><div class="logo f-oscuro"><img src="img/p/coinciva-logo-74fa49fb.webp" width="560" height="134" alt="Coinciva" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>Coinciva</h3><p>Descubrimiento social para eventos presenciales.</p></div></a>
+<a class="tarjeta" href="#marea-alta"><div class="logo f-oscuro"><img src="img/p/marea-alta-logo-d262b3c7.webp" width="560" height="120" alt="Marea Alta" loading="lazy"></div>
+  <div class="info"><span class="tipo">Empresa</span><h3>Marea Alta</h3><p>Consultora gastronómica.</p></div></a>
+<a class="tarjeta" href="#mesaluma"><div class="logo f-claro"><img src="img/p/mesaluma-logo-ce857cdb.webp" width="560" height="112" alt="Mesaluma" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>Mesaluma</h3><p>Reservas inteligentes, prepedido y coordinación salón-cocina para restaurantes.</p></div></a>
+<a class="tarjeta" href="#palquear"><div class="logo f-oscuro"><img src="img/p/palquear-logo-118049f4.webp" width="560" height="146" alt="Palquear" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>Palquear</h3><p>Marketplace de palcos para partidos: comprador, titular del palco y panel del club.</p></div></a>
+<a class="tarjeta" href="#pizcaya"><div class="logo f-claro"><img src="img/p/pizcaya-logo-b336ffd9.webp" width="560" height="141" alt="Pizcaya" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>Pizcaya</h3><p>Aprender a cocinar jugando.</p></div></a>
+<a class="tarjeta" href="#ruvia"><div class="logo f-oscuro"><img src="img/p/ruvia-logo-bd2fc8f9.webp" width="560" height="83" alt="RuVIA" loading="lazy"></div>
+  <div class="info"><span class="tipo">App</span><h3>RuVIA</h3><p>Rutas, paradas y tarjeta STM del transporte de Montevideo.</p></div></a>
+<a class="tarjeta" href="#banana-team"><div class="logo f-lamina"><img src="img/p/banana-team-logo-993d258f.webp" width="427" height="320" alt="The Banana Team" loading="lazy"></div>
+  <div class="info"><span class="tipo">Empresa</span><h3>The Banana Team</h3><p>Helping customers go live.</p></div></a>
+</div>
+<div class="ancho">
+<section class="proyecto" id="arma-partido">
+  <header class="cab"><div class="logo f-oscuro"><img src="img/p/arma-partido-logo-104d6027.webp" width="560" height="217" alt="Armá Partido" loading="lazy"></div><div><span class="num">01</span><span class="tipo">App</span><h2>Armá Partido</h2><p>Reservas, partidos y torneos de pádel para clubes.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/arma-partido-desk-16f7936e.webp" width="760" height="475" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/arma-partido-desk-201854d3.webp" width="760" height="475" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/arma-partido-desk-3951738c.webp" width="760" height="475" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/arma-partido-desk-af182315.webp" width="760" height="475" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/arma-partido-desk-9fe5eb71.webp" width="760" height="475" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/arma-partido-desk-db327e52.webp" width="760" height="475" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/arma-partido-desk-f984ed68.webp" width="760" height="475" alt="Armá Partido" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/arma-partido-mob-708ba907.webp" width="330" height="693" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/arma-partido-mob-34f46e71.webp" width="330" height="693" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/arma-partido-mob-140ffed6.webp" width="330" height="693" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/arma-partido-mob-2a0aabf1.webp" width="330" height="693" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/arma-partido-mob-faa0a02a.webp" width="330" height="693" alt="Armá Partido" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/arma-partido-mob-73058fce.webp" width="330" height="693" alt="Armá Partido" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="barajala">
+  <header class="cab"><div class="logo f-lamina"><img src="img/p/barajala-logo-ff86665c.webp" width="480" height="320" alt="Barajala" loading="lazy"></div><div><span class="num">02</span><span class="tipo">App</span><h2>Barajala</h2><p>Juegos de cartas con baraja española: truco, escoba, tute, canasta y más.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/barajala-desk-8151bf02.webp" width="760" height="475" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/barajala-desk-460c077b.webp" width="760" height="475" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/barajala-desk-8b278bd6.webp" width="760" height="475" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/barajala-desk-70d643e9.webp" width="760" height="475" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/barajala-desk-c8a534a8.webp" width="760" height="475" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/barajala-desk-01bedaf8.webp" width="760" height="475" alt="Barajala" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/barajala-mob-897a3d9c.webp" width="330" height="693" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/barajala-mob-9e1763e5.webp" width="330" height="693" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/barajala-mob-69396389.webp" width="330" height="693" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/barajala-mob-78a7cd51.webp" width="330" height="693" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/barajala-mob-a3335216.webp" width="330" height="693" alt="Barajala" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/barajala-mob-288dfdb9.webp" width="330" height="693" alt="Barajala" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="cartelera">
+  <header class="cab"><div class="logo f-lamina"><img src="img/p/cartelera-logo-8ada72ce.webp" width="427" height="320" alt="Cartelera Uruguay" loading="lazy"></div><div><span class="num">03</span><span class="tipo">App</span><h2>Cartelera Uruguay</h2><p>Agenda cultural de los 19 departamentos, con mapa, calendario y fichas de evento.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/cartelera-desk-773ec01a.webp" width="760" height="475" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/cartelera-desk-b3e92ac4.webp" width="760" height="475" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/cartelera-desk-7ba0578d.webp" width="760" height="475" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/cartelera-desk-0b0db60c.webp" width="760" height="475" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/cartelera-desk-a910ab76.webp" width="760" height="475" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/cartelera-desk-dd5e1f87.webp" width="760" height="475" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/cartelera-mob-18a850a0.webp" width="330" height="693" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/cartelera-mob-24c37a49.webp" width="330" height="693" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/cartelera-mob-40838bac.webp" width="330" height="693" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/cartelera-mob-45c86b91.webp" width="330" height="693" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/cartelera-mob-1c604973.webp" width="330" height="693" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/cartelera-mob-d657d647.webp" width="330" height="693" alt="Cartelera Uruguay" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="coinciva">
+  <header class="cab"><div class="logo f-oscuro"><img src="img/p/coinciva-logo-74fa49fb.webp" width="560" height="134" alt="Coinciva" loading="lazy"></div><div><span class="num">04</span><span class="tipo">App</span><h2>Coinciva</h2><p>Descubrimiento social para eventos presenciales.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/coinciva-desk-3385be78.webp" width="760" height="475" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/coinciva-desk-923044b7.webp" width="760" height="475" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/coinciva-desk-a5d00da3.webp" width="760" height="475" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/coinciva-desk-2932f33e.webp" width="760" height="475" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/coinciva-desk-934516ea.webp" width="760" height="475" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/coinciva-desk-c02d2515.webp" width="760" height="475" alt="Coinciva" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/coinciva-mob-bc6170cc.webp" width="330" height="693" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/coinciva-mob-84191f41.webp" width="330" height="693" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/coinciva-mob-b737f84b.webp" width="330" height="693" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/coinciva-mob-896f4ff4.webp" width="330" height="693" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/coinciva-mob-6be05b66.webp" width="330" height="693" alt="Coinciva" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/coinciva-mob-a400d9a3.webp" width="330" height="693" alt="Coinciva" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="marea-alta">
+  <header class="cab"><div class="logo f-oscuro"><img src="img/p/marea-alta-logo-d262b3c7.webp" width="560" height="120" alt="Marea Alta" loading="lazy"></div><div><span class="num">05</span><span class="tipo">Empresa</span><h2>Marea Alta</h2><p>Consultora gastronómica.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/marea-alta-desk-eea48474.webp" width="760" height="475" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/marea-alta-desk-ca3a8f6b.webp" width="760" height="475" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/marea-alta-desk-ddc7278f.webp" width="760" height="475" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/marea-alta-desk-34a75d91.webp" width="760" height="475" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/marea-alta-desk-3954670c.webp" width="760" height="475" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/marea-alta-desk-563a6292.webp" width="760" height="475" alt="Marea Alta" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/marea-alta-mob-2903432d.webp" width="330" height="693" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/marea-alta-mob-85cfb84e.webp" width="330" height="693" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/marea-alta-mob-0345c20e.webp" width="330" height="693" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/marea-alta-mob-a829d8c0.webp" width="330" height="693" alt="Marea Alta" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/marea-alta-mob-d9f3c147.webp" width="330" height="693" alt="Marea Alta" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="mesaluma">
+  <header class="cab"><div class="logo f-claro"><img src="img/p/mesaluma-logo-ce857cdb.webp" width="560" height="112" alt="Mesaluma" loading="lazy"></div><div><span class="num">06</span><span class="tipo">App</span><h2>Mesaluma</h2><p>Reservas inteligentes, prepedido y coordinación salón-cocina para restaurantes.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/mesaluma-lam-68b88609.webp" width="900" height="675" alt="Mesaluma" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/mesaluma-lam-e7c79954.webp" width="900" height="675" alt="Mesaluma" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/mesaluma-lam-6ea34737.webp" width="900" height="675" alt="Mesaluma" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/mesaluma-lam-76b3d46e.webp" width="900" height="675" alt="Mesaluma" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/mesaluma-lam-e136a4ee.webp" width="900" height="587" alt="Mesaluma" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="palquear">
+  <header class="cab"><div class="logo f-oscuro"><img src="img/p/palquear-logo-118049f4.webp" width="560" height="146" alt="Palquear" loading="lazy"></div><div><span class="num">07</span><span class="tipo">App</span><h2>Palquear</h2><p>Marketplace de palcos para partidos: comprador, titular del palco y panel del club.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/palquear-desk-d9bd49d9.webp" width="760" height="475" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/palquear-desk-4714c16c.webp" width="760" height="475" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/palquear-desk-af5b902b.webp" width="760" height="475" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/palquear-desk-778202b0.webp" width="760" height="475" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/palquear-desk-a2388377.webp" width="760" height="475" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/palquear-desk-ec85d9e4.webp" width="760" height="475" alt="Palquear" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/palquear-mob-d3b76b3d.webp" width="330" height="693" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/palquear-mob-071d6567.webp" width="330" height="693" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/palquear-mob-c51d19e9.webp" width="330" height="693" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/palquear-mob-5b6b35db.webp" width="330" height="693" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/palquear-mob-aec50d68.webp" width="330" height="693" alt="Palquear" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/palquear-mob-556bd354.webp" width="330" height="693" alt="Palquear" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="pizcaya">
+  <header class="cab"><div class="logo f-claro"><img src="img/p/pizcaya-logo-b336ffd9.webp" width="560" height="141" alt="Pizcaya" loading="lazy"></div><div><span class="num">08</span><span class="tipo">App</span><h2>Pizcaya</h2><p>Aprender a cocinar jugando.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/pizcaya-desk-1bcd5b2e.webp" width="760" height="475" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/pizcaya-desk-fa3afd35.webp" width="760" height="475" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/pizcaya-desk-4c88c161.webp" width="760" height="475" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/pizcaya-desk-136494f6.webp" width="760" height="475" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/pizcaya-desk-a1b7b8fa.webp" width="760" height="475" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/pizcaya-desk-a94e3370.webp" width="760" height="475" alt="Pizcaya" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/pizcaya-mob-49f842f2.webp" width="330" height="693" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/pizcaya-mob-cff28dd4.webp" width="330" height="693" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/pizcaya-mob-d6ae5e15.webp" width="330" height="693" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/pizcaya-mob-6e6c4873.webp" width="330" height="693" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/pizcaya-mob-1e2a6ca1.webp" width="330" height="693" alt="Pizcaya" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/pizcaya-mob-b5caa0ed.webp" width="330" height="693" alt="Pizcaya" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="ruvia">
+  <header class="cab"><div class="logo f-oscuro"><img src="img/p/ruvia-logo-bd2fc8f9.webp" width="560" height="83" alt="RuVIA" loading="lazy"></div><div><span class="num">09</span><span class="tipo">App</span><h2>RuVIA</h2><p>Rutas, paradas y tarjeta STM del transporte de Montevideo.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/ruvia-desk-4bb844ec.webp" width="760" height="475" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/ruvia-desk-ad920324.webp" width="760" height="475" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/ruvia-desk-47d4528d.webp" width="760" height="475" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/ruvia-desk-cdaebfae.webp" width="760" height="475" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/ruvia-desk-a593887e.webp" width="760" height="428" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/ruvia-desk-9bf952a1.webp" width="760" height="428" alt="RuVIA" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/ruvia-mob-7bd2d720.webp" width="330" height="693" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/ruvia-mob-90b5eea2.webp" width="330" height="693" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/ruvia-mob-b87aaa44.webp" width="330" height="693" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/ruvia-mob-514ae126.webp" width="330" height="693" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/ruvia-mob-51574871.webp" width="330" height="693" alt="RuVIA" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/ruvia-mob-b55c5efa.webp" width="330" height="693" alt="RuVIA" loading="lazy" decoding="async"></figure></div>
+</section>
+<section class="proyecto" id="banana-team">
+  <header class="cab"><div class="logo f-lamina"><img src="img/p/banana-team-logo-993d258f.webp" width="427" height="320" alt="The Banana Team" loading="lazy"></div><div><span class="num">10</span><span class="tipo">Empresa</span><h2>The Banana Team</h2><p>Helping customers go live.</p></div></header>
+  <div class="tira"><figure class="desk"><img src="img/p/banana-team-desk-592fb9b8.webp" width="760" height="475" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/banana-team-desk-a54ff0a2.webp" width="760" height="324" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/banana-team-desk-88cdcdce.webp" width="760" height="475" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/banana-team-desk-110253d0.webp" width="760" height="464" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/banana-team-desk-edbb963e.webp" width="760" height="475" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="desk"><img src="img/p/banana-team-desk-7a37e203.webp" width="760" height="475" alt="The Banana Team" loading="lazy" decoding="async"></figure></div><div class="tira"><figure class="mob"><img src="img/p/banana-team-mob-42444fa3.webp" width="330" height="693" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/banana-team-mob-91e3d755.webp" width="330" height="693" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/banana-team-mob-68b7b3bf.webp" width="330" height="693" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/banana-team-mob-fe2558cf.webp" width="330" height="693" alt="The Banana Team" loading="lazy" decoding="async"></figure><figure class="mob"><img src="img/p/banana-team-mob-9edc6643.webp" width="330" height="693" alt="The Banana Team" loading="lazy" decoding="async"></figure></div>
+</section>
+</div>
+</main>
+<footer class="pie"><div class="ancho"><span>© 2026 Malackath · Estudio de diseño y producto digital</span><a class="arriba" href="#top">Volver arriba ↑</a></div></footer>
+</body>
+</html>
