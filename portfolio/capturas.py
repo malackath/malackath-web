@@ -34,6 +34,7 @@ VIVAS = os.path.join(RAIZ, 'Malackath/_capturas-vivas')
 MIN_RATIO = {'m': 2.0, 'd': 0.6}
 RATIO = {'d': 10/16, 'm': 844/390}
 COMPLETA = re.compile(r'completa', re.I)
+GRUPOS = {'sitios-gastro': re.compile(r'([a-z0-9-]+)__')}
 TEMA = re.compile(r'(?<![a-z])(claro|oscuro|dark|light|scroll)(?![a-z])', re.I)
 def pantalla(p):
     # misma pantalla en claro/oscuro o con scroll = una sola
@@ -41,41 +42,7 @@ def pantalla(p):
     if TEMA.search(n): n = re.sub(r'^[^a-z]*\d+', '', re.sub(r'[-_ ]+', '-', TEMA.sub('', n)).strip('-_ '))
     carpeta = re.sub(r'[^a-z0-9]+', '', TEMA.sub('', os.path.dirname(p).lower()))
     return carpeta + '/' + re.sub(r'[^a-z0-9]+', '', n)
-man = {}
-def tipo_de(rel, w, h):
-    nom = os.path.basename(rel)
-    if DESK_DIR.search(nom) or (DESK_DIR.search(rel) and not MOB_DIR.search(nom)): return 'd' if w >= 900 else 'm'
-    if MOB_DIR.search(rel): return 'm' if h / w > 1.3 else 'd'
-    return 'm' if h / w > 1.3 else ('d' if w / h > 1.2 else None)
-def rebanar(p, im, t, cupo):
-    # una página completa se corta en pantallas consecutivas del tamaño del marco
-    w, h = im.size; sh = int(w * RATIO[t]); out = []
-    for y in range(0, h - int(sh * .9), sh):
-        c = im.crop((0, y, w, min(y + sh, h)))
-        if c.height < sh: continue
-        g = c.convert('L').resize((40, 40))
-        if max(g.getdata()) - min(g.getdata()) < 12: continue  # pantalla vacía
-        out.append((f'{p}#{len(out)+1}', c))
-        if len(out) >= cupo: break
-    return out
-for clave, d in DIRS.items():
-    if clave in SALTEAR: continue
-    raiz_v = os.path.join(VIVAS, clave)
-    fuentes = [raiz_v] if os.path.isdir(raiz_v) else [os.path.join(BASE, d)]
-    fs = []
-    for fuente in fuentes:
-        for r, _, files in os.walk(fuente):
-            for f in sorted(files):
-                if f.lower().rsplit('.', 1)[-1] not in ('png', 'jpg', 'jpeg', 'webp'): continue
-                p = os.path.join(r, f); rel = os.path.relpath(p, BASE) if p.startswith(BASE) else os.path.relpath(p, VIVAS)
-                if clave == 'arma-partido' and 'celular-pantallas' not in rel and 'compu' not in rel: continue
-                elif clave != 'arma-partido' and (FUERA.search(rel) or re.search(r'portfolio-\d', f)): continue
-                if clave in FUERA_PROY and FUERA_PROY[clave].search(rel): continue
-                fs.append((p, rel))
-    def orden(x):
-        n = os.path.basename(x[0]).lower(); m = re.search(r'(\d+)', re.sub(r'\d{3,4}x\d{3,4}', '', n))
-        return (int(m.group(1)) if m else 999, x[1].lower())
-    fs.sort(key=orden)
+def procesar(clave, fs, pre):
     OSC = re.compile(r'oscuro|dark', re.I)
     vistos = set(); normales = {}; completas = {}
     for p, rel in fs:
@@ -117,12 +84,61 @@ for clave, d in DIRS.items():
                 rh = int(w * RATIO[t])
                 if h > rh: im = im.crop((0, 0, w, rh))
                 im = im.resize((tw, int(tw * RATIO[t])), Image.LANCZOS)
-                n = f'{t}-{"osc-" if tema == "osc" else ""}{i+1:02d}.webp'
+                n = f'{pre}{t}-{"osc-" if tema == "osc" else ""}{i+1:02d}.webp'
                 im.save(os.path.join(OUT, clave, n), 'WEBP', quality=74, method=6)
                 src = p.split('#')[0]
                 org = os.path.relpath(src, BASE) if src.startswith(BASE) else os.path.relpath(src, RAIZ)
                 res[clave_res].append(dict(f=n, w=im.width, h=im.height, origen=org + ('#' + p.split('#')[1] if '#' in p else '')))
             print(clave, clave_res, len(res[clave_res]), '|', modo, flush=True)
+    return res
+
+man = {}
+def tipo_de(rel, w, h):
+    nom = os.path.basename(rel)
+    if DESK_DIR.search(nom) or (DESK_DIR.search(rel) and not MOB_DIR.search(nom)): return 'd' if w >= 900 else 'm'
+    if MOB_DIR.search(rel): return 'm' if h / w > 1.3 else 'd'
+    return 'm' if h / w > 1.3 else ('d' if w / h > 1.2 else None)
+def rebanar(p, im, t, cupo):
+    # una página completa se corta en pantallas consecutivas del tamaño del marco
+    w, h = im.size; sh = int(w * RATIO[t]); out = []
+    for y in range(0, h - int(sh * .9), sh):
+        c = im.crop((0, y, w, min(y + sh, h)))
+        if c.height < sh: continue
+        g = c.convert('L').resize((40, 40))
+        if max(g.getdata()) - min(g.getdata()) < 12: continue  # pantalla vacía
+        out.append((f'{p}#{len(out)+1}', c))
+        if len(out) >= cupo: break
+    return out
+for clave, d in DIRS.items():
+    if clave in SALTEAR: continue
+    raiz_v = os.path.join(VIVAS, clave)
+    fuentes = [raiz_v] if os.path.isdir(raiz_v) else [os.path.join(BASE, d)]
+    fs = []
+    for fuente in fuentes:
+        for r, _, files in os.walk(fuente):
+            for f in sorted(files):
+                if f.lower().rsplit('.', 1)[-1] not in ('png', 'jpg', 'jpeg', 'webp'): continue
+                p = os.path.join(r, f); rel = os.path.relpath(p, BASE) if p.startswith(BASE) else os.path.relpath(p, VIVAS)
+                if clave == 'arma-partido' and 'celular-pantallas' not in rel and 'compu' not in rel: continue
+                elif clave != 'arma-partido' and (FUERA.search(rel) or re.search(r'portfolio-\d', f)): continue
+                if clave in FUERA_PROY and FUERA_PROY[clave].search(rel): continue
+                fs.append((p, rel))
+    def orden(x):
+        n = os.path.basename(x[0]).lower(); m = re.search(r'(\d+)', re.sub(r'\d{3,4}x\d{3,4}', '', n))
+        return (int(m.group(1)) if m else 999, x[1].lower())
+    fs.sort(key=orden)
+    if clave in GRUPOS:
+        # varios sitios dentro de un mismo proyecto: un juego de capturas por sitio
+        ids = []
+        for p, rel in fs:
+            g = GRUPOS[clave].match(os.path.basename(p))
+            if g and g.group(1) not in ids: ids.append(g.group(1))
+        res = {'grupos': []}
+        for g in ids:
+            sub = [x for x in fs if os.path.basename(x[0]).startswith(g + '__')]
+            r = procesar(clave, sub, g + '-'); r['id'] = g; res['grupos'].append(r)
+    else:
+        res = procesar(clave, fs, '')
     man[clave] = res
 json.dump(man, open(os.path.join(OUT, 'manifest.json'), 'w'), ensure_ascii=False, indent=1)
 with tarfile.open(OUT + '.tar', 'w') as t: t.add(OUT, arcname=os.path.basename(OUT))

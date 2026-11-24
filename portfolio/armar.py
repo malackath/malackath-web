@@ -24,6 +24,8 @@ def guardar(c, i, prefijo):
     return f'img/p/{nombre}', i['w'], i['h']
 
 e = html.escape
+NOMBRES_GRUPO = {'botanica-bistro': 'Botánica Bistro', 'brisa-marea': 'Brisa & Marea', 'fuego-puerto': 'Fuego & Puerto',
+                 'fuego-silvestre': 'Fuego Silvestre', 'oceanica': 'Oceánica'}
 MANIFEST = json.load(open(os.path.join(AQUI, 'capturas', 'manifest.json')))
 tarjetas, secciones = [], []
 for n, p in enumerate(lista, 1):
@@ -47,7 +49,7 @@ for n, p in enumerate(lista, 1):
         im = Image.open(f).convert('RGB'); w, h = im.size
         c = im.crop((0, h - 3, w, h)).resize((1, 1), Image.BOX).getpixel((0, 0))
         return '#%02x%02x%02x' % c
-    def copiar(tipo):
+    def copiar(tipo, man=man):
         out = []
         for x in man.get(tipo, []):
             dst = f"img/p/{p['c']}-{x['f']}"
@@ -55,7 +57,7 @@ for n, p in enumerate(lista, 1):
             out.append((dst, x['w'], x['h'], color_pie(os.path.join(AQUI, 'capturas', p['c'], x['f']))))
         return out
     desk, mob, lam = copiar('d'), copiar('m'), []
-    if not desk and not mob and not p.get('solo_logo'):
+    if not desk and not mob and not p.get('solo_logo') and not man.get('grupos'):
         lam = [guardar(p['c'], i, 'lam') for i in d['lam']]
     num = f'{n:02d}'
     logo_html = (f'<div class="logo f-{p["fondo"]}"><img src="{lsrc}" width="{lw}" height="{lh}" alt="{e(p["n"])}" loading="lazy"></div>')
@@ -70,19 +72,27 @@ for n, p in enumerate(lista, 1):
         barra = '<div class="barra-nav"><i></i><i></i><i></i></div>' if clase == 'compu' else ('<div class="isla"></div>' if clase == 'cel' else '')
         return f'<figure class="sim {clase}"><div class="marco">{barra}<div class="pantalla">{imgs}</div></div>{nav}<figcaption>{etiqueta}</figcaption></figure>'
     sims = visor(desk, 'compu', 'Escritorio') + visor(mob, 'cel', 'Celular') + visor(lam, 'lam', 'Identidad')
-    desk_o, mob_o = copiar('d_osc'), copiar('m_osc')
-    temas, bloque_osc = '', ''
-    if desk_o or mob_o:
-        # selector claro / oscuro: el mismo visor con el otro juego de capturas
-        sims_o = visor(desk_o or desk, 'compu', 'Escritorio') + visor(mob_o or mob, 'cel', 'Celular')
-        temas = ('<div class="temas" role="group" aria-label="Modo de color"><button type="button" class="on" data-tema="cla" aria-pressed="true">Claro</button>'
-                 '<button type="button" data-tema="osc" aria-pressed="false">Oscuro</button></div>')
-        bloque_osc = f'\n  <div class="sims" data-tema="osc" hidden>{sims_o}</div>'
+    variantes = []  # (id, etiqueta, visores)
+    if man.get('grupos'):
+        for g in man['grupos']:
+            variantes.append((g['id'], NOMBRES_GRUPO.get(g['id'], g['id']), visor(copiar('d', g), 'compu', 'Escritorio') + visor(copiar('m', g), 'cel', 'Celular')))
+        sims = variantes[0][2] if variantes else sims
+        etiqueta_sel = 'Sitio'
+    else:
+        desk_o, mob_o = copiar('d_osc'), copiar('m_osc')
+        if desk_o or mob_o:
+            variantes = [('cla', 'Claro', sims), ('osc', 'Oscuro', visor(desk_o or desk, 'compu', 'Escritorio') + visor(mob_o or mob, 'cel', 'Celular'))]
+        etiqueta_sel = 'Modo de color'
+    temas, bloques = '', f'<div class="sims">{sims}</div>' if sims else ''
+    if len(variantes) > 1:
+        # selector: cada botón muestra otro juego de capturas en los mismos marcos
+        temas = (f'<div class="temas" role="group" aria-label="{etiqueta_sel}">' + ''.join(
+            f'<button type="button"{" class=on" if k == 0 else ""} data-tema="{v}" aria-pressed="{"true" if k == 0 else "false"}">{e(et)}</button>'
+            for k, (v, et, _) in enumerate(variantes)) + '</div>')
+        bloques = '\n  '.join(f'<div class="sims" data-tema="{v}"{" hidden" if k else ""}>{h}</div>' for k, (v, _, h) in enumerate(variantes))
     secciones.append(f'''<section class="proyecto" id="{p["c"]}">
   <header class="cab">{logo_html}<div><span class="num">{num}</span><span class="tipo">{e(p["t"])}</span><h2>{e(p["n"])}</h2><p>{e(p["d"])}</p>{temas}</div></header>
-  <div class="sims" data-tema="cla">{sims}</div>{bloque_osc}
-</section>''' if sims else f'''<section class="proyecto" id="{p["c"]}">
-  <header class="cab">{logo_html}<div><span class="num">{num}</span><span class="tipo">{e(p["t"])}</span><h2>{e(p["n"])}</h2><p>{e(p["d"])}</p></div></header>
+  {bloques}
 </section>''')
 
 plantilla = open(os.path.join(AQUI, 'plantilla.html')).read()
