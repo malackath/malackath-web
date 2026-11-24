@@ -92,7 +92,9 @@ for n, p in enumerate(lista, 1):
         sims = variantes[0][2] if variantes else sims
         etiqueta_sel = 'Sitio'
     else:
-        desk_o, mob_o = copiar('d_osc'), copiar('m_osc')
+        # el modo oscuro solo se ofrece si tiene un juego parecido al claro
+        desk_o = copiar('d_osc') if len(man.get('d_osc', [])) >= max(3, len(man.get('d', [])) // 2) else []
+        mob_o = copiar('m_osc') if len(man.get('m_osc', [])) >= max(3, len(man.get('m', [])) // 2) else []
         if desk_o or mob_o:
             variantes = [('cla', 'Claro', sims), ('osc', 'Oscuro', visor(desk_o or desk, 'compu', 'Escritorio') + visor(mob_o or mob, 'cel', 'Celular'))]
         etiqueta_sel = 'Modo de color'
