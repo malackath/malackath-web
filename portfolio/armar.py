@@ -49,7 +49,7 @@ for n, p in enumerate(lista, 1):
         return '#%02x%02x%02x' % c
     def copiar(tipo):
         out = []
-        for x in man[tipo]:
+        for x in man.get(tipo, []):
             dst = f"img/p/{p['c']}-{x['f']}"
             shutil.copy(os.path.join(AQUI, 'capturas', p['c'], x['f']), f'{OUT}/{dst}')
             out.append((dst, x['w'], x['h'], color_pie(os.path.join(AQUI, 'capturas', p['c'], x['f']))))
@@ -70,9 +70,19 @@ for n, p in enumerate(lista, 1):
         barra = '<div class="barra-nav"><i></i><i></i><i></i></div>' if clase == 'compu' else ('<div class="isla"></div>' if clase == 'cel' else '')
         return f'<figure class="sim {clase}"><div class="marco">{barra}<div class="pantalla">{imgs}</div></div>{nav}<figcaption>{etiqueta}</figcaption></figure>'
     sims = visor(desk, 'compu', 'Escritorio') + visor(mob, 'cel', 'Celular') + visor(lam, 'lam', 'Identidad')
+    desk_o, mob_o = copiar('d_osc'), copiar('m_osc')
+    temas, bloque_osc = '', ''
+    if desk_o or mob_o:
+        # selector claro / oscuro: el mismo visor con el otro juego de capturas
+        sims_o = visor(desk_o or desk, 'compu', 'Escritorio') + visor(mob_o or mob, 'cel', 'Celular')
+        temas = ('<div class="temas" role="group" aria-label="Modo de color"><button type="button" class="on" data-tema="cla" aria-pressed="true">Claro</button>'
+                 '<button type="button" data-tema="osc" aria-pressed="false">Oscuro</button></div>')
+        bloque_osc = f'\n  <div class="sims" data-tema="osc" hidden>{sims_o}</div>'
     secciones.append(f'''<section class="proyecto" id="{p["c"]}">
+  <header class="cab">{logo_html}<div><span class="num">{num}</span><span class="tipo">{e(p["t"])}</span><h2>{e(p["n"])}</h2><p>{e(p["d"])}</p>{temas}</div></header>
+  <div class="sims" data-tema="cla">{sims}</div>{bloque_osc}
+</section>''' if sims else f'''<section class="proyecto" id="{p["c"]}">
   <header class="cab">{logo_html}<div><span class="num">{num}</span><span class="tipo">{e(p["t"])}</span><h2>{e(p["n"])}</h2><p>{e(p["d"])}</p></div></header>
-  <div class="sims">{sims}</div>
 </section>''')
 
 plantilla = open(os.path.join(AQUI, 'plantilla.html')).read()
