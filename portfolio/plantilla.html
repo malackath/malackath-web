@@ -58,6 +58,9 @@ h1{font:800 clamp(44px,9vw,128px)/.9 var(--display);overflow-wrap:anywhere;lette
 .temas button:hover{color:var(--fg)}
 .temas button.on{background:var(--lima);color:#131315}
 .sims[hidden]{display:none}
+.logo-grupo{transition:background .3s}
+.logo-grupo img{position:absolute;inset:22% 8%;width:84%;height:56%;object-fit:contain}
+.firma{display:block;margin-top:10px;font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 /* visor tipo simulador */
 .sims{display:flex;gap:40px;align-items:flex-start;justify-content:center;flex-wrap:wrap}
 .sim{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
@@ -125,6 +128,7 @@ document.querySelectorAll('.temas').forEach(function(g){
   g.querySelectorAll('button').forEach(function(b){b.onclick=function(){
     g.querySelectorAll('button').forEach(function(x){var on=x===b; x.classList.toggle('on',on); x.setAttribute('aria-pressed',on)});
     sec.querySelectorAll('.sims[data-tema]').forEach(function(s){s.hidden=s.dataset.tema!==b.dataset.tema});
+    var t=sec.querySelector('.logo-grupo'); if(t&&b.dataset.logo){t.style.background=b.dataset.fondo; var im=t.querySelector('img'); im.src=b.dataset.logo; im.alt=b.textContent;}
   }});
 });
 document.querySelectorAll('.sim').forEach(function(sim){

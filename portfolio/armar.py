@@ -73,9 +73,22 @@ for n, p in enumerate(lista, 1):
         return f'<figure class="sim {clase}"><div class="marco">{barra}<div class="pantalla">{imgs}</div></div>{nav}<figcaption>{etiqueta}</figcaption></figure>'
     sims = visor(desk, 'compu', 'Escritorio') + visor(mob, 'cel', 'Celular') + visor(lam, 'lam', 'Identidad')
     variantes = []  # (id, etiqueta, visores)
+    datos_logo = {}
     if man.get('grupos'):
+        logos_g = {}
         for g in man['grupos']:
             variantes.append((g['id'], NOMBRES_GRUPO.get(g['id'], g['id']), visor(copiar('d', g), 'compu', 'Escritorio') + visor(copiar('m', g), 'cel', 'Celular')))
+            lg = next((l for l in d['logos'] if l['nombre'].startswith(g['id'] + '__')), None)
+            if lg:
+                src_l, _, _ = guardar(p['c'], lg, 'logo-' + g['id'])
+                from PIL import Image
+                fondo_l = '#%02x%02x%02x' % Image.open(f'{OUT}/{src_l}').convert('RGB').getpixel((2, 2))
+                logos_g[g['id']] = (src_l, fondo_l)
+        if variantes and variantes[0][0] in logos_g:
+            # el recuadro del logo muestra el del sitio elegido (opción A elegida por Ber)
+            src0, bg0 = logos_g[variantes[0][0]]
+            logo_html = (f'<div class="logo logo-grupo" style="background:{bg0}"><img src="{src0}" alt="{e(variantes[0][1])}"></div>')
+            datos_logo = {v: logos_g[v] for v in logos_g}
         sims = variantes[0][2] if variantes else sims
         etiqueta_sel = 'Sitio'
     else:
@@ -83,15 +96,17 @@ for n, p in enumerate(lista, 1):
         if desk_o or mob_o:
             variantes = [('cla', 'Claro', sims), ('osc', 'Oscuro', visor(desk_o or desk, 'compu', 'Escritorio') + visor(mob_o or mob, 'cel', 'Celular'))]
         etiqueta_sel = 'Modo de color'
+    firma = '<span class="firma">Marca y sitio: Malackath</span>' if datos_logo else ''
     temas, bloques = '', f'<div class="sims">{sims}</div>' if sims else ''
     if len(variantes) > 1:
         # selector: cada botón muestra otro juego de capturas en los mismos marcos
         temas = (f'<div class="temas" role="group" aria-label="{etiqueta_sel}">' + ''.join(
-            f'<button type="button"{" class=on" if k == 0 else ""} data-tema="{v}" aria-pressed="{"true" if k == 0 else "false"}">{e(et)}</button>'
+            f'<button type="button"{" class=on" if k == 0 else ""} data-tema="{v}" aria-pressed="{"true" if k == 0 else "false"}"'
+            + (f' data-logo="{datos_logo[v][0]}" data-fondo="{datos_logo[v][1]}"' if man.get('grupos') and v in datos_logo else '') + f'>{e(et)}</button>'
             for k, (v, et, _) in enumerate(variantes)) + '</div>')
         bloques = '\n  '.join(f'<div class="sims" data-tema="{v}"{" hidden" if k else ""}>{h}</div>' for k, (v, _, h) in enumerate(variantes))
     secciones.append(f'''<section class="proyecto" id="{p["c"]}">
-  <header class="cab">{logo_html}<div><span class="num">{num}</span><span class="tipo">{e(p["t"])}</span><h2>{e(p["n"])}</h2><p>{e(p["d"])}</p>{temas}</div></header>
+  <header class="cab">{logo_html}<div><span class="num">{num}</span><span class="tipo">{e(p["t"])}</span><h2>{e(p["n"])}</h2><p>{e(p["d"])}</p>{firma}{temas}</div></header>
   {bloques}
 </section>''')
 
