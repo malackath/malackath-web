@@ -254,6 +254,23 @@ def home():
     s = comun(s, "", "Malackath · Estudio de diseño y producto digital",
               "Apps móviles, plataformas web, sistemas de reservas e identidad visual para marcas y proyectos reales. Uruguay y Brasil.")
     s = cortar(s, "<!-- 3. IMPACT METRICS -->", "<!-- 4. FEATURED REAL WORK")
+    # titular pedido por Ber (2026-11-24), en 3 líneas; la última en lima como en Stitch
+    s, n = re.subn(r'(<h1 class="font-display-xl[^"]*">)\s*DISEÑAMOS PRODUCTOS DIGITALES QUE (<span class="text-primary-container">)COBRAN VIDA(</span>)',
+                   r'\1<span class="block whitespace-nowrap">Construyamos</span><span class="block whitespace-nowrap">tu próximo</span>\2producto\3', s)
+    assert n == 1, n
+    # cada línea entera; el tamaño baja solo si la palabra más larga no entra en el ancho disponible
+    s = rep(s, '<h1 class="font-display-xl', '<h1 class="titular-hero block font-display-xl')
+    s = rep(s, '<span class="text-primary-container">producto</span>', '<span class="block whitespace-nowrap text-primary-container">producto</span>')
+    s = rep(s, 'lg:col-span-7 flex flex-col gap-space-lg min-w-0', 'titular-hero-col lg:col-span-12 flex flex-col gap-space-lg min-w-0')
+    s = s.replace("</style>", """
+@layer base {
+.titular-hero-col { container-type: inline-size; }
+h1.titular-hero { --r: 14.4; font-size: min(2.75rem, calc(100cqw / var(--r))) !important; }
+@media (min-width: 768px) { h1.titular-hero { font-size: min(80px, calc(100cqw / var(--r))) !important; } }
+:lang(en) h1.titular-hero { --r: 9.8; }
+:lang(pt) h1.titular-hero { --r: 16.4; }
+}
+</style>""", 1)
     P = "img/proyectos/"
     s = imagenes(s, [
         (None, "", ""),  # logo, ya reemplazado

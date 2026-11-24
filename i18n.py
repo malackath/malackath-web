@@ -175,7 +175,7 @@ def generar():
             s = recorrer(s, fn)
             for a, b in JS[idi].items():
                 s = s.replace(a, b)
-            s = s.replace('<html lang="es"', f'<html lang="{idi}"', 1)
+            s = re.sub(r'(<html[^>]*\blang=")es"', rf'\g<1>{idi}"', s, count=1)
             # recursos compartidos: un nivel más arriba
             s = re.sub(r'((?:src|href)=")((?:\.\./)*)(img/|css/)', r'\1../\2\3', s)
             s = poner_selector(s, idi, pagina)
