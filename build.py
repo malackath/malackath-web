@@ -10,6 +10,7 @@ Regla: el diseño de Stitch se respeta tal cual. Solo se cambia:
 Uso: python3 build.py stitch public   (después: npm run css)
 """
 import re
+import casos_textos
 import sys
 from pathlib import Path
 
@@ -54,6 +55,27 @@ def link(s, texto, href):
     if href.startswith("http"):
         tag2 += ' target="_blank" rel="noopener"'
     return s[:a] + tag2 + s[fin:]
+
+
+
+def textos(s, mapa, estricto=True):
+    """Reemplaza nodos de texto completos (espacios normalizados) según `mapa`."""
+    import html as _h
+    usados = set()
+    def _f(m):
+        crudo = m.group(1)
+        clave = " ".join(_h.unescape(crudo).split())
+        if clave in mapa:
+            usados.add(clave)
+            pre = crudo[:len(crudo) - len(crudo.lstrip())]
+            pos = crudo[len(crudo.rstrip()):]
+            return ">" + pre + _h.escape(mapa[clave], quote=False) + pos + "<"
+        return m.group(0)
+    s = re.sub(r">([^<>]+)<", _f, s)
+    faltan = [k for k in mapa if k not in usados]
+    if estricto and faltan:
+        raise SystemExit("Textos no encontrados: " + " | ".join(f[:60] for f in faltan))
+    return s
 
 
 def imagenes(s, mapa, pre):
@@ -191,8 +213,11 @@ def arma_partido():
     s = link(s, "SIGUIENTE CASO DE ESTUDIO // 02", "pizcaya.html")
     s = link(s, "Iniciar Proyecto\n", "../estudio.html#contacto")
     s = link(s, "Agendar Llamada", WHATSAPP)
-    s = s.replace('opacity-30 absolute top-4 right-4">format_quote</span>',
-                  'opacity-30 absolute top-4 right-4">format_quote</span>' + SAMPLE)
+    # testimonios inventados por Stitch: afuera (decisión de Ber)
+    s = cortar(s, "<!-- SECTION: USER & CLUB TESTIMONIALS -->", "<!-- SECTION: NEXT CASE STUDY")
+    # demo navegable: no existe
+    s = re.sub(r'<a [^>]*href="https://demo\.armapartido\.com/"[^>]*>.*?</a>', "", s, count=1, flags=re.S)
+    s = textos(s, casos_textos.ARMA_PARTIDO)
     guardar("casos/arma-partido.html", s)
 
 
@@ -217,7 +242,17 @@ def pizcaya():
     s = link(s, "VOLVER AL PORTFOLIO // CASO DE ESTUDIO 02", "../trabajo.html")
     s = link(s, "VISITAR PIZCAYA.COM", "https://pizcaya.com")
     s = link(s, "SIGUIENTE CASO DE ESTUDIO // 03", "../trabajo.html")
-    s = s.replace('format_quote</span>', 'format_quote</span>' + SAMPLE)
+    s = cortar(s, "<!-- SECTION 7: User & Chef Testimonials -->", "<!-- SECTION 8: Next Case Study")
+    s = link(s, "PROBAR MODO COCINA EN VIVO", "https://pizcaya.com")
+    s = re.sub(r"Procesamiento de lenguaje natural.*?campanas\.",
+               "Pasos grandes en pantalla, la app lee cada paso en voz alta y pone el reloj cuando el paso lo pide. "
+               "Para avanzar alcanza con decir <em>«listo»</em>.", s, count=1, flags=re.S)
+    for viejo, nuevo in (("bg-[#FF9E00]", "bg-[#E8572A]"), ("bg-[#70A040]", "bg-[#3E8E5A]"),
+                         ("bg-[#121214] shadow-sm", "bg-[#FFF7EC] shadow-sm"),
+                         ('bg-primary-container shadow-sm"></div>\n<span class="font-label-sm text-label-sm text-on-surface">Acid Lime',
+                          'bg-[#F4B740] shadow-sm"></div>\n<span class="font-label-sm text-label-sm text-on-surface">Acid Lime')):
+        s = rep(s, viejo, nuevo)
+    s = textos(s, casos_textos.PIZCAYA)
     # número no confirmado
     s = rep(s, "Validado con más de 120 pruebas de usabilidad en cocina real", "Gratis, sin publicidad y sin crear cuenta")
     s = link(s, "Agendar Llamada", WHATSAPP)

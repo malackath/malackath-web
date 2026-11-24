@@ -11,7 +11,8 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - Sacar números y métricas no confirmados por Ber.
 - Datos falsos de la agencia de ejemplo (Kinetic, París/NY/Tokio, equipo inventado) → datos reales o se sacan.
 - Ajustes para que en celular nada se salga de la pantalla (usando los tamaños mobile del propio sistema de Stitch).
-- Testimonios inventados por Stitch llevan el rótulo "Sample" hasta que Ber decida.
+- Testimonios inventados por Stitch: se sacaron (decisión de Ber, 2026-11-24).
+- Textos inventados de los casos → textos reales en `casos_textos.py` (fuentes: repos de Armá Partido y Pizcaya).
 
 ## Cómo se arma
 - `stitch/<pantalla>/code.html` + `screen.png`: export original de Stitch (no tocar).
