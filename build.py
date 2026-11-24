@@ -187,6 +187,65 @@ def guardar(nombre, s):
     print(f"{nombre}: ok ({quedan} imágenes de Stitch sin reemplazar)")
 
 
+
+# ------------------------------------------------- HERO: ventanas flotantes
+def escenario_hero(pre=""):
+    """Saca de la pantalla animada de Stitch el escenario 3D del hero (HTML, CSS y parallax)
+    y le pone el contenido de cada ventana desde hero.py."""
+    import hero, html as _h
+    a = leer("kinetic_home_kinetic_hero_animated")
+    i = a.find("<!-- HERO 3D PERSPECTIVE SHOWCASE INTERACTIVE STAGE -->")
+    j = a.find("</section>", i)
+    bloque = a[i:j].rstrip()
+    # el bloque termina cerrando su contenedor de sección: dejamos solo el escenario
+    assert bloque.endswith("</div>\n</div>") or bloque.endswith("</div>"), "escenario: final inesperado"
+    css = a[a.find("/* Kinetic Animations"):a.find("</style>", a.find("/* Kinetic Animations"))]
+    js_i = a.find("// 3D Perspective Parallax")
+    js_f = a.find("// Scroll-Triggered Reveals")
+    js = a[js_i:js_f]
+
+    e = lambda t: _h.escape(t, quote=False)
+    S = hero.SLOTS
+    c, iz, ce = S["centro"], S["izquierda"], S["celular"]
+    # textos (en orden de aparición en Stitch)
+    for viejo, nuevo in [
+        (">monolith.spatial.os<", ">" + e(c["barra"]) + "<"),
+        (">WEBGL / SHADER<", ">" + e(c["barra_derecha"]) + "<"),
+        (">Next-Gen FinTech<", ">" + e(c["rubro"]) + "<"),
+        (">Monolith Quantum Yield<", ">" + e(c["titulo"]) + "<"),
+        (">+240% Conv Rate<", ">" + e(c["chip"]) + "<"),
+        (">solana-orbit.app<", ">" + e(iz["barra"]) + "<"),
+        ("\n              FWA of the Day\n            ", e(iz["chip"])),
+        (">Apple Design Award Nominee<", ">" + e(ce["chip"]) + "<"),
+        (">Aura KineticOS<", ">" + e(ce["titulo"]) + "<"),
+        (">Benchmark Performance<", ">" + e(hero.CHIP_METRICA[0]) + "<"),
+        (">0.18s FCP / 100 SEO<", ">" + e(hero.CHIP_METRICA[1]) + "<"),
+        (">WebGL 2.0 Native Flow<", ">" + e(hero.CHIP_FLOTANTE) + "<"),
+    ]:
+        bloque = rep(bloque, viejo, nuevo)
+    # imágenes de cada ventana
+    slots = iter([c, iz, ce])
+    def _img(m):
+        sl = next(slots)
+        tag = m.group(0)
+        if sl["imagen"]:
+            tag = re.sub(r'src="[^"]*"', f'src="{pre}{sl["imagen"]}"', tag)
+            tag = re.sub(r'data-alt="[^"]*"', f'alt="{_h.escape(sl.get("titulo") or sl.get("barra"))}"', tag)
+        tag = tag.replace('class="w-full h-full object-cover"', 'class="w-full h-full object-cover object-top"')
+        return tag
+    bloque = re.sub(r'<img [^>]*>', _img, bloque, count=3)
+    # ventanas con link al sitio (cuando Ber los pase)
+    for marca, sl in (("CARD 1:", c), ("CARD 2:", iz), ("CARD 3:", ce)):
+        if sl.get("url"):
+            k = bloque.find(marca); d = bloque.find("<div ", k)
+            bloque = bloque[:d] + f'<a href="{sl["url"]}" target="_blank" rel="noopener" class="contents">' + bloque[d:]
+            # se cierra al final de la tarjeta: la siguiente marca "<!-- CARD" o el final
+            n = bloque.find("<!--", d + 10)
+            cierre = bloque.rfind("</div>", d, n) + len("</div>")
+            bloque = bloque[:cierre] + "</a>" + bloque[cierre:]
+    return bloque, css, js
+
+
 # ---------------------------------------------------------------- HOME
 def home():
     s = leer("kinetic_home_proyectos_reales")
@@ -210,6 +269,15 @@ def home():
     s = rep(s, 'transition-colors">Armá Partido</h3>', 'transition-colors"><a href="casos/arma-partido.html">Armá Partido</a></h3>')
     s = rep(s, 'transition-colors">Pizcaya</h3>', 'transition-colors"><a href="casos/pizcaya.html">Pizcaya</a></h3>')
     s = link(s, "<span>INICIAR PROYECTO</span>", "estudio.html#contacto")
+    # Hero: las tarjetas de proyectos de la derecha se reemplazan por el escenario de ventanas
+    # flotantes de la pantalla animada de Stitch (pedido de Ber, 2026-11-24). Va debajo del texto,
+    # a todo el ancho, como en esa pantalla.
+    bloque, css, js = escenario_hero("")
+    i = s.find("<!-- Right 3D Floating Mockup Composition -->")
+    j = s.find("</section>", i)
+    s = s[:i] + "</div>\n" + bloque + "\n" + s[j:]   # </div> cierra la grilla del texto
+    s = s.replace("</style>", css + "</style>", 1)
+    s = s.replace("</body>", "<script>\n(function () {\n  " + js + "})();\n</script></body>", 1)
     guardar("index.html", s)
 
 
