@@ -168,6 +168,8 @@ def comun(s, pre, titulo, descripcion, activo=None):
 
 
 def guardar(nombre, s):
+    # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
+    s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
     if BORRADOR:
         s = s.replace("</head>", '<meta name="robots" content="noindex, nofollow"/></head>', 1)
     # celular: el botón del menú no entra junto al selector de idioma; queda el ícono de contacto
