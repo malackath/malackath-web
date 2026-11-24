@@ -262,6 +262,26 @@ def home():
     s = rep(s, '<h1 class="font-display-xl', '<h1 class="titular-hero block font-display-xl')
     s = rep(s, '<span class="text-primary-container">producto</span>', '<span class="block whitespace-nowrap text-primary-container">producto</span>')
     s = rep(s, 'lg:col-span-7 flex flex-col gap-space-lg min-w-0', 'titular-hero-col lg:col-span-12 flex flex-col gap-space-lg min-w-0')
+    s = rep(s, '<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">', '<div class="hero-grilla relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">')
+    s = rep(s, '<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">', '<p class="hero-bajada font-body-lg text-body-lg text-on-surface-variant max-w-2xl">')
+    # composición pedida por Ber (captura 2026-11-24): de 1280px para arriba el collage va a la derecha,
+    # subido y montado sobre el titular (el titular queda adelante); nunca pisa la bajada ni los botones.
+    s = s.replace("</style>", """
+@media (min-width: 1280px) {
+  .hero-grilla { pointer-events: none; }
+  .hero-grilla a { pointer-events: auto; }
+  p.hero-bajada { max-width: 28rem; }
+  #showcase-viewport { position: absolute; top: 150px; right: 8px; width: 1160px; height: 560px; min-height: 0; margin: 0;
+    z-index: 0; transform: scale(var(--esc)); transform-origin: top right; --esc: .56; }
+  #showcase-viewport + * , section:has(> #showcase-viewport) { min-height: calc(150px + 560px * var(--esc-sec, .56) + 60px); }
+}
+@media (min-width: 1366px) { #showcase-viewport { --esc: 0.63; } section:has(> #showcase-viewport) { --esc-sec: 0.63; } }
+@media (min-width: 1440px) { #showcase-viewport { --esc: 0.69; } section:has(> #showcase-viewport) { --esc-sec: 0.69; } }
+@media (min-width: 1512px) { #showcase-viewport { --esc: 0.76; } section:has(> #showcase-viewport) { --esc-sec: 0.76; } }
+@media (min-width: 1600px) { #showcase-viewport { --esc: 0.84; } section:has(> #showcase-viewport) { --esc-sec: 0.84; } }
+@media (min-width: 1680px) { #showcase-viewport { --esc: 0.91; } section:has(> #showcase-viewport) { --esc-sec: 0.91; } }
+@media (min-width: 1760px) { #showcase-viewport { --esc: 1; } section:has(> #showcase-viewport) { --esc-sec: 1; } }
+</style>""", 1)
     s = s.replace("</style>", """
 @layer base {
 .titular-hero-col { container-type: inline-size; }
