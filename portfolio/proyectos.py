@@ -32,7 +32,7 @@ PUBLICOS = [
  dict(c='jip', n='JIP', t='Tienda', d='Jamás lo permitiría: remeras con configurador y fábulas.', logo='B_parche_sobre_negro.png', fondo='lamina'),
  dict(c='coat-n-nest', n='Coat n Nest', t='Empresa', d='Tienda online. Incluye la marca Zoomi.', logo='coatnnest-una-tinta.png', fondo='oscuro'),
  dict(c='sitios-gastro', n='Sitios Gastro', t='Sitios web', d='5 sitios de restaurantes: Botánica Bistro, Brisa & Marea, Fuego & Puerto, Fuego Silvestre y Oceánica.',
-      logo='fuego-puerto__logo__para-fondo-oscuro__con-fondo.png', fondo='oscuro'),
+      logo='fuego-silvestre__logo__para-fondo-oscuro__con-fondo.png', fondo='oscuro'),
  dict(c='la-gloria', n='La Gloria', t='Sitio web', d='Sitio del restaurante La Gloria.', logo=None, fondo='lamina'),
  dict(c='usa-storefront', n='UsaStorefront', t='Empresa', d='Tienda de insumos de tapicería en EE. UU. (Upholstery Supplies of America).', logo=None, fondo='lamina'),
  dict(c='web-arnelli', n='Web Arnelli', t='Sitio web', d='Sitio del artista plástico Bernardo Arnelli: obras, exposiciones y contacto.', logo=None, fondo='lamina'),
