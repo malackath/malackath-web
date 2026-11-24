@@ -41,12 +41,18 @@ for n, p in enumerate(lista, 1):
         logo = next(l for l in d['logos'] if l['nombre'] == p['logo']) if p['logo'] else d['desk'][0]
         lsrc, lw, lh = guardar(p['c'], logo, 'logo')
     man = MANIFEST.get(p['c'], {'d': [], 'm': []})
+    def color_pie(f):
+        # color del borde de abajo: rellena el marco cuando la captura es más baja que la pantalla
+        from PIL import Image
+        im = Image.open(f).convert('RGB'); w, h = im.size
+        c = im.crop((0, h - 3, w, h)).resize((1, 1), Image.BOX).getpixel((0, 0))
+        return '#%02x%02x%02x' % c
     def copiar(tipo):
         out = []
         for x in man[tipo]:
             dst = f"img/p/{p['c']}-{x['f']}"
             shutil.copy(os.path.join(AQUI, 'capturas', p['c'], x['f']), f'{OUT}/{dst}')
-            out.append((dst, x['w'], x['h']))
+            out.append((dst, x['w'], x['h'], color_pie(os.path.join(AQUI, 'capturas', p['c'], x['f']))))
         return out
     desk, mob, lam = copiar('d'), copiar('m'), []
     if not desk and not mob:
@@ -57,7 +63,7 @@ for n, p in enumerate(lista, 1):
   <div class="info"><span class="tipo">{e(p["t"])}</span><h3>{e(p["n"])}</h3><p>{e(p["d"])}</p></div></a>''')
     def visor(L, clase, etiqueta):
         if not L: return ''
-        imgs = ''.join(f'<img data-src="{s}" width="{w}" height="{h}" alt="{e(p["n"])}: {etiqueta} {k+1} de {len(L)}"{" class=on" if k == 0 else ""}>' for k, (s, w, h) in enumerate(L))
+        imgs = ''.join(f'<img data-src="{x[0]}" width="{x[1]}" height="{x[2]}"{f' style="background:{x[3]}"' if len(x) > 3 else ''} alt="{e(p["n"])}: {etiqueta} {k+1} de {len(L)}"{" class=on" if k == 0 else ""}>' for k, x in enumerate(L))
         puntos = ''.join(f'<button type="button" aria-label="Ver {k+1}"{" class=on" if k == 0 else ""}></button>' for k in range(len(L))) if len(L) > 1 else ''
         nav = (f'<div class="nav"><button type="button" class="ant" aria-label="Anterior">&#8592;</button><span class="cuenta">1 / {len(L)}</span>'
                f'<button type="button" class="sig" aria-label="Siguiente">&#8594;</button></div><div class="puntos">{puntos}</div>') if len(L) > 1 else ''
