@@ -33,7 +33,7 @@ PUBLICOS = [
  dict(c='velvet', n='Velvet', t='App', d='Perfiles, agenda y reservas con seña en custodia.', logo='velvet-logo-light-outline-tight.png', fondo='oscuro'),
  dict(c='patovava', n='PatovaVa', t='App', d='Acompañantes verificadas que llevan y traen a tus hijos de noche.', logo='lockup-color-fondo-oscuro.png', fondo='oscuro'),
  dict(c='jip', n='JIP', t='Tienda', d='Jamás lo permitiría: remeras con configurador y fábulas.', logo='B_parche_sobre_negro.png', fondo='lamina'),
- dict(c='zoomi', n='Zoomi', t='Tienda online', d='Tienda online de Zoomi, la pelota interactiva que entretiene a tu gato cuando no estás.', logo='zoomi-transparente.png', fondo='oscuro', json='coat-n-nest'),
+ dict(c='zoomi', n='Zoomi', t='Tienda online', d='Tienda online de Zoomi, la pelota interactiva que entretiene a tu gato cuando no estás.', logo='zoomi-transparente.png', fondo='claro', json='coat-n-nest'),
  dict(c='coat-n-nest', n='Coat n Nest', t='Logo', d='Identidad de Coat n Nest, la empresa detrás de Zoomi.', logo='coatnnest-una-tinta.png', fondo='oscuro', solo_logo=True),
  dict(c='sitios-gastro', n='Sitios Gastro', t='Sitios web', d='5 sitios de restaurantes: Botánica Bistro, Brisa & Marea, Fuego & Puerto, Fuego Silvestre y Oceánica.',
       logo='fuego-silvestre__logo__para-fondo-oscuro__con-fondo.png', fondo='oscuro'),
