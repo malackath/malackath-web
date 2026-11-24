@@ -249,6 +249,69 @@ def escenario_hero(pre=""):
 
 
 # ---------------------------------------------------------------- HOME
+FORMAS_PROVISORIAS = [
+    '<circle cx="20" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="3"/>',
+    '<path d="M20 5 L35 33 H5 Z" fill="none" stroke="currentColor" stroke-width="3"/>',
+    '<rect x="7" y="7" width="26" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>',
+    '<path d="M6 30 L20 8 L34 30" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="20" cy="27" r="3" fill="currentColor"/>',
+]
+
+
+def seccion_marcas():
+    """Sección «Identidad de marca»: dos filas de logos en carrusel infinito (sentidos opuestos),
+    se frena al pasar el mouse y cada logo se enciende en lima. Logos en marcas.py."""
+    import html as _h
+    import marcas
+
+    def tarjeta(m, i):
+        if m["imagen"]:
+            dentro = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" loading="lazy" '
+                      'class="max-h-14 md:max-h-16 max-w-[70%] object-contain grayscale opacity-70 '
+                      'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
+        else:
+            forma = FORMAS_PROVISORIAS[i % len(FORMAS_PROVISORIAS)]
+            dentro = (f'<span class="flex items-center gap-space-sm text-on-surface-variant group-hover:text-primary-container transition-colors duration-300">'
+                      f'<svg viewBox="0 0 40 40" class="w-9 h-9" aria-hidden="true">{forma}</svg>'
+                      f'<span class="font-label-lg text-label-lg uppercase">{_h.escape(m["nombre"])}</span></span>')
+        clase = ('group shrink-0 w-56 h-32 md:w-64 md:h-36 rounded-xl bg-surface-container border border-outline-variant/40 '
+                 'flex items-center justify-center transition-all duration-300 hover:border-primary-container '
+                 'hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(202,243,0,0.18)]')
+        if m.get("url"):
+            return f'<a class="{clase}" href="{m["url"]}">{dentro}</a>'
+        return f'<div class="{clase}">{dentro}</div>'
+
+    def fila(lista, reversa, desde):
+        items = "".join(tarjeta(m, desde + k) for k, m in enumerate(lista))
+        return (f'<div class="marcas-fila flex w-max gap-space-lg pr-space-lg{" marcas-reversa" if reversa else ""}">'
+                f'{items}<div class="flex gap-space-lg" aria-hidden="true">{items}</div></div>')
+
+    return f"""<!-- 4b. IDENTIDAD DE MARCA (logos en marcas.py) -->
+<section class="w-full py-space-3xl overflow-hidden" id="marcas">
+<style>
+#marcas .marcas-fila {{ animation: marquee 40s linear infinite; }}
+#marcas .marcas-reversa {{ animation-direction: reverse; animation-duration: 46s; }}
+#marcas .marcas-pista:hover .marcas-fila {{ animation-play-state: paused; }}
+#marcas .marcas-pista {{ -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }}
+@media (prefers-reduced-motion: reduce) {{
+  #marcas .marcas-fila {{ animation: none; }}
+  #marcas .marcas-pista {{ overflow-x: auto; }}
+}}
+</style>
+<div class="px-margin-mobile md:px-margin-tablet lg:px-margin flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-2xl">
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md uppercase text-primary-container tracking-widest">// BRANDING</span>
+<h2 class="titulo-seccion font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tighter font-extrabold md:font-extrabold md:tracking-[-0.04em]">IDENTIDAD DE MARCA</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>
+</div>
+<div class="marcas-pista flex flex-col gap-space-lg">
+<div class="overflow-hidden">{fila(marcas.FILA_1, False, 0)}</div>
+<div class="overflow-hidden">{fila(marcas.FILA_2, True, 2)}</div>
+</div>
+</section>"""
+
+
+
 def home():
     s = leer("kinetic_home_proyectos_reales")
     s = comun(s, "", "Malackath · Estudio de diseño y producto digital",
@@ -273,6 +336,7 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
 @media (min-width: 768px) { h2.titulo-seccion { font-size: min(3.75rem, calc((100vw - 64px) / 12.8)) !important; } }
 }
 </style>""", 1)
+    s = rep(s, "<!-- 5. PRINCIPIOS & METODOLOGÍA -->", seccion_marcas() + "\n<!-- 5. PRINCIPIOS & METODOLOGÍA -->")
     # titular: el original de Stitch (Ber, 2026-11-24: «Diseñamos productos digitales que cobran vida»)
     s = rep(s, '<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">', '<div class="hero-grilla relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">')
     s = rep(s, '<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">', '<p class="hero-bajada font-body-lg text-body-lg text-on-surface-variant max-w-2xl">')
