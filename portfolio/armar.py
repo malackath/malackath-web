@@ -24,6 +24,7 @@ def guardar(c, i, prefijo):
     return f'img/p/{nombre}', i['w'], i['h']
 
 e = html.escape
+MANIFEST = json.load(open(os.path.join(AQUI, 'capturas', 'manifest.json')))
 tarjetas, secciones = [], []
 for n, p in enumerate(lista, 1):
     d = json.load(open(os.path.join(SRC, p['c'] + '.json')))
@@ -33,24 +34,33 @@ for n, p in enumerate(lista, 1):
         dst = f"img/p/{p['c']}-logo.svg"
         shutil.copy(os.path.join(AQUI, p['logo_archivo']), f'{OUT}/{dst}')
         os.remove(f'{OUT}/{lsrc}'); lsrc = dst
-    vistos, desk, mob = set(), [], []
-    for k, dest in (('desk', desk), ('mob', mob)):
-        for i in d[k]:
-            if i['src'] in vistos: continue
-            vistos.add(i['src']); dest.append(guardar(p['c'], i, k))
+    man = MANIFEST.get(p['c'], {'d': [], 'm': []})
+    def copiar(tipo):
+        out = []
+        for x in man[tipo]:
+            dst = f"img/p/{p['c']}-{x['f']}"
+            shutil.copy(os.path.join(AQUI, 'capturas', p['c'], x['f']), f'{OUT}/{dst}')
+            out.append((dst, x['w'], x['h']))
+        return out
+    desk, mob, lam = copiar('d'), copiar('m'), []
     if not desk and not mob:
-        for i in d['lam']: desk.append(guardar(p['c'], i, 'lam'))
+        lam = [guardar(p['c'], i, 'lam') for i in d['lam']]
     num = f'{n:02d}'
     logo_html = (f'<div class="logo f-{p["fondo"]}"><img src="{lsrc}" width="{lw}" height="{lh}" alt="{e(p["n"])}" loading="lazy"></div>')
     tarjetas.append(f'''<a class="tarjeta" href="#{p["c"]}">{logo_html}
   <div class="info"><span class="tipo">{e(p["t"])}</span><h3>{e(p["n"])}</h3><p>{e(p["d"])}</p></div></a>''')
-    figs = lambda L, cls: ''.join(f'<figure class="{cls}"><img src="{s}" width="{w}" height="{h}" alt="{e(p["n"])}" loading="lazy" decoding="async"></figure>' for s, w, h in L)
-    tiras = ''
-    if desk: tiras += f'<div class="tira">{figs(desk, "desk")}</div>'
-    if mob: tiras += f'<div class="tira">{figs(mob, "mob")}</div>'
+    def visor(L, clase, etiqueta):
+        if not L: return ''
+        imgs = ''.join(f'<img data-src="{s}" width="{w}" height="{h}" alt="{e(p["n"])}: {etiqueta} {k+1} de {len(L)}"{" class=on" if k == 0 else ""}>' for k, (s, w, h) in enumerate(L))
+        puntos = ''.join(f'<button type="button" aria-label="Ver {k+1}"{" class=on" if k == 0 else ""}></button>' for k in range(len(L))) if len(L) > 1 else ''
+        nav = (f'<div class="nav"><button type="button" class="ant" aria-label="Anterior">&#8592;</button><span class="cuenta">1 / {len(L)}</span>'
+               f'<button type="button" class="sig" aria-label="Siguiente">&#8594;</button></div><div class="puntos">{puntos}</div>') if len(L) > 1 else ''
+        barra = '<div class="barra-nav"><i></i><i></i><i></i></div>' if clase == 'compu' else ('<div class="isla"></div>' if clase == 'cel' else '')
+        return f'<figure class="sim {clase}"><div class="marco">{barra}<div class="pantalla">{imgs}</div></div>{nav}<figcaption>{etiqueta}</figcaption></figure>'
+    sims = visor(desk, 'compu', 'Escritorio') + visor(mob, 'cel', 'Celular') + visor(lam, 'lam', 'Identidad')
     secciones.append(f'''<section class="proyecto" id="{p["c"]}">
   <header class="cab">{logo_html}<div><span class="num">{num}</span><span class="tipo">{e(p["t"])}</span><h2>{e(p["n"])}</h2><p>{e(p["d"])}</p></div></header>
-  {tiras}
+  <div class="sims">{sims}</div>
 </section>''')
 
 plantilla = open(os.path.join(AQUI, 'plantilla.html')).read()

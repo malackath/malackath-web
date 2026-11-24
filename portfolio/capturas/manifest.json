@@ -1,0 +1,2838 @@
+{
+ "arma-partido": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/01-entrada.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/02-inicio-jugador.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/03-reservar.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/04-armar-partido.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/05-torneos.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/06-torneo-cuadro-pagina-completa.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/07-perfil.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/08-mostrador-canchas.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/09-mostrador-grilla.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/10-cantina.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/11-admin-numeros.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/12-admin-apariencia.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ArmaPartido/compu/13-admin-tu-app.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/01-entrada.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/02-inicio-jugador.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/03-reservar.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/04-armar-partido.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/05-torneos.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/06-torneo-cuadro.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/07-perfil.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/08-mostrador-canchas.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "ArmaPartido/celular-pantallas/09-cantina.png"
+   }
+  ]
+ },
+ "barajala": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/01-portada.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/02-todos-los-juegos.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/03-inicio-truco.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/05-truco-parda.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/06-escoba.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/07-chorizo.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/08-conga.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/09-tute.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/10-canasta.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/11-reglas.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/12-curso.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Barajala/Barajala/desktop/13-desafio.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/01-portada.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/02-todos-los-juegos.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/03-inicio-truco.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/04b-truco-te-cantaron.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/05-escoba.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/06-chorizo.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/07-conga.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/08-reglas.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/09-curso.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Barajala/Barajala/movil-oscuro/10-desafio.png"
+   }
+  ]
+ },
+ "coat-n-nest": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-01-hero.jpg"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-01-hero.jpg"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-02-problema.jpg"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-02-problema.jpg"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-03-detalles.jpg"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-03-detalles.jpg"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-04-modos.jpg"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-04-modos.jpg"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-05-pasos.jpg"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-05-pasos.jpg"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-06-faq.jpg"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-06-faq.jpg"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-07-compra.jpg"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-07-compra.jpg"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-01-hero.jpg"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-01-hero.jpg"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-02-problema.jpg"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-02-problema.jpg"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-03-detalles.jpg"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-03-detalles.jpg"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-04-modos.jpg"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-04-modos.jpg"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-05-pasos.jpg"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-05-pasos.jpg"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-06-faq.jpg"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-06-faq.jpg"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-07-compra.jpg"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 664,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-07-compra.jpg"
+   }
+  ]
+ },
+ "pizcaya": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/01-inicio.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/02-desafio-15-platos.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/03-recetario.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/04-recetario-proteico.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/05-caminos.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/06-camino-cocina-basica.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/07-leccion.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/08-ficha-receta.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/09-pizcaya-pro.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/11-perfil.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/12-tutor-ia.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/13-clase-mesada.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/claro/14-clase-plan.png"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/oscuro/15-modo-cocina-paso-1.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/01-inicio.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/02-desafio-15-platos.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/03-recetario.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/04-recetario-proteico.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/05-caminos.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/06-camino-cocina-basica.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/07-leccion.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/08-ficha-receta.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/09-pizcaya-pro.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/11-perfil.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/12-tutor-ia.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/13-clase-mesada.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/claro/14-clase-plan.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/oscuro/15-modo-cocina-paso-1.png"
+   }
+  ]
+ },
+ "coinciva": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-01-portada.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-02-portada-telefonos.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-03-concepto.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-04-simbolo.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-06-exploracion-color.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-07-paleta.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-08-tipografia.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-09-sistema.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-10-app-llegar.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-11-app-coincidir.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-12-app-encontrarse.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-13-entregables.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-01-acceso.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-01-bienvenida.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-01-portada.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-02-registro.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-02-concepto.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-03-explorador.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-03b-checkin.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-03-simbolo.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-04-radar.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-04b-intencion.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-05-coincidencia.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-05-exploracion-color.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-06-chat.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-06b-encuentro.png"
+   }
+  ]
+ },
+ "ecos": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-01-portada.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-oscuro-01-portada.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-02-menu.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-oscuro-02-menu.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-03-tema-ansiedad.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-oscuro-03-tema-ansiedad.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-04-ayuda-ahora.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-oscuro-04-ayuda-ahora.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-05-reproductor-flotante.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-oscuro-05-reproductor-flotante.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-01-portada.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-oscuro-01-portada.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-02-menu.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-oscuro-02-menu.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-03-tema-ansiedad.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-oscuro-03-tema-ansiedad.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-04-ayuda-ahora.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-oscuro-04-ayuda-ahora.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-05-reproductor.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "ECOS/ECOS-portfolio/celular/celular-oscuro-05-reproductor.png"
+   }
+  ]
+ },
+ "jip": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/01_inicio_claro.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 738,
+    "origen": "JLP/escritorio/02_detalles_claro.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/03_prendas_claro.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/04_configurador_pasos_claro.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/05_inicio_oscuro.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/06_cada_remera_oscuro.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/07_prendas_oscuro.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/08_fabula_oscuro.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/09_configurador.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/10_pagina_fabula.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/claro_01_inicio.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_01_inicio.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/claro_02_detalles.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_02_cada_remera.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/claro_03_prendas.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_03_prendas.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/claro_04_configurador.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_04_fabula.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/claro_05_configurador_opciones.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_05_fabula_relato.png"
+   }
+  ]
+ },
+ "la-gloria": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 643,
+    "origen": "LaGloria/01-portada-desktop-hero.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 643,
+    "origen": "LaGloria/05-historia-desktop-hero.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 643,
+    "origen": "LaGloria/09-carta-desktop-hero.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 723,
+    "origen": "LaGloria/03-portada-mobile-hero.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 723,
+    "origen": "LaGloria/07-historia-mobile-hero.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 723,
+    "origen": "LaGloria/11-carta-mobile-hero.png"
+   }
+  ]
+ },
+ "marea-alta": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-es-home-01-hero.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-pt-home-01-hero.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-es-home-02-gastronomia.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-pt-home-02-gastronomia.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-es-home-03-ecosistema-digital.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-pt-home-03-ecosistema-digital.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-es-home-04-proyectos.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-pt-home-04-proyectos.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-es-home-05-servicios.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-pt-home-05-servicios.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-es-home-06-metodologia.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-pt-home-06-metodologia.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-es-home-07-contacto.png"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "MareAlta/portfolio-digital/desktop-1440/desktop-pt-home-07-contacto.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-es-home-01-hero.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-pt-home-01-hero.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-01-hero.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-pt-home-01-hero.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-es-home-02-gastronomia.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-pt-home-02-proyectos.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-02-gastronomia.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-pt-home-02-proyectos.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-es-home-03-ecosistema-digital.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-pt-home-03-contacto.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-03-ecosistema-digital.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-pt-home-03-contacto.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-es-home-04-proyectos.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-04-proyectos.png"
+   }
+  ]
+ },
+ "mesaluma": {
+  "d": [],
+  "m": []
+ },
+ "nunca-te-falla": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-01.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-02.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-03.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-04.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-05.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-06.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-07.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-08.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/app-cliente-home.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/app-cliente-perfil-pro.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/app-pro-panel.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/desktop/landing-pie.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/home.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/lista.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/mapa.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/mensajes.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/mi-reserva.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/pedir-presupuesto.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/perfil-pro.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/resenas-lista.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/reservas.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-config.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-disponibilidad.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-historial.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-home.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-res.png"
+   }
+  ]
+ },
+ "palquear": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-01-inicio.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-02-titular-mis-palcos.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-03-comprador-partidos.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-04-comprador-palco.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-05-comprador-pago.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-06-reserva-qr.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-07-reparto.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-08-club-panel.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Palquear/desktop-09-proyeccion.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-claro-01-comprador-buscar.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-01-comprador-buscar.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-claro-02-titular-mis-palcos.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-02-titular-mis-palcos.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-claro-03-comprador-partidos.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-03-comprador-partidos.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-claro-04-comprador-palco.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-04-comprador-palco.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-claro-05-comprador-pago.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-05-comprador-pago.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-claro-06-reserva-qr.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-06-reserva-qr.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-claro-07-reparto.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-07-reparto.png"
+   }
+  ]
+ },
+ "patovava": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/01-inicio.jpg"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/02-buscar.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/03-acompanantes.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/04-perfil.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/05-seguridad.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/06-seguimiento-ejemplo.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/07-registro-de-viaje.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/08-calificar.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/escritorio/09-postular.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/resumen-celular.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "PatovaVa/PatovaVa/resumen-escritorio.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/01-inicio-como-funciona.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/02-buscar.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/03-acompanantes.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/04-perfil.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-oscuro/04-perfil.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/05-seguridad.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-oscuro/05-seguridad.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/06-seguimiento-ejemplo.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-oscuro/06-seguimiento-ejemplo.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/07-registro-de-viaje.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/08-calificar.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-claro/09-postular.png"
+   }
+  ]
+ },
+ "ravekit": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-claro/01-hero.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/01-hero.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-claro/02-negocios.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/02-negocios.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-claro/03-funciones.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/03-funciones.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-claro/04-como-funciona.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/04-como-funciona.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-claro/05-ahorro.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/05-ahorro.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-claro/06-comparacion.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/06-comparacion.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-claro/07-precios.png"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/07-precios.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-claro/01-hero.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-oscuro/01-hero.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-claro/02-negocios.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-oscuro/02-negocios.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-claro/03-funciones.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-oscuro/03-funciones.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-claro/04-como-funciona.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-oscuro/04-como-funciona.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-claro/05-ahorro.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-oscuro/05-ahorro.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-claro/06-comparacion.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-oscuro/06-comparacion.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-claro/07-precios.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 655,
+    "origen": "RaveKit/movil-oscuro/07-precios.png"
+   }
+  ]
+ },
+ "ruvia": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-claro-marco-01-buscar.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-oscuro-marco-01-buscar.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 720,
+    "origen": "RuVIA/desktop/RuVIA-desktop-web-oscuro-01-inicio.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-claro-marco-02-mapa-rutas.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-oscuro-marco-02-mapa-rutas.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 720,
+    "origen": "RuVIA/desktop/RuVIA-desktop-web-oscuro-02-mapa.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-claro-marco-03-tarjeta-stm.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-oscuro-marco-03-tarjeta-stm.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 720,
+    "origen": "RuVIA/desktop/RuVIA-desktop-web-oscuro-03-rutas.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-claro-marco-04-paradas.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-oscuro-marco-04-paradas.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-claro-marco-05-mas.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/desktop/RuVIA-desktop-oscuro-marco-05-mas.png"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-5-pantallas-3200x2000.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-01-buscar-scroll.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-01-buscar.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-01-buscar-scroll.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-01-buscar.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-02-mapa-rutas-scroll.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-02-mapa-rutas.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-02-mapa-rutas-scroll.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-02-mapa-rutas.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-03-tarjeta-stm-scroll.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-03-tarjeta-stm.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-03-tarjeta-stm-scroll.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-03-tarjeta-stm.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-04-paradas-scroll.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-claro-04-paradas.png"
+   }
+  ]
+ },
+ "banana-team": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/01-inicio.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 545,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/02-servicios.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/03-planes.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 781,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/04-contacto.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 396,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/05-pie.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/06-chat-abierto.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/08-legal.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/mobile/es/capturas/01-inicio.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/mobile/es/capturas/02-menu.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/mobile/es/capturas/03-servicios.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/mobile/es/capturas/04-plan-destacado.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/mobile/es/capturas/05-planes.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/mobile/es/capturas/06-contacto.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/mobile/es/capturas/07-chat-abierto.png"
+   }
+  ]
+ },
+ "usa-storefront": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/home-desktop-claro-A.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/home-desktop-claro-C.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/nails-desktop-claro-A.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/nails-desktop-claro-C.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/pillows-desktop-claro-A.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/pillows-desktop-claro-C.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/samples-desktop-claro-A.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "UsaStorefront/capturas-portfolio/samples-desktop-claro-C.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/home-movil-claro-A.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/home-movil-claro-C.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/nails-movil-claro-A.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/nails-movil-claro-C.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/pillows-movil-claro-A.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/pillows-movil-claro-C.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/samples-movil-claro-A.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "UsaStorefront/capturas-portfolio/samples-movil-claro-C.png"
+   }
+  ]
+ },
+ "velvet": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-01-portada.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-01-portada.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-02-inicio.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-02-inicio.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-03-inicio-tarjetas.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-03-inicio-tarjetas.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-04-buscador.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-04-buscador.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-05-mapa.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-05-mapa.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-06-perfil-anfitriona.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-06-perfil-anfitriona.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-08-como-funciona.png"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-08-como-funciona.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-01-portada.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-01-portada.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-02-inicio.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-02-inicio.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-03-inicio-tarjetas.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-03-inicio-tarjetas.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-04-buscador.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-04-buscador.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-05-mapa.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-05-mapa.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-06-perfil-anfitriona.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-06-perfil-anfitriona.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-08-como-funciona.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-08-como-funciona.png"
+   }
+  ]
+ },
+ "web-arnelli": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-claro/desktop-claro-01-home.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-01-home.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-claro/desktop-claro-02-obras.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-02-obras.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-claro/desktop-claro-03-obra-detalle.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-03-obra-detalle.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-claro/desktop-claro-04-obra-detalle-2.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-04-obra-detalle-2.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-claro/desktop-claro-05-exposiciones.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-05-exposiciones.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-claro/desktop-claro-06-artista.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-06-artista.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-claro/desktop-claro-07-contacto.png"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-07-contacto.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-claro/movil-claro-01-home.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-01-home.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-claro/movil-claro-02-obras.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-02-obras.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-claro/movil-claro-03-obra-detalle.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-03-obra-detalle.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-claro/movil-claro-04-obra-detalle-2.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-04-obra-detalle-2.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-claro/movil-claro-05-exposiciones.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-05-exposiciones.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-claro/movil-claro-06-artista.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-06-artista.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-claro/movil-claro-07-contacto.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-07-contacto.png"
+   }
+  ]
+ },
+ "cartelera": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-claro-01-portada.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-claro-01b-portada-otra-foto.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-01-portada.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-01b-portada-otra-foto.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-claro-03-tarjetas.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-03-tarjetas.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-claro-04-mapa.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-04-mapa.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-claro-05-mixto.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-05-mixto.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-claro-06-calendario.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-06-calendario.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-claro-07-ficha-evento.png"
+   },
+   {
+    "f": "d-14.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-07-ficha-evento.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-claro-01-portada.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-claro-01b-portada-otra-foto.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-01-portada.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-01b-portada-otra-foto.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-claro-03-tarjetas.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-03-tarjetas.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-claro-04-mapa.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-04-mapa.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-claro-05-mixto.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-05-mixto.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-claro-06-calendario.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-06-calendario.png"
+   },
+   {
+    "f": "m-13.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-claro-07-ficha-evento.png"
+   },
+   {
+    "f": "m-14.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-07-ficha-evento.png"
+   }
+  ]
+ },
+ "sitios-gastro": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/botanica-bistro__claro__desktop__primer-pliegue.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/brisa-marea__claro__desktop__primer-pliegue.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-puerto__claro__desktop__primer-pliegue.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-silvestre__claro__desktop__primer-pliegue.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/oceanica__claro__desktop__primer-pliegue.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/botanica-bistro__claro__mobile__primer-pliegue.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/brisa-marea__claro__mobile__primer-pliegue.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-puerto__claro__mobile__primer-pliegue.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-silvestre__claro__mobile__primer-pliegue.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/oceanica__claro__mobile__primer-pliegue.png"
+   }
+  ]
+ }
+}
