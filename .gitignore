@@ -3,3 +3,4 @@ node_modules/
 .firebase/
 _stitch/
 capt/
+__pycache__/
