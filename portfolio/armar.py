@@ -27,7 +27,7 @@ e = html.escape
 MANIFEST = json.load(open(os.path.join(AQUI, 'capturas', 'manifest.json')))
 tarjetas, secciones = [], []
 for n, p in enumerate(lista, 1):
-    jp = os.path.join(SRC, p['c'] + '.json')
+    jp = os.path.join(SRC, p.get('json', p['c']) + '.json')
     d = json.load(open(jp)) if os.path.exists(jp) else dict(logos=[], desk=[], mob=[], lam=[])
     if p.get('logo_archivo'):
         ext = p['logo_archivo'].rsplit('.', 1)[-1]
@@ -40,7 +40,7 @@ for n, p in enumerate(lista, 1):
     else:
         logo = next(l for l in d['logos'] if l['nombre'] == p['logo']) if p['logo'] else d['desk'][0]
         lsrc, lw, lh = guardar(p['c'], logo, 'logo')
-    man = MANIFEST.get(p['c'], {'d': [], 'm': []})
+    man = {'d': [], 'm': []} if p.get('solo_logo') else MANIFEST.get(p['c'], {'d': [], 'm': []})
     def color_pie(f):
         # color del borde de abajo: rellena el marco cuando la captura es más baja que la pantalla
         from PIL import Image
@@ -55,7 +55,7 @@ for n, p in enumerate(lista, 1):
             out.append((dst, x['w'], x['h'], color_pie(os.path.join(AQUI, 'capturas', p['c'], x['f']))))
         return out
     desk, mob, lam = copiar('d'), copiar('m'), []
-    if not desk and not mob:
+    if not desk and not mob and not p.get('solo_logo'):
         lam = [guardar(p['c'], i, 'lam') for i in d['lam']]
     num = f'{n:02d}'
     logo_html = (f'<div class="logo f-{p["fondo"]}"><img src="{lsrc}" width="{lw}" height="{lh}" alt="{e(p["n"])}" loading="lazy"></div>')
