@@ -22,7 +22,7 @@ FUERA_PROY = {
  'ruvia': re.compile(r'marco|pantallas', re.I),
  'nunca-te-falla': re.compile(r'desktop/app-', re.I),
  'velvet': re.compile(r'portada', re.I),            # portada = aviso de mayoría de edad
- 'palquear': re.compile(r'desktop-0[1456789]', re.I),  # 01, 04-09: celular dentro de lienzo de compu
+ 'palquear': re.compile(r'Palquear/desktop-', re.I),  # las del zip: celular en lienzo de compu o repetidas de _palquear-desktop
  'marea-alta': re.compile(r'-pt-', re.I),            # versión en portugués = misma pantalla repetida
 }
 # Capturas reales de escritorio sacadas aparte (van primero).
@@ -32,7 +32,8 @@ def pantalla(p):
     # misma pantalla en claro/oscuro o con scroll = una sola
     n = os.path.basename(p).lower().rsplit('.', 1)[0]
     if TEMA.search(n): n = re.sub(r'^[^a-z]*\d+', '', re.sub(r'[-_ ]+', '-', TEMA.sub('', n)).strip('-_ '))
-    return re.sub(r'[^a-z0-9]+', '', n)
+    carpeta = re.sub(r'[^a-z0-9]+', '', TEMA.sub('', os.path.dirname(p).lower()))
+    return carpeta + '/' + re.sub(r'[^a-z0-9]+', '', n)
 man = {}
 for clave, d in DIRS.items():
     if clave in SALTEAR: continue
