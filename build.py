@@ -254,6 +254,25 @@ def home():
     s = comun(s, "", "Malackath · Estudio de diseño y producto digital",
               "Apps móviles, plataformas web, sistemas de reservas e identidad visual para marcas y proyectos reales. Uruguay y Brasil.")
     s = cortar(s, "<!-- 3. IMPACT METRICS -->", "<!-- 4. FEATURED REAL WORK")
+    # títulos de sección con la tipografía del titular del hero (Syne 800, mismo interletrado); pedido de Ber 2026-11-24
+    s = rep(s, '<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tight">',
+            '<h2 class="titulo-seccion font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tighter font-extrabold md:font-extrabold md:tracking-[-0.04em]">', 2)
+    # CTA final: «Construyamos / tu próximo / producto» en tres líneas enteras; la letra baja sola si no entra
+    s, n = re.subn(r'(<div class="relative z-10 flex flex-col gap-space-md) max-w-3xl(">\s*<span[^>]*>// DISPONIBLES PARA NUEVOS PROYECTOS</span>\s*)<h2 class="font-display-xl([^"]*)">\s*CONSTRUYAMOS TU PRÓXIMO PRODUCTO\s*</h2>',
+                   r'\1 w-full cta-final-col\2<h2 class="cta-final font-display-xl\3"><span class="block whitespace-nowrap">CONSTRUYAMOS</span><span class="block whitespace-nowrap">TU PRÓXIMO</span><span class="block whitespace-nowrap">PRODUCTO</span></h2>', s)
+    assert n == 1, n
+    s = s.replace("</style>", """
+@layer base {
+.cta-final-col { container-type: inline-size; }
+h2.cta-final { --r: 14.4; font-size: min(2.75rem, calc(100cqw / var(--r))) !important; }
+@media (min-width: 768px) { h2.cta-final { font-size: min(80px, calc(100cqw / var(--r))) !important; } }
+:lang(en) h2.cta-final { --r: 9.8; }
+:lang(pt) h2.cta-final { --r: 11.8; }
+/* «METODOLOGÍA» es la palabra más larga: en celular y tablet la letra baja lo justo para que entre */
+h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 40px) / 12.8)) !important; }
+@media (min-width: 768px) { h2.titulo-seccion { font-size: min(3.75rem, calc((100vw - 64px) / 12.8)) !important; } }
+}
+</style>""", 1)
     # titular: el original de Stitch (Ber, 2026-11-24: «Diseñamos productos digitales que cobran vida»)
     s = rep(s, '<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">', '<div class="hero-grilla relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">')
     s = rep(s, '<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">', '<p class="hero-bajada font-body-lg text-body-lg text-on-surface-variant max-w-2xl">')
