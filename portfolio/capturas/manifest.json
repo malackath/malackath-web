@@ -35,46 +35,40 @@
     "f": "d-06.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ArmaPartido/compu/06-torneo-cuadro-pagina-completa.png"
+    "origen": "ArmaPartido/compu/07-perfil.png"
    },
    {
     "f": "d-07.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ArmaPartido/compu/07-perfil.png"
+    "origen": "ArmaPartido/compu/08-mostrador-canchas.png"
    },
    {
     "f": "d-08.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ArmaPartido/compu/08-mostrador-canchas.png"
+    "origen": "ArmaPartido/compu/09-mostrador-grilla.png"
    },
    {
     "f": "d-09.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ArmaPartido/compu/09-mostrador-grilla.png"
+    "origen": "ArmaPartido/compu/10-cantina.png"
    },
    {
     "f": "d-10.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ArmaPartido/compu/10-cantina.png"
+    "origen": "ArmaPartido/compu/11-admin-numeros.png"
    },
    {
     "f": "d-11.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ArmaPartido/compu/11-admin-numeros.png"
-   },
-   {
-    "f": "d-12.webp",
-    "w": 1280,
-    "h": 800,
     "origen": "ArmaPartido/compu/12-admin-apariencia.png"
    },
    {
-    "f": "d-13.webp",
+    "f": "d-12.webp",
     "w": 1280,
     "h": 800,
     "origen": "ArmaPartido/compu/13-admin-tu-app.png"
@@ -275,108 +269,6 @@
    }
   ]
  },
- "coat-n-nest": {
-  "d": [
-   {
-    "f": "d-01.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-01-hero.jpg"
-   },
-   {
-    "f": "d-02.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-02-problema.jpg"
-   },
-   {
-    "f": "d-03.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-03-detalles.jpg"
-   },
-   {
-    "f": "d-04.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-04-modos.jpg"
-   },
-   {
-    "f": "d-05.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-05-pasos.jpg"
-   },
-   {
-    "f": "d-06.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-06-faq.jpg"
-   },
-   {
-    "f": "d-07.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-07-compra.jpg"
-   },
-   {
-    "f": "d-08.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-08-footer.jpg"
-   }
-  ],
-  "m": [
-   {
-    "f": "m-01.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-01-hero.jpg"
-   },
-   {
-    "f": "m-02.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-02-problema.jpg"
-   },
-   {
-    "f": "m-03.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-03-detalles.jpg"
-   },
-   {
-    "f": "m-04.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-04-modos.jpg"
-   },
-   {
-    "f": "m-05.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-05-pasos.jpg"
-   },
-   {
-    "f": "m-06.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-06-faq.jpg"
-   },
-   {
-    "f": "m-07.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-07-compra.jpg"
-   },
-   {
-    "f": "m-08.webp",
-    "w": 390,
-    "h": 664,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-08-footer.jpg"
-   }
-  ]
- },
  "pizcaya": {
   "d": [
    {
@@ -461,7 +353,7 @@
     "f": "d-14.webp",
     "w": 1280,
     "h": 800,
-    "origen": "CocinaApp/compu/oscuro/15-modo-cocina-paso-1.png"
+    "origen": "CocinaApp/compu/claro/17-blog.png"
    }
   ],
   "m": [
@@ -547,7 +439,35 @@
     "f": "m-14.webp",
     "w": 390,
     "h": 844,
+    "origen": "CocinaApp/celular/claro/17-blog.png"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/oscuro/15-modo-cocina-paso-1.png"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "CocinaApp/compu/oscuro/16-modo-cocina-con-reloj.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
     "origen": "CocinaApp/celular/oscuro/15-modo-cocina-paso-1.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "CocinaApp/celular/oscuro/16-modo-cocina-con-reloj.png"
    }
   ]
  },
@@ -719,63 +639,139 @@
     "f": "d-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-01-portada.png"
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-claro-01-inicio-completa.png#1"
    },
    {
     "f": "d-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-02-menu.png"
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-claro-02-menu-completa.png#1"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-03-tema-ansiedad.png"
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-claro-03-tema-ansiedad-completa.png#1"
    },
    {
     "f": "d-04.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-04-ayuda-ahora.png"
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-claro-03-tema-ansiedad-completa.png#2"
    },
    {
     "f": "d-05.webp",
     "w": 1280,
     "h": 800,
-    "origen": "ECOS/ECOS-portfolio/escritorio/escritorio-claro-05-reproductor-flotante.png"
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-claro-04-ayuda-completa.png#1"
    }
   ],
   "m": [
    {
     "f": "m-01.webp",
     "w": 390,
-    "h": 655,
-    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-01-portada.png"
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-claro-01-inicio-completa.png#1"
    },
    {
     "f": "m-02.webp",
     "w": 390,
-    "h": 655,
-    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-02-menu.png"
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-claro-02-menu-completa.png#1"
    },
    {
     "f": "m-03.webp",
     "w": 390,
-    "h": 655,
-    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-03-tema-ansiedad.png"
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-claro-03-tema-ansiedad-completa.png#1"
    },
    {
     "f": "m-04.webp",
     "w": 390,
-    "h": 655,
-    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-04-ayuda-ahora.png"
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-claro-03-tema-ansiedad-completa.png#2"
    },
    {
     "f": "m-05.webp",
     "w": 390,
-    "h": 655,
-    "origen": "ECOS/ECOS-portfolio/celular/celular-claro-05-reproductor.png"
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-claro-04-ayuda-completa.png#1"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-claro-04-ayuda-completa.png#2"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-oscuro-01-inicio-completa.png#1"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-oscuro-02-menu-completa.png#1"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-oscuro-03-tema-ansiedad-completa.png#1"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-oscuro-03-tema-ansiedad-completa.png#2"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_capturas-vivas/ecos/desktop-oscuro-04-ayuda-completa.png#1"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-oscuro-01-inicio-completa.png#1"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-oscuro-02-menu-completa.png#1"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-oscuro-03-tema-ansiedad-completa.png#1"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-oscuro-03-tema-ansiedad-completa.png#2"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-oscuro-04-ayuda-completa.png#1"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ecos/movil-oscuro-04-ayuda-completa.png#2"
    }
   ]
  },
@@ -785,49 +781,49 @@
     "f": "d-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/01_inicio_claro.png"
+    "origen": "JLP/escritorio/fabula_completa_claro.png#1"
    },
    {
     "f": "d-02.webp",
     "w": 1280,
-    "h": 738,
-    "origen": "JLP/escritorio/02_detalles_claro.png"
+    "h": 800,
+    "origen": "JLP/escritorio/fabula_completa_claro.png#2"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/03_prendas_claro.png"
+    "origen": "JLP/escritorio/fabula_completa_claro.png#3"
    },
    {
     "f": "d-04.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/04_configurador_pasos_claro.png"
+    "origen": "JLP/escritorio/fabula_completa_claro.png#4"
    },
    {
     "f": "d-05.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/06_cada_remera_oscuro.png"
+    "origen": "JLP/escritorio/inicio_completa_claro.png#1"
    },
    {
     "f": "d-06.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/08_fabula_oscuro.png"
+    "origen": "JLP/escritorio/inicio_completa_claro.png#2"
    },
    {
     "f": "d-07.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/09_configurador.png"
+    "origen": "JLP/escritorio/inicio_completa_claro.png#3"
    },
    {
     "f": "d-08.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/10_pagina_fabula.png"
+    "origen": "JLP/escritorio/inicio_completa_claro.png#4"
    }
   ],
   "m": [
@@ -847,34 +843,74 @@
     "f": "m-03.webp",
     "w": 390,
     "h": 844,
-    "origen": "JLP/movil/oscuro_02_cada_remera.png"
+    "origen": "JLP/movil/claro_03_prendas.png"
    },
    {
     "f": "m-04.webp",
     "w": 390,
     "h": 844,
-    "origen": "JLP/movil/claro_03_prendas.png"
+    "origen": "JLP/movil/claro_04_configurador.png"
    },
    {
     "f": "m-05.webp",
     "w": 390,
     "h": 844,
-    "origen": "JLP/movil/claro_04_configurador.png"
+    "origen": "JLP/movil/claro_05_configurador_opciones.png"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/05_inicio_oscuro.png"
    },
    {
-    "f": "m-06.webp",
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/06_cada_remera_oscuro.png"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/07_prendas_oscuro.png"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/08_fabula_oscuro.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_01_inicio.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_02_cada_remera.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "JLP/movil/oscuro_03_prendas.png"
+   },
+   {
+    "f": "m-osc-04.webp",
     "w": 390,
     "h": 844,
     "origen": "JLP/movil/oscuro_04_fabula.png"
    },
    {
-    "f": "m-07.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "JLP/movil/claro_05_configurador_opciones.png"
-   },
-   {
-    "f": "m-08.webp",
+    "f": "m-osc-05.webp",
     "w": 390,
     "h": 844,
     "origen": "JLP/movil/oscuro_05_fabula_relato.png"
@@ -886,40 +922,142 @@
    {
     "f": "d-01.webp",
     "w": 1280,
-    "h": 643,
-    "origen": "LaGloria/01-portada-desktop-hero.png"
+    "h": 800,
+    "origen": "LaGloria/02-portada-desktop-completa.png#1"
    },
    {
     "f": "d-02.webp",
     "w": 1280,
-    "h": 643,
-    "origen": "LaGloria/05-historia-desktop-hero.png"
+    "h": 800,
+    "origen": "LaGloria/02-portada-desktop-completa.png#2"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
-    "h": 643,
-    "origen": "LaGloria/09-carta-desktop-hero.png"
+    "h": 800,
+    "origen": "LaGloria/02-portada-desktop-completa.png#3"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/02-portada-desktop-completa.png#4"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/06-historia-desktop-completa.png#1"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/06-historia-desktop-completa.png#2"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/06-historia-desktop-completa.png#3"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/10-carta-desktop-completa.png#1"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/10-carta-desktop-completa.png#2"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/10-carta-desktop-completa.png#3"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "LaGloria/10-carta-desktop-completa.png#4"
    }
   ],
   "m": [
    {
     "f": "m-01.webp",
     "w": 390,
-    "h": 723,
-    "origen": "LaGloria/03-portada-mobile-hero.png"
+    "h": 844,
+    "origen": "LaGloria/04-portada-mobile-completa.png#1"
    },
    {
     "f": "m-02.webp",
     "w": 390,
-    "h": 723,
-    "origen": "LaGloria/07-historia-mobile-hero.png"
+    "h": 844,
+    "origen": "LaGloria/04-portada-mobile-completa.png#2"
    },
    {
     "f": "m-03.webp",
     "w": 390,
-    "h": 723,
-    "origen": "LaGloria/11-carta-mobile-hero.png"
+    "h": 844,
+    "origen": "LaGloria/04-portada-mobile-completa.png#3"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/04-portada-mobile-completa.png#4"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/08-historia-mobile-completa.png#1"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/08-historia-mobile-completa.png#2"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/08-historia-mobile-completa.png#3"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/08-historia-mobile-completa.png#4"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/12-carta-mobile-completa.png#1"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/12-carta-mobile-completa.png#2"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/12-carta-mobile-completa.png#3"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "LaGloria/12-carta-mobile-completa.png#4"
    }
   ]
  },
@@ -1058,6 +1196,62 @@
     "w": 390,
     "h": 844,
     "origen": "MareAlta/portfolio-digital/movil-claro/movil-claro-es-caso-ruvia.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-01-hero.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-02-gastronomia.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-03-ecosistema-digital.png"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-04-proyectos.png"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-05-servicios.png"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-06-metodologia.png"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-home-07-contacto.png"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-caso-la-gloria.png"
+   },
+   {
+    "f": "m-osc-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "MareAlta/portfolio-digital/movil-oscuro/movil-oscuro-es-caso-ruvia.png"
    }
   ]
  },
@@ -1322,36 +1516,56 @@
     "w": 390,
     "h": 844,
     "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-claro/reservas.png"
-   },
+   }
+  ],
+  "m_osc": [
    {
-    "f": "m-10.webp",
+    "f": "m-osc-01.webp",
     "w": 390,
     "h": 844,
     "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-config.png"
    },
    {
-    "f": "m-11.webp",
+    "f": "m-osc-02.webp",
     "w": 390,
     "h": 844,
     "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-disponibilidad.png"
    },
    {
-    "f": "m-12.webp",
+    "f": "m-osc-03.webp",
     "w": 390,
     "h": 844,
     "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-historial.png"
    },
    {
-    "f": "m-13.webp",
+    "f": "m-osc-04.webp",
     "w": 390,
     "h": 844,
     "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-home.png"
    },
    {
-    "f": "m-14.webp",
+    "f": "m-osc-05.webp",
     "w": 390,
     "h": 844,
     "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-res.png"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-resenas.png"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-solicitudes.png"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "NuncaTeFalla/NuncaTeFalla/capturas/movil-oscuro/pro-stats.png"
    }
   ]
  },
@@ -1361,43 +1575,43 @@
     "f": "d-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "01-buscador-de-partidos.png"
+    "origen": "Malackath/_palquear-desktop/01-buscador-de-partidos.png"
    },
    {
     "f": "d-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "02-mis-palcos-titular.png"
+    "origen": "Malackath/_palquear-desktop/02-mis-palcos-titular.png"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "03-mapa-del-palco.png"
+    "origen": "Malackath/_palquear-desktop/03-mapa-del-palco.png"
    },
    {
     "f": "d-04.webp",
     "w": 1280,
     "h": 800,
-    "origen": "04-cobros-del-titular.png"
+    "origen": "Malackath/_palquear-desktop/04-cobros-del-titular.png"
    },
    {
     "f": "d-05.webp",
     "w": 1280,
     "h": 800,
-    "origen": "05-panel-del-club.png"
+    "origen": "Malackath/_palquear-desktop/05-panel-del-club.png"
    },
    {
     "f": "d-06.webp",
     "w": 1280,
     "h": 800,
-    "origen": "06-panel-del-club-nacional.png"
+    "origen": "Malackath/_palquear-desktop/06-panel-del-club-nacional.png"
    },
    {
     "f": "d-07.webp",
     "w": 1280,
     "h": 800,
-    "origen": "07-proyeccion-a-5-anos.png"
+    "origen": "Malackath/_palquear-desktop/07-proyeccion-a-5-anos.png"
    }
   ],
   "m": [
@@ -1454,6 +1668,62 @@
     "w": 390,
     "h": 844,
     "origen": "Palquear/movil-claro-09-proyeccion.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-01-comprador-buscar.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-02-titular-mis-palcos.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-03-comprador-partidos.png"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-04-comprador-palco.png"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-05-comprador-pago.png"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-06-reserva-qr.png"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-07-reparto.png"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-08-club-panel.png"
+   },
+   {
+    "f": "m-osc-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Palquear/movil-oscuro-09-proyeccion.png"
    }
   ]
  },
@@ -1581,6 +1851,26 @@
     "h": 844,
     "origen": "PatovaVa/PatovaVa/celular-claro/09-postular.png"
    }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-oscuro/04-perfil.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-oscuro/05-seguridad.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "PatovaVa/PatovaVa/celular-oscuro/06-seguimiento-ejemplo.png"
+   }
   ]
  },
  "ravekit": {
@@ -1650,86 +1940,185 @@
    {
     "f": "m-01.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/01-hero.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#1"
    },
    {
     "f": "m-02.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/02-negocios.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#2"
    },
    {
     "f": "m-03.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/03-funciones.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#3"
    },
    {
     "f": "m-04.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/04-como-funciona.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#4"
    },
    {
     "f": "m-05.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/05-ahorro.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#5"
    },
    {
     "f": "m-06.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/06-comparacion.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#6"
    },
    {
     "f": "m-07.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/07-precios.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#7"
    },
    {
     "f": "m-08.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/08-preguntas.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#8"
    },
    {
     "f": "m-09.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/09-cierre.png"
+    "h": 844,
+    "origen": "RaveKit/movil-claro/00-pagina-completa.png#9"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/01-hero.png"
    },
    {
-    "f": "m-10.webp",
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/02-negocios.png"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/03-funciones.png"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/04-como-funciona.png"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/05-ahorro.png"
+   },
+   {
+    "f": "d-osc-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/06-comparacion.png"
+   },
+   {
+    "f": "d-osc-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/07-precios.png"
+   },
+   {
+    "f": "d-osc-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/08-preguntas.png"
+   },
+   {
+    "f": "d-osc-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/09-cierre.png"
+   },
+   {
+    "f": "d-osc-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "RaveKit/desktop-oscuro/10-pie.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
     "w": 390,
-    "h": 655,
-    "origen": "RaveKit/movil-claro/10-pie.png"
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#1"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#2"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#3"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#4"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#5"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#6"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#7"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#8"
+   },
+   {
+    "f": "m-osc-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#9"
+   },
+   {
+    "f": "m-osc-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#10"
    }
   ]
  },
  "ruvia": {
-  "d": [
-   {
-    "f": "d-01.webp",
-    "w": 1280,
-    "h": 720,
-    "origen": "RuVIA/desktop/RuVIA-desktop-web-oscuro-01-inicio.png"
-   },
-   {
-    "f": "d-02.webp",
-    "w": 1280,
-    "h": 720,
-    "origen": "RuVIA/desktop/RuVIA-desktop-web-oscuro-02-mapa.png"
-   },
-   {
-    "f": "d-03.webp",
-    "w": 1280,
-    "h": 720,
-    "origen": "RuVIA/desktop/RuVIA-desktop-web-oscuro-03-rutas.png"
-   }
-  ],
+  "d": [],
   "m": [
    {
     "f": "m-01.webp",
@@ -1761,6 +2150,38 @@
     "h": 844,
     "origen": "RuVIA/movil/RuVIA-movil-claro-05-mas-scroll.png"
    }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-01-buscar-scroll.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-02-mapa-rutas-scroll.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-03-tarjeta-stm-scroll.png"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-04-paradas-scroll.png"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "RuVIA/movil/RuVIA-movil-oscuro-05-mas-scroll.png"
+   }
   ]
  },
  "banana-team": {
@@ -1769,43 +2190,31 @@
     "f": "d-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/01-inicio.png"
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/07-pagina-completa.png#1"
    },
    {
     "f": "d-02.webp",
     "w": 1280,
-    "h": 545,
-    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/02-servicios.png"
+    "h": 800,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/07-pagina-completa.png#2"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/03-planes.png"
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/07-pagina-completa.png#3"
    },
    {
     "f": "d-04.webp",
     "w": 1280,
-    "h": 781,
-    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/04-contacto.png"
+    "h": 800,
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/07-pagina-completa.png#4"
    },
    {
     "f": "d-05.webp",
     "w": 1280,
-    "h": 396,
-    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/05-pie.png"
-   },
-   {
-    "f": "d-06.webp",
-    "w": 1280,
     "h": 800,
-    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/06-chat-abierto.png"
-   },
-   {
-    "f": "d-07.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/08-legal.png"
+    "origen": "The.Banana.Team/The-Banana-Team/portfolio-capturas/desktop/es/07-pagina-completa.png#5"
    }
   ],
   "m": [
@@ -1859,46 +2268,22 @@
     "f": "d-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "UsaStorefront/capturas-portfolio/home-desktop-claro-A.png"
+    "origen": "UsaStorefront/capturas-portfolio/home-desktop-claro-C.png"
    },
    {
     "f": "d-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "UsaStorefront/capturas-portfolio/home-desktop-claro-C.png"
+    "origen": "UsaStorefront/capturas-portfolio/nails-desktop-claro-C.png"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "UsaStorefront/capturas-portfolio/nails-desktop-claro-A.png"
-   },
-   {
-    "f": "d-04.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "UsaStorefront/capturas-portfolio/nails-desktop-claro-C.png"
-   },
-   {
-    "f": "d-05.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "UsaStorefront/capturas-portfolio/pillows-desktop-claro-A.png"
-   },
-   {
-    "f": "d-06.webp",
-    "w": 1280,
-    "h": 800,
     "origen": "UsaStorefront/capturas-portfolio/pillows-desktop-claro-C.png"
    },
    {
-    "f": "d-07.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "UsaStorefront/capturas-portfolio/samples-desktop-claro-A.png"
-   },
-   {
-    "f": "d-08.webp",
+    "f": "d-04.webp",
     "w": 1280,
     "h": 800,
     "origen": "UsaStorefront/capturas-portfolio/samples-desktop-claro-C.png"
@@ -1909,46 +2294,22 @@
     "f": "m-01.webp",
     "w": 390,
     "h": 844,
-    "origen": "UsaStorefront/capturas-portfolio/home-movil-claro-A.png"
+    "origen": "UsaStorefront/capturas-portfolio/home-movil-claro-C.png"
    },
    {
     "f": "m-02.webp",
     "w": 390,
     "h": 844,
-    "origen": "UsaStorefront/capturas-portfolio/home-movil-claro-C.png"
+    "origen": "UsaStorefront/capturas-portfolio/nails-movil-claro-C.png"
    },
    {
     "f": "m-03.webp",
     "w": 390,
     "h": 844,
-    "origen": "UsaStorefront/capturas-portfolio/nails-movil-claro-A.png"
-   },
-   {
-    "f": "m-04.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "UsaStorefront/capturas-portfolio/nails-movil-claro-C.png"
-   },
-   {
-    "f": "m-05.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "UsaStorefront/capturas-portfolio/pillows-movil-claro-A.png"
-   },
-   {
-    "f": "m-06.webp",
-    "w": 390,
-    "h": 844,
     "origen": "UsaStorefront/capturas-portfolio/pillows-movil-claro-C.png"
    },
    {
-    "f": "m-07.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "UsaStorefront/capturas-portfolio/samples-movil-claro-A.png"
-   },
-   {
-    "f": "m-08.webp",
+    "f": "m-04.webp",
     "w": 390,
     "h": 844,
     "origen": "UsaStorefront/capturas-portfolio/samples-movil-claro-C.png"
@@ -1961,55 +2322,55 @@
     "f": "d-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-02-inicio.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-02-inicio.png"
    },
    {
     "f": "d-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-03-inicio-tarjetas.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-03-inicio-tarjetas.png"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-04-buscador.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-04-buscador.png"
    },
    {
     "f": "d-04.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-05-mapa.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-05-mapa.png"
    },
    {
     "f": "d-05.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-06-perfil-anfitriona.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-06-perfil-anfitriona.png"
    },
    {
     "f": "d-06.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-08-como-funciona.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-08-como-funciona.png"
    },
    {
     "f": "d-07.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-09-reserva-segura.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-09-reserva-segura.png"
    },
    {
     "f": "d-08.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-10-preguntas-frecuentes.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-10-preguntas-frecuentes.png"
    },
    {
     "f": "d-09.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-11-reels.png"
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-light-11-reels.png"
    }
   ],
   "m": [
@@ -2066,6 +2427,118 @@
     "w": 390,
     "h": 844,
     "origen": "Velvet/portfolio/movil-claro/velvet-movil-claro-11-reels.png"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-02-inicio.png"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-03-inicio-tarjetas.png"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-04-buscador.png"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-05-mapa.png"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-06-perfil-anfitriona.png"
+   },
+   {
+    "f": "d-osc-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-08-como-funciona.png"
+   },
+   {
+    "f": "d-osc-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-09-reserva-segura.png"
+   },
+   {
+    "f": "d-osc-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-10-preguntas-frecuentes.png"
+   },
+   {
+    "f": "d-osc-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Velvet/portfolio/desktop/velvet-desktop-dark-11-reels.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-02-inicio.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-03-inicio-tarjetas.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-04-buscador.png"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-05-mapa.png"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-06-perfil-anfitriona.png"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-08-como-funciona.png"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-09-reserva-segura.png"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-10-preguntas-frecuentes.png"
+   },
+   {
+    "f": "m-osc-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Velvet/portfolio/movil-oscuro/velvet-movil-oscuro-11-reels.png"
    }
   ]
  },
@@ -2156,6 +2629,94 @@
     "w": 390,
     "h": 844,
     "origen": "WebArnelli/salida/movil-claro/movil-claro-07-contacto.png"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-01-home.png"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-02-obras.png"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-03-obra-detalle.png"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-04-obra-detalle-2.png"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-05-exposiciones.png"
+   },
+   {
+    "f": "d-osc-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-06-artista.png"
+   },
+   {
+    "f": "d-osc-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "WebArnelli/salida/desktop-oscuro/desktop-oscuro-07-contacto.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-01-home.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-02-obras.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-03-obra-detalle.png"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-04-obra-detalle-2.png"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-05-exposiciones.png"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-06-artista.png"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "WebArnelli/salida/movil-oscuro/movil-oscuro-07-contacto.png"
    }
   ]
  },
@@ -2271,71 +2832,744 @@
     "h": 844,
     "origen": "cartelerauy/celular/celular-claro-09-idioma-pt.png"
    }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-01-portada.png"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-01b-portada-otra-foto.png"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-03-tarjetas.png"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-04-mapa.png"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-05-mixto.png"
+   },
+   {
+    "f": "d-osc-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-06-calendario.png"
+   },
+   {
+    "f": "d-osc-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-07-ficha-evento.png"
+   },
+   {
+    "f": "d-osc-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "cartelerauy/compu/compu-oscuro-08-deportes.png"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-01-portada.png"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-01b-portada-otra-foto.png"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-03-tarjetas.png"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-04-mapa.png"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-05-mixto.png"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-06-calendario.png"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-07-ficha-evento.png"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "cartelerauy/celular/celular-oscuro-08-deportes.png"
+   }
   ]
  },
  "sitios-gastro": {
-  "d": [
+  "grupos": [
    {
-    "f": "d-01.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/botanica-bistro__claro__desktop__primer-pliegue.png"
+    "d": [
+     {
+      "f": "botanica-bistro-d-01.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__desktop__01-inicio-completa.png#1"
+     },
+     {
+      "f": "botanica-bistro-d-02.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__desktop__01-inicio-completa.png#2"
+     },
+     {
+      "f": "botanica-bistro-d-03.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__desktop__01-inicio-completa.png#3"
+     },
+     {
+      "f": "botanica-bistro-d-04.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__desktop__01-inicio-completa.png#4"
+     },
+     {
+      "f": "botanica-bistro-d-05.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__desktop__01-inicio-completa.png#5"
+     }
+    ],
+    "m": [
+     {
+      "f": "botanica-bistro-m-01.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#1"
+     },
+     {
+      "f": "botanica-bistro-m-02.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#2"
+     },
+     {
+      "f": "botanica-bistro-m-03.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#3"
+     },
+     {
+      "f": "botanica-bistro-m-04.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#4"
+     },
+     {
+      "f": "botanica-bistro-m-05.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#5"
+     },
+     {
+      "f": "botanica-bistro-m-06.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#6"
+     },
+     {
+      "f": "botanica-bistro-m-07.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#7"
+     },
+     {
+      "f": "botanica-bistro-m-08.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#8"
+     },
+     {
+      "f": "botanica-bistro-m-09.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#9"
+     },
+     {
+      "f": "botanica-bistro-m-10.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#10"
+     },
+     {
+      "f": "botanica-bistro-m-11.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#11"
+     },
+     {
+      "f": "botanica-bistro-m-12.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#12"
+     },
+     {
+      "f": "botanica-bistro-m-13.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/botanica-bistro__claro__mobile__01-inicio-completa.png#13"
+     }
+    ],
+    "id": "botanica-bistro"
    },
    {
-    "f": "d-02.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/brisa-marea__claro__desktop__primer-pliegue.png"
+    "d": [
+     {
+      "f": "brisa-marea-d-01.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__desktop__01-inicio-completa.png#1"
+     },
+     {
+      "f": "brisa-marea-d-02.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__desktop__01-inicio-completa.png#2"
+     },
+     {
+      "f": "brisa-marea-d-03.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__desktop__01-inicio-completa.png#3"
+     },
+     {
+      "f": "brisa-marea-d-04.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__desktop__01-inicio-completa.png#4"
+     },
+     {
+      "f": "brisa-marea-d-05.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__desktop__01-inicio-completa.png#5"
+     },
+     {
+      "f": "brisa-marea-d-06.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__desktop__01-inicio-completa.png#6"
+     }
+    ],
+    "m": [
+     {
+      "f": "brisa-marea-m-01.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#1"
+     },
+     {
+      "f": "brisa-marea-m-02.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#2"
+     },
+     {
+      "f": "brisa-marea-m-03.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#3"
+     },
+     {
+      "f": "brisa-marea-m-04.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#4"
+     },
+     {
+      "f": "brisa-marea-m-05.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#5"
+     },
+     {
+      "f": "brisa-marea-m-06.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#6"
+     },
+     {
+      "f": "brisa-marea-m-07.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#7"
+     },
+     {
+      "f": "brisa-marea-m-08.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#8"
+     },
+     {
+      "f": "brisa-marea-m-09.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#9"
+     },
+     {
+      "f": "brisa-marea-m-10.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#10"
+     },
+     {
+      "f": "brisa-marea-m-11.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#11"
+     },
+     {
+      "f": "brisa-marea-m-12.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#12"
+     },
+     {
+      "f": "brisa-marea-m-13.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#13"
+     },
+     {
+      "f": "brisa-marea-m-14.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/brisa-marea__claro__mobile__01-inicio-completa.png#14"
+     }
+    ],
+    "id": "brisa-marea"
    },
    {
-    "f": "d-03.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-puerto__claro__desktop__primer-pliegue.png"
+    "d": [
+     {
+      "f": "fuego-puerto-d-01.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__desktop__01-inicio-completa.png#1"
+     },
+     {
+      "f": "fuego-puerto-d-02.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__desktop__01-inicio-completa.png#2"
+     },
+     {
+      "f": "fuego-puerto-d-03.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__desktop__01-inicio-completa.png#3"
+     },
+     {
+      "f": "fuego-puerto-d-04.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__desktop__01-inicio-completa.png#4"
+     },
+     {
+      "f": "fuego-puerto-d-05.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__desktop__01-inicio-completa.png#5"
+     },
+     {
+      "f": "fuego-puerto-d-06.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__desktop__01-inicio-completa.png#6"
+     },
+     {
+      "f": "fuego-puerto-d-07.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__desktop__01-inicio-completa.png#7"
+     }
+    ],
+    "m": [
+     {
+      "f": "fuego-puerto-m-01.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#1"
+     },
+     {
+      "f": "fuego-puerto-m-02.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#2"
+     },
+     {
+      "f": "fuego-puerto-m-03.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#3"
+     },
+     {
+      "f": "fuego-puerto-m-04.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#4"
+     },
+     {
+      "f": "fuego-puerto-m-05.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#5"
+     },
+     {
+      "f": "fuego-puerto-m-06.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#6"
+     },
+     {
+      "f": "fuego-puerto-m-07.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#7"
+     },
+     {
+      "f": "fuego-puerto-m-08.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#8"
+     },
+     {
+      "f": "fuego-puerto-m-09.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#9"
+     },
+     {
+      "f": "fuego-puerto-m-10.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#10"
+     },
+     {
+      "f": "fuego-puerto-m-11.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#11"
+     },
+     {
+      "f": "fuego-puerto-m-12.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#12"
+     },
+     {
+      "f": "fuego-puerto-m-13.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#13"
+     },
+     {
+      "f": "fuego-puerto-m-14.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-puerto__claro__mobile__01-inicio-completa.png#14"
+     }
+    ],
+    "id": "fuego-puerto"
    },
    {
-    "f": "d-04.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-silvestre__claro__desktop__primer-pliegue.png"
+    "d": [
+     {
+      "f": "fuego-silvestre-d-01.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__desktop__01-inicio-completa.png#1"
+     },
+     {
+      "f": "fuego-silvestre-d-02.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__desktop__01-inicio-completa.png#2"
+     },
+     {
+      "f": "fuego-silvestre-d-03.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__desktop__01-inicio-completa.png#3"
+     },
+     {
+      "f": "fuego-silvestre-d-04.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__desktop__01-inicio-completa.png#4"
+     },
+     {
+      "f": "fuego-silvestre-d-05.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__desktop__01-inicio-completa.png#5"
+     },
+     {
+      "f": "fuego-silvestre-d-06.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__desktop__01-inicio-completa.png#6"
+     }
+    ],
+    "m": [
+     {
+      "f": "fuego-silvestre-m-01.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#1"
+     },
+     {
+      "f": "fuego-silvestre-m-02.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#2"
+     },
+     {
+      "f": "fuego-silvestre-m-03.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#3"
+     },
+     {
+      "f": "fuego-silvestre-m-04.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#4"
+     },
+     {
+      "f": "fuego-silvestre-m-05.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#5"
+     },
+     {
+      "f": "fuego-silvestre-m-06.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#6"
+     },
+     {
+      "f": "fuego-silvestre-m-07.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#7"
+     },
+     {
+      "f": "fuego-silvestre-m-08.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#8"
+     },
+     {
+      "f": "fuego-silvestre-m-09.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#9"
+     },
+     {
+      "f": "fuego-silvestre-m-10.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#10"
+     },
+     {
+      "f": "fuego-silvestre-m-11.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#11"
+     },
+     {
+      "f": "fuego-silvestre-m-12.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#12"
+     },
+     {
+      "f": "fuego-silvestre-m-13.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#13"
+     },
+     {
+      "f": "fuego-silvestre-m-14.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/fuego-silvestre__claro__mobile__01-inicio-completa.png#14"
+     }
+    ],
+    "id": "fuego-silvestre"
    },
    {
-    "f": "d-05.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/oceanica__claro__desktop__primer-pliegue.png"
-   }
-  ],
-  "m": [
-   {
-    "f": "m-01.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/botanica-bistro__claro__mobile__primer-pliegue.png"
-   },
-   {
-    "f": "m-02.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/brisa-marea__claro__mobile__primer-pliegue.png"
-   },
-   {
-    "f": "m-03.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-puerto__claro__mobile__primer-pliegue.png"
-   },
-   {
-    "f": "m-04.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/fuego-silvestre__claro__mobile__primer-pliegue.png"
-   },
-   {
-    "f": "m-05.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "sitios-gastro-portfolio-2026-11-24/capturas/oceanica__claro__mobile__primer-pliegue.png"
+    "d": [
+     {
+      "f": "oceanica-d-01.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__desktop__01-inicio-completa.png#1"
+     },
+     {
+      "f": "oceanica-d-02.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__desktop__01-inicio-completa.png#2"
+     },
+     {
+      "f": "oceanica-d-03.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__desktop__01-inicio-completa.png#3"
+     },
+     {
+      "f": "oceanica-d-04.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__desktop__01-inicio-completa.png#4"
+     },
+     {
+      "f": "oceanica-d-05.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__desktop__01-inicio-completa.png#5"
+     },
+     {
+      "f": "oceanica-d-06.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__desktop__01-inicio-completa.png#6"
+     },
+     {
+      "f": "oceanica-d-07.webp",
+      "w": 1280,
+      "h": 800,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__desktop__01-inicio-completa.png#7"
+     }
+    ],
+    "m": [
+     {
+      "f": "oceanica-m-01.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#1"
+     },
+     {
+      "f": "oceanica-m-02.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#2"
+     },
+     {
+      "f": "oceanica-m-03.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#3"
+     },
+     {
+      "f": "oceanica-m-04.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#4"
+     },
+     {
+      "f": "oceanica-m-05.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#5"
+     },
+     {
+      "f": "oceanica-m-06.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#6"
+     },
+     {
+      "f": "oceanica-m-07.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#7"
+     },
+     {
+      "f": "oceanica-m-08.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#8"
+     },
+     {
+      "f": "oceanica-m-09.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#9"
+     },
+     {
+      "f": "oceanica-m-10.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#10"
+     },
+     {
+      "f": "oceanica-m-11.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#11"
+     },
+     {
+      "f": "oceanica-m-12.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#12"
+     },
+     {
+      "f": "oceanica-m-13.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#13"
+     },
+     {
+      "f": "oceanica-m-14.webp",
+      "w": 390,
+      "h": 844,
+      "origen": "Malackath/_capturas-vivas/sitios-gastro/oceanica__claro__mobile__01-inicio-completa.png#14"
+     }
+    ],
+    "id": "oceanica"
    }
   ]
  },
@@ -2486,6 +3720,244 @@
     "w": 390,
     "h": 844,
     "origen": "_marealta-consultora-capturas/mob/16-escuela-preguntas.png"
+   }
+  ]
+ },
+ "zoomi": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-01-hero.jpg"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-02-problema.jpg"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-03-detalles.jpg"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-04-modos.jpg"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-05-pasos.jpg"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-06-faq.jpg"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-07-compra.jpg"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-08-footer.jpg"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#1"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#2"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#3"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#4"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#5"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#6"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#7"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#8"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#9"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#10"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#11"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-01-hero.jpg"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-02-problema.jpg"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-03-detalles.jpg"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-04-modos.jpg"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-05-pasos.jpg"
+   },
+   {
+    "f": "d-osc-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-06-faq.jpg"
+   },
+   {
+    "f": "d-osc-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-07-compra.jpg"
+   },
+   {
+    "f": "d-osc-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-08-footer.jpg"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#1"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#2"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#3"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#4"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#5"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#6"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#7"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#8"
+   },
+   {
+    "f": "m-osc-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#9"
+   },
+   {
+    "f": "m-osc-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#10"
+   },
+   {
+    "f": "m-osc-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#11"
    }
   ]
  }
