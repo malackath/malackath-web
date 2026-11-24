@@ -4,8 +4,9 @@
 import os, re, json, tarfile
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
-BASE = os.path.expanduser('~/mnt/Projects/Malackath/malackath-web/identidades-zips/extraido')
-OUT = os.path.expanduser('~/mnt/Projects/Malackath/_portfolio-capturas-' + (__import__('sys').argv[1] if len(__import__('sys').argv) > 1 else 'v1'))
+RAIZ = next(p for p in (os.path.expanduser('~/Projects'), os.path.expanduser('~/mnt/Projects')) if os.path.isdir(p))
+BASE = os.path.join(RAIZ, 'Malackath/malackath-web/identidades-zips/extraido')
+OUT = os.path.join(RAIZ, 'Malackath/_portfolio-capturas-' + (__import__('sys').argv[1] if len(__import__('sys').argv) > 1 else 'v1'))
 DIRS = {'arma-partido':'ArmaPartido','barajala':'Barajala','coat-n-nest':'Coat n Nest','pizcaya':'CocinaApp','coinciva':'Coinciva',
  'ecos':'ECOS','jip':'JLP','la-gloria':'LaGloria','marea-alta':'MareAlta','mesaluma':'Mesaluma','nunca-te-falla':'NuncaTeFalla',
  'palquear':'Palquear','patovava':'PatovaVa','ravekit':'RaveKit','ruvia':'RuVIA','banana-team':'The.Banana.Team',
@@ -14,8 +15,27 @@ FUERA = re.compile(r'logo|lamina|mockup|telefono-suelto|vista-previa|presentacio
 DESK_DIR = re.compile(r'desktop|escritorio|compu', re.I)
 MOB_DIR = re.compile(r'movil|mobile|celular', re.I)
 MAX = 14
+# Proyectos con capturas armadas aparte (no se regeneran desde los zips).
+SALTEAR = {'mesaluma'}
+# Capturas de celular metidas en un lienzo de compu, montajes, o pantallas que no van.
+FUERA_PROY = {
+ 'ruvia': re.compile(r'marco|pantallas', re.I),
+ 'nunca-te-falla': re.compile(r'desktop/app-', re.I),
+ 'velvet': re.compile(r'portada', re.I),            # portada = aviso de mayoría de edad
+ 'palquear': re.compile(r'desktop-0[1456789]', re.I),  # 01, 04-09: celular dentro de lienzo de compu
+ 'marea-alta': re.compile(r'-pt-', re.I),            # versión en portugués = misma pantalla repetida
+}
+# Capturas reales de escritorio sacadas aparte (van primero).
+EXTRA_D = {'palquear': os.path.join(RAIZ, 'Malackath/_palquear-desktop')}
+TEMA = re.compile(r'(?<![a-z])(claro|oscuro|dark|light|scroll)(?![a-z])', re.I)
+def pantalla(p):
+    # misma pantalla en claro/oscuro o con scroll = una sola
+    n = os.path.basename(p).lower().rsplit('.', 1)[0]
+    if TEMA.search(n): n = re.sub(r'^[^a-z]*\d+', '', re.sub(r'[-_ ]+', '-', TEMA.sub('', n)).strip('-_ '))
+    return re.sub(r'[^a-z0-9]+', '', n)
 man = {}
 for clave, d in DIRS.items():
+    if clave in SALTEAR: continue
     fs = []
     for r, _, files in os.walk(os.path.join(BASE, d)):
         for f in sorted(files):
@@ -23,12 +43,22 @@ for clave, d in DIRS.items():
             p = os.path.join(r, f); rel = os.path.relpath(p, BASE)
             if clave == 'arma-partido' and 'celular-pantallas' not in rel and 'compu' not in rel: continue
             elif clave != 'arma-partido' and (FUERA.search(rel) or re.search(r'portfolio-\d', f)): continue
+            if clave in FUERA_PROY and FUERA_PROY[clave].search(rel): continue
             fs.append(p)
     def orden(p):
         n = os.path.basename(p).lower(); m = re.search(r'(\d+)', re.sub(r'\d{3,4}x\d{3,4}', '', n))
         return (int(m.group(1)) if m else 999, os.path.relpath(p, BASE).lower())
     fs.sort(key=orden)
+    vistos = set(); unicos = []
+    for p in fs:
+        k = pantalla(p)
+        if k in vistos: continue
+        vistos.add(k); unicos.append(p)
+    fs = unicos
+    extra = EXTRA_D.get(clave)
+    extra_fs = sorted(os.path.join(extra, f) for f in os.listdir(extra) if f.lower().endswith(('.png', '.jpg', '.webp'))) if extra and os.path.isdir(extra) else []
     desk, mob = [], []
+    for p in extra_fs: desk.append((p, Image.open(p)))
     for p in fs:
         try: im = Image.open(p); w, h = im.size
         except Exception: continue
@@ -51,7 +81,7 @@ for clave, d in DIRS.items():
             im.thumbnail((tw, int(tw * ratio) + 2), Image.LANCZOS)
             n = f'{tipo}-{i+1:02d}.webp'
             im.save(os.path.join(OUT, clave, n), 'WEBP', quality=72, method=6)
-            res[tipo].append(dict(f=n, w=im.width, h=im.height, origen=os.path.relpath(p, BASE)))
+            res[tipo].append(dict(f=n, w=im.width, h=im.height, origen=os.path.relpath(p, BASE) if p.startswith(BASE) else os.path.basename(p)))
     man[clave] = res
     print(clave, 'escritorio', len(desk), '→', len(res['d']), '| celular', len(mob), '→', len(res['m']), flush=True)
 json.dump(man, open(os.path.join(OUT, 'manifest.json'), 'w'), ensure_ascii=False, indent=1)
