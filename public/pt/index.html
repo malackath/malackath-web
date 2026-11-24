@@ -6,25 +6,18 @@
 @media (min-width: 1280px) {
   .hero-grilla { pointer-events: none; }
   .hero-grilla a { pointer-events: auto; }
-  p.hero-bajada { max-width: 28rem; }
-  #showcase-viewport { position: absolute; top: 150px; right: 8px; width: 1160px; height: 560px; min-height: 0; margin: 0;
-    z-index: 0; transform: scale(var(--esc)); transform-origin: top right; --esc: .56; }
-  #showcase-viewport + * , section:has(> #showcase-viewport) { min-height: calc(150px + 560px * var(--esc-sec, .56) + 60px); }
+  #showcase-viewport { position: absolute; top: 166px; right: 1.455vw; width: 1160px; height: auto; min-height: 680px; margin: 0;
+    z-index: 0; transform: scale(var(--esc)); transform-origin: top right; }
+  section:has(> #showcase-viewport) { min-height: calc(166px + 640px * var(--esc) + 40px); }
 }
-@media (min-width: 1366px) { #showcase-viewport { --esc: 0.63; } section:has(> #showcase-viewport) { --esc-sec: 0.63; } }
-@media (min-width: 1440px) { #showcase-viewport { --esc: 0.69; } section:has(> #showcase-viewport) { --esc-sec: 0.69; } }
-@media (min-width: 1512px) { #showcase-viewport { --esc: 0.76; } section:has(> #showcase-viewport) { --esc-sec: 0.76; } }
-@media (min-width: 1600px) { #showcase-viewport { --esc: 0.84; } section:has(> #showcase-viewport) { --esc-sec: 0.84; } }
-@media (min-width: 1680px) { #showcase-viewport { --esc: 0.91; } section:has(> #showcase-viewport) { --esc-sec: 0.91; } }
-@media (min-width: 1760px) { #showcase-viewport { --esc: 1; } section:has(> #showcase-viewport) { --esc-sec: 1; } }
-
-@layer base {
-.titular-hero-col { container-type: inline-size; }
-h1.titular-hero { --r: 14.4; font-size: min(2.75rem, calc(100cqw / var(--r))) !important; }
-@media (min-width: 768px) { h1.titular-hero { font-size: min(80px, calc(100cqw / var(--r))) !important; } }
-:lang(en) h1.titular-hero { --r: 9.8; }
-:lang(pt) h1.titular-hero { --r: 16.4; }
-}
+@media (min-width: 1280px) { section:has(> #showcase-viewport) { --esc: 0.745; } }
+@media (min-width: 1366px) { section:has(> #showcase-viewport) { --esc: 0.795; } }
+@media (min-width: 1440px) { section:has(> #showcase-viewport) { --esc: 0.838; } }
+@media (min-width: 1512px) { section:has(> #showcase-viewport) { --esc: 0.88; } }
+@media (min-width: 1600px) { section:has(> #showcase-viewport) { --esc: 0.93; } }
+@media (min-width: 1680px) { section:has(> #showcase-viewport) { --esc: 0.98; } }
+@media (min-width: 1800px) { section:has(> #showcase-viewport) { --esc: 1.05; } }
+@media (min-width: 1920px) { section:has(> #showcase-viewport) { --esc: 1.12; } }
 /* Kinetic Animations & Micro-interactions */
 @keyframes fadeInUp {
   0% {
@@ -231,7 +224,7 @@ h1.titular-hero { --r: 14.4; font-size: min(2.75rem, calc(100cqw / var(--r))) !i
 <div class="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
 <div class="hero-grilla relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
 <!-- Left Editorial Column -->
-<div class="titular-hero-col lg:col-span-12 flex flex-col gap-space-lg min-w-0">
+<div class="lg:col-span-7 flex flex-col gap-space-lg min-w-0">
 <div class="inline-flex items-center gap-space-sm self-start px-space-md py-space-xs rounded-full bg-surface-container-high">
 <span class="relative flex h-2 w-2">
 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
@@ -239,7 +232,8 @@ h1.titular-hero { --r: 14.4; font-size: min(2.75rem, calc(100cqw / var(--r))) !i
 </span>
 <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">ESTÚDIO DE DESIGN &amp; PRODUTO DIGITAL · URUGUAI &amp; BRASIL</span>
 </div>
-<h1 class="titular-hero block font-display-xl text-display-xl-mobile md:text-display-xl text-primary uppercase tracking-tighter"><span class="block whitespace-nowrap">Vamos construir</span><span class="block whitespace-nowrap">seu próximo</span><span class="block whitespace-nowrap text-primary-container">produto</span>
+<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl text-primary uppercase tracking-tighter">
+          CRIAMOS PRODUTOS DIGITAIS QUE <span class="text-primary-container">GANHAM VIDA</span>
 </h1>
 <p class="hero-bajada font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
           Apps, plataformas web, sistemas de reservas e identidade visual para marcas e projetos reais.
