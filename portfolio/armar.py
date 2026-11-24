@@ -27,13 +27,19 @@ e = html.escape
 MANIFEST = json.load(open(os.path.join(AQUI, 'capturas', 'manifest.json')))
 tarjetas, secciones = [], []
 for n, p in enumerate(lista, 1):
-    d = json.load(open(os.path.join(SRC, p['c'] + '.json')))
-    logo = next(l for l in d['logos'] if l['nombre'] == p['logo']) if p['logo'] else d['desk'][0]
-    lsrc, lw, lh = guardar(p['c'], logo, 'logo')
+    jp = os.path.join(SRC, p['c'] + '.json')
+    d = json.load(open(jp)) if os.path.exists(jp) else dict(logos=[], desk=[], mob=[], lam=[])
     if p.get('logo_archivo'):
-        dst = f"img/p/{p['c']}-logo.svg"
-        shutil.copy(os.path.join(AQUI, p['logo_archivo']), f'{OUT}/{dst}')
-        os.remove(f'{OUT}/{lsrc}'); lsrc = dst
+        ext = p['logo_archivo'].rsplit('.', 1)[-1]
+        lsrc = f"img/p/{p['c']}-logo.{ext}"
+        shutil.copy(os.path.join(AQUI, p['logo_archivo']), f'{OUT}/{lsrc}')
+        lw, lh = 560, 129
+        if ext != 'svg':
+            from PIL import Image
+            im = Image.open(f'{OUT}/{lsrc}'); im.thumbnail((1120, 400)); im.save(f'{OUT}/{lsrc}'); lw, lh = im.size
+    else:
+        logo = next(l for l in d['logos'] if l['nombre'] == p['logo']) if p['logo'] else d['desk'][0]
+        lsrc, lw, lh = guardar(p['c'], logo, 'logo')
     man = MANIFEST.get(p['c'], {'d': [], 'm': []})
     def copiar(tipo):
         out = []
