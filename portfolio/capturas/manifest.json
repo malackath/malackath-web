@@ -2980,5 +2980,155 @@
     "origen": "sitios-gastro-portfolio-2026-11-24/capturas/oceanica__claro__mobile__primer-pliegue.png"
    }
   ]
+ },
+ "marealta-consultora": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/01-consultora-portada.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/05-consultora-como.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/06-consultora-contacto.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/07-consultora-como-trabajamos.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/08-consultora-nosotros.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/09-consultora-capacitacion.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/10-consultora-costos.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/11-consultora-fichas-tecnicas.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/12-escuela-portada.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/13-escuela-cap.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/14-escuela-modulo-1.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/15-escuela-rut.png"
+   },
+   {
+    "f": "d-13.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_marealta-consultora-capturas/desk/16-escuela-preguntas.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/01-consultora-portada.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/02-consultora-que-hacemos.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/07-consultora-como-trabajamos.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/09-consultora-capacitacion.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/10-consultora-costos.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/11-consultora-fichas-tecnicas.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/12-escuela-portada.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/13-escuela-cap.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/14-escuela-modulo-1.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/15-escuela-rut.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_marealta-consultora-capturas/mob/16-escuela-preguntas.png"
+   }
+  ]
  }
 }
