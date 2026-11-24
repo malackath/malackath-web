@@ -19,7 +19,7 @@ MAX = 14
 SALTEAR = {'mesaluma'}
 # Capturas de celular metidas en un lienzo de compu, montajes, o pantallas que no van.
 FUERA_PROY = {
- 'ruvia': re.compile(r'marco|pantallas', re.I),
+ 'ruvia': re.compile(r'marco|pantallas|desktop', re.I),  # la web es un prototipo que no tiene el estilo de la app: solo celular
  'nunca-te-falla': re.compile(r'desktop/app-', re.I),
  'velvet': re.compile(r'portada', re.I),            # portada = aviso de mayoría de edad
  'palquear': re.compile(r'Palquear/desktop-', re.I),  # las del zip: celular en lienzo de compu o repetidas de _palquear-desktop
