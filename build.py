@@ -1,0 +1,454 @@
+"""Arma el sitio de Malackath a partir del HTML exportado de Stitch.
+
+Regla: el diseño de Stitch se respeta tal cual. Solo se cambia:
+- logo Kinetic -> logo Malackath
+- imágenes generadas -> fotos y capturas reales de los proyectos
+- números/métricas no confirmados -> se sacan
+- datos falsos de agencia (Kinetic, París/NY/Tokio) -> datos reales
+- links internos para que las páginas se conecten
+
+Uso: python3 build.py stitch public   (después: npm run css)
+"""
+import re
+import sys
+from pathlib import Path
+
+SRC = Path(sys.argv[1])
+OUT = Path(sys.argv[2])
+
+MAIL = "hola@malackath.com"          # elegido por Ber; la casilla falta crearla
+WHATSAPP = "https://wa.me/59894202607"  # WhatsApp de Ber
+
+
+def leer(nombre):
+    return (SRC / nombre / "code.html").read_text(encoding="utf-8")
+
+
+def rep(s, viejo, nuevo, n=1):
+    c = s.count(viejo)
+    if c < 1 or (n and c != n):
+        raise SystemExit(f"No encontré (o encontré {c} veces) el texto: {viejo[:90]!r}")
+    return s.replace(viejo, nuevo)
+
+
+def cortar(s, desde, hasta):
+    """Saca desde el marcador `desde` hasta justo antes de `hasta`."""
+    i = s.find(desde)
+    j = s.find(hasta, i + 1)
+    if i < 0 or j < 0:
+        raise SystemExit(f"Marcadores no encontrados: {desde!r} / {hasta!r}")
+    return s[:i] + s[j:]
+
+
+def link(s, texto, href):
+    """Pone href al <a> que contiene `texto` (la primera vez que aparece)."""
+    k = s.find(texto)
+    if k < 0:
+        raise SystemExit(f"Link no encontrado: {texto!r}")
+    a = s.rfind("<a ", 0, k)
+    fin = s.find(">", a)
+    tag = s[a:fin]
+    tag2 = re.sub(r'href="[^"]*"', f'href="{href}"', tag)
+    if 'href="' not in tag:
+        tag2 = tag + f' href="{href}"'
+    if href.startswith("http"):
+        tag2 += ' target="_blank" rel="noopener"'
+    return s[:a] + tag2 + s[fin:]
+
+
+def imagenes(s, mapa, pre):
+    """Reemplaza las imágenes de Stitch por orden. mapa: lista (archivo|None, alt, estilo extra)."""
+    tags = list(re.finditer(r"<img[^>]*>", s))
+    if len(tags) != len(mapa):
+        raise SystemExit(f"Hay {len(tags)} imágenes y el mapa tiene {len(mapa)}")
+    out, last = [], 0
+    for m, (archivo, alt, extra) in zip(tags, mapa):
+        tag = m.group(0)
+        if archivo is not None:
+            tag = re.sub(r'src="[^"]*"', f'src="{pre}{archivo}"', tag)
+            tag = re.sub(r'\s(data-)?alt="[^"]*"', "", tag)
+            tag = tag.replace("<img", f'<img alt="{alt}" loading="lazy"', 1)
+            if extra:
+                tag = tag.replace('class="', f'style="{extra}" class="', 1)
+        out.append(s[last:m.start()] + tag)
+        last = m.end()
+    out.append(s[last:])
+    return "".join(out)
+
+
+def fondos(s, mapa):
+    """Reemplaza por orden las imágenes de Stitch usadas como background-image. None = queda."""
+    urls = list(re.finditer(r"url\('(https://lh3[^']+)'\)", s))
+    if len(urls) != len(mapa):
+        raise SystemExit(f"Hay {len(urls)} fondos y el mapa tiene {len(mapa)}")
+    out, last = [], 0
+    for m, archivo in zip(urls, mapa):
+        out.append(s[last:m.start()] + (f"url('{archivo}')" if archivo else m.group(0)))
+        last = m.end()
+    out.append(s[last:])
+    return "".join(out)
+
+
+# RaveKit no tiene foto real en la compu de Ber: se usa la imagen que generó Stitch (PENDIENTE reemplazar)
+RAVEKIT_STITCH = re.findall(r'src="(https://lh3[^"]+)"', (SRC / "kinetic_home_proyectos_reales" / "code.html").read_text(encoding="utf-8"))[7]
+
+SAMPLE = ('<span class="self-start px-space-sm py-space-xs rounded-full bg-surface-container-highest '
+          'font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Sample</span>')
+
+
+def comun(s, pre, titulo, descripcion, activo=None):
+    # idioma y <head>
+    s = rep(s, '<html class="dark" lang="en">', '<html class="dark" lang="es">')
+    s = s.replace(
+        '<meta content="web_standard" name="shell-type"/>',
+        f'<title>{titulo}</title><meta name="description" content="{descripcion}"/>'
+        f'<link rel="icon" href="{pre}img/marca/favicon.svg" type="image/svg+xml"/>'
+        f'<link rel="alternate icon" href="{pre}img/marca/favicon.ico"/>'
+        f'<link rel="apple-touch-icon" href="{pre}img/marca/icono-app-blanco-180.png"/>', 1)
+    # Tailwind: en vez del CDN de Stitch, el CSS compilado con la misma config (ver tailwind.config.js)
+    s, n = re.subn(r'<script src="https://cdn\.tailwindcss\.com[^"]*"></script><script id="tailwind-config">.*?</script>',
+                   f'<link rel="stylesheet" href="{pre}css/estilos.css"/>', s, flags=re.S)
+    if n != 1:
+        raise SystemExit("No encontré el Tailwind de Stitch")
+    # mobile: Stitch usa tamaños de escritorio sin su variante mobile en algunos títulos y en
+    # celular se salen de la pantalla. Se usan los tamaños mobile que define el propio sistema de Stitch.
+    def _mobile(m):
+        c = m.group(1)
+        for t in ("display-xl", "display-lg", "headline-lg"):
+            if re.search(rf"(?<![\w:-])text-{t}(?![\w-])", c) and f"text-{t}-mobile" not in c:
+                c = re.sub(rf"(?<![\w:-])text-{t}(?![\w-])", f"text-{t}-mobile md:text-{t}", c)
+        return f'class="{c}"'
+    s = re.sub(r'class="([^"]*)"', _mobile, s)
+    # los brillos de fondo de Stitch se salen del ancho en celular: se recortan
+    s = rep(s, "body { overscroll-behavior: none; }", "body { overscroll-behavior: none; } body > main, body > footer { overflow-x: clip; } @media (max-width: 767px) { .text-display-xl-mobile { font-size: clamp(1.6rem, 7.9vw, 2.75rem) !important; line-height: 1.1 !important; } .text-display-lg-mobile { font-size: clamp(1.6rem, 7.6vw, 2.25rem) !important; } }")
+    # logo
+    s, n = re.subn(r'<img alt="Kinetic Agency Logo"[^>]*>\s*<span class="[^"]*">KINETIC</span>',
+                   f'<img alt="Malackath" class="h-8 w-auto object-contain" src="{pre}img/marca/malackath-horizontal-color-negativo.svg"/>', s)
+    if n != 1:
+        raise SystemExit("No encontré el logo de Kinetic")
+    # links del menú y botones con data-path
+    destinos = {"home": "index.html", "portfolio": "trabajo.html", "services": "estudio.html#capacidades",
+                "studio": "estudio.html", "case-studies": "casos/arma-partido.html", "contact": "estudio.html#contacto"}
+    for clave, dest in destinos.items():
+        s = re.sub(rf'data-path="{clave}" href="[^"]*"', f'data-path="{clave}" href="{pre}{dest}"', s)
+        s = re.sub(rf'href="[^"]*" data-path="{clave}"', f'href="{pre}{dest}" data-path="{clave}"', s)
+    # botón de persona del header (sin cuenta de usuario): lleva a contacto
+    s = s.replace('<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>',
+                  f'<a aria-label="Contacto" href="{pre}estudio.html#contacto" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></a>')
+    # footer: datos reales
+    s = s.replace("PARIS [CET]", "MONTEVIDEO [UYT]").replace("NEW YORK [EST]", "BRASIL [BRT]")
+    s = re.sub(r'<span class="text-on-surface-variant">/</span><span class="flex items-center gap-space-xs"><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>TOKYO \[JST\]</span>', "", s)
+    s = s.replace("© 2024 KINETIC STUDIO INC. ALL RIGHTS RESERVED.", "© 2026 MALACKATH. TODOS LOS DERECHOS RESERVADOS.")
+    s = s.replace("© 2024 KINETIC STUDIO INC. ALL RIGHTS RESERVED", "© 2026 MALACKATH. TODOS LOS DERECHOS RESERVADOS")
+    return s
+
+
+def guardar(nombre, s):
+    p = OUT / nombre
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(s, encoding="utf-8")
+    quedan = s.count("lh3.googleusercontent.com")
+    print(f"{nombre}: ok ({quedan} imágenes de Stitch sin reemplazar)")
+
+
+# ---------------------------------------------------------------- HOME
+def home():
+    s = leer("kinetic_home_proyectos_reales")
+    s = comun(s, "", "Malackath · Estudio de diseño y producto digital",
+              "Apps móviles, plataformas web, sistemas de reservas e identidad visual para marcas y proyectos reales. Uruguay y Brasil.")
+    s = cortar(s, "<!-- 3. IMPACT METRICS -->", "<!-- 4. FEATURED REAL WORK")
+    P = "img/proyectos/"
+    s = imagenes(s, [
+        (None, "", ""),  # logo, ya reemplazado
+        (P + "armapartido-mostrador.webp", "Armá Partido: pantalla del mostrador del club con las canchas del día", "object-position:left top"),
+        (P + "pizcaya-desafio.webp", "Pizcaya: desafío de 15 platos en 30 días", "object-position:center 20%"),
+        (P + "cartelera-noche.webp", "Cartelera Uruguay: buscador de eventos", "object-position:left top"),
+        (P + "armapartido-torneo.webp", "Torneo nocturno de pádel con tribuna llena", ""),
+        (P + "pizcaya-portada.webp", "Pizcaya: cociná 15 platos de casa en 30 días", "object-position:left center"),
+        (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
+        (None, "", ""),  # RaveKit: falta imagen real, queda la de Stitch
+        (P + "cartelera-noche.webp", "Cartelera Uruguay: guía de espectáculos con mapa y lista", "object-position:left top"),
+        (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
+    ], "")
+    # proyectos con caso propio: título clickeable
+    s = rep(s, 'transition-colors">Armá Partido</h3>', 'transition-colors"><a href="casos/arma-partido.html">Armá Partido</a></h3>')
+    s = rep(s, 'transition-colors">Pizcaya</h3>', 'transition-colors"><a href="casos/pizcaya.html">Pizcaya</a></h3>')
+    s = link(s, "<span>INICIAR PROYECTO</span>", "estudio.html#contacto")
+    guardar("index.html", s)
+
+
+# ---------------------------------------------------------- ARMÁ PARTIDO
+def arma_partido():
+    s = leer("kinetic_case_study_arm_partido")
+    s = comun(s, "../", "Armá Partido · Caso de estudio · Malackath",
+              "App para armar partidos de pádel según categoría y horarios, reuniendo cuatro jugadores y reservando cancha en el club.")
+    s = cortar(s, "<!-- SECTION: IMPACT METRICS RIBBON -->", "<!-- SECTION: THE CHALLENGE")
+    P = "../img/proyectos/"
+    s = fondos(s, [P + "armapartido-cancha.webp", P + "armapartido-categoria.webp", P + "armapartido-horarios.webp",
+                   P + "armapartido-avisos.webp", P + "armapartido-perfil.webp", None, None])
+    s = link(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", "../trabajo.html")
+    s = link(s, "<span>Visitar armapartido.com</span>", "https://armapartido.com")
+    s = link(s, "SIGUIENTE CASO DE ESTUDIO // 02", "pizcaya.html")
+    s = link(s, "Iniciar Proyecto\n", "../estudio.html#contacto")
+    s = link(s, "Agendar Llamada", WHATSAPP)
+    s = s.replace('opacity-30 absolute top-4 right-4">format_quote</span>',
+                  'opacity-30 absolute top-4 right-4">format_quote</span>' + SAMPLE)
+    guardar("casos/arma-partido.html", s)
+
+
+# --------------------------------------------------------------- PIZCAYA
+def pizcaya():
+    s = leer("kinetic_case_study_pizcaya")
+    s = comun(s, "../", "Pizcaya · Caso de estudio · Malackath",
+              "Plataforma para aprender a cocinar con lecciones cortas guiadas por voz e imagen.")
+    s = cortar(s, "<!-- SECTION 3: Key Impact Metrics -->", "<!-- SECTION 4: Problem Diagnosis")
+    P = "../img/proyectos/"
+    s = imagenes(s, [
+        (None, "", ""),
+        (P + "pizcaya-cocina.webp", "Mesada de cocina con luz natural", ""),
+        (P + "pizcaya-pollo.webp", "Plato terminado de una receta de Pizcaya", ""),
+        (P + "pizcaya-recetario.webp", "Pizcaya: recetario agrupado por tipo e ingredientes", "object-position:center top"),
+        (P + "pizcaya-mesada.webp", "Pizcaya: modo cocina, armá tu mesada", "object-position:center top"),
+        (P + "pizcaya-desafio.webp", "Pizcaya: desafío de 15 platos en 30 días", "object-position:center top"),
+        (P + "pizcaya-inicio.webp", "Pizcaya: pantalla de inicio", "object-position:center top"),
+        (None, "", ""),  # retrato de testimonio (Sample)
+        (None, "", ""),  # retrato de testimonio (Sample)
+    ], P and "")
+    s = link(s, "VOLVER AL PORTFOLIO // CASO DE ESTUDIO 02", "../trabajo.html")
+    s = link(s, "VISITAR PIZCAYA.COM", "https://pizcaya.com")
+    s = link(s, "SIGUIENTE CASO DE ESTUDIO // 03", "../trabajo.html")
+    s = s.replace('format_quote</span>', 'format_quote</span>' + SAMPLE)
+    # número no confirmado
+    s = rep(s, "Validado con más de 120 pruebas de usabilidad en cocina real", "Gratis, sin publicidad y sin crear cuenta")
+    s = link(s, "Agendar Llamada", WHATSAPP)
+    s = link(s, "Ver Todos los Casos", "../trabajo.html")
+    guardar("casos/pizcaya.html", s)
+
+
+
+
+# ---------------------------------------------------------------- TRABAJO
+def trabajo():
+    s = leer("kinetic_selected_work_portfolio")
+    s = comun(s, "", "Trabajo · Malackath",
+              "Proyectos de Malackath: apps, plataformas web, reservas e identidad visual en Uruguay y Brasil.")
+    s = cortar(s, "<!-- Interactive Project Impact Showcase Sparkline Strip -->", "<!-- Quick Collaboration Banner CTA -->")
+    R = [  # (viejo, nuevo, veces) ; veces 0 = todas
+        # encabezado
+        ("KINETIC ARCHIVE", "MALACKATH", 1), ("INDEX 02", "ARCHIVO", 1), ("CURATED SELECTION", "SELECCIÓN", 1),
+        ("WebGL v2.4 Active", "Uruguay &amp; Brasil", 1), ("Grid: Asymmetric 12-Col", "Producto digital", 1),
+        ("[ ARCHIVE 2022—2024 ]", "[ PROYECTOS REALES ]", 1), ("Production Grade Deployments", "En producción y demos navegables", 1),
+        ("\n          SELECTED WORK\n", "\n          TRABAJO\n", 1),
+        ("Total Case Files", "Proyectos", 1), ("24 PROJECTS", "6 PROYECTOS", 1),
+        ("<span>All Works</span>\n<span class=\"opacity-70 font-mono\">(24)</span>", "<span>Todos</span>\n<span class=\"opacity-70 font-mono\">(6)</span>", 1),
+        ("<span>Branding &amp; Identity</span>\n<span class=\"opacity-60 font-mono\">(8)</span>", "<span>Marca &amp; Web</span>\n<span class=\"opacity-60 font-mono\">(1)</span>", 1),
+        ("<span>Web Experiences</span>\n<span class=\"opacity-60 font-mono\">(9)</span>", "<span>Plataformas Web</span>\n<span class=\"opacity-60 font-mono\">(3)</span>", 1),
+        ("<span>Mobile &amp; Spatial Apps</span>\n<span class=\"opacity-60 font-mono\">(7)</span>", "<span>Apps Móviles</span>\n<span class=\"opacity-60 font-mono\">(2)</span>", 1),
+        ("<span>Visual Grid</span>", "<span>Grilla</span>", 1), ("<span>Editorial Index</span>", "<span>Índice</span>", 1),
+        # 01 Armá Partido
+        ("Web &amp; Spatial AI", "SportTech · App Móvil", 2), ("AWWWARDS SOTD", "EN PRODUCCIÓN", 2),
+        ("Model Inference", "Sitio", 1), ("12ms Latency", "armapartido.com", 1),
+        ("Active Retention", "Plataforma", 1), ("+84% WAU", "iOS &amp; Android", 1),
+        ("CLIENT: AURA LABS INC.", "PROYECTO PROPIO · MONTEVIDEO", 1),
+        ("AURA AI — SPATIAL OS", "ARMÁ PARTIDO", 1),
+        ("Spatial intelligence OS architecture and global brand redesign, uniting neuro-symbolic algorithms with real-time responsive WebGL UI.",
+         "App para armar partidos de pádel según categoría y horarios, reuniendo cuatro jugadores y reservando cancha en el club.", 1),
+        ("<span>Brand Strategy</span>", "<span>Producto</span>", 1), ("<span>Spatial UX</span>", "<span>UX/UI</span>", 1),
+        ("<span>WebGL Interface</span>", "<span>App Móvil</span>", 1),
+        # 02 Pizcaya
+        ("\n              Web Experience\n            </span>\n<span class=\"px-space-sm py-space-xs rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-sm text-label-sm uppercase text-primary-container font-bold\">\n              2024",
+         "\n              EdTech · Web &amp; App\n            </span>\n<span class=\"px-space-sm py-space-xs rounded-full bg-surface-container-lowest/80 backdrop-blur-md font-label-sm text-label-sm uppercase text-primary-container font-bold\">\n              2024", 1),
+        ("FWA OF THE DAY", "BILINGÜE ES/EN", 2), ("Configurator Orders", "Sitio", 1), ("$42M PRE-ORDERS", "pizcaya.com", 1),
+        ("CHRONO MOTORS</span>", "PROYECTO PROPIO</span>", 1), ("\n              CHRONO HYPERCAR\n", "\n              PIZCAYA\n", 1),
+        ("Next-generation 3D WebGL car configurator with dynamic photorealistic ray-tracing in browser.",
+         "Plataforma para aprender a cocinar con lecciones cortas guiadas por voz e imagen en español e inglés.", 1),
+        ("3D Three.js • WebGL", "Web &amp; App • Modo Cocina", 1),
+        # 03 Palquear
+        ("\n              Mobile App\n", "\n              Ticketing · Demo Navegable\n", 1), ("RED DOT 2024", "DEMO NAVEGABLE", 2),
+        ("Total Volume Custody", "Sitio", 1), ("$3.2B TVL", "palquear.arnelli.com", 1),
+        ("SYNAPSE CAPITAL</span>", "PROYECTO PROPIO</span>", 1), ("\n              SYNAPSE FINTECH\n", "\n              PALQUEAR\n", 1),
+        ("Neo-banking interface and institutional crypto asset custody design system built for speed.",
+         "Sistema de cesión y reserva de sillas de camarote para partidos de fútbol con validación por documento.", 1),
+        ("Design System • iOS/Android", "Reservas • Validación por documento", 1),
+        # 04 Cartelera Uruguay
+        ("\n              Branding &amp; Identity\n", "\n              Cultura · Buscador Web\n", 1), ("AWWWARDS BRAND OF THE YEAR", "BUSCADOR WEB", 1),
+        ("Global Reach", "Sitio", 1), ("62 Countries", "cartelerauy.malackath.com", 1),
+        ("Launch Sellout", "Cobertura", 1), ("18 Minutes", "Todo Uruguay", 1),
+        ("KINETIC AUDIO LAB", "PROYECTO PROPIO", 1), ("KINETIC SOUND IDENTITY", "CARTELERA URUGUAY", 1),
+        ("Spatial acoustic brand identity, physical packaging ecosystem, and custom variable acoustic typeface crafted for audiophiles.",
+         "Guía nacional de espectáculos y eventos con filtros por fecha, región y categoría.", 1),
+        ("<span>Packaging System</span>", "<span>Buscador</span>", 1), ("<span>Variable Font</span>", "<span>Mapa</span>", 1),
+        ("<span>Sonic Identity</span>", "<span>Filtros</span>", 1),
+        # 05 RaveKit
+        ("\n              Web Experience\n", "\n              SaaS Local · Marca &amp; Web\n", 1), ("FWA OF THE MONTH", "WHATSAPP + QR", 2),
+        ("Press Mentions", "Sitio", 1), ("Architectural Digest, Dezeen", "getravekit.com", 1),
+        ("VOXEL ZURICH</span>", "COMERCIOS LOCALES</span>", 1), ("\n              VOXEL ARCHITECTURE\n", "\n              RAVEKIT\n", 1),
+        ("Brutalist digital portfolio featuring dynamic modular grid viewports, blueprint overlays, and kinetic parallax.",
+         "Plataforma que automatiza pedidos de reseñas en Google vía WhatsApp y QR para comercios locales.", 1),
+        ("Editorial Layout • Custom CMS", "Marca • Web • SaaS", 1),
+        # 06 Mesaluma & La Gloria
+        ("\n              Mobile &amp; Hardware UI\n", "\n              Gastronomía · Web &amp; Menú QR\n", 1), ("RED DOT BEST OF THE BEST", "PRE-ORDER", 1),
+        ("Fleet Sync Protocol", "Productos", 1), ("Sub-millisecond Realtime", "Reservas &amp; Carta Digital", 1),
+        ("NEXUS AUTOMATION", "RESTAURANTE &amp; CAFETERÍA", 1), ("NEXUS ROBOTICS SUITE", "MESALUMA &amp; LA GLORIA", 1),
+        ("Autonomous humanoid robot control suite UI/UX, mission dispatch tablets, and telemetry telemetry HUD.",
+         "Reservas con pedido anticipado para restaurantes y carta digital multilingüe para cafetería en Punta Fría.", 1),
+        ("Hardware Interface • Realtime HMI", "Pre-order • Menú QR Multilingüe", 1),
+        # índice (vista lista)
+        ("<div class=\"col-span-4\">Project &amp; Client</div>", "<div class=\"col-span-4\">Proyecto</div>", 1),
+        ("<div class=\"col-span-3\">Discipline</div>", "<div class=\"col-span-3\">Disciplina</div>", 1),
+        ("<div class=\"col-span-2\">Recognition</div>", "<div class=\"col-span-2\">Estado</div>", 1),
+        ("<div class=\"col-span-1 text-right\">Year</div>", "<div class=\"col-span-1 text-right\">Año</div>", 1),
+        ("<div class=\"col-span-1 text-right\">Action</div>", "<div class=\"col-span-1 text-right\">Ver</div>", 1),
+        (">AURA AI</span>", ">ARMÁ PARTIDO</span>", 1), ("AURA LABS • Spatial Intelligence OS", "Proyecto propio • App de pádel", 1),
+        (">CHRONO HYPERCAR</span>", ">PIZCAYA</span>", 1), ("CHRONO MOTORS • 3D WebGL Configurator", "Proyecto propio • Aprender a cocinar", 1),
+        (">Web Experience</div>", ">EdTech · Web &amp; App</div>", 1),
+        (">SYNAPSE FINTECH</span>", ">PALQUEAR</span>", 1), ("SYNAPSE CAPITAL • Neo-banking App", "Proyecto propio • Palcos de fútbol", 1),
+        (">Mobile Application</div>", ">Ticketing · Demo Navegable</div>", 1),
+        (">KINETIC SOUND</span>", ">CARTELERA URUGUAY</span>", 1), ("KINETIC LABS • Spatial Audio System", "Proyecto propio • Guía de eventos", 1),
+        (">Branding &amp; Identity</div>", ">Cultura · Buscador Web</div>", 1), ("BRAND OF THE YEAR", "BUSCADOR WEB", 1),
+        (">VOXEL ARCHITECTURE</span>", ">RAVEKIT</span>", 1), ("VOXEL ZURICH • Brutalist Studio Hub", "Comercios locales • Reseñas en Google", 1),
+        (">Web Experience</div>", ">SaaS Local · Marca &amp; Web</div>", 1),
+        (">NEXUS ROBOTICS</span>", ">MESALUMA &amp; LA GLORIA</span>", 1), ("NEXUS • Autonomous Humanoid UI Suite", "Restaurante y cafetería • Reservas y carta QR", 1),
+        (">Mobile &amp; Hardware UI</div>", ">Gastronomía · Web &amp; Menú QR</div>", 1), ("<span>BEST OF THE BEST</span>", "<span>PRE-ORDER</span>", 1),
+        # CTA final
+        ("Next Cycle Availability", "Disponibles para nuevos proyectos", 1),
+        ("HAVE AN AMBITIOUS PROJECT IN MIND? LET'S TALK.", "¿TENÉS UN PROYECTO EN MENTE? HABLEMOS.", 1),
+        ("We partner with daring venture founders and tier-one enterprises to build flagship digital products that redefine market categories.",
+         "Acompañamos a emprendedores, marcas y comercios desde la idea hasta un producto digital funcionando.", 1),
+        ("<span>Start Collaboration</span>", "<span>Iniciar Proyecto</span>", 1), ("<span>Explore Capabilities</span>", "<span>Ver Capacidades</span>", 1),
+    ]
+    for viejo, nuevo, n in R:
+        if n == 1 and s.count(viejo) > 1:
+            i = s.find(viejo)
+            s = s[:i] + nuevo + s[i + len(viejo):]
+        else:
+            s = rep(s, viejo, nuevo, n)
+    # años: los proyectos son de 2026
+    i, j = s.find("<main"), s.find("<footer")
+    s = s[:i] + re.sub(r"\b202[34]\b", "2026", s[i:j]) + s[j:]
+    # categorías para el filtro (6 tarjetas y 6 filas, en orden)
+    cats = iter(["mobile", "mobile", "web", "web", "branding", "web"] * 2)
+    s = re.sub(r'data-category="[a-z]+"', lambda m: f'data-category="{next(cats)}"', s)
+    # íconos de estado
+    s = s.replace('text-[14px]">star</span>\n<span>EN PRODUCCIÓN', 'text-[14px]">verified</span>\n<span>EN PRODUCCIÓN')
+    # links de las filas del índice
+    hrefs = iter(["casos/arma-partido.html", "casos/pizcaya.html", "https://palquear.arnelli.com",
+                  "https://cartelerauy.malackath.com", "https://getravekit.com", "index.html#proyectos"])
+    s = re.sub(r'(<a class="list-item-row[^"]*" data-category="[a-z]+") href="#"', lambda m: f'{m.group(1)} href="{next(hrefs)}"', s)
+    # títulos con caso propio
+    s = rep(s, "\n              ARMÁ PARTIDO\n", '\n              <a href="casos/arma-partido.html">ARMÁ PARTIDO</a>\n')
+    s = rep(s, "\n              PIZCAYA\n", '\n              <a href="casos/pizcaya.html">PIZCAYA</a>\n')
+    s = link(s, "<span>Iniciar Proyecto</span>", "estudio.html#contacto")
+    P = "img/proyectos/"
+    s = imagenes(s, [
+        (None, "", ""),
+        (P + "armapartido-torneo.webp", "Torneo nocturno de pádel con tribuna llena", ""),
+        (P + "pizcaya-desafio.webp", "Pizcaya: desafío de 15 platos en 30 días", "object-position:center top"),
+        (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
+        (P + "cartelera-noche.webp", "Cartelera Uruguay: buscador de eventos con mapa", "object-position:left top"),
+        (RAVEKIT_STITCH, "RaveKit: pedidos de reseñas por WhatsApp y QR", ""),
+        (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
+    ], "")
+    guardar("trabajo.html", s)
+
+
+
+# ---------------------------------------------------------------- ESTUDIO
+def estudio():
+    s = leer("kinetic_studio_contact")
+    s = comun(s, "", "Estudio y contacto · Malackath",
+              "Malackath: estudio de diseño y producto digital en Uruguay y Brasil. Marca, diseño de producto, apps y web.")
+    # equipo de Stitch: personas inventadas -> se saca (PENDIENTE: ¿va Ber como fundador?)
+    s = cortar(s, "<!-- Section 2: Core Visionaries / Team -->", "<!-- Section 3: Services & Capabilities")
+    # presupuestos en dólares: decisión de negocio pendiente -> se saca el selector
+    s = cortar(s, "<!-- Selector: Budget Range -->", "<!-- Input Fields -->")
+    s = re.sub(r'<div class="flex flex-col gap-1 p-space-md bg-surface-container-lowest rounded-lg">\s*'
+               r'<span class="[^"]*">TOKYO</span>.*?</div>\s*', "", s, count=1, flags=re.S)
+    R = [
+        ("[ 001 // THE MANIFESTO ]", "[ 001 // MANIFIESTO ]"), ("DNA &amp; PHILOSOPHY", "ADN &amp; FILOSOFÍA"),
+        ("PARIS • NYC • TOKYO", "MONTEVIDEO • BRASIL"),
+        ("RADICAL SIMPLICITY.", "SIMPLICIDAD RADICAL."), ("UNCOMPROMISING CRAFT.", "OFICIO SIN ATAJOS."),
+        ("We reject the bloat of traditional agencies. We build high-velocity digital experiences where bleeding-edge engineering meets uncompromising art direction.",
+         "Sin vueltas de agencia tradicional. Diseñamos y construimos productos digitales donde la dirección de arte y la ingeniería trabajan juntas."),
+        ("Purpose Over Decoration", "Propósito antes que decoración"),
+        ("Every line of code and pixel coordinates serves commercial momentum and user obsession. We strip the noise until only essential gravity remains.",
+         "Cada pantalla y cada línea de código tienen que servirle a quien la usa y al negocio. Sacamos el ruido hasta que queda lo esencial."),
+        ("Speed As A Feature", "La velocidad también es diseño"),
+        ("60fps transitions, instant paint benchmarks, and lightning development velocity. Performance is not an afterthought; it is our primary aesthetic metric.",
+         "Pantallas que cargan rápido y prototipos que se prueban en días. El rendimiento no se deja para el final."),
+        ("Zero Handoff Friction", "Del diseño al código sin pérdidas"),
+        ("We write production code. Designers build shaders, engineers refine typographic kerning. No lost intent between Figma files and live deployment.",
+         "El mismo equipo diseña y programa, así lo que se aprueba en el diseño es lo que sale publicado."),
+        ("[ 003 // EXPERTISE ]", "[ 002 // CAPACIDADES ]"), ("Capabilities Matrix", "Qué hacemos"),
+        ("We deploy modular cross-disciplinary teams to eliminate translation loss between brand strategy, tactile UI, and cutting-edge interactive shaders.",
+         "Marca, diseño de producto y desarrollo bajo un mismo techo, para que nada se pierda entre una etapa y la otra."),
+        ("Average Delivery", "Base"), ("6 – 10 Weeks", "Montevideo, Uruguay"),
+        ("Brand Identity &amp; Strategy", "Marca &amp; Estrategia"),
+        ("We crystallize distinctive brand codes that dominate crowded modern markets. From positioning narratives and radical logomarks to modular kinetic identity systems.",
+         "Identidades que se distinguen: desde el posicionamiento y el logo hasta el sistema visual completo y su manual."),
+        (">Strategic Positioning<", ">Posicionamiento<"), (">Custom Typography<", ">Logo &amp; Símbolo<"),
+        (">Kinetic Brand Guidelines<", ">Manual de Marca<"), (">Verbal Tone<", ">Tono de Voz<"),
+        ("Digital Product Design (UI/UX)", "Diseño de Producto (UI/UX)"),
+        ("High-fidelity digital ecosystems built around human intent and visceral tactile response. We sculpt enterprise SaaS interfaces, consumer mobile applications, and bespoke web platforms.",
+         "Interfaces pensadas para el uso real: apps móviles, plataformas web y sistemas de gestión para negocios."),
+        (">Product Architecture<", ">Arquitectura de Producto<"), (">Micro-Interactions<", ">Microinteracciones<"),
+        (">Clickable Prototypes<", ">Prototipos Navegables<"), (">Figma Multi-Token Repos<", ">Sistemas de Diseño<"),
+        ("3D &amp; Creative Dev (WebGL / Three.js)", "Apps &amp; Plataformas Web"),
+        ("Breathtaking spatial web experiences engineered directly in the browser canvas. Custom GLSL fragment shaders, interactive particle clusters, and photorealistic real-time assets.",
+         "Desarrollo de apps para iOS y Android, plataformas web, reservas y paneles de gestión, listos para salir a producción."),
+        (">Three.js / React Three Fiber<", ">iOS &amp; Android<"), (">Custom GLSL Shaders<", ">Web Apps<"),
+        (">Houdini Particle Pipes<", ">Reservas &amp; Pagos<"), (">WebGPU Acceleration<", ">Paneles de Gestión<"),
+        ("Design Systems &amp; Front-End Eng", "Lanzamiento &amp; Operación"),
+        ("Production-grade code architecture built to survive intense scaling. We deliver fully documented atomic components, headless integrations, and sub-second rendering.",
+         "Publicamos y acompañamos: dominio, hosting, correo, tiendas de apps y medición para seguir mejorando."),
+        (">Next.js / TypeScript<", ">Firebase &amp; Google Cloud<"), (">Tailwind &amp; CSS Modules<", ">Dominios &amp; Correo<"),
+        (">Storybook Architecture<", ">App Store &amp; Google Play<"), (">Automated CI/CD Tests<", ">Medición<"),
+        ("[ 004 // ENGAGEMENT ]", "[ 003 // CONTACTO ]"), ("Initiate A Sprint", "Iniciemos un proyecto"),
+        ("Have a game-changing ambition or an urgent venture to scale? Tell us your parameters and we will outline a production roadmap within 48 hours.",
+         "¿Tenés una idea o un negocio que necesita su producto digital? Contanos qué querés lograr y te respondemos con un primer camino."),
+        ("Direct Priority Inbox", "Escribinos"),
+        ('href="mailto:hello@kinetic.studio">\n              hello@kinetic.studio', f'href="mailto:{MAIL}">\n              {MAIL}'),
+        ("Need a rapid 20-min intro?", "¿Preferís WhatsApp?"), ("Direct with a partner", "Respuesta directa"),
+        ("\n              Book Call\n", "\n              Escribir\n"),
+        ("Physical Hubs", "Dónde estamos"),
+        (">PARIS<", ">MONTEVIDEO<"), (">Rue de Turenne<", ">Estudio<"), (">Le Marais, 75003<", ">Uruguay<"),
+        (">NEW YORK<", ">BRASIL<"), (">Crosby Street<", ">Proyectos gastronómicos<"), (">SoHo, NY 10012<", ">Consultoría<"),
+        ("1. What are we engineering?", "1. ¿Qué necesitás?"),
+        ("\n                Brand Identity\n", "\n                Marca\n"), ("\n                Web Design\n", "\n                Sitio Web\n"),
+        ("\n                Mobile App\n", "\n                App Móvil\n"), ("\n                Design System\n", "\n                Plataforma / Sistema\n"),
+        ("\n                Full Retainer\n", "\n                Acompañamiento Mensual\n"),
+        (">Your Name *<", ">Tu nombre *<"), (">Work Email *<", ">Tu email *<"),
+        (">Project Synopsis &amp; Objectives *<", ">Contanos el proyecto *<"),
+        ('placeholder="Alex Morgan"', 'placeholder="Nombre y apellido"'), ('placeholder="alex@entity.xyz"', 'placeholder="nombre@empresa.com"'),
+        ('placeholder="Tell us about the challenge, target timeline, and the desired outcome..."',
+         'placeholder="Qué querés lograr, para cuándo y cualquier referencia que tengas..."'),
+        ("Strict NDA preserved on all incoming drafts.", "Tus datos solo se usan para responderte."),
+        ("<span>Send Project Proposal</span>", "<span>Enviar Proyecto</span>"),
+        ("Inquiry received. A Kinetic partner will review and respond shortly.", "Listo: se abrió tu correo con el mensaje armado para enviarlo."),
+        ("`<span>Transmitting Payload...</span>`", "`<span>Abriendo tu correo...</span>`"),
+    ]
+    for viejo, nuevo in R:
+        s = rep(s, viejo, nuevo)
+    s = link(s, "\n              Escribir\n", WHATSAPP)
+    # anclas para el menú
+    s = rep(s, '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl relative">\n<div class="grid grid-cols-1 lg:grid-cols-12',
+            '<section id="capacidades" class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl relative">\n<div class="grid grid-cols-1 lg:grid-cols-12')
+    s = rep(s, 'id="inquiry">', 'id="inquiry"><a id="contacto"></a>')
+    # el formulario no tiene servidor: arma un mail con los datos (sin backend, pedido de Ber)
+    s = rep(s, "      btn.classList.add('hidden');\n      banner.classList.remove('hidden');",
+            "      const tipo = (document.querySelector('.chip-item.active') || {}).textContent || '';\n"
+            "      const nombre = document.getElementById('contact-name').value;\n"
+            "      const email = document.getElementById('contact-email').value;\n"
+            "      const texto = document.getElementById('contact-brief').value;\n"
+            f"      location.href = 'mailto:{MAIL}?subject=' + encodeURIComponent('Proyecto: ' + tipo.trim() + ' / ' + nombre) +\n"
+            "        '&body=' + encodeURIComponent(texto + '\\n\\n' + nombre + ' (' + email + ')');\n"
+            "      btn.classList.add('hidden');\n      banner.classList.remove('hidden');")
+    guardar("estudio.html", s)
+
+
+if __name__ == "__main__":
+    home()
+    arma_partido()
+    pizcaya()
+    trabajo()
+    estudio()

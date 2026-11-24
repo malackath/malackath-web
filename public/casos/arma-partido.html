@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Armá Partido · Caso de estudio · Malackath</title><meta name="description" content="App para armar partidos de pádel según categoría y horarios, reuniendo cuatro jugadores y reservando cancha en el club."/><link rel="icon" href="../img/marca/favicon.svg" type="image/svg+xml"/><link rel="alternate icon" href="../img/marca/favicon.ico"/><link rel="apple-touch-icon" href="../img/marca/icono-app-blanco-180.png"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Syne:wght@400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } body > main, body > footer { overflow-x: clip; } @media (max-width: 767px) { .text-display-xl-mobile { font-size: clamp(1.6rem, 7.9vw, 2.75rem) !important; line-height: 1.1 !important; } .text-display-lg-mobile { font-size: clamp(1.6rem, 7.6vw, 2.25rem) !important; } } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><link rel="stylesheet" href="../css/estilos.css"/></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/75 backdrop-blur-2xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-20 w-full px-margin-mobile md:px-margin-tablet lg:px-margin flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="home" href="../index.html"><img alt="Malackath" class="h-8 w-auto object-contain" src="../img/marca/malackath-horizontal-color-negativo.svg"/></a><div class="hidden lg:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-high/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Available for Q3/Q4 Projects</span></div></div><nav class="hidden md:flex items-center gap-space-md" data-active-classes="bg-surface-container-high text-primary font-bold rounded-full px-space-md py-space-xs"><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="portfolio" href="../trabajo.html">Work</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="services" href="../estudio.html#capacidades">Services</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="studio" href="../estudio.html">Studio</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="case-studies" href="../casos/arma-partido.html">Case Studies</a></nav><div class="flex items-center gap-space-md"><a class="inline-flex items-center justify-center px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase hover:bg-primary-fixed-dim hover:text-on-primary-fixed transition-all duration-300" data-path="contact" href="../estudio.html#contacto">Start a Project</a><a aria-label="Contacto" href="../estudio.html#contacto" class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></a></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- SECTION: CASE META & BREADCRUMB -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-space-xl pb-space-lg">
+<div class="flex flex-col gap-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<a class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="../trabajo.html">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>
+</a>
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high">
+<span class="h-2 w-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase text-primary tracking-wider">2024 — EN PRODUCCIÓN</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl pt-space-md">
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary-container">SportTech · Padel Ecosystem</span>
+<h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary uppercase tracking-tighter">
+            ARMÁ PARTIDO
+          </h1>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant max-w-2xl">
+            Proyecto Propio · Montevideo, Uruguay · iOS &amp; Android Native Ecosystem
+          </p>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end gap-space-md">
+<div class="flex flex-col sm:flex-row lg:flex-col gap-space-sm">
+<a class="inline-flex items-center justify-between px-space-lg py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase transition-all duration-300 hover:bg-primary-fixed-dim hover:scale-[1.01] shadow-xl" href="https://armapartido.com" rel="noopener noreferrer" target="_blank" target="_blank" rel="noopener">
+<span>Visitar armapartido.com</span>
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</a>
+<a class="inline-flex items-center justify-between px-space-lg py-space-md rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md uppercase transition-all duration-300 hover:bg-surface-container-highest hover:text-primary" href="https://demo.armapartido.com/" rel="noopener noreferrer" target="_blank">
+<span>Probar Demo Navegable</span>
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Services & Meta Strip -->
+<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-space-md p-space-lg rounded-xl bg-surface-container-low mt-space-md shadow-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Área / Disciplina</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Product Strategy &amp; Architecture</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Alcance UI/UX</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Mobile Design System (Dual OS)</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Tecnología</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Real-Time WebSockets &amp; Geo-Radar</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Integraciones</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">SaaS de Clubes &amp; Split Payment</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: HERO VISUAL & EDITORIAL HEADLINE -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl">
+<div class="flex flex-col gap-space-2xl">
+<div class="max-w-4xl flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">La Visión</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tight">
+          EL MATCHMAKING DEFINITIVO PARA EL PÁDEL URUGUAYO
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Cómo transformamos la frustración cotidiana de WhatsApp en una experiencia fluida de 3 clics: categorización técnica automatizada por nivel ELO, confirmaciones en tiempo real y reserva de cancha 100% sincronizada con los turnos de los clubes.
+        </p>
+</div>
+<!-- Hero Multi-Screen Composition Mockup -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest p-space-lg md:p-space-2xl overflow-hidden shadow-2xl">
+<!-- Subtle Ambient Backdrops -->
+<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/20 blur-[120px] pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-space-lg items-center">
+<!-- Mockup Phone 1: Feed de partidos abiertos -->
+<div class="w-full rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-md shadow-xl transition-transform hover:-translate-y-1 duration-300">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">09:41 · FEED EN VIVO</span>
+<div class="flex items-center gap-1">
+<span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">RADAR ACTIVO</span>
+</div>
+</div>
+<div class="h-44 w-full rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="High quality dark cinematic photography of a professional indoor padel court with bright overhead LED light, deep graphite blue tones, intense sporting atmosphere, electric green accent balls, ultra sharp focus" style="background-image: url('../img/proyectos/armapartido-cancha.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent"></div>
+<div class="absolute bottom-space-sm left-space-sm flex items-center gap-space-xs">
+<span class="px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary-fixed font-label-sm text-label-sm uppercase font-bold">4ta Categoría</span>
+<span class="px-space-sm py-space-xs rounded-full bg-surface/80 text-on-surface font-label-sm text-label-sm">Club Carrasco Pádel</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-headline-sm text-headline-sm text-primary">Hoy · 20:30 hs</span>
+<span class="font-label-md text-label-md text-primary-container">Falta 1 Jugador</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cancha 2 Cristal Panorámica · Turno 90 min · Split $350 c/u</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center font-label-sm text-primary">MS</div>
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center font-label-sm text-primary">FT</div>
+<div class="w-7 h-7 rounded-full bg-surface-bright flex items-center justify-center font-label-sm text-primary">LP</div>
+<div class="w-7 h-7 rounded-full bg-primary-container/20 flex items-center justify-center font-label-sm text-primary-container font-bold">?</div>
+</div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">3 / 4 CONFIRMADOS</span>
+</div>
+</div>
+<!-- Mockup Phone 2: Interactive Match Lobby Card (Elevated & Accentuated) -->
+<div class="w-full rounded-xl bg-surface-container p-space-lg flex flex-col gap-space-md shadow-2xl lg:-mt-6 lg:-mb-6 relative">
+<div class="absolute top-3 right-4">
+<span class="px-space-sm py-space-xs rounded-full bg-primary-container/20 text-primary-container font-label-sm text-label-sm uppercase font-bold">MATCH CENTER</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">PARTIDO #4829 · PRADO CLUB</span>
+<h3 class="font-headline-md text-headline-md text-primary">Drive vs Revés Balanceado</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Nivel Promedio: 4ta Cat · ELO 1,480</span>
+</div>
+<!-- Court 4 Slot Visualization -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest grid grid-cols-2 gap-space-md relative">
+<div class="p-space-sm rounded bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-primary-container">DRIVE 1</span>
+<span class="font-body-sm text-body-sm text-primary font-bold">Agustín R.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4ta Cat (ELO 1490)</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-primary-container">REVÉS 1</span>
+<span class="font-body-sm text-body-sm text-primary font-bold">Matías V.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4ta Cat (ELO 1510)</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-primary-container">DRIVE 2</span>
+<span class="font-body-sm text-body-sm text-primary font-bold">Joaquín B.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4ta Cat (ELO 1450)</span>
+</div>
+<div class="p-space-sm rounded bg-primary-container/10 flex flex-col gap-1 justify-center items-center text-center">
+<span class="font-label-sm text-label-sm text-primary-container font-bold">SLOT LIBRE</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Revés Vacante</span>
+<span class="font-label-sm text-label-sm text-primary-container">Tu Posición</span>
+</div>
+</div>
+<!-- Mini Skill Radar Sparkline SVG -->
+<div class="flex items-center justify-between px-space-sm py-space-xs rounded bg-surface-container-low">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Compatibilidad de mesa</span>
+<div class="flex items-center gap-space-xs">
+<svg class="w-16 h-6 text-primary-container" fill="none" viewbox="0 0 64 24">
+<path d="M2 18 L16 14 L30 19 L44 6 L62 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="font-label-md text-label-md text-primary font-bold">96%</span>
+</div>
+</div>
+<button class="w-full py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase font-bold tracking-wider hover:bg-primary-fixed-dim transition-all duration-300">
+              UNIRME AL PARTIDO ⚡
+            </button>
+</div>
+<!-- Mockup Phone 3: Booking Confirmation & Split Payment -->
+<div class="w-full rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-md shadow-xl transition-transform hover:-translate-y-1 duration-300">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">CHECK-IN DIGITAL</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary-container font-label-sm text-label-sm">TURNO RESERVADO</span>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-lowest flex flex-col items-center gap-space-sm text-center">
+<!-- Inline QR Placeholder Mockup -->
+<div class="w-32 h-32 rounded-lg bg-primary p-2 flex flex-col justify-between items-center">
+<div class="w-full h-full grid grid-cols-5 grid-rows-5 gap-1 bg-surface-container-lowest p-1 rounded">
+<div class="bg-primary-container col-span-2 row-span-2 rounded-xs"></div>
+<div class="bg-primary col-span-1 row-span-1"></div>
+<div class="bg-primary-container col-span-2 row-span-2 rounded-xs"></div>
+<div class="bg-primary col-span-1 row-span-1"></div>
+<div class="bg-primary-container col-span-1 row-span-1"></div>
+<div class="bg-primary-container col-span-2 row-span-2 rounded-xs"></div>
+<div class="bg-primary col-span-1 row-span-1"></div>
+<div class="bg-primary col-span-2 row-span-2 rounded-xs"></div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Acceso Cancha 1 · PIN: 8092</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Costo Total Cancha</span>
+<span class="text-on-surface font-mono">$1.400 UYU</span>
+</div>
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Split Automático (1/4)</span>
+<span class="text-primary-container font-mono font-bold">$350 UYU / jugador</span>
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm pt-space-xs">
+<span class="text-on-surface-variant uppercase">Estado de pago</span>
+<span class="text-primary">4 de 4 Aprobados</span>
+</div>
+</div>
+<div class="p-space-sm rounded bg-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sincronizado con</span>
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold">Montevideo Pádel Hub</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: THE CHALLENGE (EL DESAFÍO) -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<div class="lg:col-span-4 flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Diagnóstico &amp; Fricción</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
+          EL CAOS DE LOS GRUPOS DE WHATSAPP Y LAS CANCHAS DESIERTAS
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          El pádel experimentó un crecimiento exponencial del 180% en Uruguay en dos años. Sin embargo, la infraestructura operativa dependía de dinámicas informales que destruían la experiencia de juego.
+        </p>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Friction Point 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">group_off</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Niveles Incompatibles</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Un jugador de 3ra categoría emparejado con uno de 6ta genera partidos unilaterales y aburridos. Los grupos de chat no tenían criterio objetivo de nivelación ni autoevaluación verificada.
+            </p>
+</div>
+</div>
+<!-- Friction Point 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">cancel_schedule_send</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Cancelaciones de Último Momento</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              El 34% de los partidos programados se cancelaban 2 horas antes porque un jugador avisaba que no llegaba, obligando al organizador a pagar el turno completo o perder la cancha.
+            </p>
+</div>
+</div>
+<!-- Friction Point 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Cobranzas Manuales</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Un solo usuario asumía la reserva y luego debía perseguir transferencias bancarias de $300 a $450 UYU con comprobantes por mensaje privado, generando tensiones y demoras.
+            </p>
+</div>
+</div>
+<!-- Friction Point 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">stadium</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Capacidad Ociosa en Clubes</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Los clubes mantenían horas pico con turnos vacíos simplemente porque no existía un canal directo para alertar a jugadores listos en un radio cercano de 5 kilómetros.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: SOLUTION & ARCHITECTURE -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-2xl bg-surface-container-lowest">
+<div class="flex flex-col gap-space-2xl">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Arquitectura de Producto</span>
+<h3 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase">
+          TRES PILARES: ALGORITMO, LOBBY EN TIEMPO REAL &amp; SYNC CON CLUBES
+        </h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Pilar 1 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILAR 01</span>
+<span class="material-symbols-outlined text-primary-container">analytics</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Algoritmo de Calibración ELO Dinámico</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Categorías de 1ª a 7ª con puntuación matemática progresiva. Al finalizar el encuentro, los 4 participantes cargan y validan el marcador. El sistema recalibra la reputación deportiva y el nivel competitivo del usuario.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Métricas Evaluadas</span>
+<span class="font-mono text-label-md text-primary">Historial de Sets · Consistencia de asistencia · Rol táctico (Drive / Revés)</span>
+</div>
+</div>
+<!-- Pilar 2 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILAR 02</span>
+<span class="material-symbols-outlined text-primary-container">radar</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Radar Geoespacial &amp; Push Ultra-segmentado</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Cuando un partido queda a falta de 1 jugador a menos de 90 minutos de empezar, la plataforma activa un radar de micro-localización. Emite notificaciones push prioritarias solo a jugadores coincidentes en nivel dentro de un radio de 5km.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Velocidad de Llenado</span>
+<span class="font-mono text-label-md text-primary-container font-bold">Tiempo récord: 58 segundos en Carrasco Pádel</span>
+</div>
+</div>
+<!-- Pilar 3 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILAR 03</span>
+<span class="material-symbols-outlined text-primary-container">sync_saved_locally</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Sincronización Bidireccional de Reservas</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Integración nativa vía API con los sistemas de gestión de canchas de los clubes uruguayos. El turno se reserva automáticamente en el club sin intermediación telefónica y cada jugador abona únicamente su 25% mediante pasarela integrada.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Impacto Administrativo</span>
+<span class="font-mono text-label-md text-primary">Cero no-shows · Facturación automatizada para el club</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: UI DEEP DIVE / SHOWCASE INTERACTIVO -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl">
+<div class="flex flex-col gap-space-2xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">UI Systems &amp; Visual Design</span>
+<h3 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase">
+            PANTALLAS EN PRODUCCIÓN
+          </h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Diseñado bajo condiciones reales: pantalla táctil en movimiento, alto contraste para visibilidad bajo reflectores nocturnos de cancha y tipografía de lectura técnica rápida.
+        </p>
+</div>
+<!-- 4 Screen Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Screen 1: Onboarding & ELO -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Dark aesthetic mobile app interface for player calibration, dark graphite UI with neon lime progress indicators, detailed technical sports telemetry graph and rating sliders" style="background-image: url('../img/proyectos/armapartido-categoria.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 01</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Onboarding &amp; Ranking ELO</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Evaluador inicial de 5 factores: años jugando, frecuencia semanal, golpe dominante, posición táctica y torneos federados previos.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">01 // PRECISIÓN DE PERFIL</span>
+</div>
+<!-- Screen 2: Radar de Partidos -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Sporttech dark mobile application screen showing a sleek map and list of active padel matches in Montevideo, dark mode aesthetic with fluorescent green radar pins" style="background-image: url('../img/proyectos/armapartido-horarios.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 02</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Radar &amp; Filtros de Partidos</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Exploración por distancia, tipo de pista (blindex panorámica o muro clásico), horario nocturno y compatibilidad con el ELO del usuario.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">02 // EXPLORACIÓN GEO</span>
+</div>
+<!-- Screen 3: Match Lobby & Chat -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Mobile UI layout of a live sports match lobby, dark obsidian interface, team layout showing drive and backhand slots, live chat bubbles and neon green action buttons" style="background-image: url('../img/proyectos/armapartido-avisos.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 03</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Lobby &amp; Posición en Cancha</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Selección explícita de Drive o Revés para balancear la pareja, chat de mesa sincronizado y cuenta regresiva de confirmación de asistencia.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">03 // LOBBY SINCRONIZADO</span>
+</div>
+<!-- Screen 4: Split & Post-Match -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Clean mobile app screen showing digital wallet split payment and post match set score input, dark grey glassmorphic cards with crisp white and lime typography" style="background-image: url('../img/proyectos/armapartido-perfil.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 04</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Wallet &amp; Registro de Resultados</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Carga del score (sets y super-tiebreak), verificación recíproca entre parejas y split payment con transferencias instantáneas.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">04 // SPLIT &amp; RANKING</span>
+</div>
+</div>
+<!-- Design System Tokens Bar -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Electric Lime (#D4FF00)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-surface-container-lowest"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Obsidian Core (#0E0E10)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-secondary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Court Violet (#571BC1)</span>
+</div>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">
+          Tipografías: Syne (Titulares Cinematográficos) &amp; Space Mono (Data / ELO)
+        </div>
+</div>
+</div>
+</section>
+<!-- SECTION: USER & CLUB TESTIMONIALS -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-2xl bg-surface-container-lowest">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl items-center">
+<div class="p-space-xl rounded-xl bg-surface-container flex flex-col gap-space-lg shadow-xl relative overflow-hidden">
+<span class="material-symbols-outlined text-[48px] text-primary-container opacity-30 absolute top-4 right-4">format_quote</span><span class="self-start px-space-sm py-space-xs rounded-full bg-surface-container-highest font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Sample</span>
+<p class="font-headline-sm text-headline-sm text-primary leading-relaxed">
+          "Antes de Armá Partido teníamos dos personas respondiendo WhatsApp todo el día para armar partidos y confirmar canchas. Hoy los turnos se completan solos, el dinero ingresa automáticamente y la tasa de canchas vacías bajó a menos del 3%."
+        </p>
+<div class="flex items-center gap-space-md pt-space-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Portrait photo of a young professional sports club manager in athletic jacket smiling in front of an indoor sports center, high resolution" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCH302GpChjLlmRrUHL9EYGvIcep0kqihipFVM41fHqtU8JOv8OymmGGpIGnCdPnBE-ncPsDmQW1OR0B6DMWss8PY3AHyAZ-HaNJfCBtOAhUy4flvztrDVSOhbq-VvdRZsHg11sx53lepL3uDlZL4DGnrZ3IMteYNtH1txityXvc1PcsU49RuoccSXx_1LoRRVPCHsmcyRx6pchm3a3lz8zfP22DKqaWTDuy69pW8xP')"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-primary font-bold">Gonzalo Méndez</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Director Deportivo · Carrasco Pádel Club</span>
+</div>
+</div>
+</div>
+<div class="p-space-xl rounded-xl bg-surface-container flex flex-col gap-space-lg shadow-xl relative overflow-hidden">
+<span class="material-symbols-outlined text-[48px] text-primary-container opacity-30 absolute top-4 right-4">format_quote</span><span class="self-start px-space-sm py-space-xs rounded-full bg-surface-container-highest font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Sample</span>
+<p class="font-headline-sm text-headline-sm text-primary leading-relaxed">
+          "Lo que más valoro es que se terminó jugar partidos desnivelados donde uno de los cuatro no toca una bola. El sistema ELO te pone con gente de tu nivel real. En 5 minutos encontrás partido para la noche sin mandar 40 audios."
+        </p>
+<div class="flex items-center gap-space-md pt-space-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="Portrait photo of an active amateur padel player holding a padel racket, modern dark lighting studio shot" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8fiPgzCdVBw5-8_KOXe1YzfzxUT3LPrNNXId1rLVa8U4B6H6baClYKlWjrNBR6Eqz0EzQhcEymPv7H27Ph2WBy0jjad0d6mJGZ6j_L9J9SOM31S_EA2ayOBDsoDgbf_ppcD0yledKukd6Ju4OJiKHquB5IMrYZT8qOdtZH40bZqjn506a1l1g5UFA7rc9WzaZvtCgxsf1Uflua_Qd8FPtt7bPmMgLkf02TwOXjjHq')"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-primary font-bold">Federico Arrosa</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Jugador 4ta Categoría · 42 partidos en la app</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: NEXT CASE STUDY & COLLABORATION CTA -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl">
+<div class="flex flex-col gap-space-3xl">
+<!-- Next Project Strip -->
+<a class="group block w-full p-space-xl rounded-xl bg-surface-container-low transition-all duration-300 hover:bg-surface-container shadow-lg" href="pizcaya.html">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">SIGUIENTE CASO DE ESTUDIO // 02</span>
+<h4 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase group-hover:text-primary-container transition-colors">
+              PIZCAYA: APP INTERACTIVA DE APRENDIZAJE CULINARIO
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              EdTech · UX Research · Gamificación interactiva en cocina paso a paso
+            </p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-primary-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-fixed text-[24px]">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Direct Agency Contact Box -->
+<div class="w-full p-space-2xl rounded-xl bg-surface-container-lowest flex flex-col lg:flex-row items-center justify-between gap-space-xl shadow-2xl relative overflow-hidden">
+<div class="absolute -top-16 -right-16 w-80 h-80 rounded-full bg-primary-container/10 blur-[80px] pointer-events-none"></div>
+<div class="flex flex-col gap-space-sm max-w-2xl relative z-10">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Iniciemos Conversación</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
+            ¿TENÉS UNA IDEA DE PRODUCTO DIGITAL PARA LLEVAR A PRODUCCIÓN?
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Desde la concepción del producto y UX architecture hasta el desarrollo de interfaces nativas de alto rendimiento. Construimos software con impacto comercial medible.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md relative z-10">
+<a class="inline-flex items-center justify-center px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase font-bold tracking-wider hover:bg-primary-fixed-dim transition-all duration-300 shadow-xl" href="../estudio.html#contacto">
+            Iniciar Proyecto
+          </a>
+<a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-full bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container-high hover:text-primary transition-all duration-300" href="https://wa.me/59894202607" target="_blank" rel="noopener">
+            Agendar Llamada
+          </a>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest pt-space-3xl pb-space-2xl"><div class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin flex flex-col gap-space-2xl"><div class="flex flex-col gap-space-md"><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Initiate Collaboration</span><h2 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary uppercase select-none tracking-tighter">LET'S BUILD THE FUTURE TOGETHER</h2></div><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-xl pt-space-xl"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Global Timezones</span><div class="flex flex-wrap items-center gap-space-md font-label-md text-label-md text-on-surface"><span class="flex items-center gap-space-xs"><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>MONTEVIDEO [UYT]</span><span class="text-on-surface-variant">/</span><span class="flex items-center gap-space-xs"><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>BRASIL [BRT]</span></div></div><div class="flex flex-wrap items-center gap-space-lg font-label-md text-label-md uppercase tracking-wider"><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Awwwards</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Dribbble</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter / X</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">GitHub</a></div></div><div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pt-space-lg"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">© 2026 MALACKATH. TODOS LOS DERECHOS RESERVADOS.</span><div class="flex items-center gap-space-md font-label-sm text-label-sm uppercase text-on-surface-variant"><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><span>/</span><a class="hover:text-primary transition-colors" href="#">Terms of Service</a><span>/</span><a class="hover:text-primary transition-colors" href="#">Impressum</a></div></div></div></footer>
+</body></html>

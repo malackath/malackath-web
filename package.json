@@ -1,0 +1,11 @@
+{
+  "name": "malackath-web",
+  "private": true,
+  "description": "Sitio de Malackath armado desde el diseño de Stitch",
+  "scripts": {
+    "build": "python3 build.py stitch public && npm run css",
+    "css": "tailwindcss -c tailwind.config.js -i estilos.css -o public/css/estilos.css --minify",
+    "dev": "npx serve public"
+  },
+  "devDependencies": { "tailwindcss": "3.4.17" }
+}
