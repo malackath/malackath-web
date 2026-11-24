@@ -21,7 +21,12 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - `npm install` y después `npm run build` (genera las páginas y `public/css/estilos.css`).
 - Ver localmente: `npm run dev`.
 
-Páginas: `index.html` (home), `trabajo.html`, `estudio.html` (estudio + contacto), `casos/arma-partido.html`, `casos/pizcaya.html`.
+Páginas: `index.html` (home), `trabajo.html`, `estudio.html` (estudio + contacto), `casos/arma-partido.html`, `casos/pizcaya.html`. Cada una en español (raíz), inglés (`/en/`) y portugués (`/pt/`).
+
+## Idiomas
+- El español es la fuente: sale de `build.py`. `i18n.py generar` traduce con `i18n/en.json` y `i18n/pt.json` (clave = texto en español) y agrega el selector ES / EN / PT al menú.
+- Si cambia un texto en español: `python3 i18n.py extraer` agrega las claves nuevas vacías a los .json; completarlas y `npm run build` (falla si falta alguna).
+- Las traducciones al portugués de Brasil y al inglés están pendientes de revisión de Ber.
 
 ## Contacto
 Sin servidor: el formulario arma un mail (mailto) y el botón de WhatsApp abre wa.me. Las constantes `MAIL` y `WHATSAPP` están arriba en `build.py`.

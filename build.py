@@ -166,6 +166,16 @@ def comun(s, pre, titulo, descripcion, activo=None):
 
 
 def guardar(nombre, s):
+    # celular: el botón del menú no entra junto al selector de idioma; queda el ícono de contacto
+    i, j = s.find("<header"), s.find("</header>")
+    if i >= 0:
+        cab = s[i:j]
+        cab = re.sub(r'(<a class=")inline-flex( items-center justify-center[^"]*" data-path="contact")', r'\1hidden md:inline-flex\2', cab, count=1)
+        cab = cab.replace('class="w-8 h-8 rounded-full bg-primary flex', 'class="w-8 h-8 shrink-0 rounded-full bg-primary flex')
+        s = s[:i] + cab + s[j:]
+    s = textos(s, casos_textos.COMUN, estricto=False)
+    s = re.sub(r'data-alt="SaaS product design and brand identity for RaveKit[^"]*"',
+               'data-alt="RaveKit: pedidos de reseñas por WhatsApp y QR"', s)
     p = OUT / nombre
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(s, encoding="utf-8")
@@ -218,6 +228,8 @@ def arma_partido():
     # demo navegable: no existe
     s = re.sub(r'<a [^>]*href="https://demo\.armapartido\.com/"[^>]*>.*?</a>', "", s, count=1, flags=re.S)
     s = textos(s, casos_textos.ARMA_PARTIDO)
+    alts = iter(casos_textos.ALT_ARMA_PARTIDO)
+    s = re.sub(r'data-alt="[^"]*"', lambda m: f'data-alt="{next(alts)}"', s, count=len(casos_textos.ALT_ARMA_PARTIDO))
     guardar("casos/arma-partido.html", s)
 
 

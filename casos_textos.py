@@ -110,8 +110,8 @@ PIZCAYA = {
     "Next.js + Web Audio API": "HTML, CSS y JavaScript + Firebase",
     "Real-time Speech Engine & Timers": "Voz del navegador · MediaPipe · IA",
     "Idiomas & Acentos": "Idioma",
-    "ES & EN Native": "Español",
-    "Rioplatense, Ibérico & General US": "Rioplatense",
+    "ES & EN Native": "Español e inglés",
+    "Rioplatense, Ibérico & General US": "Según el idioma del navegador",
     "APRENDER A COCINAR SIN MANCHAR LA PANTALLA: CULINARIA INTERACTIVA PASO A PASO":
         "APRENDER A COCINAR SIN MANCHAR LA PANTALLA: 15 PLATOS DE CASA EN 30 DÍAS",
     "Pizcaya nació para eliminar la frustración de pausar videos con las manos llenas de masa o aceite. Diseñamos un sistema de micro-lecciones audiovisuales con control por voz, sincronización de tiempos en tiempo real y una arquitectura pedagógica que convierte recetas complejas en secuencias modulares de 3 minutos.":
@@ -219,3 +219,26 @@ PIZCAYA = {
     "Llevemos tu visión a producción con diseño de precisión y código de escala.":
         "Lo diseñamos y lo construimos con vos, de la idea a la app funcionando.",
 }
+
+
+# Menú, pie y rótulos comunes de Stitch (venían en inglés) -> español
+COMUN = {
+    "Available for Q3/Q4 Projects": "Disponibles para proyectos nuevos",
+    "Work": "Trabajo", "Services": "Servicios", "Studio": "Estudio", "Case Studies": "Casos",
+    "Start a Project": "Iniciar proyecto",
+    "Initiate Collaboration": "Empecemos",
+    "LET'S BUILD THE FUTURE TOGETHER": "CONSTRUYAMOS EL FUTURO JUNTOS",
+    "Global Timezones": "Husos horarios",
+    "Privacy Policy": "Privacidad", "Terms of Service": "Términos", "Impressum": "Aviso legal",
+    # Armá Partido es un prototipo (repo armapartido, docs/revision-prototipo.md)
+    "EN PRODUCCIÓN": "EN DESARROLLO", "En Producción": "En Desarrollo",
+}
+
+# data-alt de los fondos del caso Armá Partido (Stitch traía sus prompts en inglés)
+ALT_ARMA_PARTIDO = [
+    "Cancha de pádel techada",
+    "Armá Partido: elegí tu categoría",
+    "Armá Partido: tus horarios de la semana",
+    "Armá Partido: avisos de partidos",
+    "Armá Partido: perfil del jugador",
+]

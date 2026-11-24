@@ -12,3 +12,5 @@
 10. **Privacy Policy / Terms / Impressum**: sin páginas.
 11. **Idioma del menú y del pie**: quedó en inglés como en Stitch (Work, Services, Studio, "Let's build the future together"). ¿Se traduce?
 12. ~~**Demo navegable**~~: se sacó el botón de Armá Partido; "Probar Pizcaya" abre pizcaya.com.
+13. **Traducciones** (inglés y portugués de Brasil): hechas por Claude, no son literales. Revisar sobre todo el portugués (`i18n/pt.json`). En portugués, Armá Partido figura como "Protótipo".
+14. **Armá Partido "En desarrollo"**: el home y Trabajo decían "En producción"; el repo dice que es un prototipo (Mercado Pago simulado). Se cambió a "En desarrollo". Confirmar.
