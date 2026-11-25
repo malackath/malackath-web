@@ -9,6 +9,7 @@ Regla: el diseño de Stitch se respeta tal cual. Solo se cambia:
 
 Uso: python3 build.py stitch public   (después: npm run css)
 """
+import html
 import re
 import casos_textos
 import portfolio_web
@@ -531,7 +532,7 @@ def arma_partido():
     P = "../img/proyectos/"
     s = fondos(s, [P + "armapartido-cancha.webp", P + "armapartido-categoria.webp", P + "armapartido-horarios.webp",
                    P + "armapartido-avisos.webp", P + "armapartido-perfil.webp", None, None])
-    s = link(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", "../trabajo.html")
+    s = link(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", "../casos-de-estudio.html")
     s = link(s, "<span>Visitar armapartido.com</span>", "https://armapartido.com")
     s = link(s, "SIGUIENTE CASO DE ESTUDIO // 02", "pizcaya.html")
     s = link(s, "Iniciar Proyecto\n", "../estudio.html#contacto")
@@ -544,6 +545,7 @@ def arma_partido():
     alts = iter(casos_textos.ALT_ARMA_PARTIDO)
     s = re.sub(r'data-alt="[^"]*"', lambda m: f'data-alt="{next(alts)}"', s, count=len(casos_textos.ALT_ARMA_PARTIDO))
     guardar("casos/arma-partido.html", s)
+    return s
 
 
 # --------------------------------------------------------------- PIZCAYA
@@ -564,9 +566,9 @@ def pizcaya():
         (None, "", ""),  # retrato de testimonio (Sample)
         (None, "", ""),  # retrato de testimonio (Sample)
     ], P and "")
-    s = link(s, "VOLVER AL PORTFOLIO // CASO DE ESTUDIO 02", "../trabajo.html")
+    s = link(s, "VOLVER AL PORTFOLIO // CASO DE ESTUDIO 02", "../casos-de-estudio.html")
     s = link(s, "VISITAR PIZCAYA.COM", "https://pizcaya.com")
-    s = link(s, "SIGUIENTE CASO DE ESTUDIO // 03", "../trabajo.html")
+    s = link(s, "SIGUIENTE CASO DE ESTUDIO // 03", "palquear.html")
     s = cortar(s, "<!-- SECTION 7: User & Chef Testimonials -->", "<!-- SECTION 8: Next Case Study")
     s = link(s, "PROBAR MODO COCINA EN VIVO", "https://pizcaya.com")
     s = re.sub(r"Procesamiento de lenguaje natural.*?campanas\.",
@@ -581,10 +583,114 @@ def pizcaya():
     # número no confirmado
     s = rep(s, "Validado con más de 120 pruebas de usabilidad en cocina real", "Gratis, sin publicidad y sin crear cuenta")
     s = link(s, "Agendar Llamada", WHATSAPP)
-    s = link(s, "Ver Todos los Casos", "../trabajo.html")
+    s = link(s, "Ver Todos los Casos", "../casos-de-estudio.html")
     guardar("casos/pizcaya.html", s)
 
 
+
+
+# ------------------------------------------- CASOS NUEVOS (Palquear, Cartelera, Mesaluma)
+# Misma plantilla de caso de Stitch que Armá Partido: se cambian textos, capturas y colores.
+def _hero_caso(d, pre):
+    e = html.escape
+    desk, m1, m2 = (portfolio_web.ruta(x, pre) for x in d["hero"])
+    tel = lambda src, alt, extra="": (
+        f'<div class="w-1/2 max-w-[220px] aspect-[9/19.5] rounded-[28px] bg-surface-container-low p-[6px] shadow-xl transition-transform hover:-translate-y-1 duration-300 {extra}">'
+        f'<img alt="{alt}" loading="lazy" class="w-full h-full object-cover object-top rounded-[22px]" src="{src}"/></div>')
+    return f"""<!-- Hero Multi-Screen Composition Mockup -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest p-space-lg md:p-space-2xl overflow-hidden shadow-2xl">
+<!-- Subtle Ambient Backdrops -->
+<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/20 blur-[120px] pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Captura real: escritorio -->
+<div class="lg:col-span-8 w-full rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-xl transition-transform hover:-translate-y-1 duration-300">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="ml-space-sm font-label-sm text-label-sm text-on-surface-variant">{e(d["visitar"][1].split("//")[1])}</span>
+</div>
+<div class="w-full aspect-[16/10] rounded-lg overflow-hidden bg-surface-container-highest">
+<img alt="{e(d['titulo'].title())}: versión escritorio" loading="lazy" class="w-full h-full object-cover object-top" src="{desk}"/>
+</div>
+</div>
+<!-- Capturas reales: celular -->
+<div class="lg:col-span-4 flex items-center justify-center gap-space-md">
+{tel(m1, e(d['titulo'].title()) + ": versión celular")}
+{tel(m2, e(d['titulo'].title()) + ": versión celular", "lg:translate-y-space-lg")}
+</div>
+</div>
+</div>
+"""
+
+
+def caso_nuevo(base, clave):
+    import casos_nuevos
+    d = casos_nuevos.CASOS[clave]
+    e = lambda t: html.escape(t, quote=False)
+    s = base
+    s = rep(s, "<title>Armá Partido · Caso de estudio · Malackath</title>", f"<title>{d['titulo'].title()} · Caso de estudio · Malackath</title>")
+    s = re.sub(r'<meta name="description" content="[^"]*"/>', f'<meta name="description" content="{html.escape(d["vision"])}"/>', s, count=1)
+    # cabecera
+    s = rep(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", f"<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO {d['numero']}</span>")
+    s = rep(s, ">2026 — EN DESARROLLO<", f">{e(d['estado'])}<")
+    s = rep(s, ">SportTech · Pádel<", f">{e(d['rubro'])}<")
+    s = rep(s, "\n            ARMÁ PARTIDO\n          </h1>", f"\n            {e(d['titulo'])}\n          </h1>")
+    s = rep(s, "\n            Proyecto propio · Uruguay · App instalable para clubes y jugadores\n", f"\n            {e(d['bajada'])}\n")
+    s = rep(s, 'href="https://armapartido.com"', f'href="{d["visitar"][1]}"')
+    s = rep(s, "<span>Visitar armapartido.com</span>", f"<span>{e(d['visitar'][0])}</span>")
+    i = s.find("<!-- Services & Meta Strip -->")
+    j = s.find("</section>", i)
+    tira = s[i:j]
+    vals = iter(d["meta"])
+    tira = re.sub(r'(<span class="font-body-md text-body-md text-on-surface font-medium">)[^<]*(</span>)',
+                  lambda m: m.group(1) + e(next(vals)) + m.group(2), tira)
+    s = s[:i] + tira + s[j:]
+    # visión
+    s = re.sub(r"(La Visión</span>\s*<h2[^>]*>)\s*[^<]*(</h2>\s*<p[^>]*>)\s*[^<]*(</p>)",
+               lambda m: f"{m.group(1)}\n          {e(d['vision_titulo'])}\n        {m.group(2)}\n          {e(d['vision'])}\n        {m.group(3)}", s, count=1)
+    i = s.find("<!-- Hero Multi-Screen Composition Mockup -->")
+    j = s.find("</section>", i)
+    s = s[:i] + _hero_caso(d, "../") + "</div>\n" + s[j:]
+    # textos desde «El desafío» hasta el siguiente caso, por posición (los íconos no cuentan)
+    nuevos = list(d["textos"])
+    for k, (_, label) in zip((47, 48, 49), d["colores"]):
+        nuevos[k] = label
+    ini = s.find(">Diagnóstico & Fricción<") if ">Diagnóstico & Fricción<" in s else s.find(">Diagnóstico &amp; Fricción<")
+    out, last, n = [], 0, 0
+    for m in re.finditer(r">([^<>]+)<", s):
+        if m.start() < ini or n >= len(nuevos) or not m.group(1).strip():
+            continue
+        abre = s[s.rfind("<", 0, m.start() + 1):m.start() + 1]
+        if "material-symbols" in abre:
+            continue
+        if nuevos[n] is not None:
+            crudo = m.group(1)
+            pre_ = crudo[:len(crudo) - len(crudo.lstrip())]
+            pos_ = crudo[len(crudo.rstrip()):]
+            out.append(s[last:m.start()] + ">" + pre_ + e(nuevos[n]) + pos_ + "<")
+            last = m.end()
+        n += 1
+    if n != len(nuevos):
+        raise SystemExit(f"{clave}: {n} textos en la plantilla, {len(nuevos)} en casos_nuevos")
+    s = "".join(out) + s[last:]
+    # íconos del desafío y los pilares (los primeros 7 después de «El desafío»)
+    iconos = iter(d["iconos"])
+    def _icono(m):
+        if m.start() < ini:
+            return m.group(0)
+        sig = next(iconos, None)
+        return m.group(1) + sig + m.group(3) if sig else m.group(0)
+    s = re.sub(r'(<span class="material-symbols-outlined[^"]*"[^>]*>)([a-z_]+)(</span>)', _icono, s)
+    # 4 pantallas: capturas de celular, alineadas arriba
+    viejas = ["armapartido-categoria", "armapartido-horarios", "armapartido-avisos", "armapartido-perfil"]
+    for v, nueva, tit in zip(viejas, d["pantallas"], [d["textos"][k] for k in (32, 36, 40, 44)]):
+        s = re.sub(rf'class="w-full h-full bg-cover bg-center" data-alt="[^"]*" style="background-image: url\(\'\.\./img/proyectos/{v}\.webp\'\)"',
+                   f'class="w-full h-full bg-cover bg-top" data-alt="{html.escape(d["titulo"].title())}: {html.escape(tit)}" style="background-image: url(\'{portfolio_web.ruta(nueva, "../")}\')"', s, count=1)
+    # colores del sistema
+    for viejo, (hexa, _) in zip(("bg-primary-container", "bg-surface-container-lowest", "bg-secondary-container"), d["colores"]):
+        s = rep(s, f'<span class="h-4 w-4 rounded-full {viejo}"></span>', f'<span class="h-4 w-4 rounded-full bg-[{hexa}] ring-1 ring-white/10"></span>')
+    s = rep(s, 'href="pizcaya.html">\n<div class="flex flex-col md:flex-row', f'href="{d["siguiente"]}">\n<div class="flex flex-col md:flex-row')
+    guardar(f"casos/{clave}.html", s)
 
 
 # ---------------------------------------------------------------- TRABAJO
@@ -912,8 +1018,10 @@ def estudio():
 
 if __name__ == "__main__":
     home()
-    arma_partido()
+    base_caso = arma_partido()
     pizcaya()
+    for clave in ("palquear", "cartelera", "mesaluma"):
+        caso_nuevo(base_caso, clave)
     trabajo()
     estudio()
     portfolio_web.copiar(OUT)
