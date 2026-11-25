@@ -6,7 +6,7 @@
 4. **Presupuestos** del formulario ($25k–$100k+ en Stitch): se sacó el selector. ¿Se muestran rangos de precio?
 5. ~~**Testimonios**~~: se sacaron (Ber, 2026-11-24).
 6. ~~**Textos de los casos**~~: se reemplazaron por datos reales (`casos_textos.py`). Revisar que esté todo bien dicho.
-7. **Imagen de RaveKit**: no hay foto real en la compu; se usa la imagen que generó Stitch (alojada en Google, puede dejar de andar).
+7. ~~**Imagen de RaveKit**~~: resuelto 2026-11-25, captura real de getravekit.com en modo claro (`public/img/proyectos/ravekit-claro-inicio-*.webp`).
 8. ~~**Retratos de testimonios**~~: ya no hay testimonios.
 9. **Redes del pie**: Awwwards, Dribbble, Twitter/X, Instagram, GitHub sin link real. ¿Cuáles van y con qué usuario?
 10. **Privacy Policy / Terms / Impressum**: sin páginas.

@@ -113,8 +113,9 @@ def fondos(s, mapa):
     return "".join(out)
 
 
-# RaveKit no tiene foto real en la compu de Ber: se usa la imagen que generó Stitch (PENDIENTE reemplazar)
-RAVEKIT_STITCH = re.findall(r'src="(https://lh3[^"]+)"', (SRC / "kinetic_home_proyectos_reales" / "code.html").read_text(encoding="utf-8"))[7]
+# RaveKit: captura real de getravekit.com en modo claro (2026-11-25). El nombre lleva un resumen
+# del contenido para que ningún navegador muestre una versión vieja guardada.
+RAVEKIT_IMG = "img/proyectos/ravekit-claro-inicio-4a8ad709.webp"
 
 SAMPLE = ('<span class="self-start px-space-sm py-space-xs rounded-full bg-surface-container-highest '
           'font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Sample</span>')
@@ -372,7 +373,7 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
         (P + "armapartido-torneo.webp", "Torneo nocturno de pádel con tribuna llena", ""),
         (P + "pizcaya-portada.webp", "Pizcaya: cociná 15 platos de casa en 30 días", "object-position:left center"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
-        (None, "", ""),  # RaveKit: falta imagen real, queda la de Stitch
+        (RAVEKIT_IMG, "RaveKit: pedidos de reseñas por WhatsApp y QR", "object-position:left top"),
         (P + "cartelera-noche.webp", "Cartelera Uruguay: guía de espectáculos con mapa y lista", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
@@ -590,7 +591,7 @@ def trabajo():
         (P + "pizcaya-desafio.webp", "Pizcaya: desafío de 15 platos en 30 días", "object-position:center top"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
         (P + "cartelera-noche.webp", "Cartelera Uruguay: buscador de eventos con mapa", "object-position:left top"),
-        (RAVEKIT_STITCH, "RaveKit: pedidos de reseñas por WhatsApp y QR", ""),
+        (RAVEKIT_IMG, "RaveKit: pedidos de reseñas por WhatsApp y QR", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
     # Alinear tarjetas de la misma fila (pedido de Ber): con subgrid, imagen y texto de cada
