@@ -12,6 +12,8 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - Datos falsos de la agencia de ejemplo (Kinetic, París/NY/Tokio, equipo inventado) → datos reales o se sacan.
 - Ajustes para que en celular nada se salga de la pantalla (usando los tamaños mobile del propio sistema de Stitch).
 - Testimonios inventados por Stitch: se sacaron (decisión de Ber, 2026-11-24).
+- Menú para celular (Stitch no lo traía): botón redondo que abre los links del menú (`menu_celular()`, Ber 2026-11-25).
+- Pie: sin los links de redes y legales que no llevaban a ningún lado; en el home sin «Construyamos el futuro juntos» (repetía el cierre) y en el resto ese título se achica en celular (`pie()`, Ber 2026-11-25).
 - Textos inventados de los casos → textos reales en `casos_textos.py` (fuentes: repos de Armá Partido y Pizcaya).
 
 ## Casos de estudio (regla de Ber, 2026-11-25: vale para todos los casos, actuales y futuros)
@@ -28,7 +30,7 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - `npm install` y después `npm run build` (genera las páginas y `public/css/estilos.css`).
 - Ver localmente: `npm run dev`.
 
-Páginas: `index.html` (home), `trabajo.html`, `casos-de-estudio.html`, `estudio.html` (estudio + contacto), `presupuesto.html` ("Armá tu presupuesto", 4 pasos, sin precios; arma un WhatsApp o mail con un código `MLK1:` para la herramienta interna), `casos/arma-partido.html`, `casos/pizcaya.html`, `casos/palquear.html`, `casos/cartelera.html`, `casos/mesaluma.html`. Cada una en español (raíz), inglés (`/en/`) y portugués (`/pt/`).
+Páginas: `index.html` (home), `trabajo.html`, `casos-de-estudio.html`, `estudio.html` (estudio + contacto), `presupuesto.html` ("Armá tu presupuesto", 4 pasos, sin precios; arma un WhatsApp o mail con un código `MLK1:` para la herramienta interna), `casos/arma-partido.html`, `casos/pizcaya.html`, `casos/palquear.html`, `casos/cartelera.html`, `casos/mesaluma.html`, `casos/ravekit.html`. Cada una en español (raíz), inglés (`/en/`) y portugués (`/pt/`).
 
 ## Idiomas
 - El español es la fuente: sale de `build.py`. `i18n.py generar` traduce con `i18n/en.json` y `i18n/pt.json` (clave = texto en español) y agrega el selector ES / EN / PT al menú.

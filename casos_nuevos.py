@@ -1,4 +1,4 @@
-"""Casos de estudio nuevos (pedido de Ber, 2026-11-25): Palquear, Cartelera Uruguay y Mesaluma.
+"""Casos de estudio nuevos (pedido de Ber, 2026-11-25): Palquear, Cartelera Uruguay, Mesaluma y RaveKit.
 
 Se arman sobre la plantilla de caso de Stitch que ya usa Armá Partido (mismas secciones y estilos).
 Fuente de cada dato: /mnt/project-files/malackath/casos-material/<proyecto>.md (lectura de los repos
@@ -138,6 +138,52 @@ CASOS = {
             None, "Mis mesas", "La vista del mozo: mesas del turno, alergias y pedidos listos.", "04 // SALÓN",
             None, None, None,
             "Tipografía: Fira Sans (una sola familia)",
+            "SIGUIENTE CASO DE ESTUDIO // 06", "RAVEKIT: MÁS RESEÑAS SIN PAGAR DE MÁS", "SaaS local · Pedidos de reseñas por WhatsApp y QR para comercios de barrio",
+        ],
+        siguiente="ravekit.html",
+    ),
+    # RaveKit (pedido de Ber, 2026-11-25: «crear el que falta»). Fuente: ~/Desktop/RaveKit (SUMMARY.md,
+    # design/DESIGN.md y la landing publicada web/index.html). Producto en inglés para el mercado global.
+    # Fotos de fondo: las que Ber generó en Flow para RaveKit (design/flow-fotos-raw del proyecto).
+    "ravekit": dict(
+        iconos=["star_half", "payments", "forum", "storefront", "chat_bubble", "qr_code_2", "widgets"],  # 4 del desafío + 3 pilares (Material Symbols, como Stitch)
+        numero="06", estado="2026 — LISTA DE ESPERA", rubro="SaaS local · Reseñas de Google", titulo="RAVEKIT", nombre="RaveKit",
+        bajada="Proyecto propio · Mercado global · Web en inglés para comercios locales",
+        visitar=("Visitar getravekit.com", "https://getravekit.com"),
+        meta=["Producto, marca y diseño", "Landing con lista de espera y app del comercio",
+              "HTML/CSS/JS + Cloudflare Workers y D1", "Sigue las reglas de Google: sin filtrar reseñas"],
+        vision_titulo="MÁS RESEÑAS DE CINCO ESTRELLAS, SIN LA CUENTA DE 399 DÓLARES",
+        vision="Un pedido de reseña por WhatsApp o SMS con un toque, un QR con la marca del comercio para el mostrador y un muro de reseñas para la web, a un precio plano de 19 dólares por mes.",
+        hero=("ravekit-d-01-62343fe9.webp", "ravekit-m-01-a89c528b.webp", "ravekit-m-03-6022fecf.webp"),
+        pantallas=["ravekit-m-02-1c2f8243.webp", "ravekit-m-03-6022fecf.webp", "ravekit-m-04-3c3fa0c3.webp", "ravekit-m-08-7ee57610.webp"],
+        colores=[("#FFB020", "Ámbar RaveKit (#FFB020)"), ("#07090E", "Noche (#07090E)"), ("#2DE2A6", "Verde (#2DE2A6)")],
+        textos=[
+            None,
+            "LOS COMERCIOS DE BARRIO VIVEN DE SUS RESEÑAS Y NO TIENEN CÓMO PEDIRLAS",
+            "Un dentista, un taller o una peluquería dependen de cómo aparecen en Google Maps. Las herramientas para pedir reseñas están pensadas para cadenas: cuestan cientos de dólares por mes y se venden con llamadas de ventas.",
+            "Precios de empresa", "Las plataformas conocidas se cotizan a medida y quedan lejos de un comercio chico.",
+            "Pedir da vergüenza", "Pedir una reseña en persona es incómodo y se olvida en el apuro del mostrador.",
+            "Clientes satisfechos callados", "El cliente contento se va sin dejar nada; el enojado escribe solo.",
+            "Reseñas que no se ven", "Las buenas reseñas quedan en Google y no aparecen en la web del comercio.",
+            None,
+            "TRES PILARES: PEDIR, PONER EL QR Y MOSTRAR",
+            None, "Pedir en un toque",
+            "Después de la visita, el comercio manda desde su propio teléfono un mensaje por WhatsApp o SMS con el link a su formulario de Google, ya escrito.",
+            "Canales", "WhatsApp · SMS · Seguimientos automáticos (próximamente)",
+            None, "QR para el mostrador",
+            "Plantillas listas para imprimir con la marca del negocio: cartel de mesa en acrílico o madera, sticker para vasos y calco para espejo.",
+            "Dónde va", "Recepción · Mostrador · Caja · Cada mesa",
+            None, "Muro de reseñas",
+            "Las reseñas reales del comercio en su propia web con una sola línea de código, más una página pública.",
+            "Regla", "Sin filtrar reseñas negativas, como pide Google",
+            None, "PANTALLAS DE LA WEB",
+            "La landing publicada en getravekit.com, versión celular. Las reseñas de ejemplo están marcadas como «Sample».",
+            None, "Hecho para tu local", "Un kit de QR para el mostrador de un consultorio, un taller, una peluquería o un café.", "01 // RUBROS",
+            None, "Un toque por WhatsApp", "El mensaje y el link a Google ya están escritos: solo hay que mandarlo.", "02 // PEDIDO",
+            None, "Tres pasos", "Pegar el link de Google, poner el QR y mirar cómo llegan las reseñas.", "03 // PASOS",
+            None, "Precio plano", "Starter a 19 dólares por mes, sin contrato ni llamadas de ventas.", "04 // PRECIO",
+            None, None, None,
+            "Tipografías: Plus Jakarta Sans (titulares y texto) & JetBrains Mono (datos)",
             "SIGUIENTE CASO DE ESTUDIO // 01", "ARMÁ PARTIDO: PARTIDOS DE PÁDEL PAREJOS", "SportTech · Partidos armados por categoría y reserva de cancha en el club",
         ],
         siguiente="arma-partido.html",

@@ -360,8 +360,11 @@ def guardar(nombre, s):
     if i >= 0:
         cab = s[i:j]
         cab = re.sub(r'(<a class=")inline-flex( items-center justify-center[^"]*" data-path="contact")', r'\1hidden md:inline-flex\2', cab, count=1)
-        cab = cab.replace('class="w-8 h-8 rounded-full bg-primary flex', 'class="w-8 h-8 shrink-0 rounded-full bg-primary flex')
+        cab = cab.replace('class="w-8 h-8 rounded-full bg-primary flex', 'class="hidden md:flex w-8 h-8 shrink-0 rounded-full bg-primary')
+        cab = menu_celular(cab)
         s = s[:i] + cab + s[j:]
+        s = s.replace("</body>", JS_MENU + "</body>", 1)
+    s = pie(nombre, s)
     s = textos(s, casos_textos.COMUN, estricto=False)
     s = re.sub(r'data-alt="SaaS product design and brand identity for RaveKit[^"]*"',
                'data-alt="RaveKit: pedidos de reseñas por WhatsApp y QR"', s)
@@ -371,6 +374,71 @@ def guardar(nombre, s):
     quedan = s.count("lh3.googleusercontent.com")
     print(f"{nombre}: ok ({quedan} imágenes de Stitch sin reemplazar)")
 
+
+
+# ------------------------------------------- MENÚ DEL CELULAR (pedido de Ber, 2026-11-25)
+# Stitch no traía menú para celular: un botón redondo como el de contacto abre los mismos links del menú
+# en una lista debajo de la barra, con el botón lima de «Iniciar proyecto».
+def menu_celular(cab):
+    nav = re.search(r"<nav [^>]*>(.*?)</nav>", cab, flags=re.S)
+    if not nav:
+        return cab
+    links = re.findall(r'<a (?:aria-current="page" )?class="[^"]*" (data-path="[^"]*" href="[^"]*")>([^<]*)</a>', nav.group(1))
+    assert len(links) == 4, links
+    activo = re.search(r'<a aria-current="page" class="[^"]*" data-path="([^"]*)"', nav.group(1))
+    items = "".join(
+        f'<a {attrs} class="font-label-lg text-label-lg uppercase tracking-wider py-space-md border-b border-white/5 '
+        + ("text-primary-container" if activo and f'data-path="{activo.group(1)}"' in attrs else "text-primary")
+        + f'">{txt}</a>' for attrs, txt in links)
+    contacto = re.search(r'<a class="hidden md:inline-flex[^"]*" (data-path="contact" href="[^"]*")>([^<]*)</a>', cab)
+    boton = (f'<a {contacto.group(1)} class="mt-space-md inline-flex items-center justify-center px-space-lg py-space-md rounded-full '
+             f'bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase">{contacto.group(2)}</a>') if contacto else ""
+    panel = f'<nav id="menu-celu" class="md:hidden px-margin-mobile pb-space-lg flex-col" style="display:none">{items}{boton}</nav>'
+    btn = ('<button type="button" aria-label="Menú" aria-expanded="false" aria-controls="menu-celu" data-menu '
+           'class="md:hidden w-10 h-10 shrink-0 rounded-full bg-primary flex items-center justify-center">'
+           '<span class="material-symbols-outlined text-on-primary text-[22px]">menu</span></button>')
+    k = cab.rfind("</div></div>")
+    return cab[:k] + btn + cab[k:] + panel
+
+
+JS_MENU = """<script>
+(function () {
+  var b = document.querySelector('[data-menu]'), m = document.getElementById('menu-celu');
+  if (!b || !m) return;
+  function poner(abierto) {
+    m.style.display = abierto ? 'flex' : 'none';
+    b.setAttribute('aria-expanded', abierto);
+    b.firstElementChild.textContent = abierto ? 'close' : 'menu';
+  }
+  b.addEventListener('click', function () { poner(m.style.display === 'none'); });
+  m.addEventListener('click', function (e) { if (e.target.closest('a')) poner(false); });
+  addEventListener('resize', function () { if (innerWidth >= 768) poner(false); });
+})();
+</script>"""
+
+
+def pie(nombre, s):
+    """Pie: afuera los links de Stitch que no llevan a ningún lado (redes y legales sin página);
+    en el home se saca «Construyamos el futuro juntos» porque repite el cierre de arriba,
+    y en las demás páginas ese título baja de tamaño en celular para que entre (pedido de Ber, 2026-11-25)."""
+    i, j = s.find("<footer"), s.find("</footer>")
+    if i < 0:
+        return s
+    f = s[i:j]
+    f, n = re.subn(r'<div class="flex flex-wrap items-center gap-space-lg[^"]*">(?:<a [^>]*href="#">[^<]*</a>)+</div>', "", f)
+    assert n == 1, f"{nombre}: redes del pie ({n})"
+    f, n = re.subn(r'<div class="flex items-center gap-space-md font-label-sm[^"]*">(?:<a [^>]*href="#">[^<]*</a>(?:<span>/</span>)?)+</div>', "", f)
+    assert n == 1, f"{nombre}: legales del pie ({n})"
+    if nombre == "index.html":
+        f, n = re.subn(r'<div class="flex flex-col gap-space-md"><span [^>]*>[^<]*</span><h2 [^>]*>[^<]*</h2></div>', "", f)
+        assert n == 1, "home: título del pie"
+    else:
+        f, n = re.subn(r'<h2 class="', '<h2 class="titulo-pie ', f, count=1)
+        assert n == 1
+    s = s[:i] + f + s[j:]
+    if nombre != "index.html":
+        s = s.replace("</head>", "<style>@layer base{@media (max-width: 767px){h2.titulo-pie{--r:14.4;font-size:min(2.75rem,calc((100vw - 40px) / var(--r))) !important;line-height:1.1 !important}:lang(en) h2.titulo-pie{--r:9.6}:lang(pt) h2.titulo-pie{--r:10.2}}}</style></head>", 1)
+    return s
 
 
 # ------------------------------------------------- HERO: ventanas flotantes
@@ -541,7 +609,7 @@ def seccion_marcas():
                 caja = "bg-[#F3F2EC]"
             elif m.get("fondo") == "lamina":
                 tam = "w-full h-full object-cover"
-            logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" loading="lazy" '
+            logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" decoding="async" '
                     f'class="{tam} grayscale opacity-80 '
                     'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
         else:
@@ -628,13 +696,19 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
     # composición pedida por Ber (captura 2026-11-24): de 1280px para arriba el collage va a la derecha,
     # subido y montado sobre el titular, igual que su captura a 1512 px; los otros anchos, proporcionales.
     s = s.replace("</style>", """
+/* celular: sin etiquetas flotantes ni textos sobre la captura, y sin el hueco de abajo (pedido de Ber, 2026-11-25) */
+@media (max-width: 767px) {
+  #showcase-viewport .float-layer-4, #showcase-viewport .float-layer-5,
+  #showcase-viewport .float-layer-1 .bottom-space-md, #showcase-viewport .float-layer-1 .bg-gradient-to-t { display: none !important; }
+  #showcase-viewport { min-height: 430px !important; }
+}
 /* sombra del titular donde pisa las capturas del collage (pedido de Ber, 2026-11-25) */
 .hero-grilla h1 { text-shadow: 0 3px 10px rgba(0,0,0,.75), 0 10px 40px rgba(0,0,0,.9); }
 @media (min-width: 1280px) {
   .hero-grilla { pointer-events: none; }
   .hero-grilla a { pointer-events: auto; }
   .hero-grilla h1 { font-size: 5.5556vw !important; line-height: 5.8333vw !important; }
-  #showcase-viewport { position: absolute; top: calc(86px + 5.5556vw); right: 1.455vw; width: 1160px; height: auto; min-height: 680px; margin: 0;
+  #showcase-viewport { position: absolute; top: calc(86px + 5.5556vw); right: -1.2vw; width: 1160px; height: auto; min-height: 680px; margin: 0;
     z-index: 0; transform: scale(var(--esc)); transform-origin: top right; }
   section:has(> #showcase-viewport) { min-height: calc(86px + 5.5556vw + 640px * var(--esc) + 40px); }
 }
@@ -664,6 +738,17 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
     # proyectos con caso propio: título clickeable
     s = rep(s, 'transition-colors">Armá Partido</h3>', 'transition-colors"><a href="casos/arma-partido.html">Armá Partido</a></h3>')
     s = rep(s, 'transition-colors">Pizcaya</h3>', 'transition-colors"><a href="casos/pizcaya.html">Pizcaya</a></h3>')
+    # el resto de los proyectos destacados también lleva a su caso (pedido de Ber, 2026-11-25)
+    for nombre, caso in [("Palquear", "palquear"), ("RaveKit", "ravekit"), ("Cartelera Uruguay", "cartelera"),
+                         ("Mesaluma &amp; La Gloria", "mesaluma")]:
+        s = rep(s, f'transition-colors">{nombre}</h3>', f'transition-colors"><a href="casos/{caso}.html">{nombre}</a></h3>')
+    # toda la tarjeta es clickeable: el link del título se estira sobre la tarjeta
+    i, j = s.find('id="proyectos"'), s.find("<!--MARCAS-->")
+    bloque = re.sub(r'<article class="', '<article class="relative ', s[i:j])
+    bloque = re.sub(r'(<h3 [^>]*>)<a href="casos/', r'\1<a class="tarjeta-link" href="casos/', bloque)
+    assert bloque.count("tarjeta-link") == 6, bloque.count("tarjeta-link")
+    s = s[:i] + bloque + s[j:]
+    s = s.replace("</style>", ".tarjeta-link::after{content:'';position:absolute;inset:0;z-index:5;border-radius:inherit}</style>", 1)
     s = link(s, "<span>INICIAR PROYECTO</span>", "estudio.html#contacto")
     # Hero: las tarjetas de proyectos de la derecha se reemplazan por el escenario de ventanas
     # flotantes de la pantalla animada de Stitch (pedido de Ber, 2026-11-24). Va debajo del texto,
@@ -792,13 +877,13 @@ def _hero_caso(d, pre):
 <span class="ml-space-sm font-label-sm text-label-sm text-on-surface-variant">{e(d["visitar"][1].split("//")[1])}</span>
 </div>
 <div class="w-full aspect-[16/10] rounded-lg overflow-hidden bg-surface-container-highest">
-<img alt="{e(d['titulo'].title())}: versión escritorio" loading="lazy" class="w-full h-full object-cover object-top" src="{desk}"/>
+<img alt="{e(d.get('nombre', d['titulo'].title()))}: versión escritorio" loading="lazy" class="w-full h-full object-cover object-top" src="{desk}"/>
 </div>
 </div>
 <!-- Capturas reales: celular -->
 <div class="lg:col-span-4 flex items-center justify-center gap-space-md">
-{tel(m1, e(d['titulo'].title()) + ": versión celular")}
-{tel(m2, e(d['titulo'].title()) + ": versión celular", "lg:translate-y-space-lg")}
+{tel(m1, e(d.get('nombre', d['titulo'].title())) + ": versión celular")}
+{tel(m2, e(d.get('nombre', d['titulo'].title())) + ": versión celular", "lg:translate-y-space-lg")}
 </div>
 </div>
 </div>
@@ -820,7 +905,7 @@ def caso_nuevo(base, clave):
     d = casos_nuevos.CASOS[clave]
     e = lambda t: html.escape(t, quote=False)
     s = base
-    s = rep(s, "<title>Armá Partido · Caso de estudio · Malackath</title>", f"<title>{d['titulo'].title()} · Caso de estudio · Malackath</title>")
+    s = rep(s, "<title>Armá Partido · Caso de estudio · Malackath</title>", f"<title>{d.get('nombre', d['titulo'].title())} · Caso de estudio · Malackath</title>")
     s = re.sub(r'<meta name="description" content="[^"]*"/>', f'<meta name="description" content="{html.escape(d["vision"])}"/>', s, count=1)
     # cabecera
     s = rep(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", f"<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO {d['numero']}</span>")
@@ -877,7 +962,7 @@ def caso_nuevo(base, clave):
     viejas = ["armapartido-categoria", "armapartido-horarios", "armapartido-avisos", "armapartido-perfil"]
     for v, nueva, tit in zip(viejas, d["pantallas"], [d["textos"][k] for k in (32, 36, 40, 44)]):
         s = re.sub(rf'class="w-full h-full bg-cover bg-center" data-alt="[^"]*" style="background-image: url\(\'\.\./img/proyectos/{v}\.webp\'\)"',
-                   f'class="w-full h-full bg-cover bg-top" data-alt="{html.escape(d["titulo"].title())}: {html.escape(tit)}" style="background-image: url(\'{portfolio_web.ruta(nueva, "../")}\')"', s, count=1)
+                   f'class="w-full h-full bg-cover bg-top" data-alt="{html.escape(d.get("nombre", d["titulo"].title()))}: {html.escape(tit)}" style="background-image: url(\'{portfolio_web.ruta(nueva, "../")}\')"', s, count=1)
     # colores del sistema
     for viejo, (hexa, _) in zip(("bg-primary-container", "bg-surface-container-lowest", "bg-secondary-container"), d["colores"]):
         s = rep(s, f'<span class="h-4 w-4 rounded-full {viejo}"></span>', f'<span class="h-4 w-4 rounded-full bg-[{hexa}] ring-1 ring-white/10"></span>')
@@ -1025,20 +1110,16 @@ def casos_general(s):
     """Página «Casos de estudio» (pedido de Ber, 2026-11-25): la página Trabajo de Stitch con 5 casos.
     Sale del HTML de Trabajo antes de sumarle el portfolio: mismas tarjetas, mismo encabezado."""
     s = s.replace("<title>Trabajo · Malackath</title>", "<title>Casos de estudio · Malackath</title>")
-    s = re.sub(r'(<meta name="description" content=")[^"]*', r'\1Casos de estudio de Malackath: Armá Partido, Pizcaya, Palquear, Cartelera Uruguay y Mesaluma.', s, count=1)
+    s = re.sub(r'(<meta name="description" content=")[^"]*', r'\1Casos de estudio de Malackath: Armá Partido, Pizcaya, Palquear, Cartelera Uruguay, RaveKit y Mesaluma.', s, count=1)
     # encabezado
     s = rep(s, "\n          TRABAJO\n", "\n          CASOS DE ESTUDIO\n")
     s = rep(s, "<span>SELECCIÓN</span>", "<span>CASOS</span>")
-    s = rep(s, "6 PROYECTOS", "5 CASOS")
+    s = rep(s, "6 PROYECTOS", "6 CASOS")
     s = rep(s, '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Proyectos</span>',
             '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Casos</span>')
-    # sin filtros por categoría (son 5): queda solo Grilla / Índice
+    # sin filtros por categoría (son 6): queda solo Grilla / Índice
     s = rep(s, 'id="filter-container"', 'id="filter-container" style="visibility:hidden"')
-    # RaveKit no es caso: afuera la tarjeta 05 y su fila del índice
-    i = s.find("<!-- Project 05"); j = s.find("<!-- Project 06")
-    assert 0 < i < j; s = s[:i] + s[j:]
-    i = s.find("<!-- Row 05 -->"); j = s.find("<!-- Row 06 -->")
-    assert 0 < i < j; s = s[:i] + s[j:]
+    # RaveKit tiene caso propio desde 2026-11-25 (pedido de Ber): su tarjeta y su fila quedan
     # Mesaluma sola (La Gloria no es caso), a todo el ancho
     for viejo, nuevo in [
         ("MESALUMA &amp; LA GLORIA", "MESALUMA"),
@@ -1052,24 +1133,21 @@ def casos_general(s):
         ("Restaurante y cafetería • Reservas y carta QR", "Restaurantes • Reservas y comandas"),
     ]:
         s = s.replace(viejo, nuevo)
-    i = s.find("<!-- Project 06")
-    s = s[:i] + s[i:].replace("md:col-span-6", "md:col-span-12", 1)
-    # numeración 01..05 // 05
-    n = iter(range(1, 6))
-    s = re.sub(r"\d\d // 06<", lambda m: f"{next(n):02d} // 05<", s)
-    n = iter(range(1, 6))
+    # numeración 01..06 // 06
+    n = iter(range(1, 7))
+    s = re.sub(r"\d\d // 06<", lambda m: f"{next(n):02d} // 06<", s)
+    n = iter(range(1, 7))
     s = re.sub(r'(<div class="col-span-1 font-label-md text-label-md text-on-surface-variant font-mono">)\d\d(</div>)', lambda m: f"{m.group(1)}{next(n):02d}{m.group(2)}", s)
     # cada tarjeta y fila lleva a su caso
     s = rep(s, "\n              PALQUEAR\n", '\n              <a href="casos/palquear.html">PALQUEAR</a>\n')
     s = rep(s, "\n              CARTELERA URUGUAY\n", '\n              <a href="casos/cartelera.html">CARTELERA URUGUAY</a>\n')
     s = rep(s, "\n              MESALUMA\n", '\n              <a href="casos/mesaluma.html">MESALUMA</a>\n')
+    s = rep(s, "\n              RAVEKIT\n", '\n              <a href="casos/ravekit.html">RAVEKIT</a>\n')
+    s = rep(s, 'href="https://getravekit.com"', 'href="casos/ravekit.html"')
     s = rep(s, 'href="https://palquear.arnelli.com"', 'href="casos/palquear.html"')
     s = rep(s, 'href="https://cartelerauy.malackath.com"', 'href="casos/cartelera.html"')
     s = rep(s, 'href="index.html#proyectos"', 'href="casos/mesaluma.html"')
     s = rep(s, ">MESALUMA &amp; LA GLORIA</span>", ">MESALUMA</span>") if ">MESALUMA &amp; LA GLORIA</span>" in s else s
-    # la tarjeta de Mesaluma a todo el ancho: foto más baja para que no ocupe toda la pantalla
-    i = s.find("<!-- Project 06")
-    s = s[:i] + s[i:].replace("aspect-[16/11]", "aspect-[16/11] md:aspect-[21/8]", 1)
     # en el menú se marca «Casos» y no «Trabajo»
     act = re.search(r'<a aria-current="page" class="([^"]*)" data-path="portfolio"', s)
     norm = re.search(r'<a class="([^"]*)" data-path="case-studies"', s)
@@ -1399,7 +1477,7 @@ if __name__ == "__main__":
     home()
     base_caso = arma_partido()
     pizcaya()
-    for clave in ("palquear", "cartelera", "mesaluma"):
+    for clave in ("palquear", "cartelera", "mesaluma", "ravekit"):
         caso_nuevo(base_caso, clave)
     trabajo()
     estudio()

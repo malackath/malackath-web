@@ -71,9 +71,15 @@ CON_LOGO = ["arma-partido", "pizcaya", "palquear", "cartelera", "mesaluma", "rav
             "jip", "zoomi", "coat-n-nest", "sitios-gastro"]
 
 
+# Marea Alta tenía dos tarjetas seguidas (la parte digital y la consultora): en el home queda una sola (Ber, 2026-11-25)
+FUERA_HOME = {"marealta-consultora"}
+
+
 def marcas():
     filas = []
     for c in CON_LOGO:
+        if c in FUERA_HOME:
+            continue
         p = P[c]
         filas.append({"nombre": p["n"], "imagen": ruta(imagen(c, "logo")), "url": PORTFOLIO + "#" + c,
                       "tipo": p["t"], "descripcion": p["d"], "fondo": p["fondo"]})

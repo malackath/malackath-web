@@ -8,9 +8,11 @@
 6. ~~**Textos de los casos**~~: se reemplazaron por datos reales (`casos_textos.py`). Revisar que esté todo bien dicho.
 7. **Imagen de RaveKit**: no hay foto real en la compu; se usa la imagen que generó Stitch (alojada en Google, puede dejar de andar).
 8. ~~**Retratos de testimonios**~~: ya no hay testimonios.
-9. **Redes del pie**: Awwwards, Dribbble, Twitter/X, Instagram, GitHub sin link real. ¿Cuáles van y con qué usuario?
-10. **Privacy Policy / Terms / Impressum**: sin páginas.
+9. ~~**Redes del pie**~~: se sacaron (Ber, 2026-11-25). Si se quieren redes, pasar usuario de cada una.
+10. **Privacidad / Términos / Aviso legal**: se sacaron los links (Ber, 2026-11-25); volver a ponerlos cuando existan las páginas.
 11. **Idioma del menú y del pie**: quedó en inglés como en Stitch (Work, Services, Studio, "Let's build the future together"). ¿Se traduce?
 12. ~~**Demo navegable**~~: se sacó el botón de Armá Partido; "Probar Pizcaya" abre pizcaya.com.
 13. **Traducciones** (inglés y portugués de Brasil): hechas por Claude, no son literales. Revisar sobre todo el portugués (`i18n/pt.json`). En portugués, Armá Partido figura como "Protótipo".
 14. **Armá Partido "En desarrollo"**: el home y Trabajo decían "En producción"; el repo dice que es un prototipo (Mercado Pago simulado). Se cambió a "En desarrollo". Confirmar.
+
+15. **Caso RaveKit** (2026-11-25): «El desafío» redactado por Claude a partir de la landing; confirmar. Fotos de fondo: las de Flow de la carpeta de RaveKit.
