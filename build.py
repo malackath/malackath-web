@@ -644,10 +644,10 @@ def _hero_caso(d, pre):
         f'<div class="w-1/2 max-w-[220px] aspect-[9/19.5] rounded-[28px] bg-surface-container-low p-[6px] shadow-xl transition-transform hover:-translate-y-1 duration-300 {extra}">'
         f'<img alt="{alt}" loading="lazy" class="w-full h-full object-cover object-top rounded-[22px]" src="{src}"/></div>')
     return f"""<!-- Hero Multi-Screen Composition Mockup -->
-<div class="relative w-full rounded-xl bg-surface-container-lowest p-space-lg md:p-space-2xl overflow-hidden shadow-2xl">
+<div class="relative w-full rounded-xl bg-surface-container p-space-lg md:p-space-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
 <!-- Subtle Ambient Backdrops -->
-<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none"></div>
-<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/20 blur-[120px] pointer-events-none"></div>
+<div class="absolute -top-24 -left-24 w-[32rem] h-[32rem] rounded-full bg-primary-container/20 blur-[110px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -right-24 w-[36rem] h-[36rem] rounded-full blur-[120px] pointer-events-none" style="background:{d['colores'][0][0]};opacity:.45"></div>
 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
 <!-- Captura real: escritorio -->
 <div class="lg:col-span-8 w-full rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-xl transition-transform hover:-translate-y-1 duration-300">
