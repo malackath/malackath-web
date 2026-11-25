@@ -19,7 +19,7 @@
 | {{servicio_1}} | {{incluye_1}} | {{modalidad_1}} | {{precio_1}} |
 | {{servicio_2}} | {{incluye_2}} | {{modalidad_2}} | {{precio_2}} |
 | | | **Subtotal** | {{subtotal}} |
-| | | **IVA** | {{iva_linea}} |
+| | | **{{impuesto_nombre}} {{impuesto_pct}}** | {{impuesto_linea}} |
 | | | **Total** | {{total}} |
 
 **Mantenimiento mensual (opcional):** {{plan_mantenimiento}} · {{moneda}} {{cuota_mensual}} por mes {{iva_texto}}.

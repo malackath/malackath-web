@@ -31,7 +31,7 @@ Pedido del cliente (formulario web o charla)
 
 ## Campos
 
-Todo lo que va entre `{{dobles_llaves}}` se completa por cliente. Los datos de Malackath (razón social, RUT, domicilio, tarifas) **no están cargados todavía**: ver `datos-malackath.md`.
+Todo lo que va entre `{{dobles_llaves}}` se completa en cada documento: datos del emisor (puede facturar desde Uruguay o Brasil), del cliente, impuestos, ley aplicable, moneda y tarifas. Ver `datos-malackath.md`.
 
 ## Idiomas
 

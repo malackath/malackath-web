@@ -28,7 +28,7 @@
 
 ## 3. Tiempos de respuesta
 
-Horario de atención: {{horario_atencion}} (hora de Montevideo), días hábiles de Uruguay.
+Horario de atención: {{horario_atencion}} ({{zona_horaria}}), días hábiles de {{pais_dias_habiles}}.
 
 | Prioridad | Ejemplo | Primera respuesta | Objetivo de solución |
 |---|---|---|---|

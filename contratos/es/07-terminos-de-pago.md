@@ -4,12 +4,13 @@
 
 ## 1. Moneda
 
-Los precios se expresan en **dólares estadounidenses (US$)**, salvo que la propuesta o el SOW indiquen pesos uruguayos ($U) o reales (R$). Si se factura en otra moneda, se usa el tipo de cambio {{fuente_tipo_cambio}} del día anterior a la factura.
+Los precios se expresan en **{{moneda_nombre}} ({{moneda}})**, según la propuesta o el SOW (por defecto dólares estadounidenses; también pesos uruguayos o reales). Si se factura en otra moneda, se usa el tipo de cambio {{fuente_tipo_cambio}} del día anterior a la factura.
 
-## 2. IVA e impuestos
+## 2. Impuestos
 
-- **Clientes en Uruguay:** los precios **no incluyen IVA**; se suma el 22% en la factura.
-- **Clientes del exterior:** los servicios se facturan como **exportación de servicios, sin IVA**, cuando cumplan las condiciones de la normativa uruguaya. *[A confirmar con el contador por tipo de servicio y cliente.]*
+- Los precios **no incluyen {{impuesto_nombre}}**. Se suma {{impuesto_nombre}} {{impuesto_pct}} en la factura cuando corresponda.
+- {{nota_impuestos}}
+  *(Ejemplos que completa el generador según emisor y cliente: emisor en Uruguay con cliente uruguayo, IVA 22%; emisor en Uruguay con cliente del exterior, exportación de servicios sin IVA; emisor en Brasil, ISS u otro según municipio. Validar con el contador.)*
 - Las retenciones o impuestos del país del Cliente corren por su cuenta. El Cliente paga el monto completo de la factura, sin descontar comisiones bancarias ni de transferencia.
 
 ## 3. Esquema de pago
@@ -23,7 +24,7 @@ Los precios se expresan en **dólares estadounidenses (US$)**, salvo que la prop
 
 ## 4. Vencimiento
 
-Las facturas vencen a los **{{dias_vencimiento}} días** de emitidas. Medios de pago: {{medios_pago}} *(ej.: transferencia bancaria en Uruguay, transferencia internacional, Mercado Pago, Stripe)*. Datos bancarios: en cada factura.
+Las facturas vencen a los **{{dias_vencimiento}} días** de emitidas. Medios de pago: {{medios_pago}} *(ej.: transferencia bancaria local, transferencia internacional, Mercado Pago, Stripe)*. Datos bancarios: en cada factura.
 
 ## 5. Atrasos
 

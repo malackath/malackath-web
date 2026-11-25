@@ -6,7 +6,7 @@
 
 ## Partes
 
-**El Prestador:** {{prestador_razon_social}} ("Malackath"), RUT {{prestador_rut}}, con domicilio en {{prestador_domicilio}}, representada por {{prestador_representante}}.
+**El Prestador:** {{prestador_razon_social}} ("{{prestador_nombre_fantasia}}"), {{prestador_id_fiscal_tipo}} {{prestador_id_fiscal}}, con domicilio en {{prestador_domicilio}}, representada por {{prestador_representante}}.
 
 **El Cliente:** {{cliente_razon_social}}, {{cliente_id_fiscal_tipo}} {{cliente_id_fiscal}}, con domicilio en {{cliente_domicilio}}, representada por {{cliente_representante}}.
 
@@ -60,7 +60,7 @@ Cada parte guarda reserva sobre la información no pública que reciba de la otr
 
 ## 8. Datos personales
 
-Si Malackath trata datos personales por cuenta del Cliente, lo hace solo según las instrucciones del Cliente y conforme a la Ley N.º 18.331 de Protección de Datos Personales (Uruguay) y, si corresponde, la LGPD (Brasil) u otra norma aplicable. El Cliente es el responsable de la base de datos. *[Revisar con abogado si el proyecto maneja datos sensibles.]*
+Si Malackath trata datos personales por cuenta del Cliente, lo hace solo según las instrucciones del Cliente y conforme a {{ley_datos_personales}} *(ej.: Ley N.º 18.331 en Uruguay, LGPD en Brasil)* y otra norma aplicable. El Cliente es el responsable de la base de datos. *[Revisar con abogado si el proyecto maneja datos sensibles.]*
 
 ## 9. Garantía
 
@@ -102,7 +102,7 @@ Ninguna parte responde por atrasos causados por hechos fuera de su control razon
 
 ## 15. Ley y jurisdicción
 
-Este contrato se rige por las leyes de la República Oriental del Uruguay. Las partes intentan primero resolver cualquier diferencia de buena fe durante 30 días. Si no lo logran, se someten a los tribunales de la ciudad de Montevideo. *[Para clientes del exterior, el abogado puede recomendar arbitraje (por ejemplo, Centro de Conciliación y Arbitraje de la Bolsa de Comercio de Uruguay).]*
+Este contrato se rige por las leyes de {{ley_aplicable}}. Las partes intentan primero resolver cualquier diferencia de buena fe durante 30 días. Si no lo logran, se someten a los tribunales de {{jurisdiccion}}. *[Para clientes del exterior, el abogado puede recomendar arbitraje (por ejemplo, Centro de Conciliación y Arbitraje de la Bolsa de Comercio de Uruguay).]*
 
 ## 16. Varios
 

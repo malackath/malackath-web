@@ -6,13 +6,14 @@
 
 | Rol | Tarifa por hora |
 |---|---|
-| Dirección de proyecto y estrategia | {{moneda}} {{tarifa_direccion}} |
-| Diseño (UI, marca, gráfica) | {{moneda}} {{tarifa_diseno}} |
-| Desarrollo (web, apps, integraciones) | {{moneda}} {{tarifa_desarrollo}} |
-| Contenido y carga | {{moneda}} {{tarifa_contenido}} |
+| {{rol_1}} | {{moneda}} {{tarifa_1}} |
+| {{rol_2}} | {{moneda}} {{tarifa_2}} |
+| {{rol_3}} | {{moneda}} {{tarifa_3}} |
 | Urgencias (fuera de horario o en menos de 24 h) | tarifa del rol × {{recargo_urgencia}} |
 
-Las tarifas no incluyen IVA; ver Términos de Pago. Rigen por {{meses_vigencia_tarifas}} meses desde la firma; después Malackath puede ajustarlas avisando con 30 días.
+*(Roles y tarifas se cargan en cada propuesta; el generador trae valores sugeridos que se pueden cambiar.)*
+
+Las tarifas no incluyen {{impuesto_nombre}}; ver Términos de Pago. Rigen por {{meses_vigencia_tarifas}} meses desde la firma; después Malackath puede ajustarlas avisando con 30 días.
 
 ## 2. Cómo se cuentan las horas
 

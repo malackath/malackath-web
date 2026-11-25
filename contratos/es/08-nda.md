@@ -4,7 +4,7 @@
 
 **Fecha:** {{fecha}}
 
-**Partes:** {{prestador_razon_social}} ("Malackath"), RUT {{prestador_rut}}, domicilio {{prestador_domicilio}}; y {{cliente_razon_social}}, {{cliente_id_fiscal_tipo}} {{cliente_id_fiscal}}, domicilio {{cliente_domicilio}}.
+**Partes:** {{prestador_razon_social}} ("{{prestador_nombre_fantasia}}"), {{prestador_id_fiscal_tipo}} {{prestador_id_fiscal}}, domicilio {{prestador_domicilio}}; y {{cliente_razon_social}}, {{cliente_id_fiscal_tipo}} {{cliente_id_fiscal}}, domicilio {{cliente_domicilio}}.
 
 ## 1. Propósito
 
@@ -36,7 +36,7 @@ Este acuerdo no obliga a ninguna parte a contratar, ni da licencia sobre la info
 
 ## 8. Ley y jurisdicción
 
-Leyes de Uruguay; tribunales de Montevideo.
+Leyes de {{ley_aplicable}}; tribunales de {{jurisdiccion}}.
 
 | Por Malackath | Por {{cliente_razon_social}} |
 |---|---|
