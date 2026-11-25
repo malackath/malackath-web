@@ -403,6 +403,45 @@ CSS_VIDRIO = """<style>
 </style>"""
 
 
+# Efecto de scroll como digital.marealtagastro.com (awa-reveal, pedido de Ber 2026-11-25): cada bloque aparece una
+# sola vez al entrar en pantalla. Títulos bajan desde -46px; tarjetas suben desde 70px en cascada de 190ms; pares de
+# 2 tarjetas entran desde los costados (±110px, la 2.ª 250ms después); 1.15s cubic-bezier(.16,1,.3,1); en celular
+# distancias al 70%. El hero (primera sección) no se toca. Sin movimiento si el sistema pide «reducir movimiento».
+CSS_SCROLL = """<style>
+.awa-r{opacity:0;transform:translate3d(var(--awa-x,0),var(--awa-y,0),0) scale(var(--awa-s,1));transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1);transition-delay:var(--awa-d,0ms);will-change:opacity,transform}
+.awa-r.awa-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.awa-r{opacity:1;transform:none;transition:none}}
+</style>"""
+JS_SCROLL = """<script>
+(function(){
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var main=document.querySelector('main');if(!main)return;
+  var k=matchMedia('(max-width:767px)').matches?.7:1;
+  var hero=main.querySelector('section');
+  function fuera(el){return (hero&&hero.contains(el))||el.closest('.animate-marquee,[class*="animate-"],header,footer')||el.closest('.awa-r');}
+  var els=[];
+  function add(el,x,y,s,d,step){if(!el||fuera(el)||el._awa)return;el._awa={d:d,step:step};
+    el.style.setProperty('--awa-x',(x*k)+'px');el.style.setProperty('--awa-y',(y*k)+'px');el.style.setProperty('--awa-s',s);
+    el.classList.add('awa-r');els.push(el);}
+  [].slice.call(main.querySelectorAll('.grid')).forEach(function(g){
+    var hs=[].slice.call(g.children).filter(function(n){return /rounded-xl|project-card/.test(n.className)&&n.offsetHeight>80;});
+    if(hs.length===2){add(hs[0],-110,0,1,0,0);add(hs[1],110,0,1,250,0);}
+    else hs.forEach(function(n){add(n,0,70,1,0,190);});
+  });
+  [].slice.call(main.querySelectorAll('h1,h2')).forEach(function(h){if(!h.closest('.rounded-xl,.project-card,article,a'))add(h,0,-46,1,0,0);});
+  if(!els.length)return;
+  var io=new IntersectionObserver(function(es){
+    es.filter(function(e){return e.isIntersecting;})
+      .sort(function(a,b){return a.target.compareDocumentPosition(b.target)&4?-1:1;})
+      .forEach(function(e,i){var t=e.target,a=t._awa;
+        t.style.setProperty('--awa-d',(a.d+i*a.step)+'ms');t.classList.add('awa-in');io.unobserve(t);
+        setTimeout(function(){t.classList.remove('awa-r','awa-in');t.style.removeProperty('--awa-d');},2200+a.d+i*a.step);});
+  },{threshold:.15,rootMargin:"0px 0px -14% 0px"});
+  els.forEach(function(el){io.observe(el);});
+})();
+</script>"""
+
+
 def guardar(nombre, s):
     s = fondo_caso(nombre, s)
     if nombre != "index.html":
@@ -417,7 +456,8 @@ def guardar(nombre, s):
     if nombre == "trabajo.html":
         s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
         s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
-    s = s.replace("</head>", CSS_VIDRIO + "</head>", 1)
+    s = s.replace("</head>", CSS_VIDRIO + CSS_SCROLL + "</head>", 1)
+    s = s.replace("</body>", JS_SCROLL + "</body>", 1)
     # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
     s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
     if BORRADOR:
