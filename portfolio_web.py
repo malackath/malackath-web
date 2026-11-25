@@ -43,6 +43,8 @@ def imagen(c, cual):
             return "marealta-consultora-logo.png"
         if c == "ruvia":
             return "ruvia-logo.png"     # logo nuevo de RuVIAJE (logo_archivo en proyectos.py)
+        if c == "citadenta":
+            return "citadenta-logo.png"   # logo_archivo en proyectos.py (negativo, para fondo oscuro)
         return _primera(f"{c}-logo-[0-9a-f]*.webp")
     if c == "sitios-gastro":
         return _primera(f"sitios-gastro-fuego-silvestre-{cual}-01-*.webp")
@@ -70,7 +72,7 @@ def copiar(out):
 CON_LOGO = ["arma-partido", "pizcaya", "palquear", "cartelera", "mesaluma", "ravekit", "barajala",
             "coinciva", "ruvia", "nunca-te-falla",
             "marea-alta", "marealta-consultora", "banana-team", "ecos", "velvet", "patovava",
-            "jip", "zoomi", "coat-n-nest", "sitios-gastro"]
+            "jip", "zoomi", "coat-n-nest", "sitios-gastro", "citadenta"]   # Citadenta al final: no corre los verdes por posición
 
 
 # Marea Alta tenía dos tarjetas seguidas (la parte digital y la consultora): en el home queda una sola (Ber, 2026-11-25)
@@ -79,7 +81,7 @@ FUERA_HOME = {"marealta-consultora"}
 
 # proyectos con caso de estudio en el sitio
 CASOS = {"arma-partido": "arma-partido", "pizcaya": "pizcaya", "palquear": "palquear", "cartelera": "cartelera",
-         "mesaluma": "mesaluma", "ravekit": "ravekit"}
+         "mesaluma": "mesaluma", "ravekit": "ravekit", "citadenta": "citadenta"}
 
 
 def _fondo_blanco(nombre):
@@ -114,7 +116,7 @@ def marcas(todos=False):
 # Los 16 proyectos del portfolio que no tenían tarjeta (las 6 de Stitch quedan como están).
 EXTRA = ["nunca-te-falla", "mesaluma", "ruvia", "coinciva", "barajala", "marealta-consultora",
          "marea-alta", "velvet", "ecos", "patovava", "zoomi", "jip",
-         "sitios-gastro", "banana-team", "usa-storefront", "web-arnelli", "coat-n-nest"]
+         "sitios-gastro", "banana-team", "usa-storefront", "web-arnelli", "coat-n-nest", "citadenta"]
 # Mesaluma ya comparte tarjeta con La Gloria en Stitch: no se repite.
 EXTRA.remove("mesaluma")
 
@@ -151,7 +153,9 @@ def tarjeta_trabajo(c, i, total, ancho):
 <span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Sitio</span>
 <span class="font-label-md text-label-md font-bold text-primary-container">{SITIO[c]}</span>
 </div>"""
-    href = PORTFOLIO + "#" + c
+    # con caso de estudio propio (Citadenta): la tarjeta lleva al caso, como las de Stitch
+    href = f"casos/{CASOS[c]}.html" if c in CASOS else PORTFOLIO + "#" + c
+    ver = ("Ver caso de estudio", f"{p['n']}: caso de estudio") if c in CASOS else ("Ver en el portfolio", f"{p['n']} en el portfolio")
     titulo = "font-headline-md text-headline-md md:font-headline-lg md:text-headline-lg" if ancho >= 6 else "font-headline-md text-headline-md"
     return f"""<!-- Proyecto {i:02d}: {e(p["n"])} (del portfolio) -->
 <article class="project-card md:row-span-2 md:grid md:grid-rows-subgrid md:gap-0 md:col-span-{ancho} flex flex-col group relative rounded-xl bg-surface-container-low overflow-hidden shadow-xl transition-all duration-500 hover:-translate-y-1" data-category="{cat}">
@@ -178,8 +182,8 @@ def tarjeta_trabajo(c, i, total, ancho):
             </p>
 </div>
 <div class="flex items-center justify-between pt-space-xs">
-<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Ver en el portfolio</span>
-<a href="{href}" aria-label="{e(p["n"])} en el portfolio" class="w-10 h-10 rounded-full bg-surface-container-high group-hover:bg-primary-container text-primary group-hover:text-on-primary-fixed flex items-center justify-center transition-all duration-300">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">{ver[0]}</span>
+<a href="{href}" aria-label="{e(ver[1])}" class="w-10 h-10 rounded-full bg-surface-container-high group-hover:bg-primary-container text-primary group-hover:text-on-primary-fixed flex items-center justify-center transition-all duration-300">
 <span class="material-symbols-outlined text-[20px] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">north_east</span>
 </a>
 </div>
@@ -193,7 +197,7 @@ def fila_indice(c, i):
     e = html.escape
     cat = categoria(p)
     return f"""<!-- Row {i:02d} -->
-<a class="list-item-row group grid grid-cols-12 items-center px-space-lg py-space-lg hover:bg-surface-container-high transition-colors" data-category="{cat}" href="{PORTFOLIO}#{c}">
+<a class="list-item-row group grid grid-cols-12 items-center px-space-lg py-space-lg hover:bg-surface-container-high transition-colors" data-category="{cat}" href="{f'casos/{CASOS[c]}.html' if c in CASOS else PORTFOLIO + '#' + c}">
 <div class="col-span-1 font-label-md text-label-md text-on-surface-variant font-mono">{i:02d}</div>
 <div class="col-span-4 flex flex-col">
 <span class="font-headline-sm text-headline-sm uppercase text-primary group-hover:text-primary-container transition-colors">{e(p["n"].upper())}</span>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Citadenta · Caso de estudio · Malackath</title><meta name="description" content="Atiende a los pacientes por WhatsApp a cualquier hora, les da turno en el Google Calendar de la clínica y le avisa a la doctora lo importante. Usa el mismo número de WhatsApp de siempre: nada que migrar."/><link rel="icon" href="../img/marca/favicon.svg" type="image/svg+xml"/><link rel="alternate icon" href="../img/marca/favicon.ico"/><link rel="apple-touch-icon" href="../img/marca/icono-app-blanco-180.png"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Syne:wght@400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } body > main, body > footer { overflow-x: clip; } @media (max-width: 767px) { .text-display-xl-mobile { font-size: clamp(1.6rem, 7.9vw, 2.75rem) !important; line-height: 1.1 !important; } .text-display-lg-mobile { font-size: clamp(1.6rem, 7.6vw, 2.25rem) !important; } } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><link rel="stylesheet" href="../css/estilos.css?v=51c52ff595"/><style>
+.seccion-fondo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.seccion-fondo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.seccion-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#131315 0%,rgba(19,19,21,.55) 18%,rgba(19,19,21,.45) 50%,rgba(19,19,21,.55) 82%,#131315 100%)}
+</style><style>
+.caso-fondo{position:absolute;top:0;left:0;right:0;bottom:-120px;z-index:-1;pointer-events:none;overflow:hidden}
+main section{position:relative}
+.caso-fondo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.4s ease}
+.caso-fondo img.activa{opacity:1}
+.caso-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,19,21,.8) 0%,rgba(19,19,21,.55) 38%,rgba(19,19,21,.25) 70%,rgba(19,19,21,.15) 100%),linear-gradient(0deg,#131315 0%,rgba(19,19,21,.55) 22%,rgba(19,19,21,0) 50%)}
+@media (max-width:767px){.caso-fondo::after{background:linear-gradient(0deg,#131315 0%,rgba(19,19,21,.7) 35%,rgba(19,19,21,.45) 100%)}}
+</style><style>@layer base {
+.titulo-cierre { font-weight: 800 !important; letter-spacing: -0.04em !important; line-height: 1.08 !important; }
+/* celular: la letra ancha no entraba; la caja usa el aire chico del sistema y la letra baja lo justo para «PRODUCCIÓN?» */
+@media (max-width: 767px) {
+  .titulo-cierre { font-size: min(1.75rem, calc((100vw - 88px) / 12.6)) !important; }
+  div:has(> div > .titulo-cierre).rounded-xl, div:has(> div > div > .titulo-cierre).rounded-xl { padding: 1.5rem !important; }
+}
+}</style><style>
+.rounded-xl.bg-surface-container,.rounded-xl.bg-surface-container-low,.rounded-lg.bg-surface-container,.bg-surface-container.p-space-md{
+ background:rgba(255,255,255,.035)!important;
+ border:1px solid rgba(255,255,255,.12)!important;
+ -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+ box-shadow:inset 1px 1px 0 rgba(255,255,255,.16),inset -1px -1px 0 rgba(0,0,0,.35)}
+.rounded-xl.bg-surface-container:hover,.rounded-xl.bg-surface-container-low:hover{
+ background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.18)!important}
+</style><style>
+.awa-r{opacity:0;transform:translate3d(var(--awa-x,0),var(--awa-y,0),0) scale(var(--awa-s,1));transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1);transition-delay:var(--awa-d,0ms);will-change:opacity,transform}
+.awa-r.awa-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.awa-r{opacity:1;transform:none;transition:none}}
+</style><style>html{scroll-padding-top:112px}</style><link rel="alternate" hreflang="es" href="https://malackath.com/casos/citadenta.html"/><link rel="alternate" hreflang="en" href="https://malackath.com/en/casos/citadenta.html"/><link rel="alternate" hreflang="pt" href="https://malackath.com/pt/casos/citadenta.html"/><link rel="alternate" hreflang="x-default" href="https://malackath.com/casos/citadenta.html"/></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/75 backdrop-blur-2xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-20 w-full px-margin-mobile md:px-margin-tablet lg:px-margin flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="home" href="../index.html"><img alt="Malackath" class="h-8 w-auto object-contain" src="../img/marca/malackath-horizontal-color-negativo.svg"/></a><div class="hidden lg:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-high/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Disponibles para proyectos nuevos</span></div></div><nav class="hidden md:flex items-center gap-space-md" data-active-classes="bg-surface-container-high text-primary font-bold rounded-full px-space-md py-space-xs"><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="portfolio" href="../trabajo.html">Trabajo</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="services" href="../servicios.html">Servicios</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="studio" href="../estudio.html">Estudio</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="case-studies" href="../casos-de-estudio.html">Casos</a></nav><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider" data-idioma><span class="text-primary-container" aria-current="true">ES</span><span class="text-on-surface-variant/40">/</span><a class="text-on-surface-variant hover:text-primary transition-colors" href="../en/casos/citadenta.html" hreflang="en" lang="en" title="English">EN</a><span class="text-on-surface-variant/40">/</span><a class="text-on-surface-variant hover:text-primary transition-colors" href="../pt/casos/citadenta.html" hreflang="pt" lang="pt" title="Português">PT</a></div><a class="hidden md:inline-flex items-center justify-center px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase hover:bg-primary-fixed-dim hover:text-on-primary-fixed transition-all duration-300" data-path="contact" href="../estudio.html#contacto">Iniciar proyecto</a><a aria-label="Contacto" href="../estudio.html#contacto" class="hidden md:flex w-8 h-8 shrink-0 rounded-full bg-primary items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></a><button type="button" aria-label="Menú" aria-expanded="false" aria-controls="menu-celu" data-menu class="md:hidden w-10 h-10 shrink-0 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[22px]">menu</span></button></div></div><nav id="menu-celu" class="md:hidden px-margin-mobile pb-space-lg flex-col" style="display:none"><a data-path="portfolio" href="../trabajo.html" class="font-label-lg text-label-lg uppercase tracking-wider py-space-md border-b border-white/5 text-primary">Trabajo</a><a data-path="services" href="../servicios.html" class="font-label-lg text-label-lg uppercase tracking-wider py-space-md border-b border-white/5 text-primary">Servicios</a><a data-path="studio" href="../estudio.html" class="font-label-lg text-label-lg uppercase tracking-wider py-space-md border-b border-white/5 text-primary">Estudio</a><a data-path="case-studies" href="../casos-de-estudio.html" class="font-label-lg text-label-lg uppercase tracking-wider py-space-md border-b border-white/5 text-primary">Casos</a><a data-path="contact" href="../estudio.html#contacto" class="mt-space-md inline-flex items-center justify-center px-space-lg py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase">Iniciar proyecto</a></nav></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- SECTION: CASE META & BREADCRUMB -->
+<section class="relative isolate w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-space-xl pb-space-lg">
+<div class="caso-fondo" aria-hidden="true"><img alt="" fetchpriority="high" class="activa" src="../img/casos-fondos/citadenta-1-recepcion.webp"/><img alt="" class="" src="../img/casos-fondos/citadenta-2-equipo.webp"/></div>
+<div class="flex flex-col gap-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<a class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="../casos-de-estudio.html">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 07</span>
+</a>
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high">
+<span class="h-2 w-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase text-primary tracking-wider">2026 — DEMO NAVEGABLE</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl pt-space-md">
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary-container">Salud · Clínicas dentales</span>
+<h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary uppercase tracking-tighter">
+            CITADENTA
+          </h1>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant max-w-2xl">
+            Proyecto propio · Uruguay · Panel web y recepcionista por WhatsApp
+          </p>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end gap-space-md">
+<div class="flex flex-col sm:flex-row lg:flex-col gap-space-sm">
+<a class="inline-flex items-center justify-between px-space-lg py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase transition-all duration-300 hover:bg-primary-fixed-dim hover:scale-[1.01] shadow-xl" href="https://citadenta.malackath.com" rel="noopener noreferrer" target="_blank" target="_blank" rel="noopener">
+<span>Visitar citadenta.malackath.com</span>
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</a>
+
+</div>
+</div>
+</div>
+<!-- Services & Meta Strip -->
+<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-space-md p-space-lg rounded-xl bg-surface-container-low mt-space-md shadow-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Área / Disciplina</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Producto, marca y diseño</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Alcance UI/UX</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Recepcionista por WhatsApp, panel web y folleto de venta</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Tecnología</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">WhatsApp Business + Google Calendar</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Modelo</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">No diagnostica ni receta: el diagnóstico es de la profesional</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: HERO VISUAL & EDITORIAL HEADLINE -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl">
+<div class="flex flex-col gap-space-2xl">
+<div class="max-w-4xl flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">La Visión</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tight">
+          UNA RECEPCIONISTA QUE CONTESTA EL WHATSAPP AUNQUE LA CLÍNICA ESTÉ CERRADA
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Atiende a los pacientes por WhatsApp a cualquier hora, les da turno en el Google Calendar de la clínica y le avisa a la doctora lo importante. Usa el mismo número de WhatsApp de siempre: nada que migrar.
+        </p>
+</div>
+<!-- Hero Multi-Screen Composition Mockup -->
+<div class="relative w-full rounded-xl bg-surface-container p-space-lg md:p-space-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+<!-- Subtle Ambient Backdrops -->
+<div class="absolute -top-24 -left-24 w-[32rem] h-[32rem] rounded-full bg-primary-container/20 blur-[110px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -right-24 w-[36rem] h-[36rem] rounded-full blur-[120px] pointer-events-none" style="background:#22AEB8;opacity:.45"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Captura real: escritorio -->
+<div class="lg:col-span-8 w-full rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-xl transition-transform hover:-translate-y-1 duration-300">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="ml-space-sm font-label-sm text-label-sm text-on-surface-variant">citadenta.malackath.com</span>
+</div>
+<div class="w-full aspect-[16/10] rounded-lg overflow-hidden bg-surface-container-highest">
+<img alt="Citadenta: versión escritorio" loading="lazy" class="w-full h-full object-cover object-top" src="../img/portfolio/citadenta-d-01-9723e61c.webp"/>
+</div>
+</div>
+<!-- Capturas reales: celular -->
+<div class="lg:col-span-4 flex items-center justify-center gap-space-md">
+<div class="w-1/2 max-w-[220px] aspect-[9/19.5] rounded-[28px] bg-surface-container-low p-[6px] shadow-xl transition-transform hover:-translate-y-1 duration-300 "><img alt="Citadenta: versión celular" loading="lazy" class="w-full h-full object-cover object-top rounded-[22px]" src="../img/portfolio/citadenta-m-06-33e65ec9.webp"/></div>
+<div class="w-1/2 max-w-[220px] aspect-[9/19.5] rounded-[28px] bg-surface-container-low p-[6px] shadow-xl transition-transform hover:-translate-y-1 duration-300 lg:translate-y-space-lg"><img alt="Citadenta: versión celular" loading="lazy" class="w-full h-full object-cover object-top rounded-[22px]" src="../img/portfolio/citadenta-m-02-ea94fcd6.webp"/></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: THE CHALLENGE (EL DESAFÍO) -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<div class="lg:col-span-4 flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Diagnóstico &amp; Fricción</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
+          LOS PACIENTES ESCRIBEN CUANDO PUEDEN, NO CUANDO LA CLÍNICA ESTÁ ABIERTA
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          De noche, el fin de semana, en el ómnibus. Y del otro lado, la recepción atiende a quien tiene enfrente, el teléfono y la agenda a la vez.
+        </p>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Friction Point 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">El mensaje de la noche</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Alguien con dolor escribe fuera de horario y, si nadie contesta, a la mañana ya buscó otra clínica.
+            </p>
+</div>
+</div>
+<!-- Friction Point 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">event_busy</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">El hueco de una cancelación</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Un paciente cancela a último momento y el sillón queda vacío, aunque otro quería venir antes.
+            </p>
+</div>
+</div>
+<!-- Friction Point 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">El paciente que no vuelve</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Pasan los meses, nadie le recuerda el control y se pierde el hábito de venir.
+            </p>
+</div>
+</div>
+<!-- Friction Point 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Recepción desbordada</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              La misma persona atiende el mostrador, el teléfono y el WhatsApp a la vez.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: SOLUTION & ARCHITECTURE -->
+<section class="relative isolate w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-2xl">
+<div class="seccion-fondo" aria-hidden="true"><img alt="" loading="lazy" src="../img/casos-fondos/citadenta-pilares.webp"/></div>
+<div class="flex flex-col gap-space-2xl">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Arquitectura de Producto</span>
+<h3 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase">
+          TRES PILARES: ATENDER, AGENDAR Y RECUPERAR
+        </h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Pilar 1 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILAR 01</span>
+<span class="material-symbols-outlined text-primary-container">forum</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Atiende a cualquier hora</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Contesta dudas, da turnos, los cambia y los cancela en un español rioplatense cálido y breve. Entiende las notas de voz y, si no sabe algo, le pregunta a la clínica en lugar de inventar.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Urgencias</span>
+<span class="font-mono text-label-md text-primary">Dolor fuerte, hinchazón o diente roto: ofrece el primer lugar libre y avisa a la doctora</span>
+</div>
+</div>
+<!-- Pilar 2 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILAR 02</span>
+<span class="material-symbols-outlined text-primary-container">event_available</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Agenda en tu Google Calendar</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Mira los horarios libres reales, ofrece tres opciones con botones y anota el turno. El día antes manda un recordatorio para confirmar o cambiar la hora, y al confirmar, la ubicación de la clínica.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Ficha</span>
+<span class="font-mono text-label-md text-primary-container font-bold">Datos del paciente, notas útiles, sus turnos y toda la conversación</span>
+</div>
+</div>
+<!-- Pilar 3 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILAR 03</span>
+<span class="material-symbols-outlined text-primary-container">hourglass_top</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Lista de espera que trabaja sola</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Cuando alguien cancela, busca a quién darle ese lugar, se lo ofrece por WhatsApp y, si no responde, pasa al siguiente. Además recuerda el control a los seis meses.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Informe</span>
+<span class="font-mono text-label-md text-primary">Cada mes: turnos agendados, urgencias y lugares recuperados</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: UI DEEP DIVE / SHOWCASE INTERACTIVO -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl">
+<div class="flex flex-col gap-space-2xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Sistema de UI y diseño visual</span>
+<h3 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase">
+            PANTALLAS DEL PANEL
+          </h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          El panel de la clínica en celular. Todos los nombres, teléfonos y turnos son datos de ejemplo.
+        </p>
+</div>
+<!-- 4 Screen Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Screen 1: Onboarding & ELO -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Citadenta: Turnos de hoy" style="background-image: url('../img/portfolio/citadenta-m-01-1cb5d4a4.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">PANTALLA 01</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Turnos de hoy</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                La agenda del día, las urgencias marcadas y el estado de la recepcionista.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">01 // TURNOS</span>
+</div>
+<!-- Screen 2: Radar de Partidos -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Citadenta: Lista de espera" style="background-image: url('../img/portfolio/citadenta-m-04-7635112d.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">PANTALLA 02</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Lista de espera</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Quién quiere un turno antes y en qué orden se le ofrece el próximo lugar libre.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">02 // ESPERA</span>
+</div>
+<!-- Screen 3: Match Lobby & Chat -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Citadenta: Probar la recepcionista" style="background-image: url('../img/portfolio/citadenta-m-06-33e65ec9.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">PANTALLA 03</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Probar la recepcionista</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Un chat para escribirle como si fueras un paciente antes de encenderla.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">03 // PRUEBA</span>
+</div>
+<!-- Screen 4: Split & Post-Match -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Citadenta: Informe mensual" style="background-image: url('../img/portfolio/citadenta-m-05-c53bdac3.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">PANTALLA 04</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Informe mensual</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Lo que hizo la recepcionista en el mes, listo el día 1 a las 8 de la mañana.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">04 // INFORME</span>
+</div>
+</div>
+<!-- Design System Tokens Bar -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-[#22AEB8] ring-1 ring-white/10"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Celeste turquesa (#22AEB8)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-[#0A4F63] ring-1 ring-white/10"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Petróleo (#0A4F63)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-[#F4F8F9] ring-1 ring-white/10"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Fondo claro (#F4F8F9)</span>
+</div>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">
+          Tipografía: Poppins (una sola familia)
+        </div>
+</div>
+</div>
+</section>
+<!-- SECTION: NEXT CASE STUDY & COLLABORATION CTA -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl">
+<div class="flex flex-col gap-space-3xl">
+<!-- Next Project Strip -->
+<a class="group block w-full p-space-xl rounded-xl bg-surface-container-low transition-all duration-300 hover:bg-surface-container shadow-lg" href="arma-partido.html">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">SIGUIENTE CASO DE ESTUDIO // 01</span>
+<h4 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase group-hover:text-primary-container transition-colors">
+              ARMÁ PARTIDO: PARTIDOS DE PÁDEL PAREJOS
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              SportTech · Partidos armados por categoría y reserva de cancha en el club
+            </p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-primary-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-fixed text-[24px]">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Direct Agency Contact Box -->
+<div class="w-full p-space-2xl rounded-xl bg-surface-container-lowest flex flex-col lg:flex-row items-center justify-between gap-space-xl shadow-2xl relative overflow-hidden">
+<div class="absolute -top-16 -right-16 w-80 h-80 rounded-full bg-primary-container/10 blur-[80px] pointer-events-none"></div>
+<div class="flex flex-col gap-space-sm max-w-2xl relative z-10">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Iniciemos Conversación</span>
+<h3 class="titulo-cierre font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
+            ¿TENÉS UNA IDEA DE PRODUCTO DIGITAL PARA LLEVAR A PRODUCCIÓN?
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Desde la idea y el diseño del producto hasta la app funcionando. Diseñamos y construimos productos digitales propios y para clientes.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md relative z-10">
+<a class="inline-flex items-center justify-center px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase font-bold tracking-wider hover:bg-primary-fixed-dim transition-all duration-300 shadow-xl" href="../estudio.html#contacto">
+            Iniciar Proyecto
+          </a>
+<a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-full bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container-high hover:text-primary transition-all duration-300" href="https://wa.me/59894202607" target="_blank" rel="noopener">
+            Agendar Llamada
+          </a>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest pt-space-3xl pb-space-2xl"><div class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin flex flex-col gap-space-2xl"><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-xl pt-space-xl"><div class="flex flex-col gap-space-lg"><a href="../index.html" aria-label="Malackath"><img alt="Malackath" class="h-10 md:h-12 w-auto" src="../img/marca/malackath-horizontal-color-negativo.svg"/></a><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Husos horarios</span><div class="flex flex-wrap items-center gap-space-md font-label-md text-label-md text-on-surface"><span class="flex items-center gap-space-xs"><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>MONTEVIDEO [UYT]</span><span class="text-on-surface-variant">/</span><span class="flex items-center gap-space-xs"><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>BRASIL [BRT]</span></div></div></div></div><div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pt-space-lg"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">© 2026 MALACKATH. TODOS LOS DERECHOS RESERVADOS.</span></div></div></footer>
+<script>(function(){var f=document.querySelector('.caso-fondo');if(!f)return;var im=f.querySelectorAll('img');
+if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var k=0;
+setInterval(function(){im[k].classList.remove('activa');k=(k+1)%im.length;im[k].classList.add('activa');},5000);})();</script><script>
+(function(){try{
+  if(typeof IntersectionObserver!=='function'||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var main=document.querySelector('main');if(!main)return;
+  var k=matchMedia('(max-width:767px)').matches?.7:1;
+  var hero=main.querySelector('section');
+  function fuera(el){return (hero&&hero.contains(el))||el.closest('.animate-marquee,[class*="animate-"],header,footer')||el.closest('.awa-r');}
+  var els=[];
+  function add(el,x,y,s,d,step){if(!el||fuera(el)||el._awa)return;el._awa={d:d,step:step};
+    el.style.setProperty('--awa-x',(x*k)+'px');el.style.setProperty('--awa-y',(y*k)+'px');el.style.setProperty('--awa-s',s);
+    el.classList.add('awa-r');els.push(el);}
+  [].slice.call(main.querySelectorAll('.grid')).forEach(function(g){
+    var hs=[].slice.call(g.children).filter(function(n){return /rounded-xl|project-card/.test(n.className)&&n.offsetHeight>80;});
+    if(hs.length===2){add(hs[0],-110,0,1,0,0);add(hs[1],110,0,1,250,0);}
+    else hs.forEach(function(n){add(n,0,70,1,0,190);});
+  });
+  [].slice.call(main.querySelectorAll('h1,h2')).forEach(function(h){if(!h.closest('.rounded-xl,.project-card,article,a'))add(h,0,-46,1,0,0);});
+  if(!els.length)return;
+  var io=new IntersectionObserver(function(es){
+    es.filter(function(e){return e.isIntersecting;})
+      .sort(function(a,b){return a.target.compareDocumentPosition(b.target)&4?-1:1;})
+      .forEach(function(e,i){var t=e.target,a=t._awa;
+        t.style.setProperty('--awa-d',(a.d+i*a.step)+'ms');t.classList.add('awa-in');io.unobserve(t);
+        setTimeout(function(){t.classList.remove('awa-r','awa-in');t.style.removeProperty('--awa-d');},2200+a.d+i*a.step);});
+  },{threshold:.15,rootMargin:"0px 0px -14% 0px"});
+  els.forEach(function(el){io.observe(el);});
+}catch(err){[].forEach.call(document.querySelectorAll('.awa-r'),function(el){el.classList.remove('awa-r');});}})();
+</script><script>
+(function () {
+  var b = document.querySelector('[data-menu]'), m = document.getElementById('menu-celu');
+  if (!b || !m) return;
+  function poner(abierto) {
+    m.style.display = abierto ? 'flex' : 'none';
+    b.setAttribute('aria-expanded', abierto);
+    b.firstElementChild.textContent = abierto ? 'close' : 'menu';
+  }
+  b.addEventListener('click', function () { poner(m.style.display === 'none'); });
+  m.addEventListener('click', function (e) { if (e.target.closest('a')) poner(false); });
+  addEventListener('resize', function () { if (innerWidth >= 768) poner(false); });
+})();
+</script></body></html>

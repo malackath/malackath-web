@@ -413,8 +413,8 @@ CSS_SCROLL = """<style>
 @media (prefers-reduced-motion:reduce){.awa-r{opacity:1;transform:none;transition:none}}
 </style>"""
 JS_SCROLL = """<script>
-(function(){
-  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+(function(){try{
+  if(typeof IntersectionObserver!=='function'||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var main=document.querySelector('main');if(!main)return;
   var k=matchMedia('(max-width:767px)').matches?.7:1;
   var hero=main.querySelector('section');
@@ -438,7 +438,7 @@ JS_SCROLL = """<script>
         setTimeout(function(){t.classList.remove('awa-r','awa-in');t.style.removeProperty('--awa-d');},2200+a.d+i*a.step);});
   },{threshold:.15,rootMargin:"0px 0px -14% 0px"});
   els.forEach(function(el){io.observe(el);});
-})();
+}catch(err){[].forEach.call(document.querySelectorAll('.awa-r'),function(el){el.classList.remove('awa-r');});}})();
 </script>"""
 
 
@@ -1304,8 +1304,41 @@ def casos_general(s):
     if act and norm:
         s = s.replace(act.group(0), f'<a class="{norm.group(1)}" data-path="portfolio"', 1)
         s = s.replace(norm.group(0), f'<a aria-current="page" class="{act.group(1)}" data-path="case-studies"', 1)
+    s = _caso_citadenta(s)
     s = celulares(s, "")
     guardar("casos-de-estudio.html", s)
+
+
+def _caso_citadenta(s):
+    """Casos de estudio: 7.ª tarjeta y 7.ª fila, Citadenta (Ber, 2026-11-25). Copia la tarjeta de Mesaluma
+    con sus datos, a todo el ancho y con la foto más baja para que no quede un hueco en la grilla."""
+    arts = re.findall(r'<article class="project-card.*?</article>', s, re.S)
+    mesa = arts[-1]
+    assert "casos/mesaluma.html" in mesa
+    t = mesa.replace("md:col-span-6", "md:col-span-12").replace("aspect-[16/11]", "aspect-[16/11] md:aspect-[16/6]")
+    t = re.sub(r'<img alt="Salón del restaurante con paredes de piedra"[^>]*/>(<div class="celu-real".*?</div><!-- celular real: Mesaluma -->)?',
+               '<img alt="Recepción de una clínica dental" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/casos-fondos/citadenta-1-recepcion.webp"/>'
+               + portfolio_web.celular("citadenta", ""), t, count=1, flags=re.S)
+    for viejo, nuevo in [("Gastronomía · Reservas", "Salud · Dental"), ("PRE-ORDER", "CON IA"),
+                         ("mesaluma.arnelli.com", "citadenta.malackath.com"), ("RESTAURANTES", "CLÍNICAS DENTALES"),
+                         ("06 // 06", "07 // 07"), ("Reservas • Salón • Cocina", "WhatsApp • Turnos • Lista de espera"), ("casos/mesaluma.html", "casos/citadenta.html"), (">MESALUMA<", ">CITADENTA<"),
+                         ("Sistema de salón, reservas y comandas para restaurantes: app para mozos, reservas web y panel de cocina.",
+                          "Recepcionista con IA por WhatsApp para clínicas dentales: agenda turnos, avisa urgencias y arma la lista de espera.")]:
+        assert viejo in t, viejo
+        t = t.replace(viejo, nuevo)
+    s = s.replace(mesa, mesa + "\n<!-- Caso 07: Citadenta -->\n" + t, 1)
+    s = re.sub(r"(\d\d) // 06<", r"\1 // 07<", s)
+    i = s.find("<!-- Row 06 -->"); j = s.find("</a>", i) + len("</a>")
+    fila = s[i:j]
+    f = fila.replace("Row 06", "Row 07").replace('font-mono">06<', 'font-mono">07<').replace("casos/mesaluma.html", "casos/citadenta.html")
+    for viejo, nuevo in [(">MESALUMA<", ">CITADENTA<"), ("Restaurantes • Reservas y comandas", "Clínicas dentales • Recepción por WhatsApp"),
+                         ("Gastronomía · Reservas", "Salud · Panel &amp; WhatsApp"), (">PRE-ORDER<", ">WHATSAPP + IA<")]:
+        assert viejo in f, viejo
+        f = f.replace(viejo, nuevo)
+    s = s[:j] + "\n" + f + s[j:]
+    s = rep(s, "6 CASOS", "7 CASOS")
+    s = s.replace("Pizcaya, Palquear, Cartelera Uruguay, RaveKit y Mesaluma.", "Pizcaya, Palquear, Cartelera Uruguay, RaveKit, Mesaluma y Citadenta.")
+    return s
 
 
 def celulares(s, pre):
@@ -1737,7 +1770,7 @@ if __name__ == "__main__":
     home()
     base_caso = arma_partido()
     pizcaya()
-    for clave in ("palquear", "cartelera", "mesaluma", "ravekit"):
+    for clave in ("palquear", "cartelera", "mesaluma", "ravekit", "citadenta"):
         caso_nuevo(base_caso, clave)
     trabajo()
     estudio()

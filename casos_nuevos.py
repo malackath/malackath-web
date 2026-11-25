@@ -1,4 +1,4 @@
-"""Casos de estudio nuevos (pedido de Ber, 2026-11-25): Palquear, Cartelera Uruguay, Mesaluma y RaveKit.
+"""Casos de estudio nuevos (pedido de Ber, 2026-11-25): Palquear, Cartelera Uruguay, Mesaluma, RaveKit y Citadenta.
 
 Se arman sobre la plantilla de caso de Stitch que ya usa Armá Partido (mismas secciones y estilos).
 Fuente de cada dato: /mnt/project-files/malackath/casos-material/<proyecto>.md (lectura de los repos
@@ -184,6 +184,53 @@ CASOS = {
             None, "Precio plano", "Starter a 19 dólares por mes, sin contrato ni llamadas de ventas.", "04 // PRECIO",
             None, None, None,
             "Tipografías: Plus Jakarta Sans (titulares y texto) & JetBrains Mono (datos)",
+            "SIGUIENTE CASO DE ESTUDIO // 07", "CITADENTA: LA CLÍNICA CONTESTA AUNQUE ESTÉ CERRADA", "Salud · Recepcionista con IA por WhatsApp para clínicas dentales",
+        ],
+        siguiente="citadenta.html",
+    ),
+    # Citadenta (pedido de Ber, 2026-11-25: zip Citadenta-portfolio en ~/Projects). Fuente: LEEME.txt y el folleto
+    # de venta del zip (insumos/citadenta). Sitio: citadenta.malackath.com. Sin precios ni cifras.
+    # Fotos de fondo: las del propio folleto de Citadenta (decisión de Claude, Ber no estaba): recepción y equipo
+    # en el hero, paciente con espejo en los pilares. Si Ber prefiere fotos nuevas de Flow, se cambian por nombre.
+    "citadenta": dict(
+        iconos=["dark_mode", "event_busy", "history", "support_agent", "forum", "event_available", "hourglass_top"],  # 4 del desafío + 3 pilares
+        numero="07", estado="2026 — DEMO NAVEGABLE", rubro="Salud · Clínicas dentales", titulo="CITADENTA", nombre="Citadenta",
+        bajada="Proyecto propio · Uruguay · Panel web y recepcionista por WhatsApp",
+        visitar=("Visitar citadenta.malackath.com", "https://citadenta.malackath.com"),
+        meta=["Producto, marca y diseño", "Recepcionista por WhatsApp, panel web y folleto de venta",
+              "WhatsApp Business + Google Calendar", "No diagnostica ni receta: el diagnóstico es de la profesional"],
+        vision_titulo="UNA RECEPCIONISTA QUE CONTESTA EL WHATSAPP AUNQUE LA CLÍNICA ESTÉ CERRADA",
+        vision="Atiende a los pacientes por WhatsApp a cualquier hora, les da turno en el Google Calendar de la clínica y le avisa a la doctora lo importante. Usa el mismo número de WhatsApp de siempre: nada que migrar.",
+        hero=("citadenta-d-01-9723e61c.webp", "citadenta-m-06-33e65ec9.webp", "citadenta-m-02-ea94fcd6.webp"),
+        pantallas=["citadenta-m-01-1cb5d4a4.webp", "citadenta-m-04-7635112d.webp", "citadenta-m-06-33e65ec9.webp", "citadenta-m-05-c53bdac3.webp"],
+        colores=[("#22AEB8", "Celeste turquesa (#22AEB8)"), ("#0A4F63", "Petróleo (#0A4F63)"), ("#F4F8F9", "Fondo claro (#F4F8F9)")],
+        textos=[
+            None,
+            "LOS PACIENTES ESCRIBEN CUANDO PUEDEN, NO CUANDO LA CLÍNICA ESTÁ ABIERTA",
+            "De noche, el fin de semana, en el ómnibus. Y del otro lado, la recepción atiende a quien tiene enfrente, el teléfono y la agenda a la vez.",
+            "El mensaje de la noche", "Alguien con dolor escribe fuera de horario y, si nadie contesta, a la mañana ya buscó otra clínica.",
+            "El hueco de una cancelación", "Un paciente cancela a último momento y el sillón queda vacío, aunque otro quería venir antes.",
+            "El paciente que no vuelve", "Pasan los meses, nadie le recuerda el control y se pierde el hábito de venir.",
+            "Recepción desbordada", "La misma persona atiende el mostrador, el teléfono y el WhatsApp a la vez.",
+            None,
+            "TRES PILARES: ATENDER, AGENDAR Y RECUPERAR",
+            None, "Atiende a cualquier hora",
+            "Contesta dudas, da turnos, los cambia y los cancela en un español rioplatense cálido y breve. Entiende las notas de voz y, si no sabe algo, le pregunta a la clínica en lugar de inventar.",
+            "Urgencias", "Dolor fuerte, hinchazón o diente roto: ofrece el primer lugar libre y avisa a la doctora",
+            None, "Agenda en tu Google Calendar",
+            "Mira los horarios libres reales, ofrece tres opciones con botones y anota el turno. El día antes manda un recordatorio para confirmar o cambiar la hora, y al confirmar, la ubicación de la clínica.",
+            "Ficha", "Datos del paciente, notas útiles, sus turnos y toda la conversación",
+            None, "Lista de espera que trabaja sola",
+            "Cuando alguien cancela, busca a quién darle ese lugar, se lo ofrece por WhatsApp y, si no responde, pasa al siguiente. Además recuerda el control a los seis meses.",
+            "Informe", "Cada mes: turnos agendados, urgencias y lugares recuperados",
+            None, "PANTALLAS DEL PANEL",
+            "El panel de la clínica en celular. Todos los nombres, teléfonos y turnos son datos de ejemplo.",
+            None, "Turnos de hoy", "La agenda del día, las urgencias marcadas y el estado de la recepcionista.", "01 // TURNOS",
+            None, "Lista de espera", "Quién quiere un turno antes y en qué orden se le ofrece el próximo lugar libre.", "02 // ESPERA",
+            None, "Probar la recepcionista", "Un chat para escribirle como si fueras un paciente antes de encenderla.", "03 // PRUEBA",
+            None, "Informe mensual", "Lo que hizo la recepcionista en el mes, listo el día 1 a las 8 de la mañana.", "04 // INFORME",
+            None, None, None,
+            "Tipografía: Poppins (una sola familia)",
             "SIGUIENTE CASO DE ESTUDIO // 01", "ARMÁ PARTIDO: PARTIDOS DE PÁDEL PAREJOS", "SportTech · Partidos armados por categoría y reserva de cancha en el club",
         ],
         siguiente="arma-partido.html",
