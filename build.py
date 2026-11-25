@@ -259,10 +259,29 @@ FLECHA_GRIS = "rounded-full bg-surface-container-high group-hover:bg-primary-con
 FLECHA_LIMA = "rounded-full bg-primary-container text-on-primary-fixed group-hover:bg-primary-fixed-dim group-hover:scale-110"
 
 
+
+def _caja_lima(m):
+    """Caja de texto de la tarjeta en verde lima con letra oscura (decisión de Ber, 2026-11-25)."""
+    a = m.group(0)
+    i = a.rfind('<div class="p-space-lg')
+    if i < 0:
+        return a
+    caja = a[i:]
+    caja = caja.replace('<div class="p-space-lg', '<div class="bg-primary-container p-space-lg', 1)
+    caja = caja.replace(FLECHA_LIMA, "@@FLECHA_CAJA@@")
+    caja = caja.replace("group-hover:text-primary-container", "")
+    caja = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/70", caja)
+    caja = re.sub(r"(?<![\w:/-])text-primary-container(?![\w-])", "text-on-primary-fixed", caja)
+    caja = re.sub(r"(?<![\w:-])text-primary(?![\w-])", "text-on-primary-fixed", caja)
+    caja = re.sub(r"(?<![\w:-])bg-surface-container-high(?![\w-])", "bg-on-primary-fixed/10", caja)
+    caja = caja.replace("@@FLECHA_CAJA@@", "rounded-full bg-on-primary-fixed text-primary-container group-hover:scale-110")
+    return a[:i] + caja
+
 def guardar(nombre, s):
     s = fondo_caso(nombre, s)
     if nombre in ("trabajo.html", "casos-de-estudio.html"):
         s = s.replace(FLECHA_GRIS, FLECHA_LIMA)
+        s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
     # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
     s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
     if BORRADOR:
