@@ -14,15 +14,9 @@
 
 ## 3. Alcance y precio
 
-| Servicio | Qué incluye | Modalidad | Precio |
-|---|---|---|---|
-| {{servicio_1}} | {{incluye_1}} | {{modalidad_1}} | {{precio_1}} |
-| {{servicio_2}} | {{incluye_2}} | {{modalidad_2}} | {{precio_2}} |
-| | | **Subtotal** | {{subtotal}} |
-| | | **{{impuesto_nombre}} {{impuesto_pct}}** | {{impuesto_linea}} |
-| | | **Total** | {{total}} |
+{{tabla_precios}}
 
-**Mantenimiento mensual (opcional):** {{plan_mantenimiento}} · {{moneda}} {{cuota_mensual}} por mes {{iva_texto}}.
+{{?cuota_mensual}} **Mantenimiento mensual (opcional):** {{plan_mantenimiento}} · {{moneda}} {{cuota_mensual}} por mes {{iva_texto}}.
 
 Precios en {{moneda}}. Las líneas por horas son estimaciones con tope (ver Anexo A).
 
@@ -32,10 +26,7 @@ Precios en {{moneda}}. Las líneas por horas son estimaciones con tope (ver Anex
 
 ## 5. Plazos
 
-| Etapa | Duración estimada |
-|---|---|
-| {{etapa_1}} | {{duracion_1}} |
-| {{etapa_2}} | {{duracion_2}} |
+{{tabla_plazos}}
 
 Desde la aceptación, el anticipo y la entrega de materiales por parte del cliente.
 
@@ -51,4 +42,4 @@ Desde la aceptación, el anticipo y la entrega de materiales por parte del clien
 
 Esta propuesta no es un contrato. Las condiciones legales están en el Contrato marco y el SOW.
 
-**Malackath** · {{prestador_email}} · {{prestador_whatsapp}}
+**{{prestador_nombre_fantasia}}** · {{prestador_email}} · {{prestador_whatsapp}}

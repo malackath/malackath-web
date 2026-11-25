@@ -1,0 +1,103 @@
+/* Sistema del sitio (Stitch "Obsidian Kinetic"): fondo #131315, lima #CAF300, Syne + DM Sans + Space Mono */
+:root{
+  --bg:#131315; --s1:#1c1b1e; --s2:#201f22; --s3:#2a2a2c; --s4:#353437;
+  --tx:#e5e1e4; --tx2:#c5c9ac; --line:#444932; --lima:#CAF300; --lima2:#D4FF00; --err:#ffb4ab;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--tx);font:15px/1.5 "DM Sans",system-ui,sans-serif}
+button,select,input,textarea{font:inherit;color:inherit}
+.etq{font:400 11px/1.2 "Space Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--tx2)}
+button{background:var(--s3);border:1px solid var(--line);border-radius:2px;padding:7px 12px;cursor:pointer}
+button:hover{border-color:var(--lima)}
+button.prim{background:var(--lima);color:#171e00;border-color:var(--lima);font-weight:700}
+button.mini{padding:3px 8px;font-size:12px}
+select,input,textarea{background:var(--s1);border:1px solid var(--line);border-radius:2px;padding:7px 9px;width:100%}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--lima)}
+textarea{min-height:70px;resize:vertical}
+
+.barra{display:flex;align-items:center;gap:16px;padding:12px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.barra .logo{height:26px}
+.barra-der{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.barra-der select{width:auto;min-width:220px}
+
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);padding:0 20px;overflow-x:auto}
+.tabs button{background:none;border:none;border-bottom:3px solid transparent;border-radius:0;padding:12px 14px;font-family:"Syne",sans-serif;font-weight:600;white-space:nowrap;color:var(--tx2)}
+.tabs button.on{color:var(--tx);border-bottom-color:var(--lima)}
+
+.layout{display:grid;grid-template-columns:minmax(380px,520px) 1fr;height:calc(100vh - 110px)}
+.form{overflow-y:auto;padding:18px 20px 60px;border-right:1px solid var(--line)}
+.vista{overflow-y:auto;padding:18px 28px 60px;background:#0e0e10}
+.vista-barra{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.vista-barra .prim{margin-left:auto}
+.chk{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--tx2)}
+.chk input{width:auto}
+.aviso{font-size:13px;color:var(--err);margin-bottom:10px}
+.aviso:empty{display:none}
+
+fieldset{border:1px solid var(--line);border-radius:2px;margin:0 0 16px;padding:12px 14px 14px}
+legend{font:700 15px "Syne",sans-serif;padding:0 6px}
+.campo{margin:8px 0}
+.campo label{display:block;margin-bottom:3px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ayuda{font-size:12px;color:var(--tx2);margin:4px 0 0}
+.fila-acc{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+table.lineas{width:100%;border-collapse:collapse;font-size:13px}
+table.lineas td{padding:3px 2px;vertical-align:top}
+table.lineas th{font:400 10px "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--tx2);text-align:left;padding:2px}
+table.lineas input,table.lineas select{padding:5px 6px}
+.tot{display:flex;justify-content:space-between;font-family:"Space Mono",monospace;font-size:13px;margin-top:8px;color:var(--tx2)}
+.tot b{color:var(--lima)}
+
+/* Hoja A4 (versión clara para imprimir) */
+.papel{background:#fff;color:#131315;width:210mm;min-height:297mm;margin:0 auto;padding:18mm 18mm 20mm;box-shadow:0 0 0 1px #000,8px 8px 0 var(--lima);font:10.5pt/1.5 "DM Sans",sans-serif}
+.papel .cab{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #131315;padding-bottom:10px;margin-bottom:18px}
+.papel .cab img{height:30px}
+.papel .cab .ref{font:9pt "Space Mono",monospace;text-align:right;color:#444}
+.papel h1{font:800 22pt/1.1 "Syne",sans-serif;letter-spacing:-.02em;margin:0 0 10px}
+.papel h2{font:700 12.5pt "Syne",sans-serif;margin:18px 0 6px;padding-top:6px;border-top:1px solid #ddd;break-after:avoid}
+.papel h3{font:700 11pt "Syne",sans-serif;margin:12px 0 4px}
+.papel p{margin:6px 0}
+.papel ul,.papel ol{margin:6px 0;padding-left:20px}
+.papel li{margin:2px 0}
+.papel table{width:100%;border-collapse:collapse;margin:8px 0;font-size:9.5pt;break-inside:avoid}
+.papel th{background:#131315;color:#fff;text-align:left;padding:5px 7px;font-weight:600}
+.papel td{border-bottom:1px solid #ddd;padding:5px 7px;vertical-align:top}
+.papel td.num,.papel th.num{text-align:right;white-space:nowrap}
+.papel tr.total td{border-top:2px solid #131315;font-weight:700}
+.papel blockquote{margin:0 0 12px;padding:8px 12px;background:#fff8c4;border-left:4px solid #CAF300;font-size:9pt}
+.papel .vacio{background:#fff1a8;outline:1px dashed #c9a400;padding:0 3px;font:8.5pt "Space Mono",monospace;color:#7a5d00}
+.papel .hint{color:#777;font-style:italic;font-size:9pt}
+.papel .nota{color:#8a3b00;font-style:italic;font-size:9pt}
+.papel .pie{margin-top:24px;padding-top:8px;border-top:1px solid #ddd;font:8pt "Space Mono",monospace;color:#666;display:flex;justify-content:space-between}
+
+dialog{background:var(--s2);color:var(--tx);border:1px solid var(--line);border-radius:2px;width:min(860px,94vw);max-height:88vh;padding:0}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+#dlgForm{padding:20px;overflow:auto;max-height:88vh}
+#dlgForm h2{font:700 20px "Syne",sans-serif;margin:0 0 12px}
+#dlgForm h3{font:600 15px "Syne",sans-serif;margin:18px 0 6px}
+.perfil{border:1px solid var(--line);padding:10px;margin:8px 0}
+.dlg-pie{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;position:sticky;bottom:-20px;background:var(--s2);padding:10px 0}
+
+@media (max-width:900px){.layout{grid-template-columns:1fr;height:auto}.papel{width:100%;min-height:0;padding:8mm}}
+
+@media print{
+  @page{size:A4;margin:14mm 14mm 16mm}
+  body{background:#fff}
+  .barra,.tabs,.form,.vista-barra,.aviso,dialog{display:none!important}
+  .layout{display:block;height:auto}
+  .vista{padding:0;background:#fff;overflow:visible}
+  .papel{width:auto;min-height:0;padding:0;box-shadow:none}
+  .papel blockquote,.papel .hint{display:none}
+  .papel .nota{display:none}
+  body.con-notas .papel .nota{display:inline}
+  .papel .vacio{background:none;outline:none;color:#131315;font:inherit}
+  .papel .vacio::before{content:"";display:inline-block;width:38mm;border-bottom:1px solid #131315}
+  .papel .vacio span{display:none}
+}
+
+.linea{border-left:3px solid var(--lima);padding:6px 0 6px 10px;margin:0 0 12px;display:grid;gap:5px}
+.linea-n{display:flex;gap:6px;align-items:center}
+.linea-n select{width:150px;flex:none}
+.linea-n input{min-width:0}
+.linea-n .monto{font:12px "Space Mono",monospace;color:var(--tx2);white-space:nowrap;min-width:90px;text-align:right}

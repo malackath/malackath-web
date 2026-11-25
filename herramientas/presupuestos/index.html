@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presupuestos · Malackath</title>
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:wght@400;700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="barra">
+  <img src="logo-negativo.svg" alt="Malackath" class="logo">
+  <span class="etq">Presupuestos y contratos · uso interno</span>
+  <div class="barra-der">
+    <label class="etq" for="selExp">Expediente</label>
+    <select id="selExp"></select>
+    <button id="btnNuevo">Nuevo</button>
+    <button id="btnDuplicar">Duplicar</button>
+    <button id="btnPegar">Pegar pedido</button>
+    <button id="btnAjustes">Ajustes</button>
+    <button id="btnRespaldo" title="Descargar todo en un archivo">Respaldo</button>
+    <button id="btnRestaurar" title="Cargar un respaldo">Restaurar</button>
+    <input type="file" id="fileRestaurar" accept="application/json" hidden>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main class="layout">
+  <section class="form" id="form"></section>
+  <section class="vista">
+    <div class="vista-barra">
+      <span class="etq">Vista previa · A4</span>
+      <label class="chk"><input type="checkbox" id="chkNotas"> Imprimir notas para el abogado</label>
+      <button class="prim" id="btnPDF">Exportar PDF</button>
+    </div>
+    <div class="aviso" id="aviso"></div>
+    <article class="papel" id="papel"></article>
+  </section>
+</main>
+
+<dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
+
+<script src="plantillas.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
