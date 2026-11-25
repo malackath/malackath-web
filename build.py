@@ -11,6 +11,7 @@ Uso: python3 build.py stitch public   (después: npm run css)
 """
 import re
 import casos_textos
+import portfolio_web
 import sys
 from pathlib import Path
 
@@ -264,16 +265,23 @@ def seccion_marcas():
     import marcas
 
     def tarjeta(m, i):
+        caja = "bg-surface-container-lowest"
         if m["imagen"]:
+            # fondo del recuadro como en el portfolio: 'claro' = logo para fondo claro; 'lamina' = la imagen trae su fondo
+            tam = "max-h-20 max-w-[70%] object-contain"
+            if m.get("fondo") == "claro":
+                caja = "bg-[#F3F2EC]"
+            elif m.get("fondo") == "lamina":
+                tam = "w-full h-full object-cover"
             logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" loading="lazy" '
-                    'class="max-h-20 max-w-[70%] object-contain grayscale opacity-80 '
+                    f'class="{tam} grayscale opacity-80 '
                     'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
         else:
             forma = FORMAS_PROVISORIAS[i % len(FORMAS_PROVISORIAS)]
             logo = (f'<span class="flex items-center gap-space-sm text-on-surface-variant group-hover:text-primary-container transition-colors duration-300">'
                     f'<svg viewBox="0 0 40 40" class="w-10 h-10" aria-hidden="true">{forma}</svg>'
                     f'<span class="font-label-lg text-label-lg uppercase">{_h.escape(m["nombre"])}</span></span>')
-        dentro = (f'<div class="w-full h-40 md:h-44 rounded-lg bg-surface-container-lowest flex items-center justify-center overflow-hidden">{logo}</div>'
+        dentro = (f'<div class="w-full h-40 md:h-44 rounded-lg {caja} flex items-center justify-center overflow-hidden">{logo}</div>'
                   f'<div class="flex flex-col gap-space-xs">'
                   f'<span class="font-label-sm text-label-sm uppercase text-primary-container">{_h.escape(m["tipo"])}</span>'
                   f'<p class="font-body-sm text-body-sm text-on-surface-variant">{_h.escape(m["descripcion"])}</p></div>')
@@ -288,7 +296,8 @@ def seccion_marcas():
         return (f'<div class="marcas-fila flex w-max gap-space-lg pr-space-lg{" marcas-reversa" if reversa else ""}">'
                 f'{items}<div class="flex gap-space-lg" aria-hidden="true">{items}</div></div>')
 
-    return f"""<!-- 4b. IDENTIDAD DE MARCA (logos en marcas.py) -->
+    fila_1, fila_2 = portfolio_web.marcas()   # logos reales del portfolio (2026-11-25)
+    return f"""<!-- 4b. IDENTIDAD DE MARCA (logos del portfolio, portfolio_web.py) -->
 <section class="w-full py-space-3xl overflow-hidden" id="marcas">
 <style>
 #marcas .marcas-fila {{ animation: marquee 40s linear infinite; }}
@@ -308,8 +317,8 @@ def seccion_marcas():
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>
 </div>
 <div class="marcas-pista flex flex-col gap-space-sm">
-<div class="overflow-hidden py-space-sm">{fila(marcas.FILA_1, False, 0)}</div>
-<div class="overflow-hidden py-space-sm">{fila(marcas.FILA_2, True, 2)}</div>
+<div class="overflow-hidden py-space-sm">{fila(fila_1, False, 0)}</div>
+<div class="overflow-hidden py-space-sm">{fila(fila_2, True, 2)}</div>
 </div>
 </section>"""
 
@@ -339,7 +348,7 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
 @media (min-width: 768px) { h2.titulo-seccion { font-size: min(3.75rem, calc((100vw - 64px) / 12.8)) !important; } }
 }
 </style>""", 1)
-    s = rep(s, "<!-- 5. PRINCIPIOS & METODOLOGÍA -->", seccion_marcas() + "\n<!-- 5. PRINCIPIOS & METODOLOGÍA -->")
+    s = rep(s, "<!-- 5. PRINCIPIOS & METODOLOGÍA -->", "<!--MARCAS-->\n<!-- 5. PRINCIPIOS & METODOLOGÍA -->")  # va después de imagenes()
     # titular: el original de Stitch (Ber, 2026-11-24: «Diseñamos productos digitales que cobran vida»)
     s = rep(s, '<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">', '<div class="hero-grilla relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">')
     s = rep(s, '<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">', '<p class="hero-bajada font-body-lg text-body-lg text-on-surface-variant max-w-2xl">')
@@ -372,10 +381,11 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
         (P + "armapartido-torneo.webp", "Torneo nocturno de pádel con tribuna llena", ""),
         (P + "pizcaya-portada.webp", "Pizcaya: cociná 15 platos de casa en 30 días", "object-position:left center"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
-        (None, "", ""),  # RaveKit: falta imagen real, queda la de Stitch
+        (portfolio_web.ruta(portfolio_web.imagen("ravekit", "d")), "RaveKit: sitio getravekit.com", "object-position:left top"),
         (P + "cartelera-noche.webp", "Cartelera Uruguay: guía de espectáculos con mapa y lista", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
+    s = celulares(s, "")
     # proyectos con caso propio: título clickeable
     s = rep(s, 'transition-colors">Armá Partido</h3>', 'transition-colors"><a href="casos/arma-partido.html">Armá Partido</a></h3>')
     s = rep(s, 'transition-colors">Pizcaya</h3>', 'transition-colors"><a href="casos/pizcaya.html">Pizcaya</a></h3>')
@@ -403,6 +413,7 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
   addEventListener('resize', ajustar);
 })();
 </script></body>""", 1)
+    s = rep(s, "<!--MARCAS-->", seccion_marcas())
     guardar("index.html", s)
 
 
@@ -590,7 +601,7 @@ def trabajo():
         (P + "pizcaya-desafio.webp", "Pizcaya: desafío de 15 platos en 30 días", "object-position:center top"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
         (P + "cartelera-noche.webp", "Cartelera Uruguay: buscador de eventos con mapa", "object-position:left top"),
-        (RAVEKIT_STITCH, "RaveKit: pedidos de reseñas por WhatsApp y QR", ""),
+        (portfolio_web.ruta(portfolio_web.imagen("ravekit", "d")), "RaveKit: sitio getravekit.com", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
     # Alinear tarjetas de la misma fila (pedido de Ber): con subgrid, imagen y texto de cada
@@ -602,7 +613,42 @@ def trabajo():
     # mismo aire arriba y abajo que las tarjetas grandes, para que rótulos y flechas queden en línea
     s = re.sub(r'(md:col-span-4 .*?class="p-space-lg) (flex flex-col justify-between flex-1)', r'\1 md:py-space-xl \2', s, flags=re.S)
     s = rep(s, "card.style.display = 'flex';", "card.style.display = '';")
+    s = trabajo_portfolio(s)
     guardar("trabajo.html", s)
+
+
+def celulares(s, pre):
+    """Armá Partido, Palquear y Mesaluma: la foto queda y se le suma un celular con una captura real."""
+    for foto, c in [("armapartido-torneo.webp", "arma-partido"), ("palquear-estadio.webp", "palquear"),
+                    ("mesaluma-salon.webp", "mesaluma")]:
+        s, n = re.subn(r'(<img[^>]*src="' + re.escape(pre + "img/proyectos/" + foto) + r'"[^>]*>)',
+                       lambda m: m.group(1) + portfolio_web.celular(c, pre), s)
+        assert n >= 1, foto
+    return s.replace("</style>", portfolio_web.CSS_CELULAR + "</style>", 1)
+
+
+def trabajo_portfolio(s):
+    """Suma los proyectos del portfolio a Trabajo (tarjetas y filas del índice) y actualiza los contadores."""
+    total = 6 + len(portfolio_web.EXTRA)
+    s = celulares(s, "")
+    s = re.sub(r"(\d\d) // 06<", lambda m: f"{m.group(1)} // {total:02d}<", s)
+    i = s.find('id="work-grid"'); j = s.find("</article>\n</div>\n</section>", i)
+    assert i > 0 and j > 0
+    j += len("</article>\n")
+    s = s[:j] + portfolio_web.tarjetas_extra(7, total) + s[j:]
+    i = s.find('id="work-list"'); j = s.find("</a>\n</div>\n</div>\n</section>", i)
+    assert i > 0 and j > 0
+    j += len("</a>\n")
+    s = s[:j] + portfolio_web.filas_extra(7) + s[j:]
+    # contadores del filtro, contados de las tarjetas
+    cats = re.findall(r'class="project-card[^"]*" data-category="([a-z]+)"', s)
+    n = {k: cats.count(k) for k in ("branding", "web", "mobile")}
+    s = rep(s, "6 PROYECTOS", f"{total} PROYECTOS")
+    s = rep(s, '<span>Todos</span>\n<span class="opacity-70 font-mono">(6)</span>', f'<span>Todos</span>\n<span class="opacity-70 font-mono">({total})</span>')
+    s = rep(s, '<span>Marca &amp; Web</span>\n<span class="opacity-60 font-mono">(1)</span>', f'<span>Marca &amp; Web</span>\n<span class="opacity-60 font-mono">({n["branding"]})</span>')
+    s = rep(s, '<span>Plataformas Web</span>\n<span class="opacity-60 font-mono">(3)</span>', f'<span>Plataformas Web</span>\n<span class="opacity-60 font-mono">({n["web"]})</span>')
+    s = rep(s, '<span>Apps Móviles</span>\n<span class="opacity-60 font-mono">(2)</span>', f'<span>Apps Móviles</span>\n<span class="opacity-60 font-mono">({n["mobile"]})</span>')
+    return s
 
 
 
@@ -705,3 +751,4 @@ if __name__ == "__main__":
     pizcaya()
     trabajo()
     estudio()
+    portfolio_web.copiar(OUT)
