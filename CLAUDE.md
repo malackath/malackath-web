@@ -13,7 +13,7 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - Ajustes para que en celular nada se salga de la pantalla (usando los tamaños mobile del propio sistema de Stitch).
 - Testimonios inventados por Stitch: se sacaron (decisión de Ber, 2026-11-24).
 - Menú para celular (Stitch no lo traía): botón redondo que abre los links del menú (`menu_celular()`, Ber 2026-11-25).
-- Pie: logo de Malackath arriba de los husos horarios; sin los links de redes y legales que no llevaban a ningún lado; en el home sin «Construyamos el futuro juntos» (repetía el cierre) y en el resto ese título se achica en celular (`pie()`, Ber 2026-11-25).
+- Pie: logo de Malackath arriba de los husos horarios; sin los links de redes y legales que no llevaban a ningún lado; sin «Construyamos el futuro juntos» en ninguna página (repetía el cierre) (`pie()`, Ber 2026-11-25).
 - Textos inventados de los casos → textos reales en `casos_textos.py` (fuentes: repos de Armá Partido y Pizcaya).
 
 ## Casos de estudio (regla de Ber, 2026-11-25: vale para todos los casos, actuales y futuros)

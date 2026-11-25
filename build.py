@@ -329,13 +329,13 @@ DEGRADES_LIMA = [
 
 def _marca_lima(m):
     a = m.group(0)
-    k = re.search(r'href="[^"#]*#([\w-]+)"', a)
+    k = re.search(r'data-marca="([\w-]+)"', a)
     if not k or k.group(1) not in MARCAS_LIMA:
         return a
     fondo = DEGRADES_LIMA[MARCAS_LIMA[k.group(1)]]
     a = a.replace("rounded-xl bg-surface-container p-space-md", "rounded-xl p-space-md", 1)
     a = a.replace("hover:bg-surface-container-high", "hover:brightness-105", 1)
-    a = a.replace("<a class=", f'<a style="background:{fondo};box-shadow:inset 0 1px 0 rgba(255,255,255,.6)" class=', 1)
+    a = re.sub(r"^<(a|article) class=", lambda t: f'<{t.group(1)} style="background:{fondo};box-shadow:inset 0 1px 0 rgba(255,255,255,.6)" class=', a, count=1)
     a = re.sub(r"(?<![\w:-])text-primary-container(?![\w-])", "text-on-primary-fixed", a)
     a = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/75", a)
     a = a.replace('<div class="w-full h-40', '<div ' + SOMBRA_SOBRE_LIMA + 'class="w-full h-40', 1)
@@ -347,6 +347,8 @@ def guardar(nombre, s):
     if nombre == "index.html":
         s = re.sub(r"<article class=\"lg:col-span.*?</article>", _home_lima, s, flags=re.S)
         s = re.sub(r'<a class="group shrink-0 w-72.*?</a>', _marca_lima, s, flags=re.S)
+    if nombre == "marcas.html":
+        s = re.sub(r'<(a|article) class="group w-full scroll-mt-28.*?</\1>', _marca_lima, s, flags=re.S)
         s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
     if nombre == "trabajo.html":
         s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
@@ -435,16 +437,10 @@ def pie(nombre, s):
                    r'\1<div class="flex flex-col gap-space-lg"><a href="' + pre + 'index.html" aria-label="Malackath"><img alt="Malackath" class="h-10 md:h-12 w-auto" src="' + pre + r'img/marca/malackath-horizontal-color-negativo.svg"/></a>\2', f)
     assert n == 1, f"{nombre}: logo del pie ({n})"
     f = f.replace('BRASIL [BRT]</span></div></div>', 'BRASIL [BRT]</span></div></div></div>', 1) if "BRASIL [BRT]" in f else f
-    if nombre == "index.html":
-        f, n = re.subn(r'<div class="flex flex-col gap-space-md"><span [^>]*>[^<]*</span><h2 [^>]*>[^<]*</h2></div>', "", f)
-        assert n == 1, "home: título del pie"
-    else:
-        f, n = re.subn(r'<h2 class="', '<h2 class="titulo-pie ', f, count=1)
-        assert n == 1
-    s = s[:i] + f + s[j:]
-    if nombre != "index.html":
-        s = s.replace("</head>", "<style>@layer base{@media (max-width: 767px){h2.titulo-pie{--r:14.4;font-size:min(2.75rem,calc((100vw - 40px) / var(--r))) !important;line-height:1.1 !important}:lang(en) h2.titulo-pie{--r:9.6}:lang(pt) h2.titulo-pie{--r:10.2}}}</style></head>", 1)
-    return s
+    # «Empecemos / Construyamos el futuro juntos» repetía el cierre de cada página: se saca en todas (Ber, 2026-11-25)
+    f, n = re.subn(r'<div class="flex flex-col gap-space-md"><span [^>]*>[^<]*</span><h2 [^>]*>[^<]*</h2></div>', "", f)
+    assert n == 1, f"{nombre}: título del pie ({n})"
+    return s[:i] + f + s[j:]
 
 
 # ------------------------------------------------- HERO: ventanas flotantes
@@ -600,41 +596,49 @@ FORMAS_PROVISORIAS = [
 ]
 
 
+def tarjeta_marca(m, i, grilla=False):
+    import html as _h
+    caja = "bg-surface-container-lowest"
+    if m["imagen"]:
+        # fondo del recuadro como en el portfolio: 'claro' = logo para fondo claro; 'lamina' = la imagen trae su fondo
+        tam = "max-h-20 max-w-[70%] object-contain"
+        if m.get("fondo") == "claro":
+            caja = "bg-[#F3F2EC]"
+        elif m.get("fondo") == "lamina":
+            tam = "w-full h-full object-cover"
+        logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" decoding="async" '
+                f'class="{tam} grayscale opacity-80 '
+                'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
+    else:
+        forma = FORMAS_PROVISORIAS[i % len(FORMAS_PROVISORIAS)]
+        logo = (f'<span class="flex items-center gap-space-sm text-on-surface-variant group-hover:text-primary-container transition-colors duration-300">'
+                f'<svg viewBox="0 0 40 40" class="w-10 h-10" aria-hidden="true">{forma}</svg>'
+                f'<span class="font-label-lg text-label-lg uppercase">{_h.escape(m["nombre"])}</span></span>')
+    dentro = (f'<div class="w-full h-40 md:h-44 rounded-lg {caja} flex items-center justify-center overflow-hidden">{logo}</div>'
+              f'<div class="flex flex-col gap-space-xs">'
+              f'<span class="font-label-sm text-label-sm uppercase text-primary-container">{_h.escape(m["tipo"])}</span>'
+              f'<p class="font-body-sm text-body-sm text-on-surface-variant">{_h.escape(m["descripcion"])}</p></div>')
+    clase = ('group ' + ('w-full scroll-mt-28' if grilla else 'shrink-0 w-72 md:w-80') + ' rounded-xl bg-surface-container p-space-md md:p-space-lg flex flex-col gap-space-md '
+             'shadow-lg hover:bg-surface-container-high hover:-translate-y-1 transition-all duration-300')
+    marca = f' data-marca="{m["clave"]}"' if m.get("clave") else ""
+    url = m.get("url")
+    if grilla:
+        # en la página de logos: el logo lleva a su caso de estudio si lo tiene
+        url = f'casos/{m["caso"]}.html' if m.get("caso") else None
+        marca += f' id="{m["clave"]}"'
+    if url:
+        return f'<a class="{clase}"{marca} href="{url}">{dentro}</a>'
+    return f'<article class="{clase}"{marca}>{dentro}</article>'
+
+
 def seccion_marcas():
     """Sección «Identidad de marca»: dos filas de logos en carrusel infinito (sentidos opuestos),
     se frena al pasar el mouse y cada logo se enciende en lima. Logos en marcas.py."""
     import html as _h
     import marcas
 
-    def tarjeta(m, i):
-        caja = "bg-surface-container-lowest"
-        if m["imagen"]:
-            # fondo del recuadro como en el portfolio: 'claro' = logo para fondo claro; 'lamina' = la imagen trae su fondo
-            tam = "max-h-20 max-w-[70%] object-contain"
-            if m.get("fondo") == "claro":
-                caja = "bg-[#F3F2EC]"
-            elif m.get("fondo") == "lamina":
-                tam = "w-full h-full object-cover"
-            logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" decoding="async" '
-                    f'class="{tam} grayscale opacity-80 '
-                    'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
-        else:
-            forma = FORMAS_PROVISORIAS[i % len(FORMAS_PROVISORIAS)]
-            logo = (f'<span class="flex items-center gap-space-sm text-on-surface-variant group-hover:text-primary-container transition-colors duration-300">'
-                    f'<svg viewBox="0 0 40 40" class="w-10 h-10" aria-hidden="true">{forma}</svg>'
-                    f'<span class="font-label-lg text-label-lg uppercase">{_h.escape(m["nombre"])}</span></span>')
-        dentro = (f'<div class="w-full h-40 md:h-44 rounded-lg {caja} flex items-center justify-center overflow-hidden">{logo}</div>'
-                  f'<div class="flex flex-col gap-space-xs">'
-                  f'<span class="font-label-sm text-label-sm uppercase text-primary-container">{_h.escape(m["tipo"])}</span>'
-                  f'<p class="font-body-sm text-body-sm text-on-surface-variant">{_h.escape(m["descripcion"])}</p></div>')
-        clase = ('group shrink-0 w-72 md:w-80 rounded-xl bg-surface-container p-space-md md:p-space-lg flex flex-col gap-space-md '
-                 'shadow-lg hover:bg-surface-container-high hover:-translate-y-1 transition-all duration-300')
-        if m.get("url"):
-            return f'<a class="{clase}" href="{m["url"]}">{dentro}</a>'
-        return f'<article class="{clase}">{dentro}</article>'
-
     def fila(lista, reversa, desde):
-        items = "".join(tarjeta(m, desde + k) for k, m in enumerate(lista))
+        items = "".join(tarjeta_marca(m, desde + k) for k, m in enumerate(lista))
         return (f'<div class="marcas-fila flex w-max gap-space-lg pr-space-lg{" marcas-reversa" if reversa else ""}">'
                 f'{items}<div class="flex gap-space-lg" aria-hidden="true">{items}</div></div>')
 
@@ -791,7 +795,7 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
       </p>""" + BOTON_TODOS.format(href="trabajo.html", texto="Ver todos los proyectos") + "</div>")
     s = rep(s, '<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>',
             '<div class="flex flex-col gap-space-md md:items-end"><p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>'
-            + BOTON_TODOS.format(href=portfolio_web.PORTFOLIO, texto="Ver todos los logos") + '</div>')
+            + BOTON_TODOS.format(href="marcas.html", texto="Ver todos los logos") + '</div>')
     guardar("index.html", s)
 
 
@@ -1108,8 +1112,41 @@ def trabajo():
     s = re.sub(r'(md:col-span-4 .*?class="p-space-lg) (flex flex-col justify-between flex-1)', r'\1 md:py-space-xl \2', s, flags=re.S)
     s = rep(s, "card.style.display = 'flex';", "card.style.display = '';")
     casos_general(s)
+    marcas_pagina(s)
     s = trabajo_portfolio(s)
     guardar("trabajo.html", s)
+
+
+def marcas_pagina(s):
+    """Página «Identidad de marca» con todos los logos (pedido de Ber, 2026-11-25): el encabezado y el cierre
+    de la página Trabajo de Stitch y, en lugar de las tarjetas de proyectos, la grilla de tarjetas de logo
+    del carrusel del home. Cada logo lleva a su caso de estudio si lo tiene."""
+    todos = portfolio_web.marcas(todos=True)
+    s = s.replace("<title>Trabajo · Malackath</title>", "<title>Identidad de marca · Malackath</title>")
+    s = re.sub(r'(<meta name="description" content=")[^"]*', r'\1Logos y sistemas visuales que diseñamos para marcas y proyectos.', s, count=1)
+    s = rep(s, "\n          TRABAJO\n", "\n          IDENTIDAD DE MARCA\n")
+    s = rep(s, "<span>SELECCIÓN</span>", "<span>BRANDING</span>")
+    s = rep(s, "En producción y demos navegables", "Logos y sistemas visuales")
+    s = rep(s, "6 PROYECTOS", f"{len(todos)} LOGOS")
+    s = rep(s, '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Proyectos</span>',
+            '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Logos</span>')
+    # sin filtros ni vista índice
+    i = s.find("<!-- Filter Bar & Viewport Layout Switcher -->"); j = s.find("</section>", i)
+    assert 0 < i < j; s = s[:i] + s[j:]
+    # grilla de logos en lugar de las tarjetas y del índice
+    i = s.find("<!-- Showcase Gallery (Grid Mode Default) -->"); j = s.find("<!-- Quick Collaboration Banner CTA -->")
+    assert 0 < i < j
+    grilla = "".join(tarjeta_marca(m, k, grilla=True) for k, m in enumerate(todos))
+    s = s[:i] + ('<!-- Logos (tarjetas del carrusel del home) -->\n'
+                 '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-space-lg pb-space-3xl">'
+                 f'<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-space-lg">{grilla}</div></section>\n') + s[j:]
+    s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
+    # en el menú no se marca «Trabajo»
+    act = re.search(r'<a aria-current="page" class="([^"]*)" data-path="portfolio"', s)
+    norm = re.search(r'<a class="([^"]*)" data-path="studio"', s)
+    if act and norm:
+        s = s.replace(act.group(0), f'<a class="{norm.group(1)}" data-path="portfolio"', 1)
+    guardar("marcas.html", s)
 
 
 def casos_general(s):

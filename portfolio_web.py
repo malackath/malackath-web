@@ -77,14 +77,23 @@ CON_LOGO = ["arma-partido", "pizcaya", "palquear", "cartelera", "mesaluma", "rav
 FUERA_HOME = {"marealta-consultora"}
 
 
-def marcas():
+# proyectos con caso de estudio en el sitio
+CASOS = {"arma-partido": "arma-partido", "pizcaya": "pizcaya", "palquear": "palquear", "cartelera": "cartelera",
+         "mesaluma": "mesaluma", "ravekit": "ravekit"}
+
+
+def marcas(todos=False):
+    """Logos para el carrusel del home (2 filas) o, con todos=True, la lista completa para marcas.html.
+    Cada logo del home lleva a su tarjeta en marcas.html (pedido de Ber, 2026-11-25: no salir al portfolio)."""
     filas = []
     for c in CON_LOGO:
-        if c in FUERA_HOME:
+        if c in FUERA_HOME and not todos:
             continue
         p = P[c]
-        filas.append({"nombre": p["n"], "imagen": ruta(imagen(c, "logo")), "url": PORTFOLIO + "#" + c,
-                      "tipo": p["t"], "descripcion": p["d"], "fondo": p["fondo"]})
+        filas.append({"clave": c, "nombre": p["n"], "imagen": ruta(imagen(c, "logo")), "url": "marcas.html#" + c,
+                      "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": p["fondo"]})
+    if todos:
+        return filas
     return filas[:10], filas[10:]
 
 
