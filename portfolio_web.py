@@ -76,6 +76,10 @@ CON_LOGO = ["arma-partido", "pizcaya", "palquear", "cartelera", "mesaluma", "rav
 # Marea Alta tenía dos tarjetas seguidas (la parte digital y la consultora): en el home queda una sola (Ber, 2026-11-25)
 FUERA_HOME = {"marealta-consultora"}
 
+# Logo que en el sitio sale distinto que en el portfolio: Sitios Gastro muestra el de Botánica Bistro, que trae
+# fondo blanco; va en recuadro claro como Mesaluma y Zoomi (Ber, 2026-11-25).
+FONDO_WEB = {"sitios-gastro": "claro"}
+
 
 # proyectos con caso de estudio en el sitio
 CASOS = {"arma-partido": "arma-partido", "pizcaya": "pizcaya", "palquear": "palquear", "cartelera": "cartelera",
@@ -91,7 +95,7 @@ def marcas(todos=False):
             continue
         p = P[c]
         filas.append({"clave": c, "nombre": p["n"], "imagen": ruta(imagen(c, "logo")), "url": "marcas.html#" + c,
-                      "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": p["fondo"]})
+                      "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": FONDO_WEB.get(c, p["fondo"])})
     if todos:
         return filas
     return filas[:10], filas[10:]
