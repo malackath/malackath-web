@@ -254,8 +254,15 @@ def fondo_caso(nombre, s):
     return s
 
 
+# Botones de flecha de las tarjetas de proyectos en verde lima (pedido de Ber, 2026-11-25)
+FLECHA_GRIS = "rounded-full bg-surface-container-high group-hover:bg-primary-container text-primary group-hover:text-on-primary-fixed"
+FLECHA_LIMA = "rounded-full bg-primary-container text-on-primary-fixed group-hover:bg-primary-fixed-dim group-hover:scale-110"
+
+
 def guardar(nombre, s):
     s = fondo_caso(nombre, s)
+    if nombre in ("trabajo.html", "casos-de-estudio.html"):
+        s = s.replace(FLECHA_GRIS, FLECHA_LIMA)
     # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
     s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
     if BORRADOR:
@@ -562,7 +569,7 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
         (P + "pizcaya-portada.webp", "Pizcaya: cociná 15 platos de casa en 30 días", "object-position:left center"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
         (portfolio_web.ruta(portfolio_web.imagen("ravekit", "d")), "RaveKit: sitio getravekit.com", "object-position:left top"),
-        (P + "cartelera-noche.webp", "Cartelera Uruguay: guía de espectáculos con mapa y lista", "object-position:left top"),
+        (portfolio_web.ruta("cartelera-d-04-cc7215ae.webp"), "Cartelera Uruguay: la cartelera en el mapa del país", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
     s = celulares(s, "")
@@ -908,7 +915,7 @@ def trabajo():
         (P + "armapartido-torneo.webp", "Torneo nocturno de pádel con tribuna llena", ""),
         (P + "pizcaya-desafio.webp", "Pizcaya: desafío de 15 platos en 30 días", "object-position:center top"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
-        (P + "cartelera-noche.webp", "Cartelera Uruguay: buscador de eventos con mapa", "object-position:left top"),
+        (portfolio_web.ruta("cartelera-d-04-cc7215ae.webp"), "Cartelera Uruguay: la cartelera en el mapa del país", "object-position:left top"),
         (portfolio_web.ruta(portfolio_web.imagen("ravekit", "d")), "RaveKit: sitio getravekit.com", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
