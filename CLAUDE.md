@@ -36,7 +36,7 @@ Sin servidor: el formulario arma un mail (mailto) y el botón de WhatsApp abre w
 - **No hacer deploy sin el OK de Ber.** Nada de claves en el código.
 
 ## Contratos y presupuestos (no se publican)
-- `contratos/`: plantillas de propuesta, contrato marco, SOW, T&M, mantenimiento, orden de cambio, términos de pago y NDA (es/; en/ y pt/ pendientes). Todo dato es un campo `{{...}}` que se completa por documento. A revisar por abogado y contador.
+- `contratos/`: plantillas de propuesta, contrato marco, SOW, T&M, mantenimiento, orden de cambio, términos de pago y NDA (es/ fuente; en/ y pt/ traducidas por Claude, a revisar). Todo dato es un campo `{{...}}` que se completa por documento. A revisar por abogado y contador.
 - `herramientas/presupuestos/`: herramienta interna (HTML local) que arma propuesta y contratos y exporta PDF. Después de tocar una plantilla: `python3 herramientas/presupuestos/armar.py`.
 - Decisiones de Ber (2026-11-25): moneda US$ con opción $U/R$; IVA 22% a clientes de Uruguay y exportación sin IVA al exterior; mantenimiento = cuota con horas incluidas no acumulables.
 

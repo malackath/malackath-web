@@ -27,23 +27,33 @@ const MONEDAS = { "US$": { es: "dólares estadounidenses", en: "US dollars", pt:
 // ---------- Sugerencias por país (solo se aplican si el campo está vacío o al tocar "Sugerir") ----------
 const PAISES = ["Uruguay", "Brasil", "Argentina", "Estados Unidos", "Otro"];
 const ID_FISCAL = { Uruguay: "RUT", Brasil: "CNPJ", Argentina: "CUIT", "Estados Unidos": "EIN" };
-function sugerencias(emisorPais, clientePais) {
-  const s = {};
+const SUG = {
+  es: { uy_ley: "la República Oriental del Uruguay", uy_jur: "la ciudad de Montevideo", uy_datos: "la Ley N.º 18.331 de Protección de Datos Personales", uy_hora: "hora de Montevideo", uy_pais: "Uruguay",
+        uy_iva: "El IVA (22%) se suma en cada factura.", uy_exp: "Se factura como exportación de servicios, sin IVA. [A confirmar con el contador.]",
+        br_ley: "la República Federativa del Brasil", br_datos: "la Ley N.º 13.709 (LGPD)", br_pais: "Brasil" },
+  en: { uy_ley: "the Oriental Republic of Uruguay", uy_jur: "the city of Montevideo", uy_datos: "Law No. 18,331 on Personal Data Protection", uy_hora: "Montevideo time", uy_pais: "Uruguay",
+        uy_iva: "VAT (IVA, 22%) is added to each invoice.", uy_exp: "Invoiced as an export of services, without VAT. [To be confirmed with the accountant.]",
+        br_ley: "the Federative Republic of Brazil", br_datos: "Law No. 13,709 (LGPD)", br_pais: "Brazil" },
+  pt: { uy_ley: "a República Oriental do Uruguai", uy_jur: "a cidade de Montevidéu", uy_datos: "a Lei n.º 18.331 de Proteção de Dados Pessoais", uy_hora: "horário de Montevidéu", uy_pais: "Uruguai",
+        uy_iva: "O IVA (22%) é somado em cada fatura.", uy_exp: "Faturado como exportação de serviços, sem IVA. [A confirmar com o contador.]",
+        br_ley: "a República Federativa do Brasil", br_datos: "a Lei n.º 13.709 (LGPD)", br_pais: "Brasil" },
+};
+function sugerencias(emisorPais, clientePais, idioma) {
+  const t = SUG[idioma] || SUG.es, s = {};
   if (emisorPais === "Uruguay") {
-    s.ley_aplicable = "la República Oriental del Uruguay";
-    s.jurisdiccion = "la ciudad de Montevideo";
-    s.ley_datos_personales = "la Ley N.º 18.331 de Protección de Datos Personales";
-    s.zona_horaria = "hora de Montevideo";
-    s.pais_dias_habiles = "Uruguay";
-    if (clientePais === "Uruguay") { s.impuesto_nombre = "IVA"; s.impuesto_pct = "22"; s.nota_impuestos = "El IVA (22%) se suma en cada factura."; }
-    else if (clientePais) { s.impuesto_nombre = "IVA"; s.impuesto_pct = "0"; s.nota_impuestos = "Se factura como exportación de servicios, sin IVA. [A confirmar con el contador.]"; }
+    s.ley_aplicable = t.uy_ley; s.jurisdiccion = t.uy_jur; s.ley_datos_personales = t.uy_datos;
+    s.zona_horaria = t.uy_hora; s.pais_dias_habiles = t.uy_pais;
+    if (clientePais === "Uruguay") { s.impuesto_nombre = "IVA"; s.impuesto_pct = "22"; s.nota_impuestos = t.uy_iva; }
+    else if (clientePais) { s.impuesto_nombre = "IVA"; s.impuesto_pct = "0"; s.nota_impuestos = t.uy_exp; }
   } else if (emisorPais === "Brasil") {
-    s.ley_aplicable = "la República Federativa del Brasil";
-    s.ley_datos_personales = "la Ley N.º 13.709 (LGPD)";
-    s.pais_dias_habiles = "Brasil";
-    s.impuesto_nombre = "ISS";
+    s.ley_aplicable = t.br_ley; s.ley_datos_personales = t.br_datos; s.pais_dias_habiles = t.br_pais; s.impuesto_nombre = "ISS";
   }
   return s;
+}
+// Al cambiar de idioma, los textos sugeridos (si no se tocaron) pasan al idioma nuevo
+function traducirSugerencias(de, a) {
+  const e = E(), viejos = sugerencias(e.emisorPais, e.clientePais, de), nuevos = sugerencias(e.emisorPais, e.clientePais, a);
+  Object.keys(nuevos).forEach(k => { if (e.d[k] === viejos[k]) e.d[k] = nuevos[k]; });
 }
 
 // ---------- Catálogo inicial: las 4 áreas de la página Estudio del sitio ----------
@@ -321,7 +331,7 @@ function totales() {
 }
 
 function aplicarSugerencias(forzar) {
-  const e = E(); const s = sugerencias(e.emisorPais, e.clientePais);
+  const e = E(); const s = sugerencias(e.emisorPais, e.clientePais, e.idioma);
   Object.entries(s).forEach(([k, v]) => { if (forzar || !e.d[k]) e.d[k] = v; });
   if (forzar || !e.d.prestador_id_fiscal_tipo) e.d.prestador_id_fiscal_tipo = ID_FISCAL[e.emisorPais] || e.d.prestador_id_fiscal_tipo || "";
   if (e.clientePais && (forzar || !e.d.cliente_id_fiscal_tipo)) e.d.cliente_id_fiscal_tipo = ID_FISCAL[e.clientePais] || e.d.cliente_id_fiscal_tipo || "";
@@ -338,7 +348,7 @@ F.addEventListener("input", ev => {
 });
 F.addEventListener("change", ev => {
   const el = ev.target, e = E();
-  if (el.id === "selIdioma") e.idioma = el.value;
+  if (el.id === "selIdioma") { traducirSugerencias(e.idioma, el.value); e.idioma = el.value; }
   else if (el.id === "selMoneda") e.moneda = el.value;
   else if (el.id === "selEmisorPais") { e.emisorPais = el.value; aplicarSugerencias(false); }
   else if (el.id === "selClientePais") { e.clientePais = el.value; aplicarSugerencias(false); }
