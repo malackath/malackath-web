@@ -1213,6 +1213,7 @@ def estudio():
             "        '&body=' + encodeURIComponent(texto + '\\n\\n' + nombre + ' (' + email + ')');\n"
             "      btn.classList.add('hidden');\n      banner.classList.remove('hidden');")
     guardar("estudio.html", s)
+    return s
 
 
 # ------------------------------------------------------------- PRESUPUESTO
@@ -1395,6 +1396,149 @@ def presupuesto():
     guardar("presupuesto.html", s)
 
 
+# ------------------------------------------------------------- CONTACTO Y SOBRE MÍ
+# Pedido de Ber (2026-11-25): "hay que armar contacto, sobre mi". No hay pantallas de Stitch
+# propias: se arman con los bloques de la pantalla Estudio (hero con titular monumental,
+# tarjeta de persona del equipo, módulos numerados y la sección de contacto) sin salirse del sistema.
+# BORRADOR: textos y datos a confirmar por Ber (fuente: su perfil público, memoria del proyecto).
+def _main(s, contenido):
+    i, j = s.find('<main class="w-full pt-20 bg-background">'), s.find("</main>")
+    if i < 0 or j < 0:
+        raise SystemExit("no encontré <main>")
+    return s[:i] + '<main class="w-full pt-20 bg-background">' + contenido + s[j:]
+
+
+def _modulo(n, icono, titulo, texto, extra=""):
+    return ('<div class="group relative p-space-xl bg-surface-container rounded-xl flex flex-col justify-between gap-space-xl hover:bg-surface-container-high transition-all duration-300">'
+            f'<div class="flex items-center justify-between"><span class="font-label-lg text-label-lg text-primary-container tracking-widest">{n}</span>'
+            f'<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">{icono}</span></div>'
+            f'<div class="flex flex-col gap-space-sm"><h3 class="font-headline-md text-headline-md uppercase tracking-tight text-primary">{titulo}</h3>'
+            f'<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">{texto}</p>{extra}</div>'
+            '<div class="h-1 w-8 bg-surface-container-highest group-hover:w-full group-hover:bg-primary-container transition-all duration-500 rounded-full"></div></div>')
+
+
+def _titulo_seccion(marca, titulo, bajada=""):
+    b = f'<p class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant max-w-sm">{bajada}</p>' if bajada else ""
+    return ('<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md"><div class="flex flex-col gap-space-xs">'
+            f'<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">{marca}</span>'
+            f'<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-primary tracking-tight">{titulo}</h2></div>{b}</div>')
+
+
+LINK_LIMA = "inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase text-primary-container hover:text-primary transition-colors"
+FOTO_BER = None  # PENDIENTE: foto real de Ber (img/ber/...). Mientras tanto, recuadro vacío.
+
+
+def sobre_mi():
+    s = leer("kinetic_studio_contact")
+    s = comun(s, "", "Sobre mí · Malackath",
+              "Bernardo Arnelli: diseñador, artista plástico y músico. Fundador de Malackath, estudio de diseño y producto digital en Montevideo.")
+    s = s.replace('aria-current="page" class="uppercase tracking-wider transition-colors bg-surface-container-high text-primary font-bold rounded-full px-space-md py-space-xs"',
+                  'class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm"', 1)
+    hero = (
+        '<div class="relative w-full overflow-hidden">'
+        '<div class="absolute -top-32 left-1/4 w-[38rem] h-[38rem] bg-primary-container/10 rounded-full blur-[140px] pointer-events-none"></div>'
+        '<div class="absolute top-48 right-10 w-[30rem] h-[30rem] bg-secondary-container/20 rounded-full blur-[160px] pointer-events-none"></div>'
+        '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-space-xl pb-space-3xl relative"><div class="flex flex-col gap-space-xl">'
+        '<div class="flex flex-wrap items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs">'
+        '<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">[ 001 // SOBRE MÍ ]</span>'
+        '<span class="text-on-surface-variant font-label-sm text-label-sm">/</span>'
+        '<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">DISEÑO • PRODUCTO • ARTE</span></div>'
+        '<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-widest hidden sm:inline-block">MONTEVIDEO • URUGUAY</span></div>'
+        '<div class="flex flex-col">'
+        '<h1 class="font-display-xl text-display-xl-mobile md:text-display-lg lg:text-display-xl uppercase tracking-tighter text-primary break-words leading-none">BERNARDO ARNELLI.</h1>'
+        '<div class="flex flex-col lg:flex-row lg:items-baseline justify-between gap-space-lg">'
+        '<h1 class="font-display-xl text-display-xl-mobile md:text-display-lg lg:text-display-xl uppercase tracking-tighter text-on-surface-variant/40 hover:text-primary transition-colors duration-500 select-none break-words leading-none">DISEÑO, CÓDIGO Y PINTURA.</h1>'
+        '<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl self-end pb-2">Diseñador, artista plástico y músico. Fundé varias empresas de software y hoy dirijo Malackath, mi estudio de diseño y producto digital.</p>'
+        '</div></div></div></section></div>')
+    foto = (f'<img class="w-full h-full object-cover filter grayscale contrast-125 group-hover:scale-105 transition-all duration-700 ease-out" alt="Bernardo Arnelli" src="{FOTO_BER}"/>'
+            if FOTO_BER else
+            '<div class="w-full h-full flex flex-col items-center justify-center gap-space-xs text-on-surface-variant">'
+            '<span class="material-symbols-outlined text-[48px]">person</span><span class="font-label-sm text-label-sm uppercase">Foto de Ber</span></div>')
+    persona = (
+        '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl bg-surface-container-lowest relative">'
+        '<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-start">'
+        '<div class="lg:col-span-5 group flex flex-col bg-surface-container-low rounded-xl overflow-hidden hover:bg-surface-container transition-all duration-300">'
+        f'<div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container-highest">{foto}'
+        '<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-transparent to-transparent opacity-80"></div>'
+        '<div class="absolute top-space-md right-space-md"><span class="font-label-sm text-label-sm uppercase bg-surface/80 backdrop-blur-md text-on-surface px-space-sm py-0.5 rounded-full">FUNDADOR // 01</span></div></div>'
+        '<div class="p-space-lg flex flex-col gap-space-md"><div class="flex flex-col gap-1">'
+        '<h4 class="font-headline-sm text-headline-sm uppercase text-primary tracking-tight group-hover:text-primary-container transition-colors">Bernardo Arnelli</h4>'
+        '<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Fundador • Diseño y producto digital</span></div>'
+        '<div class="flex items-center justify-between pt-space-xs"><span class="font-label-sm text-label-sm text-on-surface-variant">Montevideo, Uruguay</span>'
+        '<div class="flex items-center gap-space-xs text-on-surface-variant">'
+        '<a class="hover:text-primary transition-colors font-label-sm text-label-sm uppercase" href="https://www.instagram.com/malackath/" target="_blank" rel="noopener">IG</a><span>/</span>'
+        '<a class="hover:text-primary transition-colors font-label-sm text-label-sm uppercase" href="#">LN</a></div></div></div></div>'
+        '<div class="lg:col-span-7 flex flex-col gap-space-lg">'
+        + _titulo_seccion("[ 002 // QUIÉN SOY ]", "Del lienzo al producto")
+        + '<p class="font-body-lg text-body-lg text-on-surface">Vengo del diseño y del arte, y llevo más de veinte años construyendo productos digitales. Me interesa lo mismo en un cuadro que en una app: que tenga una idea clara y que esté hecho con oficio.</p>'
+          '<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">En 2004 cofundé GProxy; en 2012 NetSuite compró la empresa y de ahí nació SuiteCommerce Advanced. Después dirigí servicios profesionales en NetSuite y en 2017 cofundé awaLabs, una consultora de comercio electrónico.</p>'
+          '<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Malackath es donde junto todo eso: dirección de arte, marca y desarrollo bajo un mismo techo. Diseño y lanzo apps propias, como Pizcaya, Armá Partido y Palquear, y acompaño proyectos de marca y producto en Uruguay y Brasil.</p>'
+        '</div></div></section>')
+    tray = (
+        '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl relative"><div class="flex flex-col gap-space-2xl">'
+        + _titulo_seccion("[ 003 // TRAYECTORIA ]", "Empresas que fundé", "Más de veinte años entre diseño, software y comercio electrónico.")
+        + '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">'
+        + _modulo("2004", "rocket_launch", "GProxy", "Cofundador. Plataforma de comercio electrónico que en 2012 compró NetSuite.")
+        + _modulo("2012", "domain", "NetSuite", "Director de servicios profesionales, donde nació SuiteCommerce Advanced.")
+        + _modulo("2017", "hub", "awaLabs", "Cofundador. Consultora de comercio electrónico con equipo en Uruguay.")
+        + _modulo("HOY", "diamond", "Malackath", "Estudio propio de marca, diseño de producto y desarrollo de apps y web.")
+        + '</div></div></section>')
+    otras = (
+        '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl bg-surface-container-lowest relative"><div class="flex flex-col gap-space-2xl">'
+        + _titulo_seccion("[ 004 // FUERA DE LA PANTALLA ]", "Pintura y música")
+        + '<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">'
+        + _modulo("01", "palette", "Malackath Art", "Pinto en acrílico, óleo y técnica mixta. Figuras que inquietan, ojos que observan.",
+                  f'<a class="{LINK_LIMA} pt-space-xs" href="https://arnelli.com" target="_blank" rel="noopener">Ver obra en arnelli.com <span class="material-symbols-outlined text-[16px]">north_east</span></a>')
+        + _modulo("02", "music_note", "Música", "También compongo y toco. La música está en cómo pienso el ritmo de una pantalla.")
+        + '</div></div></section>')
+    cta = (
+        '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl bg-surface-container-low relative overflow-hidden">'
+        '<div class="absolute bottom-0 right-0 w-[45rem] h-[45rem] bg-primary-container/10 rounded-full blur-[170px] pointer-events-none"></div>'
+        '<div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-space-xl">'
+        '<div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">[ 005 // HABLEMOS ]</span>'
+        '<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-primary tracking-tight">¿Tenés un proyecto?</h2>'
+        '<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Contame qué querés lograr y lo vemos juntos.</p></div>'
+        '<div class="flex flex-col sm:flex-row gap-space-md">'
+        '<a class="inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider hover:bg-primary-fixed-dim transition-all duration-300" href="contacto.html"><span>Contacto</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>'
+        '<a class="inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider transition-all duration-300" href="presupuesto.html"><span>Armá tu presupuesto</span></a>'
+        '</div></div></section>')
+    guardar("sobre-mi.html", _main(s, '<div class="flex flex-col w-full">' + hero + persona + tray + otras + cta + '</div>'))
+
+
+def contacto(s_estudio):
+    """La sección de contacto de Estudio como página propia, con título de página y redes."""
+    s = s_estudio.replace("Estudio y contacto · Malackath", "Contacto · Malackath")
+    s = s.replace('aria-current="page" class="uppercase tracking-wider transition-colors bg-surface-container-high text-primary font-bold rounded-full px-space-md py-space-xs"',
+                  'class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm"', 1)
+    i = s.find('<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl bg-surface-container-low relative overflow-hidden" id="inquiry">')
+    j = s.find("</section>", i) + len("</section>")
+    if i < 0:
+        raise SystemExit("contacto: no encontré la sección de contacto de Estudio")
+    sec = s[i:j]
+    sec = sec.replace("py-space-3xl bg-surface-container-low", "pt-space-xl pb-space-3xl bg-surface-container-low", 1)
+    sec = sec.replace('<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-primary tracking-tight">Iniciemos un proyecto</h2>',
+                      '<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg uppercase text-primary tracking-tighter leading-none">Hablemos.</h1>'
+                      '<span class="font-headline-sm text-headline-sm uppercase text-on-surface-variant">Iniciemos un proyecto</span>', 1)
+    sec = sec.replace("[ 003 // CONTACTO ]", "[ CONTACTO ]", 1)
+    redes = ('<div class="flex flex-col gap-space-md pt-space-lg"><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Redes</span>'
+             '<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">'
+             + "".join(f'<a class="flex flex-col gap-1 p-space-md bg-surface-container-lowest rounded-lg hover:bg-surface-container transition-colors" href="{h}" target="_blank" rel="noopener">'
+                       f'<span class="font-label-sm text-label-sm uppercase text-primary-container">{a}</span><span class="font-body-sm text-body-sm text-on-surface">{b}</span></a>'
+                       for a, b, h in [("Instagram", "@malackath", "https://www.instagram.com/malackath/"),
+                                       ("Arte", "arnelli.com", "https://arnelli.com"),
+                                       ("LinkedIn", "Bernardo Arnelli", "#")])
+             + '</div></div>')
+    k = sec.find("<!-- Global Locations -->")
+    if k > 0:
+        fin = sec.find("<!-- Right Column")
+        # se agrega el bloque de redes al final de la columna izquierda, después de "Dónde estamos"
+        cierre = sec.rfind("</div>", k, fin)
+        sec = sec[:cierre] + redes + sec[cierre:]
+    k0 = s.find('<main class="w-full pt-20 bg-background">')
+    s = s[:k0] + '<main class="w-full pt-20 bg-background">' + sec + s[s.find("</main>"):]
+    guardar("contacto.html", s)
+
+
 if __name__ == "__main__":
     home()
     base_caso = arma_partido()
@@ -1402,6 +1546,8 @@ if __name__ == "__main__":
     for clave in ("palquear", "cartelera", "mesaluma"):
         caso_nuevo(base_caso, clave)
     trabajo()
-    estudio()
+    s_estudio = estudio()
+    contacto(s_estudio)
+    sobre_mi()
     portfolio_web.copiar(OUT)
     presupuesto()
