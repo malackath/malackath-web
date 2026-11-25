@@ -248,7 +248,91 @@ def escenario_hero(pre=""):
             n = bloque.find("<!--", d + 10)
             cierre = bloque.rfind("</div>", d, n) + len("</div>")
             bloque = bloque[:cierre] + "</a>" + bloque[cierre:]
-    return bloque, css, js
+    bloque, js_rot = rotacion_hero(bloque, pre)
+    return bloque, css, js + js_rot
+
+
+def rotacion_hero(bloque, pre):
+    """Las tres ventanas cambian de proyecto cada hero.SEGUNDOS (pedido de Ber, 2026-11-25).
+    Los datos van en <template> (así i18n traduce los textos y ajusta las rutas de las imágenes)."""
+    import hero, html as _h
+    e = lambda t: _h.escape(t, quote=False)
+    # marcar las tres ventanas (los <a class="contents"> que puso escenario_hero, en orden)
+    n = iter(["centro", "izquierda", "celular"])
+    bloque = re.sub(r'<a href="([^"]*)" target="_blank" rel="noopener" class="contents">',
+                    lambda m: f'<a href="{m.group(1)}" data-slot="{next(n)}"' + ('' if not m.group(1).startswith("http") else ' target="_blank" rel="noopener"') + ' class="contents">',
+                    bloque, count=3)
+    plantillas = []
+    for slot, lista in hero.ROTACION.items():
+        items = []
+        for d in lista:
+            src = portfolio_web.ruta(d["img"], pre)
+            campos = "".join(f'<span data-k="{k}">{e(v)}</span>' for k, v in d.items() if k not in ("img", "url"))
+            items.append(f'<div data-url="{d["url"]}"><img src="{src}" alt="{e(d.get("titulo") or d.get("chip"))}"/>{campos}</div>')
+        plantillas.append(f'<template data-rot="{slot}">{"".join(items)}</template>')
+    bloque += "\n" + "\n".join(plantillas)
+    js = """
+  // ROTACIÓN de proyectos en las ventanas del hero (cada %d s, con fundido)
+  (function () {
+    var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // qué elemento de cada ventana muestra cada dato
+    var SEL = {
+      centro: { barra: '.ml-space-sm', tipo: '.text-primary-container:not(.ml-space-sm)', rubro: 'span.uppercase.text-primary-container', titulo: 'h4', chip: '.rounded-full.bg-primary-container' },
+      izquierda: { barra: '.text-on-surface-variant', chip: '.rounded-full.bg-secondary-container' },
+      celular: { chip: '.rounded-full', titulo: '.font-headline-sm' }
+    };
+    var slots = [];
+    document.querySelectorAll('template[data-rot]').forEach(function (t) {
+      var nombre = t.dataset.rot, a = document.querySelector('a[data-slot="' + nombre + '"]');
+      if (!a) return;
+      var datos = [].map.call(t.content.children, function (d) {
+        var o = { url: d.dataset.url, img: d.querySelector('img').getAttribute('src'), alt: d.querySelector('img').alt };
+        d.querySelectorAll('[data-k]').forEach(function (s) { o[s.dataset.k] = s.textContent; });
+        new Image().src = o.img;   // precarga
+        return o;
+      });
+      var tarjeta = a.firstElementChild, img = tarjeta.querySelector('img'), fondo = img.parentElement;
+      var el = {}, s = SEL[nombre];
+      // centro: el rótulo de arriba a la derecha es el último span de la barra
+      if (nombre === 'centro') {
+        var barra = tarjeta.firstElementChild;
+        el.barra = barra.querySelector('.ml-space-sm'); el.tipo = barra.lastElementChild;
+        el.rubro = fondo.querySelector('span.uppercase'); el.titulo = fondo.querySelector('h4');
+        el.chip = fondo.querySelector('.rounded-full');
+      } else if (nombre === 'izquierda') {
+        el.barra = tarjeta.firstElementChild.firstElementChild; el.chip = fondo.querySelector('.rounded-full');
+      } else {
+        el.chip = fondo.querySelector('.rounded-full'); el.titulo = fondo.querySelector('.font-headline-sm');
+      }
+      [img].concat(Object.keys(el).map(function (k) { return el[k]; })).forEach(function (x) {
+        if (x) x.style.transition = 'opacity .45s ease';
+      });
+      slots.push({ a: a, img: img, el: el, datos: datos, i: 0 });
+    });
+    if (!slots.length) return;
+    function poner(sl, d) {
+      sl.img.src = d.img; sl.img.alt = d.alt; sl.a.href = d.url;
+      if (/^https?:/.test(d.url)) { sl.a.target = '_blank'; sl.a.rel = 'noopener'; } else { sl.a.removeAttribute('target'); }
+      Object.keys(sl.el).forEach(function (k) { if (sl.el[k] && d[k] != null) sl.el[k].textContent = k === 'tipo' ? d[k].toUpperCase() : d[k]; });
+    }
+    function visible(sl, v) {
+      [sl.img].concat(Object.keys(sl.el).map(function (k) { return sl.el[k]; })).forEach(function (x) { if (x) x.style.opacity = v ? '' : '0'; });
+    }
+    setInterval(function () {
+      if (document.hidden) return;
+      slots.forEach(function (sl, n) {
+        sl.i = (sl.i + 1) %% sl.datos.length;
+        var d = sl.datos[sl.i];
+        if (quieto) { poner(sl, d); return; }
+        setTimeout(function () {
+          visible(sl, false);
+          setTimeout(function () { poner(sl, d); visible(sl, true); }, 450);
+        }, n * 180);
+      });
+    }, %d);
+  })();
+""" % (hero.SEGUNDOS, hero.SEGUNDOS * 1000)
+    return bloque, js
 
 
 # ---------------------------------------------------------------- HOME
