@@ -52,8 +52,11 @@ for n, p in enumerate(lista, 1):
     def copiar(tipo, man=man):
         out = []
         for x in man.get(tipo, []):
-            dst = f"img/p/{p['c']}-{x['f']}"
-            shutil.copy(os.path.join(AQUI, 'capturas', p['c'], x['f']), f'{OUT}/{dst}')
+            orig = os.path.join(AQUI, 'capturas', p['c'], x['f'])
+            # el nombre lleva un resumen del contenido: si la captura cambia, cambia el nombre y ningún navegador muestra la vieja
+            hsh = hashlib.sha1(open(orig, 'rb').read()).hexdigest()[:8]
+            dst = f"img/p/{p['c']}-{x['f'].rsplit('.', 1)[0]}-{hsh}.webp"
+            shutil.copy(orig, f'{OUT}/{dst}')
             out.append((dst, x['w'], x['h'], color_pie(os.path.join(AQUI, 'capturas', p['c'], x['f']))))
         return out
     desk, mob, lam = copiar('d'), copiar('m'), []
