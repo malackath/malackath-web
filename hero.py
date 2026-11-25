@@ -36,5 +36,5 @@ SLOTS = {
 }
 
 # chips flotantes sueltos
-CHIP_METRICA = ("Benchmark Performance", "0.18s FCP / 100 SEO")   # PLACEHOLDER (métrica inventada)
-CHIP_FLOTANTE = "WebGL 2.0 Native Flow"                            # PLACEHOLDER
+CHIP_METRICA = ("Proyectos", "22 en el portfolio")   # dato real (portfolio.malackath.com)
+CHIP_FLOTANTE = "Marca, web y app"
