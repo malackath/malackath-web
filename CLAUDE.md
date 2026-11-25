@@ -14,6 +14,13 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - Testimonios inventados por Stitch: se sacaron (decisión de Ber, 2026-11-24).
 - Textos inventados de los casos → textos reales en `casos_textos.py` (fuentes: repos de Armá Partido y Pizcaya).
 
+## Casos de estudio (regla de Ber, 2026-11-25: vale para todos los casos, actuales y futuros)
+- Hero con fondo de foto: 2 fotos genéricas que se alternan cada 5 s, velo claro y degradé que termina en negro a la altura del título de «La visión».
+- Sección de los pilares con una foto a todo el ancho y velo oscuro.
+- Recuadro de las capturas con presencia: tono más claro, borde fino y brillo del color de la marca del caso (`panel_capturas()`).
+- Las fotos se generan en Flow (prompts en `/mnt/project-files/malackath/casos-fondos/prompts-flow.md`) y van en `design/fondos-casos/` por convención de nombre: `<clave>-1-*.webp` y `<clave>-2-*.webp` (hero) y `<clave>-pilares.webp` (pilares), con `<clave>` = nombre de la página sin guiones (`casos/arma-partido.html` → `armapartido`). `build.py` las toma solas (`fotos_caso()`).
+- Caso nuevo: agregar sus datos en `casos_nuevos.py` + sus 3 fotos en `design/fondos-casos/`.
+
 ## Cómo se arma
 - `stitch/<pantalla>/code.html` + `screen.png`: export original de Stitch (no tocar).
 - `build.py`: toma cada pantalla de Stitch y aplica los cambios de arriba → `public/`.
@@ -21,7 +28,7 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - `npm install` y después `npm run build` (genera las páginas y `public/css/estilos.css`).
 - Ver localmente: `npm run dev`.
 
-Páginas: `index.html` (home), `trabajo.html`, `estudio.html` (estudio + contacto), `casos/arma-partido.html`, `casos/pizcaya.html`. Cada una en español (raíz), inglés (`/en/`) y portugués (`/pt/`).
+Páginas: `index.html` (home), `trabajo.html`, `casos-de-estudio.html`, `estudio.html` (estudio + contacto), `presupuesto.html` ("Armá tu presupuesto", 4 pasos, sin precios; arma un WhatsApp o mail con un código `MLK1:` para la herramienta interna), `casos/arma-partido.html`, `casos/pizcaya.html`, `casos/palquear.html`, `casos/cartelera.html`, `casos/mesaluma.html`. Cada una en español (raíz), inglés (`/en/`) y portugués (`/pt/`).
 
 ## Idiomas
 - El español es la fuente: sale de `build.py`. `i18n.py generar` traduce con `i18n/en.json` y `i18n/pt.json` (clave = texto en español) y agrega el selector ES / EN / PT al menú.
@@ -34,6 +41,11 @@ Sin servidor: el formulario arma un mail (mailto) y el botón de WhatsApp abre w
 ## Publicación
 - Hosting previsto: Firebase Hosting (`firebase.json`, carpeta `public/`), dominio malackath.com con DNS en Cloudflare.
 - **No hacer deploy sin el OK de Ber.** Nada de claves en el código.
+
+## Contratos y presupuestos (no se publican)
+- `contratos/`: plantillas de propuesta, contrato marco, SOW, T&M, mantenimiento, orden de cambio, términos de pago y NDA (es/; en/ y pt/ pendientes). Todo dato es un campo `{{...}}` que se completa por documento. A revisar por abogado y contador.
+- `herramientas/presupuestos/`: herramienta interna (HTML local) que arma propuesta y contratos y exporta PDF. Después de tocar una plantilla: `python3 herramientas/presupuestos/armar.py`.
+- Decisiones de Ber (2026-11-25): moneda US$ con opción $U/R$; IVA 22% a clientes de Uruguay y exportación sin IVA al exterior; mantenimiento = cuota con horas incluidas no acumulables.
 
 ## Pendientes
 Ver `docs/pendientes.md`.

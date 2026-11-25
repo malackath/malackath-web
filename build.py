@@ -9,8 +9,12 @@ Regla: el diseño de Stitch se respeta tal cual. Solo se cambia:
 
 Uso: python3 build.py stitch public   (después: npm run css)
 """
+import glob
+import html
 import re
+import shutil
 import casos_textos
+import portfolio_web
 import sys
 from pathlib import Path
 
@@ -113,9 +117,8 @@ def fondos(s, mapa):
     return "".join(out)
 
 
-# RaveKit: captura real de getravekit.com en modo claro (2026-11-25). El nombre lleva un resumen
-# del contenido para que ningún navegador muestre una versión vieja guardada.
-RAVEKIT_IMG = "img/proyectos/ravekit-claro-inicio-4a8ad709.webp"
+# RaveKit no tiene foto real en la compu de Ber: se usa la imagen que generó Stitch (PENDIENTE reemplazar)
+RAVEKIT_STITCH = re.findall(r'src="(https://lh3[^"]+)"', (SRC / "kinetic_home_proyectos_reales" / "code.html").read_text(encoding="utf-8"))[7]
 
 SAMPLE = ('<span class="self-start px-space-sm py-space-xs rounded-full bg-surface-container-highest '
           'font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Sample</span>')
@@ -153,7 +156,7 @@ def comun(s, pre, titulo, descripcion, activo=None):
         raise SystemExit("No encontré el logo de Kinetic")
     # links del menú y botones con data-path
     destinos = {"home": "index.html", "portfolio": "trabajo.html", "services": "estudio.html#capacidades",
-                "studio": "estudio.html", "case-studies": "casos/arma-partido.html", "contact": "estudio.html#contacto"}
+                "studio": "estudio.html", "case-studies": "casos-de-estudio.html", "contact": "estudio.html#contacto"}
     for clave, dest in destinos.items():
         s = re.sub(rf'data-path="{clave}" href="[^"]*"', f'data-path="{clave}" href="{pre}{dest}"', s)
         s = re.sub(rf'href="[^"]*" data-path="{clave}"', f'href="{pre}{dest}" data-path="{clave}"', s)
@@ -168,7 +171,184 @@ def comun(s, pre, titulo, descripcion, activo=None):
     return s
 
 
+# ------------------------------------------- FONDOS DE FOTO EN EL HERO DE LOS CASOS
+# Pedido de Ber (2026-11-25): 2 fotos genéricas por caso, generadas en Flow (design/fondos-casos/,
+# prompts en /mnt/project-files/malackath/casos-fondos/prompts-flow.md), que se alternan cada 5 s
+# detrás del título, con velo oscuro para que el texto se lea.
+def fotos_caso(nombre, tipo):
+    """Fotos de fondo de un caso por convención de nombre (vale para todos los casos, actuales y futuros):
+    design/fondos-casos/<clave>-1-*.webp y <clave>-2-*.webp → hero (se alternan); <clave>-pilares.webp → sección de pilares.
+    <clave> = nombre de la página sin guiones (casos/arma-partido.html → armapartido)."""
+    if nombre == "index.html":
+        clave = "home"   # prueba en la home (pedido de Ber, 2026-11-25)
+    elif nombre.startswith("casos/"):
+        clave = nombre[len("casos/"):-len(".html")].replace("-", "")
+    else:
+        return []
+    if tipo == "hero":
+        return [Path(f).stem for f in sorted(glob.glob(str(FONDOS_SRC / f"{clave}-[0-9]-*.webp")))]
+    return [clave + "-pilares"] if (FONDOS_SRC / f"{clave}-pilares.webp").exists() else []
+FONDOS_SRC = Path(__file__).parent / "design" / "fondos-casos"
+CSS_FONDO = """<style>
+.caso-fondo{position:absolute;top:0;left:0;right:0;bottom:-120px;z-index:-1;pointer-events:none;overflow:hidden}
+main section{position:relative}
+.caso-fondo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.4s ease}
+.caso-fondo img.activa{opacity:1}
+.caso-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,19,21,.8) 0%,rgba(19,19,21,.55) 38%,rgba(19,19,21,.25) 70%,rgba(19,19,21,.15) 100%),linear-gradient(0deg,#131315 0%,rgba(19,19,21,.55) 22%,rgba(19,19,21,0) 50%)}
+@media (max-width:767px){.caso-fondo::after{background:linear-gradient(0deg,#131315 0%,rgba(19,19,21,.7) 35%,rgba(19,19,21,.45) 100%)}}
+</style>"""
+JS_FONDO = """<script>(function(){var f=document.querySelector('.caso-fondo');if(!f)return;var im=f.querySelectorAll('img');
+if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var k=0;
+setInterval(function(){im[k].classList.remove('activa');k=(k+1)%im.length;im[k].classList.add('activa');},5000);})();</script>"""
+
+
+# Sección de pilares (pedido de Ber): foto a todo el ancho detrás de las tarjetas, con velo oscuro.
+MARCAS_PILARES = ("<!-- SECTION: SOLUTION & ARCHITECTURE -->", "<!-- SECTION 5: Product Architecture & Technical Pillars -->",
+                  "<!-- 5. PRINCIPIOS & METODOLOGÍA -->")
+CSS_PILARES = """<style>
+.seccion-fondo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.seccion-fondo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.seccion-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#131315 0%,rgba(19,19,21,.55) 18%,rgba(19,19,21,.45) 50%,rgba(19,19,21,.55) 82%,#131315 100%)}
+</style>"""
+
+
+def fondo_pilares(nombre, s):
+    fotos = fotos_caso(nombre, "pilares")
+    marca = next((m for m in MARCAS_PILARES if m in s), None)
+    if not fotos or not marca:
+        return s
+    i = s.find("<section", s.find(marca))
+    j = s.find(">", i)
+    tag = re.sub(r"\sbg-surface[\w-]*", "", s[i:j]).replace('class="', 'class="relative isolate ', 1)
+    copiar_fondo(fotos[0])
+    pre = "../" * nombre.count("/")
+    img = f'<img alt="" loading="lazy" src="{pre}img/casos-fondos/{fotos[0]}.webp"/>'
+    s = s[:i] + tag + f'>\n<div class="seccion-fondo" aria-hidden="true">{img}</div>' + s[j + 1:]
+    return s.replace("</head>", CSS_PILARES + "</head>", 1)
+
+
+def copiar_fondo(f):
+    d = OUT / "img" / "casos-fondos"
+    d.mkdir(parents=True, exist_ok=True)
+    shutil.copy(FONDOS_SRC / f"{f}.webp", d / f"{f}.webp")
+
+
+def fondo_caso(nombre, s):
+    s = fondo_pilares(nombre, s)
+    fotos = fotos_caso(nombre, "hero")
+    if not fotos:
+        return s
+    i = s.find("<section", s.find("<main"))
+    j = s.find(">", i)
+    tag = s[i:j]
+    tag = tag.replace('class="', 'class="relative isolate ', 1)
+    pre = "../" * nombre.count("/")
+    imgs = "".join(f'<img alt="" {"" if k else "fetchpriority=\"high\" "}class="{"activa" if k == 0 else ""}" src="{pre}img/casos-fondos/{f}.webp"/>'
+                   for k, f in enumerate(fotos))
+    for f in fotos:
+        copiar_fondo(f)
+    # en la home el hero recorta lo que sobresale (overflow-hidden): el fundido termina dentro de la sección
+    extra = ' style="bottom:0"' if "overflow-hidden" in tag else ""
+    s = s[:i] + tag + f'>\n<div class="caso-fondo" aria-hidden="true"{extra}>{imgs}</div>' + s[j + 1:]
+    s = s.replace("</head>", CSS_FONDO + "</head>", 1).replace("</body>", JS_FONDO + "</body>", 1)
+    return s
+
+
+# Tarjetas de Trabajo en verde lima: SOLO las 8 que Ber marcó (2026-11-25, «solo donde indiqué»).
+# Número de tarjeta en trabajo.html. Las demás y Casos de estudio quedan como Stitch.
+# Degradé sobre el lima, opción C «Más vivo, hacia el verde» (Ber, 2026-11-25): luz amarilla arriba a la izquierda, verde intenso abajo a la derecha.
+CSS_CAJA_LIMA = (".caja-lima{background:radial-gradient(60% 100% at 0% 0%,rgba(255,255,170,.9) 0%,rgba(255,255,170,0) 60%),"
+                 "radial-gradient(90% 130% at 100% 100%,#4FC21A 0%,rgba(79,194,26,0) 60%),"
+                 "linear-gradient(135deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}"
+                 ".group:hover .caja-lima{filter:brightness(1.04)}")
+TARJETAS_LIMA = {"01", "04", "07", "10", "13", "18", "20", "21"}
+FLECHA_GRIS = "rounded-full bg-surface-container-high group-hover:bg-primary-container text-primary group-hover:text-on-primary-fixed"
+FLECHA_LIMA = "rounded-full bg-primary-container text-on-primary-fixed group-hover:bg-primary-fixed-dim group-hover:scale-110"
+
+
+
+def _caja_lima(m):
+    """Caja de texto de la tarjeta en verde lima con letra oscura (decisión de Ber, 2026-11-25)."""
+    a = m.group(0)
+    n = re.search(r"(\d\d) // \d\d", a)
+    if not n or n.group(1) not in TARJETAS_LIMA:
+        return a
+    i = a.rfind('<div class="p-space-lg')
+    if i < 0:
+        return a
+    caja = a[i:]
+    caja = caja.replace('<div class="p-space-lg', '<div class="caja-lima bg-primary-container p-space-lg', 1)
+    caja = caja.replace(FLECHA_LIMA, "@@FLECHA_CAJA@@").replace(FLECHA_GRIS, "@@FLECHA_CAJA@@")
+    caja = caja.replace("group-hover:text-primary-container", "")
+    caja = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/70", caja)
+    caja = re.sub(r"(?<![\w:/-])text-primary-container(?![\w-])", "text-on-primary-fixed", caja)
+    caja = re.sub(r"(?<![\w:-])text-primary(?![\w-])", "text-on-primary-fixed", caja)
+    caja = re.sub(r"(?<![\w:-])bg-surface-container-high(?![\w-])", "bg-on-primary-fixed/10", caja)
+    caja = caja.replace("@@FLECHA_CAJA@@", "rounded-full bg-on-primary-fixed text-primary-container group-hover:scale-110")
+    return a[:i] + caja
+
+# Sombra de las imágenes sobre el lima y título con la letra del titular del hero (Ber, 2026-11-25)
+SOMBRA_SOBRE_LIMA = 'style="box-shadow:0 26px 50px -12px rgba(23,30,0,.7),0 8px 18px rgba(23,30,0,.35)" '
+# Home, Proyectos destacados: tarjetas en verde lima con el mismo degradé que Trabajo (marcas de Ber, 2026-11-25)
+HOME_LIMA = {"Armá Partido", "RaveKit"}
+
+
+def _home_lima(m):
+    a = m.group(0)
+    t = re.search(r"<h3[^>]*>(?:<a[^>]*>)?([^<]+)", a)
+    if not t or t.group(1).strip() not in HOME_LIMA:
+        return a
+    a = a.replace("bg-surface-container p-space-lg", "caja-lima p-space-lg", 1)
+    a = a.replace("hover:bg-surface-container-high", "", 1)
+    a = a.replace('<div class="relative w-full h-', '<div ' + SOMBRA_SOBRE_LIMA + 'class="relative w-full h-', 1)
+    a = re.sub(r'<h3 class="font-headline-(?:lg|md) ', '<h3 class="font-display-xl font-extrabold md:font-extrabold uppercase tracking-tighter md:tracking-[-0.04em] ', a, count=1)
+    i = a.find('<div class="flex flex-col gap-space-sm">')
+    if i < 0:
+        return a
+    txt = a[i:]
+    txt = txt.replace("group-hover:text-primary-container", "")
+    txt = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/70", txt)
+    txt = re.sub(r"(?<![\w:/-])text-(?:primary-container|secondary|tertiary|tertiary-fixed)(?![\w-])", "text-on-primary-fixed/70", txt)
+    txt = re.sub(r"(?<![\w:-])text-primary(?![\w-])", "text-on-primary-fixed", txt)
+    txt = re.sub(r"(?<![\w:-])bg-surface-container-highest(?![\w-])", "bg-on-primary-fixed/10", txt)
+    return a[:i] + txt
+
+
+# Identidad de marca (home): cada tanto una tarjeta en verde lima, cada una con su degradé (Ber, 2026-11-25).
+# Elegidas a mano para que el ritmo parezca aleatorio sin amontonarse (fila 1 y fila 2 del carrusel).
+MARCAS_LIMA = {"pizcaya": 0, "mesaluma": 1, "ruvia": 2, "banana-team": 3, "patovava": 1, "coat-n-nest": 0}
+DEGRADES_LIMA = [
+    "radial-gradient(60% 100% at 0% 0%,rgba(255,255,170,.9) 0%,rgba(255,255,170,0) 60%),radial-gradient(90% 130% at 100% 100%,#4FC21A 0%,rgba(79,194,26,0) 60%),linear-gradient(135deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%)",
+    "radial-gradient(70% 90% at 100% 0%,rgba(255,255,170,.9) 0%,rgba(255,255,170,0) 60%),radial-gradient(90% 120% at 0% 100%,#4FC21A 0%,rgba(79,194,26,0) 62%),linear-gradient(225deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%)",
+    "radial-gradient(80% 60% at 50% 0%,rgba(255,255,170,.85) 0%,rgba(255,255,170,0) 65%),radial-gradient(120% 70% at 50% 100%,#4FC21A 0%,rgba(79,194,26,0) 60%),linear-gradient(180deg,#E8FF4A 0%,#CAF300 55%,#93DA00 100%)",
+    "radial-gradient(60% 80% at 100% 100%,rgba(255,255,170,.85) 0%,rgba(255,255,170,0) 60%),radial-gradient(90% 120% at 0% 0%,#4FC21A 0%,rgba(79,194,26,0) 55%),linear-gradient(315deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%)",
+]
+
+
+def _marca_lima(m):
+    a = m.group(0)
+    k = re.search(r'href="[^"#]*#([\w-]+)"', a)
+    if not k or k.group(1) not in MARCAS_LIMA:
+        return a
+    fondo = DEGRADES_LIMA[MARCAS_LIMA[k.group(1)]]
+    a = a.replace("rounded-xl bg-surface-container p-space-md", "rounded-xl p-space-md", 1)
+    a = a.replace("hover:bg-surface-container-high", "hover:brightness-105", 1)
+    a = a.replace("<a class=", f'<a style="background:{fondo};box-shadow:inset 0 1px 0 rgba(255,255,255,.6)" class=', 1)
+    a = re.sub(r"(?<![\w:-])text-primary-container(?![\w-])", "text-on-primary-fixed", a)
+    a = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/75", a)
+    a = a.replace('<div class="w-full h-40', '<div ' + SOMBRA_SOBRE_LIMA + 'class="w-full h-40', 1)
+    return a
+
+
 def guardar(nombre, s):
+    s = fondo_caso(nombre, s)
+    if nombre == "index.html":
+        s = re.sub(r"<article class=\"lg:col-span.*?</article>", _home_lima, s, flags=re.S)
+        s = re.sub(r'<a class="group shrink-0 w-72.*?</a>', _marca_lima, s, flags=re.S)
+        s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
+    if nombre == "trabajo.html":
+        s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
+        s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
     # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
     s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
     if BORRADOR:
@@ -232,6 +412,8 @@ def escenario_hero(pre=""):
         sl = next(slots)
         tag = m.group(0)
         if sl["imagen"]:
+            if sl["imagen"].startswith(portfolio_web.DEST):
+                portfolio_web.ruta(sl["imagen"][len(portfolio_web.DEST):])   # se copia desde el portfolio
             tag = re.sub(r'src="[^"]*"', f'src="{pre}{sl["imagen"]}"', tag)
             tag = re.sub(r'data-alt="[^"]*"', f'alt="{_h.escape(sl.get("titulo") or sl.get("barra"))}"', tag)
         tag = tag.replace('class="w-full h-full object-cover"', 'class="w-full h-full object-cover object-top"')
@@ -246,7 +428,91 @@ def escenario_hero(pre=""):
             n = bloque.find("<!--", d + 10)
             cierre = bloque.rfind("</div>", d, n) + len("</div>")
             bloque = bloque[:cierre] + "</a>" + bloque[cierre:]
-    return bloque, css, js
+    bloque, js_rot = rotacion_hero(bloque, pre)
+    return bloque, css, js + js_rot
+
+
+def rotacion_hero(bloque, pre):
+    """Las tres ventanas cambian de proyecto cada hero.SEGUNDOS (pedido de Ber, 2026-11-25).
+    Los datos van en <template> (así i18n traduce los textos y ajusta las rutas de las imágenes)."""
+    import hero, html as _h
+    e = lambda t: _h.escape(t, quote=False)
+    # marcar las tres ventanas (los <a class="contents"> que puso escenario_hero, en orden)
+    n = iter(["centro", "izquierda", "celular"])
+    bloque = re.sub(r'<a href="([^"]*)" target="_blank" rel="noopener" class="contents">',
+                    lambda m: f'<a href="{m.group(1)}" data-slot="{next(n)}"' + ('' if not m.group(1).startswith("http") else ' target="_blank" rel="noopener"') + ' class="contents">',
+                    bloque, count=3)
+    plantillas = []
+    for slot, lista in hero.ROTACION.items():
+        items = []
+        for d in lista:
+            src = portfolio_web.ruta(d["img"], pre)
+            campos = "".join(f'<span data-k="{k}">{e(v)}</span>' for k, v in d.items() if k not in ("img", "url"))
+            items.append(f'<div data-url="{d["url"]}"><img src="{src}" alt="{e(d.get("titulo") or d.get("chip"))}"/>{campos}</div>')
+        plantillas.append(f'<template data-rot="{slot}">{"".join(items)}</template>')
+    bloque += "\n" + "\n".join(plantillas)
+    js = """
+  // ROTACIÓN de proyectos en las ventanas del hero (cada %d s, con fundido)
+  (function () {
+    var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // qué elemento de cada ventana muestra cada dato
+    var SEL = {
+      centro: { barra: '.ml-space-sm', tipo: '.text-primary-container:not(.ml-space-sm)', rubro: 'span.uppercase.text-primary-container', titulo: 'h4', chip: '.rounded-full.bg-primary-container' },
+      izquierda: { barra: '.text-on-surface-variant', chip: '.rounded-full.bg-secondary-container' },
+      celular: { chip: '.rounded-full', titulo: '.font-headline-sm' }
+    };
+    var slots = [];
+    document.querySelectorAll('template[data-rot]').forEach(function (t) {
+      var nombre = t.dataset.rot, a = document.querySelector('a[data-slot="' + nombre + '"]');
+      if (!a) return;
+      var datos = [].map.call(t.content.children, function (d) {
+        var o = { url: d.dataset.url, img: d.querySelector('img').getAttribute('src'), alt: d.querySelector('img').alt };
+        d.querySelectorAll('[data-k]').forEach(function (s) { o[s.dataset.k] = s.textContent; });
+        new Image().src = o.img;   // precarga
+        return o;
+      });
+      var tarjeta = a.firstElementChild, img = tarjeta.querySelector('img'), fondo = img.parentElement;
+      var el = {}, s = SEL[nombre];
+      // centro: el rótulo de arriba a la derecha es el último span de la barra
+      if (nombre === 'centro') {
+        var barra = tarjeta.firstElementChild;
+        el.barra = barra.querySelector('.ml-space-sm'); el.tipo = barra.lastElementChild;
+        el.rubro = fondo.querySelector('span.uppercase'); el.titulo = fondo.querySelector('h4');
+        el.chip = fondo.querySelector('.rounded-full');
+      } else if (nombre === 'izquierda') {
+        el.barra = tarjeta.firstElementChild.firstElementChild; el.chip = fondo.querySelector('.rounded-full');
+      } else {
+        el.chip = fondo.querySelector('.rounded-full'); el.titulo = fondo.querySelector('.font-headline-sm');
+      }
+      [img].concat(Object.keys(el).map(function (k) { return el[k]; })).forEach(function (x) {
+        if (x) x.style.transition = 'opacity .45s ease';
+      });
+      slots.push({ a: a, img: img, el: el, datos: datos, i: 0 });
+    });
+    if (!slots.length) return;
+    function poner(sl, d) {
+      sl.img.src = d.img; sl.img.alt = d.alt; sl.a.href = d.url;
+      if (/^https?:/.test(d.url)) { sl.a.target = '_blank'; sl.a.rel = 'noopener'; } else { sl.a.removeAttribute('target'); }
+      Object.keys(sl.el).forEach(function (k) { if (sl.el[k] && d[k] != null) sl.el[k].textContent = k === 'tipo' ? d[k].toUpperCase() : d[k]; });
+    }
+    function visible(sl, v) {
+      [sl.img].concat(Object.keys(sl.el).map(function (k) { return sl.el[k]; })).forEach(function (x) { if (x) x.style.opacity = v ? '' : '0'; });
+    }
+    setInterval(function () {
+      if (document.hidden) return;
+      slots.forEach(function (sl, n) {
+        sl.i = (sl.i + 1) %% sl.datos.length;
+        var d = sl.datos[sl.i];
+        if (quieto) { poner(sl, d); return; }
+        setTimeout(function () {
+          visible(sl, false);
+          setTimeout(function () { poner(sl, d); visible(sl, true); }, 450);
+        }, n * 180);
+      });
+    }, %d);
+  })();
+""" % (hero.SEGUNDOS, hero.SEGUNDOS * 1000)
+    return bloque, js
 
 
 # ---------------------------------------------------------------- HOME
@@ -265,16 +531,23 @@ def seccion_marcas():
     import marcas
 
     def tarjeta(m, i):
+        caja = "bg-surface-container-lowest"
         if m["imagen"]:
+            # fondo del recuadro como en el portfolio: 'claro' = logo para fondo claro; 'lamina' = la imagen trae su fondo
+            tam = "max-h-20 max-w-[70%] object-contain"
+            if m.get("fondo") == "claro":
+                caja = "bg-[#F3F2EC]"
+            elif m.get("fondo") == "lamina":
+                tam = "w-full h-full object-cover"
             logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" loading="lazy" '
-                    'class="max-h-20 max-w-[70%] object-contain grayscale opacity-80 '
+                    f'class="{tam} grayscale opacity-80 '
                     'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
         else:
             forma = FORMAS_PROVISORIAS[i % len(FORMAS_PROVISORIAS)]
             logo = (f'<span class="flex items-center gap-space-sm text-on-surface-variant group-hover:text-primary-container transition-colors duration-300">'
                     f'<svg viewBox="0 0 40 40" class="w-10 h-10" aria-hidden="true">{forma}</svg>'
                     f'<span class="font-label-lg text-label-lg uppercase">{_h.escape(m["nombre"])}</span></span>')
-        dentro = (f'<div class="w-full h-40 md:h-44 rounded-lg bg-surface-container-lowest flex items-center justify-center overflow-hidden">{logo}</div>'
+        dentro = (f'<div class="w-full h-40 md:h-44 rounded-lg {caja} flex items-center justify-center overflow-hidden">{logo}</div>'
                   f'<div class="flex flex-col gap-space-xs">'
                   f'<span class="font-label-sm text-label-sm uppercase text-primary-container">{_h.escape(m["tipo"])}</span>'
                   f'<p class="font-body-sm text-body-sm text-on-surface-variant">{_h.escape(m["descripcion"])}</p></div>')
@@ -289,7 +562,8 @@ def seccion_marcas():
         return (f'<div class="marcas-fila flex w-max gap-space-lg pr-space-lg{" marcas-reversa" if reversa else ""}">'
                 f'{items}<div class="flex gap-space-lg" aria-hidden="true">{items}</div></div>')
 
-    return f"""<!-- 4b. IDENTIDAD DE MARCA (logos en marcas.py) -->
+    fila_1, fila_2 = portfolio_web.marcas()   # logos reales del portfolio (2026-11-25)
+    return f"""<!-- 4b. IDENTIDAD DE MARCA (logos del portfolio, portfolio_web.py) -->
 <section class="w-full py-space-3xl overflow-hidden" id="marcas">
 <style>
 #marcas .marcas-fila {{ animation: marquee 40s linear infinite; }}
@@ -309,11 +583,16 @@ def seccion_marcas():
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>
 </div>
 <div class="marcas-pista flex flex-col gap-space-sm">
-<div class="overflow-hidden py-space-sm">{fila(marcas.FILA_1, False, 0)}</div>
-<div class="overflow-hidden py-space-sm">{fila(marcas.FILA_2, True, 2)}</div>
+<div class="overflow-hidden py-space-sm">{fila(fila_1, False, 0)}</div>
+<div class="overflow-hidden py-space-sm">{fila(fila_2, True, 2)}</div>
 </div>
 </section>"""
 
+
+
+BOTON_TODOS = ('<a class="self-start md:self-auto inline-flex items-center gap-space-xs px-space-lg py-space-md rounded-full bg-surface-container-high text-primary '
+               'font-label-md text-label-md uppercase tracking-wider hover:bg-surface-bright transition-colors" href="{href}">'
+               '<span>{texto}</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>')
 
 
 def home():
@@ -340,13 +619,15 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
 @media (min-width: 768px) { h2.titulo-seccion { font-size: min(3.75rem, calc((100vw - 64px) / 12.8)) !important; } }
 }
 </style>""", 1)
-    s = rep(s, "<!-- 5. PRINCIPIOS & METODOLOGÍA -->", seccion_marcas() + "\n<!-- 5. PRINCIPIOS & METODOLOGÍA -->")
+    s = rep(s, "<!-- 5. PRINCIPIOS & METODOLOGÍA -->", "<!--MARCAS-->\n<!-- 5. PRINCIPIOS & METODOLOGÍA -->")  # va después de imagenes()
     # titular: el original de Stitch (Ber, 2026-11-24: «Diseñamos productos digitales que cobran vida»)
     s = rep(s, '<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">', '<div class="hero-grilla relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">')
     s = rep(s, '<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">', '<p class="hero-bajada font-body-lg text-body-lg text-on-surface-variant max-w-2xl">')
     # composición pedida por Ber (captura 2026-11-24): de 1280px para arriba el collage va a la derecha,
     # subido y montado sobre el titular, igual que su captura a 1512 px; los otros anchos, proporcionales.
     s = s.replace("</style>", """
+/* sombra del titular donde pisa las capturas del collage (pedido de Ber, 2026-11-25) */
+.hero-grilla h1 { text-shadow: 0 3px 10px rgba(0,0,0,.75), 0 10px 40px rgba(0,0,0,.9); }
 @media (min-width: 1280px) {
   .hero-grilla { pointer-events: none; }
   .hero-grilla a { pointer-events: auto; }
@@ -373,10 +654,11 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
         (P + "armapartido-torneo.webp", "Torneo nocturno de pádel con tribuna llena", ""),
         (P + "pizcaya-portada.webp", "Pizcaya: cociná 15 platos de casa en 30 días", "object-position:left center"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
-        (RAVEKIT_IMG, "RaveKit: pedidos de reseñas por WhatsApp y QR", "object-position:left top"),
-        (P + "cartelera-noche.webp", "Cartelera Uruguay: guía de espectáculos con mapa y lista", "object-position:left top"),
+        (portfolio_web.ruta(portfolio_web.imagen("ravekit", "d")), "RaveKit: sitio getravekit.com", "object-position:left top"),
+        (portfolio_web.ruta("cartelera-d-04-cc7215ae.webp"), "Cartelera Uruguay: la cartelera en el mapa del país", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
+    s = celulares(s, "")
     # proyectos con caso propio: título clickeable
     s = rep(s, 'transition-colors">Armá Partido</h3>', 'transition-colors"><a href="casos/arma-partido.html">Armá Partido</a></h3>')
     s = rep(s, 'transition-colors">Pizcaya</h3>', 'transition-colors"><a href="casos/pizcaya.html">Pizcaya</a></h3>')
@@ -404,6 +686,19 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
   addEventListener('resize', ajustar);
 })();
 </script></body>""", 1)
+    s = rep(s, "<!--MARCAS-->", seccion_marcas())
+    s = rep(s, 'href="#casos-en-vivo">\n<span>VER CASOS EN VIVO</span>', 'href="casos-de-estudio.html">\n<span>CASOS DE ESTUDIO</span>')   # nombre pedido por Ber, 2026-11-25
+    # «Explorar proyectos» lleva a la página con todos los proyectos (pedido de Ber, 2026-11-25)
+    s = rep(s, 'shadow-xl" href="#proyectos">\n<span>EXPLORAR PROYECTOS</span>', 'shadow-xl" href="trabajo.html">\n<span>EXPLORAR PROYECTOS</span>')
+    # links a todos los proyectos y a todos los logos (pedido de Ber, 2026-11-25); botón secundario de Stitch
+    s = rep(s, """<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+        Cada proyecto combina estrategia de producto, diseño de interfaz de alto contraste y desarrollo listo para producción.
+      </p>""", """<div class="flex flex-col gap-space-md md:items-end"><p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+        Cada proyecto combina estrategia de producto, diseño de interfaz de alto contraste y desarrollo listo para producción.
+      </p>""" + BOTON_TODOS.format(href="trabajo.html", texto="Ver todos los proyectos") + "</div>")
+    s = rep(s, '<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>',
+            '<div class="flex flex-col gap-space-md md:items-end"><p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>'
+            + BOTON_TODOS.format(href=portfolio_web.PORTFOLIO, texto="Ver todos los logos") + '</div>')
     guardar("index.html", s)
 
 
@@ -416,7 +711,7 @@ def arma_partido():
     P = "../img/proyectos/"
     s = fondos(s, [P + "armapartido-cancha.webp", P + "armapartido-categoria.webp", P + "armapartido-horarios.webp",
                    P + "armapartido-avisos.webp", P + "armapartido-perfil.webp", None, None])
-    s = link(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", "../trabajo.html")
+    s = link(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", "../casos-de-estudio.html")
     s = link(s, "<span>Visitar armapartido.com</span>", "https://armapartido.com")
     s = link(s, "SIGUIENTE CASO DE ESTUDIO // 02", "pizcaya.html")
     s = link(s, "Iniciar Proyecto\n", "../estudio.html#contacto")
@@ -426,9 +721,11 @@ def arma_partido():
     # demo navegable: no existe
     s = re.sub(r'<a [^>]*href="https://demo\.armapartido\.com/"[^>]*>.*?</a>', "", s, count=1, flags=re.S)
     s = textos(s, casos_textos.ARMA_PARTIDO)
+    s = panel_capturas(s, "#571BC1")
     alts = iter(casos_textos.ALT_ARMA_PARTIDO)
     s = re.sub(r'data-alt="[^"]*"', lambda m: f'data-alt="{next(alts)}"', s, count=len(casos_textos.ALT_ARMA_PARTIDO))
     guardar("casos/arma-partido.html", s)
+    return s
 
 
 # --------------------------------------------------------------- PIZCAYA
@@ -449,9 +746,9 @@ def pizcaya():
         (None, "", ""),  # retrato de testimonio (Sample)
         (None, "", ""),  # retrato de testimonio (Sample)
     ], P and "")
-    s = link(s, "VOLVER AL PORTFOLIO // CASO DE ESTUDIO 02", "../trabajo.html")
+    s = link(s, "VOLVER AL PORTFOLIO // CASO DE ESTUDIO 02", "../casos-de-estudio.html")
     s = link(s, "VISITAR PIZCAYA.COM", "https://pizcaya.com")
-    s = link(s, "SIGUIENTE CASO DE ESTUDIO // 03", "../trabajo.html")
+    s = link(s, "SIGUIENTE CASO DE ESTUDIO // 03", "palquear.html")
     s = cortar(s, "<!-- SECTION 7: User & Chef Testimonials -->", "<!-- SECTION 8: Next Case Study")
     s = link(s, "PROBAR MODO COCINA EN VIVO", "https://pizcaya.com")
     s = re.sub(r"Procesamiento de lenguaje natural.*?campanas\.",
@@ -466,10 +763,124 @@ def pizcaya():
     # número no confirmado
     s = rep(s, "Validado con más de 120 pruebas de usabilidad en cocina real", "Gratis, sin publicidad y sin crear cuenta")
     s = link(s, "Agendar Llamada", WHATSAPP)
-    s = link(s, "Ver Todos los Casos", "../trabajo.html")
+    s = link(s, "Ver Todos los Casos", "../casos-de-estudio.html")
     guardar("casos/pizcaya.html", s)
 
 
+
+
+# ------------------------------------------- CASOS NUEVOS (Palquear, Cartelera, Mesaluma)
+# Misma plantilla de caso de Stitch que Armá Partido: se cambian textos, capturas y colores.
+def _hero_caso(d, pre):
+    e = html.escape
+    desk, m1, m2 = (portfolio_web.ruta(x, pre) for x in d["hero"])
+    tel = lambda src, alt, extra="": (
+        f'<div class="w-1/2 max-w-[220px] aspect-[9/19.5] rounded-[28px] bg-surface-container-low p-[6px] shadow-xl transition-transform hover:-translate-y-1 duration-300 {extra}">'
+        f'<img alt="{alt}" loading="lazy" class="w-full h-full object-cover object-top rounded-[22px]" src="{src}"/></div>')
+    return f"""<!-- Hero Multi-Screen Composition Mockup -->
+<div class="relative w-full rounded-xl bg-surface-container p-space-lg md:p-space-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+<!-- Subtle Ambient Backdrops -->
+<div class="absolute -top-24 -left-24 w-[32rem] h-[32rem] rounded-full bg-primary-container/20 blur-[110px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -right-24 w-[36rem] h-[36rem] rounded-full blur-[120px] pointer-events-none" style="background:{d['colores'][0][0]};opacity:.45"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Captura real: escritorio -->
+<div class="lg:col-span-8 w-full rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-xl transition-transform hover:-translate-y-1 duration-300">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="ml-space-sm font-label-sm text-label-sm text-on-surface-variant">{e(d["visitar"][1].split("//")[1])}</span>
+</div>
+<div class="w-full aspect-[16/10] rounded-lg overflow-hidden bg-surface-container-highest">
+<img alt="{e(d['titulo'].title())}: versión escritorio" loading="lazy" class="w-full h-full object-cover object-top" src="{desk}"/>
+</div>
+</div>
+<!-- Capturas reales: celular -->
+<div class="lg:col-span-4 flex items-center justify-center gap-space-md">
+{tel(m1, e(d['titulo'].title()) + ": versión celular")}
+{tel(m2, e(d['titulo'].title()) + ": versión celular", "lg:translate-y-space-lg")}
+</div>
+</div>
+</div>
+"""
+
+
+def panel_capturas(s, color):
+    """Recuadro de las capturas con presencia (pedido de Ber): tono más claro, borde fino y brillo del color de la marca."""
+    s = rep(s, '<div class="relative w-full rounded-xl bg-surface-container-lowest p-space-lg md:p-space-2xl overflow-hidden shadow-2xl">',
+            '<div class="relative w-full rounded-xl bg-surface-container p-space-lg md:p-space-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">')
+    s = rep(s, '<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none"></div>\n<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/20 blur-[120px] pointer-events-none"></div>',
+            '<div class="absolute -top-24 -left-24 w-[32rem] h-[32rem] rounded-full bg-primary-container/20 blur-[110px] pointer-events-none"></div>\n'
+            f'<div class="absolute -bottom-32 -right-24 w-[36rem] h-[36rem] rounded-full blur-[120px] pointer-events-none" style="background:{color};opacity:.45"></div>')
+    return s
+
+
+def caso_nuevo(base, clave):
+    import casos_nuevos
+    d = casos_nuevos.CASOS[clave]
+    e = lambda t: html.escape(t, quote=False)
+    s = base
+    s = rep(s, "<title>Armá Partido · Caso de estudio · Malackath</title>", f"<title>{d['titulo'].title()} · Caso de estudio · Malackath</title>")
+    s = re.sub(r'<meta name="description" content="[^"]*"/>', f'<meta name="description" content="{html.escape(d["vision"])}"/>', s, count=1)
+    # cabecera
+    s = rep(s, "<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO 01</span>", f"<span>VOLVER AL PORTFOLIO // CASO DE ESTUDIO {d['numero']}</span>")
+    s = rep(s, ">2026 — EN DESARROLLO<", f">{e(d['estado'])}<")
+    s = rep(s, ">SportTech · Pádel<", f">{e(d['rubro'])}<")
+    s = rep(s, "\n            ARMÁ PARTIDO\n          </h1>", f"\n            {e(d['titulo'])}\n          </h1>")
+    s = rep(s, "\n            Proyecto propio · Uruguay · App instalable para clubes y jugadores\n", f"\n            {e(d['bajada'])}\n")
+    s = rep(s, 'href="https://armapartido.com"', f'href="{d["visitar"][1]}"')
+    s = rep(s, "<span>Visitar armapartido.com</span>", f"<span>{e(d['visitar'][0])}</span>")
+    i = s.find("<!-- Services & Meta Strip -->")
+    j = s.find("</section>", i)
+    tira = s[i:j]
+    vals = iter(d["meta"])
+    tira = re.sub(r'(<span class="font-body-md text-body-md text-on-surface font-medium">)[^<]*(</span>)',
+                  lambda m: m.group(1) + e(next(vals)) + m.group(2), tira)
+    s = s[:i] + tira + s[j:]
+    # visión
+    s = re.sub(r"(La Visión</span>\s*<h2[^>]*>)\s*[^<]*(</h2>\s*<p[^>]*>)\s*[^<]*(</p>)",
+               lambda m: f"{m.group(1)}\n          {e(d['vision_titulo'])}\n        {m.group(2)}\n          {e(d['vision'])}\n        {m.group(3)}", s, count=1)
+    i = s.find("<!-- Hero Multi-Screen Composition Mockup -->")
+    j = s.find("</section>", i)
+    s = s[:i] + _hero_caso(d, "../") + "</div>\n" + s[j:]
+    # textos desde «El desafío» hasta el siguiente caso, por posición (los íconos no cuentan)
+    nuevos = list(d["textos"])
+    for k, (_, label) in zip((47, 48, 49), d["colores"]):
+        nuevos[k] = label
+    ini = s.find(">Diagnóstico & Fricción<") if ">Diagnóstico & Fricción<" in s else s.find(">Diagnóstico &amp; Fricción<")
+    out, last, n = [], 0, 0
+    for m in re.finditer(r">([^<>]+)<", s):
+        if m.start() < ini or n >= len(nuevos) or not m.group(1).strip():
+            continue
+        abre = s[s.rfind("<", 0, m.start() + 1):m.start() + 1]
+        if "material-symbols" in abre:
+            continue
+        if nuevos[n] is not None:
+            crudo = m.group(1)
+            pre_ = crudo[:len(crudo) - len(crudo.lstrip())]
+            pos_ = crudo[len(crudo.rstrip()):]
+            out.append(s[last:m.start()] + ">" + pre_ + e(nuevos[n]) + pos_ + "<")
+            last = m.end()
+        n += 1
+    if n != len(nuevos):
+        raise SystemExit(f"{clave}: {n} textos en la plantilla, {len(nuevos)} en casos_nuevos")
+    s = "".join(out) + s[last:]
+    # íconos del desafío y los pilares (los primeros 7 después de «El desafío»)
+    iconos = iter(d["iconos"])
+    def _icono(m):
+        if m.start() < ini:
+            return m.group(0)
+        sig = next(iconos, None)
+        return m.group(1) + sig + m.group(3) if sig else m.group(0)
+    s = re.sub(r'(<span class="material-symbols-outlined[^"]*"[^>]*>)([a-z_]+)(</span>)', _icono, s)
+    # 4 pantallas: capturas de celular, alineadas arriba
+    viejas = ["armapartido-categoria", "armapartido-horarios", "armapartido-avisos", "armapartido-perfil"]
+    for v, nueva, tit in zip(viejas, d["pantallas"], [d["textos"][k] for k in (32, 36, 40, 44)]):
+        s = re.sub(rf'class="w-full h-full bg-cover bg-center" data-alt="[^"]*" style="background-image: url\(\'\.\./img/proyectos/{v}\.webp\'\)"',
+                   f'class="w-full h-full bg-cover bg-top" data-alt="{html.escape(d["titulo"].title())}: {html.escape(tit)}" style="background-image: url(\'{portfolio_web.ruta(nueva, "../")}\')"', s, count=1)
+    # colores del sistema
+    for viejo, (hexa, _) in zip(("bg-primary-container", "bg-surface-container-lowest", "bg-secondary-container"), d["colores"]):
+        s = rep(s, f'<span class="h-4 w-4 rounded-full {viejo}"></span>', f'<span class="h-4 w-4 rounded-full bg-[{hexa}] ring-1 ring-white/10"></span>')
+    s = rep(s, 'href="pizcaya.html">\n<div class="flex flex-col md:flex-row', f'href="{d["siguiente"]}">\n<div class="flex flex-col md:flex-row')
+    guardar(f"casos/{clave}.html", s)
 
 
 # ---------------------------------------------------------------- TRABAJO
@@ -509,7 +920,7 @@ def trabajo():
          "Plataforma para aprender a cocinar con lecciones cortas guiadas por voz e imagen en español e inglés.", 1),
         ("3D Three.js • WebGL", "Web &amp; App • Modo Cocina", 1),
         # 03 Palquear
-        ("\n              Mobile App\n", "\n              Ticketing · Demo Navegable\n", 1), ("RED DOT 2024", "DEMO NAVEGABLE", 2),
+        ("\n              Mobile App\n", "\n              Ticketing\n", 1), ("RED DOT 2024", "DEMO NAVEGABLE", 2),
         ("Total Volume Custody", "Sitio", 1), ("$3.2B TVL", "palquear.arnelli.com", 1),
         ("SYNAPSE CAPITAL</span>", "PROYECTO PROPIO</span>", 1), ("\n              SYNAPSE FINTECH\n", "\n              PALQUEAR\n", 1),
         ("Neo-banking interface and institutional crypto asset custody design system built for speed.",
@@ -590,8 +1001,8 @@ def trabajo():
         (P + "armapartido-torneo.webp", "Torneo nocturno de pádel con tribuna llena", ""),
         (P + "pizcaya-desafio.webp", "Pizcaya: desafío de 15 platos en 30 días", "object-position:center top"),
         (P + "palquear-estadio.webp", "Estadio de fútbol lleno de noche", ""),
-        (P + "cartelera-noche.webp", "Cartelera Uruguay: buscador de eventos con mapa", "object-position:left top"),
-        (RAVEKIT_IMG, "RaveKit: pedidos de reseñas por WhatsApp y QR", "object-position:left top"),
+        (portfolio_web.ruta("cartelera-d-04-cc7215ae.webp"), "Cartelera Uruguay: la cartelera en el mapa del país", "object-position:left top"),
+        (portfolio_web.ruta(portfolio_web.imagen("ravekit", "d")), "RaveKit: sitio getravekit.com", "object-position:left top"),
         (P + "mesaluma-salon.webp", "Salón del restaurante con paredes de piedra", ""),
     ], "")
     # Alinear tarjetas de la misma fila (pedido de Ber): con subgrid, imagen y texto de cada
@@ -603,7 +1014,102 @@ def trabajo():
     # mismo aire arriba y abajo que las tarjetas grandes, para que rótulos y flechas queden en línea
     s = re.sub(r'(md:col-span-4 .*?class="p-space-lg) (flex flex-col justify-between flex-1)', r'\1 md:py-space-xl \2', s, flags=re.S)
     s = rep(s, "card.style.display = 'flex';", "card.style.display = '';")
+    casos_general(s)
+    s = trabajo_portfolio(s)
     guardar("trabajo.html", s)
+
+
+def casos_general(s):
+    """Página «Casos de estudio» (pedido de Ber, 2026-11-25): la página Trabajo de Stitch con 5 casos.
+    Sale del HTML de Trabajo antes de sumarle el portfolio: mismas tarjetas, mismo encabezado."""
+    s = s.replace("<title>Trabajo · Malackath</title>", "<title>Casos de estudio · Malackath</title>")
+    s = re.sub(r'(<meta name="description" content=")[^"]*', r'\1Casos de estudio de Malackath: Armá Partido, Pizcaya, Palquear, Cartelera Uruguay y Mesaluma.', s, count=1)
+    # encabezado
+    s = rep(s, "\n          TRABAJO\n", "\n          CASOS DE ESTUDIO\n")
+    s = rep(s, "<span>SELECCIÓN</span>", "<span>CASOS</span>")
+    s = rep(s, "6 PROYECTOS", "5 CASOS")
+    s = rep(s, '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Proyectos</span>',
+            '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Casos</span>')
+    # sin filtros por categoría (son 5): queda solo Grilla / Índice
+    s = rep(s, 'id="filter-container"', 'id="filter-container" style="visibility:hidden"')
+    # RaveKit no es caso: afuera la tarjeta 05 y su fila del índice
+    i = s.find("<!-- Project 05"); j = s.find("<!-- Project 06")
+    assert 0 < i < j; s = s[:i] + s[j:]
+    i = s.find("<!-- Row 05 -->"); j = s.find("<!-- Row 06 -->")
+    assert 0 < i < j; s = s[:i] + s[j:]
+    # Mesaluma sola (La Gloria no es caso), a todo el ancho
+    for viejo, nuevo in [
+        ("MESALUMA &amp; LA GLORIA", "MESALUMA"),
+        ("Reservas con pedido anticipado para restaurantes y carta digital multilingüe para cafetería en Punta Fría.",
+         "Sistema de salón, reservas y comandas para restaurantes: app para mozos, reservas web y panel de cocina."),
+        ("Gastronomía · Web &amp; Menú QR", "Gastronomía · Reservas"),
+        ("RESTAURANTE &amp; CAFETERÍA", "RESTAURANTES"),
+        ("Pre-order • Menú QR Multilingüe", "Reservas • Salón • Cocina"),
+        ('<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Productos</span>\n<span class="font-label-md text-label-md font-bold text-primary-container">Reservas &amp; Carta Digital</span>',
+         '<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Sitio</span>\n<span class="font-label-md text-label-md font-bold text-primary-container">mesaluma.arnelli.com</span>'),
+        ("Restaurante y cafetería • Reservas y carta QR", "Restaurantes • Reservas y comandas"),
+    ]:
+        s = s.replace(viejo, nuevo)
+    i = s.find("<!-- Project 06")
+    s = s[:i] + s[i:].replace("md:col-span-6", "md:col-span-12", 1)
+    # numeración 01..05 // 05
+    n = iter(range(1, 6))
+    s = re.sub(r"\d\d // 06<", lambda m: f"{next(n):02d} // 05<", s)
+    n = iter(range(1, 6))
+    s = re.sub(r'(<div class="col-span-1 font-label-md text-label-md text-on-surface-variant font-mono">)\d\d(</div>)', lambda m: f"{m.group(1)}{next(n):02d}{m.group(2)}", s)
+    # cada tarjeta y fila lleva a su caso
+    s = rep(s, "\n              PALQUEAR\n", '\n              <a href="casos/palquear.html">PALQUEAR</a>\n')
+    s = rep(s, "\n              CARTELERA URUGUAY\n", '\n              <a href="casos/cartelera.html">CARTELERA URUGUAY</a>\n')
+    s = rep(s, "\n              MESALUMA\n", '\n              <a href="casos/mesaluma.html">MESALUMA</a>\n')
+    s = rep(s, 'href="https://palquear.arnelli.com"', 'href="casos/palquear.html"')
+    s = rep(s, 'href="https://cartelerauy.malackath.com"', 'href="casos/cartelera.html"')
+    s = rep(s, 'href="index.html#proyectos"', 'href="casos/mesaluma.html"')
+    s = rep(s, ">MESALUMA &amp; LA GLORIA</span>", ">MESALUMA</span>") if ">MESALUMA &amp; LA GLORIA</span>" in s else s
+    # la tarjeta de Mesaluma a todo el ancho: foto más baja para que no ocupe toda la pantalla
+    i = s.find("<!-- Project 06")
+    s = s[:i] + s[i:].replace("aspect-[16/11]", "aspect-[16/11] md:aspect-[21/8]", 1)
+    # en el menú se marca «Casos» y no «Trabajo»
+    act = re.search(r'<a aria-current="page" class="([^"]*)" data-path="portfolio"', s)
+    norm = re.search(r'<a class="([^"]*)" data-path="case-studies"', s)
+    if act and norm:
+        s = s.replace(act.group(0), f'<a class="{norm.group(1)}" data-path="portfolio"', 1)
+        s = s.replace(norm.group(0), f'<a aria-current="page" class="{act.group(1)}" data-path="case-studies"', 1)
+    s = celulares(s, "")
+    guardar("casos-de-estudio.html", s)
+
+
+def celulares(s, pre):
+    """Armá Partido, Palquear y Mesaluma: la foto queda y se le suma un celular con una captura real."""
+    for foto, c in [("armapartido-torneo.webp", "arma-partido"), ("palquear-estadio.webp", "palquear"),
+                    ("mesaluma-salon.webp", "mesaluma")]:
+        s, n = re.subn(r'(<img[^>]*src="' + re.escape(pre + "img/proyectos/" + foto) + r'"[^>]*>)',
+                       lambda m: m.group(1) + portfolio_web.celular(c, pre), s)
+        assert n >= 1, foto
+    return s.replace("</style>", portfolio_web.CSS_CELULAR + "</style>", 1)
+
+
+def trabajo_portfolio(s):
+    """Suma los proyectos del portfolio a Trabajo (tarjetas y filas del índice) y actualiza los contadores."""
+    total = 6 + len(portfolio_web.EXTRA)
+    s = celulares(s, "")
+    s = re.sub(r"(\d\d) // 06<", lambda m: f"{m.group(1)} // {total:02d}<", s)
+    i = s.find('id="work-grid"'); j = s.find("</article>\n</div>\n</section>", i)
+    assert i > 0 and j > 0
+    j += len("</article>\n")
+    s = s[:j] + portfolio_web.tarjetas_extra(7, total) + s[j:]
+    i = s.find('id="work-list"'); j = s.find("</a>\n</div>\n</div>\n</section>", i)
+    assert i > 0 and j > 0
+    j += len("</a>\n")
+    s = s[:j] + portfolio_web.filas_extra(7) + s[j:]
+    # contadores del filtro, contados de las tarjetas
+    cats = re.findall(r'class="project-card[^"]*" data-category="([a-z]+)"', s)
+    n = {k: cats.count(k) for k in ("branding", "web", "mobile")}
+    s = rep(s, "6 PROYECTOS", f"{total} PROYECTOS")
+    s = rep(s, '<span>Todos</span>\n<span class="opacity-70 font-mono">(6)</span>', f'<span>Todos</span>\n<span class="opacity-70 font-mono">({total})</span>')
+    s = rep(s, '<span>Marca &amp; Web</span>\n<span class="opacity-60 font-mono">(1)</span>', f'<span>Marca &amp; Web</span>\n<span class="opacity-60 font-mono">({n["branding"]})</span>')
+    s = rep(s, '<span>Plataformas Web</span>\n<span class="opacity-60 font-mono">(3)</span>', f'<span>Plataformas Web</span>\n<span class="opacity-60 font-mono">({n["web"]})</span>')
+    s = rep(s, '<span>Apps Móviles</span>\n<span class="opacity-60 font-mono">(2)</span>', f'<span>Apps Móviles</span>\n<span class="opacity-60 font-mono">({n["mobile"]})</span>')
+    return s
 
 
 
@@ -684,6 +1190,13 @@ def estudio():
     for viejo, nuevo in R:
         s = rep(s, viejo, nuevo)
     s = link(s, "\n              Escribir\n", WHATSAPP)
+    # acceso al formulario de presupuesto: mismo bloque de Stitch que "¿Preferís WhatsApp?"
+    s = rep(s, "<!-- Quick Calendar Booking Link -->",
+            '<div class="p-space-lg bg-surface-container rounded-xl flex items-center justify-between gap-space-md">'
+            '<div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase text-primary">¿Querés un presupuesto?</span>'
+            '<span class="font-label-sm text-label-sm text-on-surface-variant">Armalo en cuatro pasos</span></div>'
+            '<a class="shrink-0 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-fixed hover:bg-primary-fixed-dim font-label-sm text-label-sm uppercase transition-all duration-300" href="presupuesto.html">Armar</a>'
+            '</div>\n<!-- Quick Calendar Booking Link -->')
     # anclas para el menú
     s = rep(s, '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl relative">\n<div class="grid grid-cols-1 lg:grid-cols-12',
             '<section id="capacidades" class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl relative">\n<div class="grid grid-cols-1 lg:grid-cols-12')
@@ -700,9 +1213,193 @@ def estudio():
     guardar("estudio.html", s)
 
 
+# ------------------------------------------------------------- PRESUPUESTO
+# Formulario "Armá tu presupuesto" (como el de Marea Alta, aprobado por Ber 2026-11-25 con wireframe).
+# No hay pantalla de Stitch para esto: se arma con los mismos componentes del formulario de contacto
+# de la pantalla Estudio (chips, campos, botón, bloques) para no salirse del sistema.
+CHIP = "px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all duration-200"
+CHIP_OFF = "bg-surface-container-high text-on-surface hover:text-primary"
+CAMPO = ("w-full bg-surface-container-lowest px-space-md py-space-sm rounded-lg text-primary placeholder-on-surface-variant/40 "
+         "font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary-container transition-all")
+ETQ = "font-label-sm text-label-sm uppercase text-on-surface-variant"
+AREAS = [  # las 4 áreas de la página Estudio, con sus servicios
+    ("Marca &amp; Estrategia", ["Posicionamiento", "Logo &amp; Símbolo", "Manual de Marca", "Tono de Voz"]),
+    ("Diseño de Producto (UI/UX)", ["Arquitectura de Producto", "Microinteracciones", "Prototipos Navegables", "Sistemas de Diseño"]),
+    ("Apps &amp; Plataformas Web", ["iOS &amp; Android", "Web Apps", "Reservas &amp; Pagos", "Paneles de Gestión"]),
+    ("Lanzamiento &amp; Operación", ["Firebase &amp; Google Cloud", "Dominios &amp; Correo", "App Store &amp; Google Play", "Medición", "Mantenimiento mensual"]),
+]
+
+
+def _chips(grupo, opciones, multi=False):
+    b = "".join(f'<button type="button" class="pz-chip {CHIP} {CHIP_OFF}" data-grupo="{grupo}"{" data-multi" if multi else ""}>{o}</button>'
+                for o in opciones)
+    return f'<div class="flex flex-wrap gap-space-xs">{b}</div>'
+
+
+def _paso(n, titulo, cuerpo, oculto=True):
+    return (f'<div class="pz-paso flex flex-col gap-space-lg{" hidden" if oculto else ""}" data-paso="{n}">'
+            f'<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-container">Paso 0{n} / 04</span>'
+            f'<h3 class="font-headline-sm text-headline-sm uppercase text-primary">{titulo}</h3>{cuerpo}</div>')
+
+
+def _campo(id_, etq, ph="", tipo="text", req=True, area=False):
+    r = ' required=""' if req else ""
+    ctrl = (f'<textarea class="{CAMPO} resize-none" id="{id_}" rows="4" placeholder="{ph}"{r}></textarea>' if area else
+            f'<input class="{CAMPO}" id="{id_}" type="{tipo}" placeholder="{ph}"{r}>')
+    return f'<div class="flex flex-col gap-space-xs"><label class="{ETQ}" for="{id_}">{etq}</label>{ctrl}</div>'
+
+
+def presupuesto():
+    s = leer("kinetic_studio_contact")
+    s = comun(s, "", "Armá tu presupuesto · Malackath",
+              "Marcá lo que necesitás y te mandamos una propuesta con alcance, plazos y precio. Sin compromiso.")
+    p1 = (f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="tipo">¿Qué querés hacer? *</span>'
+          + _chips("tipo", ["App Móvil", "Plataforma Web", "Sitio Web", "Tienda Online", "Marca", "Otro"]) + '</div>'
+          f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="etapa">¿En qué etapa está? *</span>'
+          + _chips("etapa", ["Es una idea", "Tengo el diseño", "Ya funciona: hay que mejorarlo o mantenerlo"]) + '</div>')
+    p2 = f'<p class="font-body-md text-body-md text-on-surface-variant">Marcá todo lo que quieras cotizar. Podés combinar áreas.</p>'
+    for i, (area, servs) in enumerate(AREAS, 1):
+        p2 += (f'<div class="flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">[ 0{i} ] {area}</span>'
+               + _chips("servicios", servs, multi=True) + '</div>')
+    p3 = (f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="plazo">¿Para cuándo? *</span>'
+          + _chips("plazo", ["Sin apuro", "En 1 a 2 meses", "Urgente"]) + '</div>'
+          f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="modo">¿Cómo preferís trabajar? *</span>'
+          + _chips("modo", ["Precio cerrado", "Por horas", "Recomiéndenme"]) + '</div>')
+    p4 = ('<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">'
+          + _campo("pz-nombre", "Tu nombre *", "Nombre y apellido")
+          + _campo("pz-empresa", "Empresa o proyecto", "Nombre de la empresa", req=False)
+          + _campo("pz-pais", "País *", "Uruguay, Brasil...")
+          + _campo("pz-whatsapp", "WhatsApp *", "+598 ...", tipo="tel")
+          + '</div>' + _campo("pz-email", "Tu email *", "nombre@empresa.com", tipo="email")
+          + _campo("pz-mensaje", "Algo más que quieras contarnos", "Referencias, objetivos, fechas...", req=False, area=True))
+    form = (
+        '<div class="lg:col-span-7 bg-surface-container rounded-xl p-space-xl md:p-space-2xl shadow-xl flex flex-col gap-space-xl">'
+        '<ol class="grid grid-cols-4 gap-space-xs" id="pz-pasos">'
+        + "".join(f'<li class="pz-tab border-t-2 pt-space-xs font-label-sm text-label-sm uppercase {"border-primary-container text-primary" if n == 1 else "border-surface-container-highest text-on-surface-variant"}" data-tab="{n}">0{n} {t}</li>'
+                  for n, t in enumerate(["Proyecto", "Servicios", "Plazo", "Datos"], 1))
+        + '</ol>'
+        '<form class="flex flex-col gap-space-xl" id="pz-form" novalidate>'
+        + _paso(1, "¿Qué es tu proyecto?", p1, oculto=False) + _paso(2, "¿Qué necesitás?", p2)
+        + _paso(3, "¿Para cuándo y cómo?", p3) + _paso(4, "¿A quién le mandamos la propuesta?", p4)
+        + '<p class="hidden font-body-sm text-body-sm text-error" id="pz-error">Completá lo marcado con * para seguir.</p>'
+        '<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pt-space-xs" id="pz-nav">'
+        f'<button type="button" class="invisible {CHIP} {CHIP_OFF} inline-flex items-center gap-space-xs" id="pz-atras"><span class="material-symbols-outlined text-[18px]">arrow_back</span><span>Volver</span></button>'
+        '<button class="group relative inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider hover:bg-primary-fixed-dim transition-all duration-300 transform active:scale-95 shadow-lg shadow-primary-container/10" id="pz-seguir" type="button">'
+        '<span>Seguir</span><span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span></button>'
+        '</div>'
+        '<div class="hidden flex-col gap-space-md" id="pz-enviar">'
+        '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">¿Por dónde nos lo mandás?</span>'
+        '<div class="flex flex-col sm:flex-row gap-space-md">'
+        '<a class="group inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider hover:bg-primary-fixed-dim transition-all duration-300" id="pz-wa" href="#" target="_blank" rel="noopener"><span>Enviar por WhatsApp</span><span class="material-symbols-outlined text-[18px]">north_east</span></a>'
+        '<a class="inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider transition-all duration-300" id="pz-mail" href="#"><span>Enviar por email</span><span class="material-symbols-outlined text-[18px]">mail</span></a>'
+        '</div>'
+        '<div class="p-space-md bg-surface-container-highest rounded-lg flex items-center gap-space-sm text-primary">'
+        '<span class="material-symbols-outlined text-primary-container">check_circle</span>'
+        '<span class="font-body-md text-body-md">Se abre tu WhatsApp o tu correo con el pedido ya escrito: solo tenés que enviarlo. Lo revisamos y te mandamos la propuesta.</span></div>'
+        '</div>'
+        '</form>'
+        # textos que usa el mensaje (se traducen con el resto de la página)
+        '<div class="hidden" id="pz-txt"><span data-t="titulo">Pedido de presupuesto</span><span data-t="servicios">Servicios</span>'
+        '<span data-t="nombre">Nombre</span><span data-t="empresa">Empresa</span><span data-t="pais">País</span>'
+        '<span data-t="email">Email</span><span data-t="mensaje">Mensaje</span><span data-t="codigo">Código para la propuesta (no borrar)</span></div>'
+        '</div>')
+    izq = (
+        '<div class="lg:col-span-5 flex flex-col gap-space-lg">'
+        '<div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">[ PRESUPUESTO ]</span>'
+        '<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-primary tracking-tight">Armá tu presupuesto</h1></div>'
+        '<p class="font-body-lg text-body-lg text-on-surface-variant">Marcá lo que necesitás. Revisamos tu pedido a mano y te mandamos una propuesta con alcance, plazos y precio. Sin compromiso y sin precios automáticos.</p>'
+        '<ol class="flex flex-col gap-space-sm mt-space-md">'
+        + "".join(f'<li class="p-space-md bg-surface-container-lowest rounded-lg flex gap-space-md"><span class="font-label-sm text-label-sm text-primary-container">0{n}</span>'
+                  f'<span class="flex flex-col gap-1"><span class="font-body-md text-body-md text-on-surface">{a}</span><span class="font-label-sm text-label-sm text-on-surface-variant">{b}</span></span></li>'
+                  for n, (a, b) in enumerate([("Marcás lo que necesitás", "En cuatro pasos, sin compromiso."),
+                                              ("Lo revisamos", "Si hace falta, te escribimos para aclarar algo."),
+                                              ("Te llega la propuesta", "Con alcance, plazos y precio, por escrito.")], 1))
+        + '</ol>'
+        '<div class="p-space-lg bg-surface-container rounded-xl flex items-center justify-between">'
+        '<div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase text-primary">¿Preferís hablar?</span>'
+        '<span class="font-label-sm text-label-sm text-on-surface-variant">Respuesta directa</span></div>'
+        f'<a class="px-space-md py-space-xs rounded-full bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-fixed font-label-sm text-label-sm uppercase transition-all duration-300" href="{WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>'
+        '</div></div>')
+    seccion = ('<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-space-xl pb-space-3xl bg-surface-container-low relative overflow-hidden" id="presupuesto">'
+               '<div class="absolute bottom-0 right-0 w-[45rem] h-[45rem] bg-primary-container/10 rounded-full blur-[170px] pointer-events-none"></div>'
+               '<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl relative z-10">' + izq + form + '</div></section>')
+    i, j = s.find('<main class="w-full pt-20 bg-background">'), s.find("</main>")
+    if i < 0 or j < 0:
+        raise SystemExit("presupuesto: no encontré <main>")
+    s = s[:i] + '<main class="w-full pt-20 bg-background">' + seccion + s[j:]
+    js = """<script>
+(() => {
+  const WA = '%s', MAIL = '%s';
+  const ON = '%s'.split(' '), OFF = '%s'.split(' ');
+  let paso = 1;
+  const $ = q => document.querySelector(q), $$ = q => [...document.querySelectorAll(q)];
+  const t = k => ($('#pz-txt [data-t="' + k + '"]') || {}).textContent || k;
+  const marcar = (b, on) => { ON.forEach(c => b.classList.toggle(c, on)); OFF.forEach(c => b.classList.toggle(c, !on)); b.setAttribute('aria-pressed', on); b.dataset.on = on ? '1' : ''; };
+  $$('.pz-chip').forEach(b => b.addEventListener('click', () => {
+    if (b.hasAttribute('data-multi')) return marcar(b, !b.dataset.on);
+    $$('.pz-chip[data-grupo="' + b.dataset.grupo + '"]').forEach(x => marcar(x, x === b));
+  }));
+  const elegidos = g => $$('.pz-chip[data-grupo="' + g + '"]').filter(b => b.dataset.on).map(b => b.textContent.trim());
+  const val = id => ($('#' + id).value || '').trim();
+  function valido(n) {
+    if (n === 1) return elegidos('tipo').length && elegidos('etapa').length;
+    if (n === 2) return elegidos('servicios').length;
+    if (n === 3) return elegidos('plazo').length && elegidos('modo').length;
+    return val('pz-nombre') && val('pz-pais') && val('pz-whatsapp') && /.+@.+\\..+/.test(val('pz-email'));
+  }
+  function ir(n) {
+    paso = n;
+    $$('.pz-paso').forEach(p => p.classList.toggle('hidden', +p.dataset.paso !== n));
+    $$('.pz-tab').forEach(x => { const on = +x.dataset.tab <= n;
+      ['border-primary-container', 'text-primary'].forEach(c => x.classList.toggle(c, on));
+      ['border-surface-container-highest', 'text-on-surface-variant'].forEach(c => x.classList.toggle(c, !on)); });
+    $('#pz-atras').classList.toggle('invisible', n === 1);
+    $('#pz-error').classList.add('hidden');
+    $('#presupuesto').scrollIntoView({ behavior: 'smooth' });
+  }
+  function codigo(d) {
+    const b = new TextEncoder().encode(JSON.stringify(d)); let s = '';
+    b.forEach(x => s += String.fromCharCode(x));
+    return 'MLK1:' + btoa(s).replace(/\\+/g, '-').replace(/\\//g, '_');
+  }
+  function preparar() {
+    const d = { v: 1, idioma: document.documentElement.lang, tipo: elegidos('tipo')[0], etapa: elegidos('etapa')[0],
+      servicios: elegidos('servicios'), plazo: elegidos('plazo')[0], modo: elegidos('modo')[0],
+      nombre: val('pz-nombre'), empresa: val('pz-empresa'), pais: val('pz-pais'), whatsapp: val('pz-whatsapp'),
+      email: val('pz-email'), mensaje: val('pz-mensaje') };
+    const et = k => (($('[data-et="' + k + '"]') || {}).textContent || k).replace(/\\s*\\*$/, '');
+    const txt = [t('titulo'), '',
+      et('tipo') + ' ' + d.tipo, et('etapa') + ' ' + d.etapa,
+      t('servicios') + ': ' + d.servicios.join(', '),
+      et('plazo') + ' ' + d.plazo, et('modo') + ' ' + d.modo, '',
+      t('nombre') + ': ' + d.nombre, d.empresa ? t('empresa') + ': ' + d.empresa : null, t('pais') + ': ' + d.pais,
+      'WhatsApp: ' + d.whatsapp, t('email') + ': ' + d.email, d.mensaje ? t('mensaje') + ': ' + d.mensaje : null, '',
+      t('codigo') + ':', codigo(d)].filter(x => x != null).join('\\n');
+    $('#pz-wa').href = WA + '?text=' + encodeURIComponent(txt);
+    $('#pz-mail').href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(t('titulo') + ': ' + (d.empresa || d.nombre)) + '&body=' + encodeURIComponent(txt);
+    $('#pz-nav').classList.add('hidden');
+    $('#pz-enviar').classList.remove('hidden'); $('#pz-enviar').classList.add('flex');
+  }
+  $('#pz-seguir').addEventListener('click', () => {
+    if (!valido(paso)) { $('#pz-error').classList.remove('hidden'); return; }
+    if (paso < 4) ir(paso + 1); else preparar();
+  });
+  $('#pz-atras').addEventListener('click', () => paso > 1 && ir(paso - 1));
+  const q = new URLSearchParams(location.search).get('tipo');
+  if (q) $$('.pz-chip[data-grupo="tipo"]').forEach(b => b.textContent.trim() === q && marcar(b, true));
+})();
+</script>""" % (WHATSAPP, MAIL, "bg-primary-container text-on-primary-fixed", CHIP_OFF)
+    s = s.replace("</body>", js + "</body>", 1)
+    guardar("presupuesto.html", s)
+
+
 if __name__ == "__main__":
     home()
-    arma_partido()
+    base_caso = arma_partido()
     pizcaya()
+    for clave in ("palquear", "cartelera", "mesaluma"):
+        caso_nuevo(base_caso, clave)
     trabajo()
     estudio()
+    portfolio_web.copiar(OUT)
+    presupuesto()

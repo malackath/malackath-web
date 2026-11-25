@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Cartelera Uruguay · Case study · Malackath</title><meta name="description" content="An events guide for all 19 departments with the real price of each ticket and who sells it. Our own engine gathers events from many sources and only publishes what is confirmed."/><link rel="icon" href="../../img/marca/favicon.svg" type="image/svg+xml"/><link rel="alternate icon" href="../../img/marca/favicon.ico"/><link rel="apple-touch-icon" href="../../img/marca/icono-app-blanco-180.png"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Syne:wght@400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } body > main, body > footer { overflow-x: clip; } @media (max-width: 767px) { .text-display-xl-mobile { font-size: clamp(1.6rem, 7.9vw, 2.75rem) !important; line-height: 1.1 !important; } .text-display-lg-mobile { font-size: clamp(1.6rem, 7.6vw, 2.25rem) !important; } } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><link rel="stylesheet" href="../../css/estilos.css?v=6d5f59a0e4"/><style>
+.seccion-fondo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.seccion-fondo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.seccion-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#131315 0%,rgba(19,19,21,.55) 18%,rgba(19,19,21,.45) 50%,rgba(19,19,21,.55) 82%,#131315 100%)}
+</style><style>
+.caso-fondo{position:absolute;top:0;left:0;right:0;bottom:-120px;z-index:-1;pointer-events:none;overflow:hidden}
+main section{position:relative}
+.caso-fondo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.4s ease}
+.caso-fondo img.activa{opacity:1}
+.caso-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(19,19,21,.8) 0%,rgba(19,19,21,.55) 38%,rgba(19,19,21,.25) 70%,rgba(19,19,21,.15) 100%),linear-gradient(0deg,#131315 0%,rgba(19,19,21,.55) 22%,rgba(19,19,21,0) 50%)}
+@media (max-width:767px){.caso-fondo::after{background:linear-gradient(0deg,#131315 0%,rgba(19,19,21,.7) 35%,rgba(19,19,21,.45) 100%)}}
+</style><style>html{scroll-padding-top:112px}</style><meta name="robots" content="noindex, nofollow"/><link rel="alternate" hreflang="es" href="https://malackath.com/casos/cartelera.html"/><link rel="alternate" hreflang="en" href="https://malackath.com/en/casos/cartelera.html"/><link rel="alternate" hreflang="pt" href="https://malackath.com/pt/casos/cartelera.html"/><link rel="alternate" hreflang="x-default" href="https://malackath.com/casos/cartelera.html"/></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/75 backdrop-blur-2xl shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="h-20 w-full px-margin-mobile md:px-margin-tablet lg:px-margin flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="home" href="../index.html"><img alt="Malackath" class="h-8 w-auto object-contain" src="../../img/marca/malackath-horizontal-color-negativo.svg"/></a><div class="hidden lg:flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-high/60"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Available for new projects</span></div></div><nav class="hidden md:flex items-center gap-space-md" data-active-classes="bg-surface-container-high text-primary font-bold rounded-full px-space-md py-space-xs"><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="portfolio" href="../trabajo.html">Work</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="services" href="../estudio.html#capacidades">Services</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="studio" href="../estudio.html">Studio</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors py-space-xs px-space-sm" data-path="case-studies" href="../casos-de-estudio.html">Case studies</a></nav><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider" data-idioma><a class="text-on-surface-variant hover:text-primary transition-colors" href="../../casos/cartelera.html" hreflang="es" lang="es" title="Español">ES</a><span class="text-on-surface-variant/40">/</span><span class="text-primary-container" aria-current="true">EN</span><span class="text-on-surface-variant/40">/</span><a class="text-on-surface-variant hover:text-primary transition-colors" href="../../pt/casos/cartelera.html" hreflang="pt" lang="pt" title="Português">PT</a></div><a class="hidden md:inline-flex items-center justify-center px-space-lg py-space-sm rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase hover:bg-primary-fixed-dim hover:text-on-primary-fixed transition-all duration-300" data-path="contact" href="../estudio.html#contacto">Start a project</a><a aria-label="Contact" href="../estudio.html#contacto" class="w-8 h-8 shrink-0 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></a></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- SECTION: CASE META & BREADCRUMB -->
+<section class="relative isolate w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-space-xl pb-space-lg">
+<div class="caso-fondo" aria-hidden="true"><img alt="" fetchpriority="high" class="activa" src="../../img/casos-fondos/cartelera-1-concierto.webp"/><img alt="" class="" src="../../img/casos-fondos/cartelera-2-teatro.webp"/></div>
+<div class="flex flex-col gap-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<a class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="../casos-de-estudio.html">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>BACK TO PORTFOLIO // CASE STUDY 04</span>
+</a>
+<div class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-high">
+<span class="h-2 w-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase text-primary tracking-wider">2026 — LIVE</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl pt-space-md">
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary-container">Culture · National events guide</span>
+<h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary uppercase tracking-tighter">
+            CARTELERA URUGUAY
+          </h1>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant max-w-2xl">
+            Own project · Uruguay · Installable web app in Spanish, English and Portuguese
+          </p>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end gap-space-md">
+<div class="flex flex-col sm:flex-row lg:flex-col gap-space-sm">
+<a class="inline-flex items-center justify-between px-space-lg py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase transition-all duration-300 hover:bg-primary-fixed-dim hover:scale-[1.01] shadow-xl" href="https://cartelerauy.malackath.com" rel="noopener noreferrer" target="_blank" target="_blank" rel="noopener">
+<span>Visit cartelerauy.malackath.com</span>
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</a>
+
+</div>
+</div>
+</div>
+<!-- Services & Meta Strip -->
+<div class="w-full grid grid-cols-1 md:grid-cols-4 gap-space-md p-space-lg rounded-xl bg-surface-container-low mt-space-md shadow-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Area / Discipline</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Product, brand, design and search engine</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">UI/UX scope</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">List, map, mixed and calendar</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Technology</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">HTML/CSS/JS + Leaflet · Cloudflare · Python</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Model</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Only real events, with their official image</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: HERO VISUAL & EDITORIAL HEADLINE -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl">
+<div class="flex flex-col gap-space-2xl">
+<div class="max-w-4xl flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">The vision</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tight">
+          EVERYTHING HAPPENING IN URUGUAY, IN ONE PLACE
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          An events guide for all 19 departments with the real price of each ticket and who sells it. Our own engine gathers events from many sources and only publishes what is confirmed.
+        </p>
+</div>
+<!-- Hero Multi-Screen Composition Mockup -->
+<div class="relative w-full rounded-xl bg-surface-container p-space-lg md:p-space-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+<!-- Subtle Ambient Backdrops -->
+<div class="absolute -top-24 -left-24 w-[32rem] h-[32rem] rounded-full bg-primary-container/20 blur-[110px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -right-24 w-[36rem] h-[36rem] rounded-full blur-[120px] pointer-events-none" style="background:#1E3A8A;opacity:.45"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Captura real: escritorio -->
+<div class="lg:col-span-8 w-full rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm shadow-xl transition-transform hover:-translate-y-1 duration-300">
+<div class="flex items-center gap-space-xs pb-space-xs">
+<span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span><span class="h-2.5 w-2.5 rounded-full bg-surface-container-highest"></span>
+<span class="ml-space-sm font-label-sm text-label-sm text-on-surface-variant">cartelerauy.malackath.com</span>
+</div>
+<div class="w-full aspect-[16/10] rounded-lg overflow-hidden bg-surface-container-highest">
+<img alt="Cartelera Uruguay: desktop version" loading="lazy" class="w-full h-full object-cover object-top" src="../../img/portfolio/cartelera-d-01-818af77e.webp"/>
+</div>
+</div>
+<!-- Capturas reales: celular -->
+<div class="lg:col-span-4 flex items-center justify-center gap-space-md">
+<div class="w-1/2 max-w-[220px] aspect-[9/19.5] rounded-[28px] bg-surface-container-low p-[6px] shadow-xl transition-transform hover:-translate-y-1 duration-300 "><img alt="Cartelera Uruguay: phone version" loading="lazy" class="w-full h-full object-cover object-top rounded-[22px]" src="../../img/portfolio/cartelera-m-05-85d7eb2a.webp"/></div>
+<div class="w-1/2 max-w-[220px] aspect-[9/19.5] rounded-[28px] bg-surface-container-low p-[6px] shadow-xl transition-transform hover:-translate-y-1 duration-300 lg:translate-y-space-lg"><img alt="Cartelera Uruguay: phone version" loading="lazy" class="w-full h-full object-cover object-top rounded-[22px]" src="../../img/portfolio/cartelera-m-08-84957c19.webp"/></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: THE CHALLENGE (EL DESAFÍO) -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<div class="lg:col-span-4 flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Diagnosis &amp; Friction</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
+          THE CULTURAL AGENDA IS SPREAD ACROSS TOO MANY PLACES
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          The country's events are scattered across ticketing sites, guides, venues, local governments and media. To know what's on this weekend you have to check many pages.
+        </p>
+</div>
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Friction Point 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Scattered sources</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Each ticketing site and venue publishes its own events, in its own format.
+            </p>
+</div>
+</div>
+<!-- Friction Point 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">sell</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Hidden prices</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              The real price often only shows at the end of checkout, or not at all.
+            </p>
+</div>
+</div>
+<!-- Friction Point 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">map</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">The whole country</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Guides tend to focus on Montevideo; the other departments are left out.
+            </p>
+</div>
+</div>
+<!-- Friction Point 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container flex flex-col gap-space-md shadow-md">
+<div class="w-10 h-10 rounded-full bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h4 class="font-headline-sm text-headline-sm text-primary">Duplicate events</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              The same event shows up in several sources with different details.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: SOLUTION & ARCHITECTURE -->
+<section class="relative isolate w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-2xl">
+<div class="seccion-fondo" aria-hidden="true"><img alt="" loading="lazy" src="../../img/casos-fondos/cartelera-pilares.webp"/></div>
+<div class="flex flex-col gap-space-2xl">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Product architecture</span>
+<h3 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase">
+          THREE PILLARS: SEARCH ENGINE, REVIEW AND GUIDE
+        </h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Pilar 1 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILLAR 01</span>
+<span class="material-symbols-outlined text-primary-container">manage_search</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Our own search engine</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              It crawls 15 sources, groups listings of the same event and only delivers new ones. It respects robots.txt, goes slowly and never bypasses logins or captchas.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Rules</span>
+<span class="font-mono text-label-md text-primary">Uruguay only · Official time · Official image</span>
+</div>
+</div>
+<!-- Pilar 2 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILLAR 02</span>
+<span class="material-symbols-outlined text-primary-container">fact_check</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">Review before publishing</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              What an official source confirms is published automatically; the rest goes through a review panel first.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Criteria</span>
+<span class="font-mono text-label-md text-primary-container font-bold">No made-up data · Cancelled events removed</span>
+</div>
+</div>
+<!-- Pilar 3 -->
+<div class="p-space-xl rounded-xl bg-surface-container-low flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-mono">PILLAR 03</span>
+<span class="material-symbols-outlined text-primary-container">calendar_month</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary">A guide for the public</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              List, map, mixed and calendar views, with filters, “Near me”, favorites and export to the phone's calendar.
+            </p>
+</div>
+<div class="p-space-md rounded bg-surface-container flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Languages</span>
+<span class="font-mono text-label-md text-primary">Spanish · English · Portuguese</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: UI DEEP DIVE / SHOWCASE INTERACTIVO -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl">
+<div class="flex flex-col gap-space-2xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">UI system &amp; visual design</span>
+<h3 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase">
+            SITE SCREENS
+          </h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Phone first: search at the top, large cards and a map of the whole country. Light and night mode.
+        </p>
+</div>
+<!-- 4 Screen Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Screen 1: Onboarding & ELO -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Cartelera Uruguay: Home" style="background-image: url('../img/portfolio/cartelera-m-01-9a48627a.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 01</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Home</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                “Everything happening in Uruguay, in one place”, with search close at hand.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">01 // HOME</span>
+</div>
+<!-- Screen 2: Radar de Partidos -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Cartelera Uruguay: Map" style="background-image: url('../img/portfolio/cartelera-m-04-cea314fa.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 02</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Map</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Events on the country map, grouped by area.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">02 // MAP</span>
+</div>
+<!-- Screen 3: Match Lobby & Chat -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Cartelera Uruguay: Calendar" style="background-image: url('../img/portfolio/cartelera-m-06-15fb01ed.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 03</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Calendar</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                The whole month with the days that have events.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">03 // CALENDAR</span>
+</div>
+<!-- Screen 4: Split & Post-Match -->
+<div class="flex flex-col gap-space-md">
+<div class="w-full rounded-xl bg-surface-container p-space-md shadow-xl flex flex-col gap-space-md">
+<div class="h-80 rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-top" data-alt="Cartelera Uruguay: Event page" style="background-image: url('../img/portfolio/cartelera-m-07-08d2759c.webp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">SCREEN 04</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h5 class="font-headline-sm text-headline-sm text-primary">Event page</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Date, venue, real price and the link to buy the ticket.
+              </p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container uppercase font-mono">04 // EVENT</span>
+</div>
+</div>
+<!-- Design System Tokens Bar -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-[#1E3A8A] ring-1 ring-white/10"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Cartelera Blue (#1E3A8A)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-[#F5F1E8] ring-1 ring-white/10"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Paper (#F5F1E8)</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="h-4 w-4 rounded-full bg-[#111111] ring-1 ring-white/10"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Night (#111111)</span>
+</div>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">
+          Typefaces: Bricolage Grotesque (headings), Instrument Sans (text) &amp; IBM Plex Mono (data)
+        </div>
+</div>
+</div>
+</section>
+<!-- SECTION: NEXT CASE STUDY & COLLABORATION CTA -->
+<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl">
+<div class="flex flex-col gap-space-3xl">
+<!-- Next Project Strip -->
+<a class="group block w-full p-space-xl rounded-xl bg-surface-container-low transition-all duration-300 hover:bg-surface-container shadow-lg" href="mesaluma.html">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">NEXT CASE STUDY // 05</span>
+<h4 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase group-hover:text-primary-container transition-colors">
+              MESALUMA: BOOKINGS, FLOOR AND KITCHEN
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Hospitality · Bookings with pre-orders and floor-to-kitchen coordination
+            </p>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high group-hover:bg-primary-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-fixed text-[24px]">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Direct Agency Contact Box -->
+<div class="w-full p-space-2xl rounded-xl bg-surface-container-lowest flex flex-col lg:flex-row items-center justify-between gap-space-xl shadow-2xl relative overflow-hidden">
+<div class="absolute -top-16 -right-16 w-80 h-80 rounded-full bg-primary-container/10 blur-[80px] pointer-events-none"></div>
+<div class="flex flex-col gap-space-sm max-w-2xl relative z-10">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Let's talk</span>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">
+            GOT A DIGITAL PRODUCT IDEA YOU WANT TO TAKE TO PRODUCTION?
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            From the idea and product design to a working app. We design and build digital products, our own and for clients.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-md relative z-10">
+<a class="inline-flex items-center justify-center px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase font-bold tracking-wider hover:bg-primary-fixed-dim transition-all duration-300 shadow-xl" href="../estudio.html#contacto">
+            Start a project
+          </a>
+<a class="inline-flex items-center justify-center px-space-lg py-space-md rounded-full bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container-high hover:text-primary transition-all duration-300" href="https://wa.me/59894202607" target="_blank" rel="noopener">
+            Book a call
+          </a>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest pt-space-3xl pb-space-2xl"><div class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin flex flex-col gap-space-2xl"><div class="flex flex-col gap-space-md"><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">Let's get started</span><h2 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary uppercase select-none tracking-tighter">LET'S BUILD THE FUTURE TOGETHER</h2></div><div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-xl pt-space-xl"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider">Time zones</span><div class="flex flex-wrap items-center gap-space-md font-label-md text-label-md text-on-surface"><span class="flex items-center gap-space-xs"><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>MONTEVIDEO [UYT]</span><span class="text-on-surface-variant">/</span><span class="flex items-center gap-space-xs"><span class="h-1.5 w-1.5 rounded-full bg-primary-container"></span>BRAZIL [BRT]</span></div></div><div class="flex flex-wrap items-center gap-space-lg font-label-md text-label-md uppercase tracking-wider"><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Awwwards</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Dribbble</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter / X</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">GitHub</a></div></div><div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pt-space-lg"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">© 2026 MALACKATH. ALL RIGHTS RESERVED.</span><div class="flex items-center gap-space-md font-label-sm text-label-sm uppercase text-on-surface-variant"><a class="hover:text-primary transition-colors" href="#">Privacy</a><span>/</span><a class="hover:text-primary transition-colors" href="#">Terms</a><span>/</span><a class="hover:text-primary transition-colors" href="#">Legal notice</a></div></div></div></footer>
+<script>(function(){var f=document.querySelector('.caso-fondo');if(!f)return;var im=f.querySelectorAll('img');
+if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var k=0;
+setInterval(function(){im[k].classList.remove('activa');k=(k+1)%im.length;im[k].classList.add('activa');},5000);})();</script></body></html>
