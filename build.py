@@ -669,6 +669,8 @@ def tarjeta_marca(m, i, grilla=False):
         tam = "max-h-20 max-w-[70%] object-contain"
         if m.get("fondo") == "claro":
             caja = "bg-[#F3F2EC]"
+        elif m.get("fondo") == "blanco":   # el logo trae fondo blanco: todo el recuadro en blanco
+            caja = "bg-white"
         elif m.get("fondo") == "lamina":
             tam = "w-full h-full object-cover"
         logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" decoding="async" '
