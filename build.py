@@ -254,7 +254,9 @@ def fondo_caso(nombre, s):
     return s
 
 
-# Botones de flecha de las tarjetas de proyectos en verde lima (pedido de Ber, 2026-11-25)
+# Tarjetas de Trabajo en verde lima: SOLO las 8 que Ber marcó (2026-11-25, «solo donde indiqué»).
+# Número de tarjeta en trabajo.html. Las demás y Casos de estudio quedan como Stitch.
+TARJETAS_LIMA = {"01", "04", "07", "10", "13", "18", "20", "21"}
 FLECHA_GRIS = "rounded-full bg-surface-container-high group-hover:bg-primary-container text-primary group-hover:text-on-primary-fixed"
 FLECHA_LIMA = "rounded-full bg-primary-container text-on-primary-fixed group-hover:bg-primary-fixed-dim group-hover:scale-110"
 
@@ -263,12 +265,15 @@ FLECHA_LIMA = "rounded-full bg-primary-container text-on-primary-fixed group-hov
 def _caja_lima(m):
     """Caja de texto de la tarjeta en verde lima con letra oscura (decisión de Ber, 2026-11-25)."""
     a = m.group(0)
+    n = re.search(r"(\d\d) // \d\d", a)
+    if not n or n.group(1) not in TARJETAS_LIMA:
+        return a
     i = a.rfind('<div class="p-space-lg')
     if i < 0:
         return a
     caja = a[i:]
     caja = caja.replace('<div class="p-space-lg', '<div class="bg-primary-container p-space-lg', 1)
-    caja = caja.replace(FLECHA_LIMA, "@@FLECHA_CAJA@@")
+    caja = caja.replace(FLECHA_LIMA, "@@FLECHA_CAJA@@").replace(FLECHA_GRIS, "@@FLECHA_CAJA@@")
     caja = caja.replace("group-hover:text-primary-container", "")
     caja = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/70", caja)
     caja = re.sub(r"(?<![\w:/-])text-primary-container(?![\w-])", "text-on-primary-fixed", caja)
@@ -279,8 +284,7 @@ def _caja_lima(m):
 
 def guardar(nombre, s):
     s = fondo_caso(nombre, s)
-    if nombre in ("trabajo.html", "casos-de-estudio.html"):
-        s = s.replace(FLECHA_GRIS, FLECHA_LIMA)
+    if nombre == "trabajo.html":
         s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
     # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
     s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
