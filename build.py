@@ -179,9 +179,12 @@ def fotos_caso(nombre, tipo):
     """Fotos de fondo de un caso por convención de nombre (vale para todos los casos, actuales y futuros):
     design/fondos-casos/<clave>-1-*.webp y <clave>-2-*.webp → hero (se alternan); <clave>-pilares.webp → sección de pilares.
     <clave> = nombre de la página sin guiones (casos/arma-partido.html → armapartido)."""
-    if not nombre.startswith("casos/"):
+    if nombre == "index.html":
+        clave = "home"   # prueba en la home (pedido de Ber, 2026-11-25)
+    elif nombre.startswith("casos/"):
+        clave = nombre[len("casos/"):-len(".html")].replace("-", "")
+    else:
         return []
-    clave = nombre[len("casos/"):-len(".html")].replace("-", "")
     if tipo == "hero":
         return [Path(f).stem for f in sorted(glob.glob(str(FONDOS_SRC / f"{clave}-[0-9]-*.webp")))]
     return [clave + "-pilares"] if (FONDOS_SRC / f"{clave}-pilares.webp").exists() else []
@@ -200,7 +203,8 @@ setInterval(function(){im[k].classList.remove('activa');k=(k+1)%im.length;im[k].
 
 
 # Sección de pilares (pedido de Ber): foto a todo el ancho detrás de las tarjetas, con velo oscuro.
-MARCAS_PILARES = ("<!-- SECTION: SOLUTION & ARCHITECTURE -->", "<!-- SECTION 5: Product Architecture & Technical Pillars -->")
+MARCAS_PILARES = ("<!-- SECTION: SOLUTION & ARCHITECTURE -->", "<!-- SECTION 5: Product Architecture & Technical Pillars -->",
+                  "<!-- 5. PRINCIPIOS & METODOLOGÍA -->")
 CSS_PILARES = """<style>
 .seccion-fondo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
 .seccion-fondo img{width:100%;height:100%;object-fit:cover;object-position:center}
@@ -217,7 +221,8 @@ def fondo_pilares(nombre, s):
     j = s.find(">", i)
     tag = re.sub(r"\sbg-surface[\w-]*", "", s[i:j]).replace('class="', 'class="relative isolate ', 1)
     copiar_fondo(fotos[0])
-    img = f'<img alt="" loading="lazy" src="../img/casos-fondos/{fotos[0]}.webp"/>'
+    pre = "../" * nombre.count("/")
+    img = f'<img alt="" loading="lazy" src="{pre}img/casos-fondos/{fotos[0]}.webp"/>'
     s = s[:i] + tag + f'>\n<div class="seccion-fondo" aria-hidden="true">{img}</div>' + s[j + 1:]
     return s.replace("</head>", CSS_PILARES + "</head>", 1)
 
@@ -237,11 +242,14 @@ def fondo_caso(nombre, s):
     j = s.find(">", i)
     tag = s[i:j]
     tag = tag.replace('class="', 'class="relative isolate ', 1)
-    imgs = "".join(f'<img alt="" {"" if k else "fetchpriority=\"high\" "}class="{"activa" if k == 0 else ""}" src="../img/casos-fondos/{f}.webp"/>'
+    pre = "../" * nombre.count("/")
+    imgs = "".join(f'<img alt="" {"" if k else "fetchpriority=\"high\" "}class="{"activa" if k == 0 else ""}" src="{pre}img/casos-fondos/{f}.webp"/>'
                    for k, f in enumerate(fotos))
     for f in fotos:
         copiar_fondo(f)
-    s = s[:i] + tag + f'>\n<div class="caso-fondo" aria-hidden="true">{imgs}</div>' + s[j + 1:]
+    # en la home el hero recorta lo que sobresale (overflow-hidden): el fundido termina dentro de la sección
+    extra = ' style="bottom:0"' if "overflow-hidden" in tag else ""
+    s = s[:i] + tag + f'>\n<div class="caso-fondo" aria-hidden="true"{extra}>{imgs}</div>' + s[j + 1:]
     s = s.replace("</head>", CSS_FONDO + "</head>", 1).replace("</body>", JS_FONDO + "</body>", 1)
     return s
 
