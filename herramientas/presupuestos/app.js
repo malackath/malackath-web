@@ -214,8 +214,34 @@ function render() {
   document.getElementById("papel").innerHTML =
     `<div class="cab"><img src="logo-positivo.svg" alt="Malackath"><div class="ref">${esc(ref || "")}<br>${esc(e.d.fecha || "")}</div></div>` + html +
     `<div class="pie"><span>${esc(e.d.prestador_nombre_fantasia || "Malackath")} · ${esc(e.d.prestador_email || "")}</span><span>${esc(e.d.cliente_razon_social || "")}</span></div>`;
+  ajustarUnaPagina();
   const nd = DOCS.find(x => x.k === doc).n;
   document.title = `${nd} ${e.d.cliente_razon_social || ""} ${ref || ""}`.trim();
+}
+
+// La propuesta tiene que entrar en una sola A4 (pedido de Ber 2026-11-25):
+// se mide con el ancho de impresión y se achica la letra hasta que entre.
+const A4_ALTO_MM = 297 - 14 - 16, A4_ANCHO_MM = 210 - 28; // márgenes de @page
+function ajustarUnaPagina() {
+  const papel = document.getElementById("papel");
+  papel.classList.toggle("una-pagina", doc === "propuesta");
+  papel.style.removeProperty("--escala");
+  document.getElementById("aviso").dataset.pagina = "";
+  if (doc !== "propuesta") return;
+  const mm = papel.getBoundingClientRect().width / 210; // px por mm en pantalla
+  const medir = document.createElement("div");
+  medir.className = "papel una-pagina medir";
+  medir.innerHTML = papel.innerHTML;
+  medir.style.width = A4_ANCHO_MM * mm + "px";
+  document.body.appendChild(medir);
+  let esc = 1;
+  for (; esc > 0.62; esc -= 0.02) {
+    medir.style.setProperty("--escala", esc);
+    if (medir.scrollHeight <= A4_ALTO_MM * mm) break;
+  }
+  document.body.removeChild(medir);
+  papel.style.setProperty("--escala", esc.toFixed(2));
+  if (esc <= 0.62) aviso("La propuesta tiene demasiado texto para una sola página: acortá descripciones o líneas.");
 }
 
 // ---------- Formulario ----------
@@ -243,7 +269,7 @@ function formulario() {
     <div class="campo"><label class="etq">Idioma</label>${sel("selIdioma", ["es", "en", "pt"], e.idioma)}</div>
     <div class="campo"><label class="etq">Moneda</label>${sel("selMoneda", Object.keys(MONEDAS), e.moneda)}</div></div>
     <div class="campo"><label class="etq" for="f_nombreExp">Nombre del expediente</label><input id="f_nombreExp" value="${esc(e.nombre)}"></div>
-    ${usar(ks.filter(k => /_numero$|^fecha$|^contrato_fecha$|^proyecto_nombre$|^validez_dias$/.test(k)))}</fieldset>`;
+    ${usar([...ks.filter(k => /_numero$|^fecha$|^contrato_fecha$|^proyecto_nombre$|^validez_dias$/.test(k)), ...(doc === "propuesta" ? ["validez_dias"] : [])])}</fieldset>`;
 
   const perfiles = aj.perfiles.map((p, i) => `<option value="${i}">${esc(p.perfil || p.prestador_razon_social || "Perfil " + (i + 1))}</option>`).join("");
   h += `<fieldset><legend>Emisor (quien factura)</legend>

@@ -101,3 +101,22 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
 .linea-n select{width:150px;flex:none}
 .linea-n input{min-width:0}
 .linea-n .monto{font:12px "Space Mono",monospace;color:var(--tx2);white-space:nowrap;min-width:90px;text-align:right}
+
+/* Propuesta: una sola A4. --escala la calcula app.js */
+.papel.una-pagina{--escala:1;font-size:calc(9.5pt * var(--escala));line-height:1.4;padding:14mm 14mm}
+.papel.una-pagina .cab{margin-bottom:calc(10px * var(--escala));padding-bottom:calc(8px * var(--escala))}
+.papel.una-pagina .cab img{height:calc(26px * var(--escala))}
+.papel.una-pagina h1{font-size:calc(18pt * var(--escala));margin-bottom:calc(6px * var(--escala))}
+.papel.una-pagina h2{font-size:calc(11pt * var(--escala));margin:calc(10px * var(--escala)) 0 calc(3px * var(--escala));padding-top:calc(5px * var(--escala))}
+.papel.una-pagina p{margin:calc(3px * var(--escala)) 0}
+.papel.una-pagina ul,.papel.una-pagina ol{margin:calc(3px * var(--escala)) 0}
+.papel.una-pagina li{margin:0}
+.papel.una-pagina table{font-size:calc(8.5pt * var(--escala));margin:calc(4px * var(--escala)) 0}
+.papel.una-pagina th,.papel.una-pagina td{padding:calc(3px * var(--escala)) 6px}
+.papel.una-pagina .pie{margin-top:calc(10px * var(--escala))}
+.papel.medir{position:absolute;left:-9999px;top:0;min-height:0!important;padding:0!important;box-shadow:none}
+.papel.medir blockquote,.papel.medir .hint,.papel.medir .nota{display:none}
+@media print{
+  .papel.una-pagina{padding:0}
+  .papel.una-pagina{break-after:avoid}
+}
