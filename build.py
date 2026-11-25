@@ -423,6 +423,8 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
 })();
 </script></body>""", 1)
     s = rep(s, "<!--MARCAS-->", seccion_marcas())
+    # «Explorar proyectos» lleva a la página con todos los proyectos (pedido de Ber, 2026-11-25)
+    s = rep(s, 'shadow-xl" href="#proyectos">\n<span>EXPLORAR PROYECTOS</span>', 'shadow-xl" href="trabajo.html">\n<span>EXPLORAR PROYECTOS</span>')
     # links a todos los proyectos y a todos los logos (pedido de Ber, 2026-11-25); botón secundario de Stitch
     s = rep(s, """<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
         Cada proyecto combina estrategia de producto, diseño de interfaz de alto contraste y desarrollo listo para producción.
