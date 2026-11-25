@@ -624,7 +624,7 @@ def trabajo():
          "Plataforma para aprender a cocinar con lecciones cortas guiadas por voz e imagen en español e inglés.", 1),
         ("3D Three.js • WebGL", "Web &amp; App • Modo Cocina", 1),
         # 03 Palquear
-        ("\n              Mobile App\n", "\n              Ticketing · Demo Navegable\n", 1), ("RED DOT 2024", "DEMO NAVEGABLE", 2),
+        ("\n              Mobile App\n", "\n              Ticketing\n", 1), ("RED DOT 2024", "DEMO NAVEGABLE", 2),
         ("Total Volume Custody", "Sitio", 1), ("$3.2B TVL", "palquear.arnelli.com", 1),
         ("SYNAPSE CAPITAL</span>", "PROYECTO PROPIO</span>", 1), ("\n              SYNAPSE FINTECH\n", "\n              PALQUEAR\n", 1),
         ("Neo-banking interface and institutional crypto asset custody design system built for speed.",
