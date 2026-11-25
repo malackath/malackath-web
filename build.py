@@ -262,7 +262,9 @@ def fondo_caso(nombre, s):
 CSS_CAJA_LIMA = (".caja-lima{background:radial-gradient(60% 100% at 0% 0%,rgba(255,255,170,.9) 0%,rgba(255,255,170,0) 60%),"
                  "radial-gradient(90% 130% at 100% 100%,#4FC21A 0%,rgba(79,194,26,0) 60%),"
                  "linear-gradient(135deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}"
-                 ".group:hover .caja-lima{filter:brightness(1.04)}")
+                 ".group:hover .caja-lima{filter:brightness(1.04)}"
+                 # celular: la letra del hero es ancha; «USASTOREFRONT» no entraba en Trabajo
+                 "@media (max-width:767px){.project-card .caja-lima :is(h2,h3){font-size:min(1.75rem,calc((100vw - 90px) / 15))!important;line-height:1.1!important}}")
 TARJETAS_LIMA = {"01", "04", "07", "10", "13", "18", "20", "21"}
 FLECHA_GRIS = "rounded-full bg-surface-container-high group-hover:bg-primary-container text-primary group-hover:text-on-primary-fixed"
 FLECHA_LIMA = "rounded-full bg-primary-container text-on-primary-fixed group-hover:bg-primary-fixed-dim group-hover:scale-110"
@@ -388,6 +390,39 @@ def titulo_cierre(s):
     return s
 
 
+# Fondos de página con tono tornasolado y tarjetas de vidrio esmerilado (Ber, 2026-11-25), en todas las páginas.
+# Usa los colores del propio sistema de Stitch (lima, violeta, cian) y su «Glassmorphic Substrate»
+# (desenfoque 24-40 px sobre superficie translúcida, ver stitch/DESIGN.md). Las tarjetas lima no se tocan.
+CSS_VIDRIO = """<style>
+html{background:#131315}
+body.bg-background,main.bg-background,main .bg-background{background:transparent!important}
+body::before{content:'';position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;
+ background:
+  radial-gradient(38vmax 38vmax at 12% 18%,rgba(202,243,0,.13),transparent 62%),
+  radial-gradient(46vmax 46vmax at 88% 22%,rgba(87,27,193,.34),transparent 62%),
+  radial-gradient(40vmax 40vmax at 72% 88%,rgba(125,244,255,.15),transparent 62%),
+  radial-gradient(36vmax 36vmax at 18% 86%,rgba(208,188,255,.17),transparent 62%),
+  #131315;
+ animation:tornasol 26s ease-in-out infinite alternate}
+@keyframes tornasol{0%{filter:hue-rotate(-18deg);transform:translate3d(-2%,-1%,0) scale(1)}
+ 50%{filter:hue-rotate(14deg);transform:translate3d(2%,1.5%,0) scale(1.04)}
+ 100%{filter:hue-rotate(-6deg);transform:translate3d(-1%,2%,0) scale(1.02)}}
+@media (prefers-reduced-motion:reduce){body::before{animation:none}}
+section.bg-surface-container-low,section.bg-surface-container-lowest,div.bg-surface-container-lowest.w-full{background-color:rgba(14,14,16,.42)!important}
+.rounded-xl.bg-surface-container,.rounded-xl.bg-surface-container-low,.rounded-lg.bg-surface-container,.bg-surface-container.p-space-md{
+ background:linear-gradient(135deg,rgba(125,244,255,.07),rgba(208,188,255,.05) 45%,rgba(202,243,0,.05)) padding-box,
+  linear-gradient(rgba(28,27,30,.52),rgba(28,27,30,.52)) padding-box,
+  conic-gradient(from 210deg,rgba(202,243,0,.45),rgba(125,244,255,.4),rgba(208,188,255,.45),rgba(255,180,230,.3),rgba(202,243,0,.45)) border-box!important;
+ border:1px solid transparent!important;
+ -webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 50px -20px rgba(0,0,0,.6)}
+.rounded-xl.bg-surface-container:hover,.rounded-xl.bg-surface-container-low:hover{
+ background:linear-gradient(135deg,rgba(125,244,255,.11),rgba(208,188,255,.08) 45%,rgba(202,243,0,.08)) padding-box,
+  linear-gradient(rgba(42,42,44,.6),rgba(42,42,44,.6)) padding-box,
+  conic-gradient(from 210deg,rgba(202,243,0,.7),rgba(125,244,255,.6),rgba(208,188,255,.7),rgba(255,180,230,.5),rgba(202,243,0,.7)) border-box!important}
+</style>"""
+
+
 def guardar(nombre, s):
     s = fondo_caso(nombre, s)
     if nombre != "index.html":
@@ -402,6 +437,7 @@ def guardar(nombre, s):
     if nombre == "trabajo.html":
         s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
         s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
+    s = s.replace("</head>", CSS_VIDRIO + "</head>", 1)
     # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
     s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
     if BORRADOR:
@@ -1447,10 +1483,10 @@ def servicios():
     s = rep(s, "Sin vueltas de agencia tradicional. Diseñamos y construimos productos digitales donde la dirección de arte y la ingeniería trabajan juntas.",
             "Marca, diseño de producto y desarrollo bajo un mismo techo. Te acompañamos desde la primera idea hasta el producto funcionando, y después también.")
     tarjetas = "".join(
-        f'<div class="{TARJ} p-space-xl gap-space-xl"><div class="flex items-center justify-between">'
+        f'<div class="{TARJ} p-space-lg md:p-space-xl gap-space-xl"><div class="flex items-center justify-between">'
         f'<span class="font-label-lg text-label-lg text-primary-container tracking-widest">0{n}</span>'
         f'<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">{ic}</span></div>'
-        f'<div class="flex flex-col gap-space-sm"><h3 class="font-headline-md text-headline-md uppercase tracking-tight text-primary">{t}</h3>'
+        f'<div class="flex flex-col gap-space-sm"><h3 class="font-headline-md text-headline-sm md:text-headline-md uppercase tracking-tight text-primary">{t}</h3>'
         f'<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">{d}</p></div>{RAYA}</div>'
         for n, (ic, t, d) in enumerate(SERV_FORMAS, 1))
     s, n = re.subn(r'(<!-- Values Grid: Asymmetric Triple Modules -->\s*<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter pt-space-lg">).*?(</div>\s*</div>\s*</section>)',
