@@ -287,8 +287,60 @@ def _caja_lima(m):
     caja = caja.replace("@@FLECHA_CAJA@@", "rounded-full bg-on-primary-fixed text-primary-container group-hover:scale-110")
     return a[:i] + caja
 
+# Home, Proyectos destacados: tarjetas en verde lima con el mismo degradé que Trabajo (marcas de Ber, 2026-11-25)
+HOME_LIMA = {"Armá Partido", "RaveKit"}
+
+
+def _home_lima(m):
+    a = m.group(0)
+    t = re.search(r"<h3[^>]*>(?:<a[^>]*>)?([^<]+)", a)
+    if not t or t.group(1).strip() not in HOME_LIMA:
+        return a
+    a = a.replace("bg-surface-container p-space-lg", "caja-lima p-space-lg", 1)
+    a = a.replace("hover:bg-surface-container-high", "", 1)
+    i = a.find('<div class="flex flex-col gap-space-sm">')
+    if i < 0:
+        return a
+    txt = a[i:]
+    txt = txt.replace("group-hover:text-primary-container", "")
+    txt = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/70", txt)
+    txt = re.sub(r"(?<![\w:/-])text-(?:primary-container|secondary|tertiary|tertiary-fixed)(?![\w-])", "text-on-primary-fixed/70", txt)
+    txt = re.sub(r"(?<![\w:-])text-primary(?![\w-])", "text-on-primary-fixed", txt)
+    txt = re.sub(r"(?<![\w:-])bg-surface-container-highest(?![\w-])", "bg-on-primary-fixed/10", txt)
+    return a[:i] + txt
+
+
+# Identidad de marca (home): cada tanto una tarjeta en verde lima, cada una con su degradé (Ber, 2026-11-25).
+# Elegidas a mano para que el ritmo parezca aleatorio sin amontonarse (fila 1 y fila 2 del carrusel).
+MARCAS_LIMA = {"pizcaya": 0, "mesaluma": 1, "ruvia": 2, "banana-team": 3, "patovava": 1, "coat-n-nest": 0}
+DEGRADES_LIMA = [
+    "radial-gradient(60% 100% at 0% 0%,rgba(255,255,170,.9) 0%,rgba(255,255,170,0) 60%),radial-gradient(90% 130% at 100% 100%,#4FC21A 0%,rgba(79,194,26,0) 60%),linear-gradient(135deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%)",
+    "radial-gradient(70% 90% at 100% 0%,rgba(255,255,170,.9) 0%,rgba(255,255,170,0) 60%),radial-gradient(90% 120% at 0% 100%,#4FC21A 0%,rgba(79,194,26,0) 62%),linear-gradient(225deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%)",
+    "radial-gradient(80% 60% at 50% 0%,rgba(255,255,170,.85) 0%,rgba(255,255,170,0) 65%),radial-gradient(120% 70% at 50% 100%,#4FC21A 0%,rgba(79,194,26,0) 60%),linear-gradient(180deg,#E8FF4A 0%,#CAF300 55%,#93DA00 100%)",
+    "radial-gradient(60% 80% at 100% 100%,rgba(255,255,170,.85) 0%,rgba(255,255,170,0) 60%),radial-gradient(90% 120% at 0% 0%,#4FC21A 0%,rgba(79,194,26,0) 55%),linear-gradient(315deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%)",
+]
+
+
+def _marca_lima(m):
+    a = m.group(0)
+    k = re.search(r'href="[^"#]*#([\w-]+)"', a)
+    if not k or k.group(1) not in MARCAS_LIMA:
+        return a
+    fondo = DEGRADES_LIMA[MARCAS_LIMA[k.group(1)]]
+    a = a.replace("rounded-xl bg-surface-container p-space-md", "rounded-xl p-space-md", 1)
+    a = a.replace("hover:bg-surface-container-high", "hover:brightness-105", 1)
+    a = a.replace("<a class=", f'<a style="background:{fondo};box-shadow:inset 0 1px 0 rgba(255,255,255,.6)" class=', 1)
+    a = re.sub(r"(?<![\w:-])text-primary-container(?![\w-])", "text-on-primary-fixed", a)
+    a = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/75", a)
+    return a
+
+
 def guardar(nombre, s):
     s = fondo_caso(nombre, s)
+    if nombre == "index.html":
+        s = re.sub(r"<article class=\"lg:col-span.*?</article>", _home_lima, s, flags=re.S)
+        s = re.sub(r'<a class="group shrink-0 w-72.*?</a>', _marca_lima, s, flags=re.S)
+        s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
     if nombre == "trabajo.html":
         s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
         s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
