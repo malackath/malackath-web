@@ -327,12 +327,30 @@ DEGRADES_LIMA = [
 ]
 
 
+# Página de logos (grilla): el verde va por posición, no por marca, para que no se toquen
+# ni de lado ni en diagonal con 4 columnas (pantalla grande) ni de lado con 3 (Ber, 2026-11-25).
+POSICIONES_LIMA_GRILLA = (0, 2, 9, 11, 16, 18)
+
+
 def _marca_lima(m):
     a = m.group(0)
     k = re.search(r'data-marca="([\w-]+)"', a)
     if not k or k.group(1) not in MARCAS_LIMA:
         return a
-    fondo = DEGRADES_LIMA[MARCAS_LIMA[k.group(1)]]
+    return _pintar_lima(a, DEGRADES_LIMA[MARCAS_LIMA[k.group(1)]])
+
+
+def _grilla_lima(s):
+    n = iter(range(10**6))
+    def f(m):
+        i = next(n)
+        if i not in POSICIONES_LIMA_GRILLA:
+            return m.group(0)
+        return _pintar_lima(m.group(0), DEGRADES_LIMA[POSICIONES_LIMA_GRILLA.index(i) % len(DEGRADES_LIMA)])
+    return re.sub(r'<(a|article) class="group w-full scroll-mt-28.*?</\1>', f, s, flags=re.S)
+
+
+def _pintar_lima(a, fondo):
     a = a.replace("rounded-xl bg-surface-container p-space-md", "rounded-xl p-space-md", 1)
     a = a.replace("hover:bg-surface-container-high", "hover:brightness-105", 1)
     a = re.sub(r"^<(a|article) class=", lambda t: f'<{t.group(1)} style="background:{fondo};box-shadow:inset 0 1px 0 rgba(255,255,255,.6)" class=', a, count=1)
@@ -348,7 +366,7 @@ def guardar(nombre, s):
         s = re.sub(r"<article class=\"lg:col-span.*?</article>", _home_lima, s, flags=re.S)
         s = re.sub(r'<a class="group shrink-0 w-72.*?</a>', _marca_lima, s, flags=re.S)
     if nombre == "marcas.html":
-        s = re.sub(r'<(a|article) class="group w-full scroll-mt-28.*?</\1>', _marca_lima, s, flags=re.S)
+        s = _grilla_lima(s)
         s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
     if nombre == "trabajo.html":
         s = re.sub(r'<article class="project-card.*?</article>', _caja_lima, s, flags=re.S)
