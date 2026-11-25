@@ -288,7 +288,7 @@ def _caja_lima(m):
     return a[:i] + caja
 
 # Sombra de las imágenes sobre el lima y título con la letra del titular del hero (Ber, 2026-11-25)
-SOMBRA_SOBRE_LIMA = 'style="box-shadow:0 22px 44px -14px rgba(23,30,0,.6),0 6px 14px rgba(23,30,0,.28)" '
+SOMBRA_SOBRE_LIMA = 'style="box-shadow:0 26px 50px -12px rgba(23,30,0,.7),0 8px 18px rgba(23,30,0,.35)" '
 # Home, Proyectos destacados: tarjetas en verde lima con el mismo degradé que Trabajo (marcas de Ber, 2026-11-25)
 HOME_LIMA = {"Armá Partido", "RaveKit"}
 
@@ -301,7 +301,7 @@ def _home_lima(m):
     a = a.replace("bg-surface-container p-space-lg", "caja-lima p-space-lg", 1)
     a = a.replace("hover:bg-surface-container-high", "", 1)
     a = a.replace('<div class="relative w-full h-', '<div ' + SOMBRA_SOBRE_LIMA + 'class="relative w-full h-', 1)
-    a = re.sub(r'<h3 class="font-headline-(?:lg|md) ', '<h3 class="font-display-xl font-extrabold uppercase tracking-tighter ', a, count=1)
+    a = re.sub(r'<h3 class="font-headline-(?:lg|md) ', '<h3 class="font-display-xl font-extrabold md:font-extrabold uppercase tracking-tighter md:tracking-[-0.04em] ', a, count=1)
     i = a.find('<div class="flex flex-col gap-space-sm">')
     if i < 0:
         return a
