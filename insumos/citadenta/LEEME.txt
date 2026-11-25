@@ -1,0 +1,32 @@
+CITADENTA · material para portfolio
+Recepcionista con IA por WhatsApp para clínicas dentales.
+Diseño, marca y producto: Bernardo Arnelli (Ber) · Noviembre 2026
+
+QUÉ HAY ADENTRO
+
+1-app/
+  Capturas del panel web de Citadenta (versión actual).
+  compu/                 pantallas de escritorio (2880 x 1800 px)
+  celular/               las mismas pantallas en celular (1170 x 2532 px)
+  compu-pagina-entera/   pantallas de escritorio con todo el largo de la página
+  Pantallas: 00 ingreso, 01 turnos de hoy, 02 ficha de paciente, 03 pacientes,
+  04 lista de espera, 05 informe mensual, 06 probar la recepcionista,
+  07 datos de la clínica y QR de reseñas, 08 conexiones (WhatsApp y Google Calendar).
+
+2-folleto/
+  Cada página del folleto de venta en PNG (A4 a 200 dpi) y el PDF completo.
+
+3-logo/
+  00-presentacion-logo.png   lámina con logo, monograma, ícono y colores
+  01-portada-logo.png        logo solo sobre fondo claro
+  svg/  y  png/              logo horizontal, vertical, isotipo y palabra,
+                             en color, negativo, negro y blanco (PNG con fondo transparente)
+  Colores: petróleo #0A4F63 · celeste turquesa #22AEB8 · fondo #F4F8F9 · tipografía Poppins
+
+4-precios-clinicas/
+  Las 4 páginas de la hoja de precios que se entrega a las clínicas.
+
+IMPORTANTE
+Todos los nombres, teléfonos, turnos y números que aparecen en las capturas
+de la app son datos de ejemplo ("Clínica Dental Ejemplo"). No hay datos reales
+de pacientes ni claves.

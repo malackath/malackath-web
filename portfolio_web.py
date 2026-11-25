@@ -76,14 +76,22 @@ CON_LOGO = ["arma-partido", "pizcaya", "palquear", "cartelera", "mesaluma", "rav
 # Marea Alta tenía dos tarjetas seguidas (la parte digital y la consultora): en el home queda una sola (Ber, 2026-11-25)
 FUERA_HOME = {"marealta-consultora"}
 
-# Logo que en el sitio sale distinto que en el portfolio: Sitios Gastro muestra el de Botánica Bistro, que trae
-# fondo blanco; va en recuadro claro como Mesaluma y Zoomi (Ber, 2026-11-25).
-FONDO_WEB = {"sitios-gastro": "claro"}
-
 
 # proyectos con caso de estudio en el sitio
 CASOS = {"arma-partido": "arma-partido", "pizcaya": "pizcaya", "palquear": "palquear", "cartelera": "cartelera",
          "mesaluma": "mesaluma", "ravekit": "ravekit"}
+
+
+def _fondo_blanco(nombre):
+    """Logo que trae su propio fondo blanco (ej. Botánica Bistro en Sitios Gastro): el recuadro entero va en blanco,
+    como Mesaluma y Zoomi, para que no quede un rectángulo blanco flotando sobre el oscuro (Ber, 2026-11-25)."""
+    try:
+        from PIL import Image
+        im = Image.open(IMG_SRC / nombre).convert("RGBA")
+    except Exception:
+        return False
+    esquinas = [im.getpixel(p) for p in [(1, 1), (im.width - 2, 1), (1, im.height - 2), (im.width - 2, im.height - 2)]]
+    return all(a > 250 and min(r, g, b) > 245 for r, g, b, a in esquinas)
 
 
 def marcas(todos=False):
@@ -94,8 +102,9 @@ def marcas(todos=False):
         if c in FUERA_HOME:   # también en la página de logos: un solo Marea Alta
             continue
         p = P[c]
+        fondo = "blanco" if _fondo_blanco(imagen(c, "logo")) else p["fondo"]
         filas.append({"clave": c, "nombre": p["n"], "imagen": ruta(imagen(c, "logo")), "url": "marcas.html#" + c,
-                      "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": FONDO_WEB.get(c, p["fondo"])})
+                      "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": fondo})
     if todos:
         return filas
     return filas[:10], filas[10:]
