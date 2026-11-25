@@ -32,7 +32,8 @@ FUERA_PROY = {
  'jip': re.compile(r'05_inicio_oscuro|oscuro_01_inicio|oscuro_04_fabula', re.I),  # oscuro con la barra de arriba gris clara (así es el sitio)
 }
 # Capturas reales de escritorio sacadas aparte (van primero).
-EXTRA_D = {'palquear': os.path.join(RAIZ, 'Malackath/_palquear-desktop')}
+EXTRA_D = {'palquear': os.path.join(RAIZ, 'Malackath/_palquear-desktop'),
+           'jip': os.path.join(RAIZ, 'Malackath/_jip-desktop')}  # jip: "The good stuff" oscuro recortado de inicio_completa_oscuro (sin la barra gris)
 # Capturas nuevas sacadas de los sitios en vivo: si existen para un proyecto, reemplazan a las del zip.
 VIVAS = os.path.join(RAIZ, 'Malackath/_capturas-vivas')
 # Proporción mínima (alto/ancho) para que una captura llene el marco sin franjas.

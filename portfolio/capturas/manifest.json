@@ -1065,16 +1065,22 @@
     "f": "d-osc-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/06_cada_remera_oscuro.png"
+    "origen": "Malackath/_jip-desktop/02_detalles_oscuro.png"
    },
    {
     "f": "d-osc-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/07_prendas_oscuro.png"
+    "origen": "JLP/escritorio/06_cada_remera_oscuro.png"
    },
    {
     "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "JLP/escritorio/07_prendas_oscuro.png"
+   },
+   {
+    "f": "d-osc-04.webp",
     "w": 1280,
     "h": 800,
     "origen": "JLP/escritorio/08_fabula_oscuro.png"
