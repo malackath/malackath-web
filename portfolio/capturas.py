@@ -24,7 +24,7 @@ FUERA_PROY = {
  'velvet': re.compile(r'portada', re.I),            # portada = aviso de mayoría de edad
  'palquear': re.compile(r'Palquear/desktop-', re.I),  # las del zip: celular en lienzo de compu o repetidas de _palquear-desktop
  'marea-alta': re.compile(r'-pt-', re.I),            # versión en portugués = misma pantalla repetida
- 'usa-storefront': re.compile(r'-A(-completa)?\.png$'),  # variante A: se sale del ancho del celular
+ 'usa-storefront': re.compile(r'-A(-completa)?\.png$|nails-'),  # variante A: se sale del ancho del celular; nails: el sitio muestra "Placeholder list"
  'patovava': re.compile(r'resumen', re.I),           # montajes de varias pantallas juntas
  'cartelera': re.compile(r'idioma-pt', re.I),         # versión en portugués = misma pantalla repetida
  'coinciva': re.compile(r'/sitio/|desktop-(02|10|11|12)-', re.I),  # celular: solo la app; compu: sin celulares metidos en la lámina

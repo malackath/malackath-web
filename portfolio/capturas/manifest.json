@@ -2370,16 +2370,10 @@
     "f": "d-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "UsaStorefront/capturas-portfolio/nails-desktop-claro-C.png"
-   },
-   {
-    "f": "d-03.webp",
-    "w": 1280,
-    "h": 800,
     "origen": "UsaStorefront/capturas-portfolio/pillows-desktop-claro-C.png"
    },
    {
-    "f": "d-04.webp",
+    "f": "d-03.webp",
     "w": 1280,
     "h": 800,
     "origen": "UsaStorefront/capturas-portfolio/samples-desktop-claro-C.png"
@@ -2396,16 +2390,10 @@
     "f": "m-02.webp",
     "w": 390,
     "h": 844,
-    "origen": "UsaStorefront/capturas-portfolio/nails-movil-claro-C.png"
-   },
-   {
-    "f": "m-03.webp",
-    "w": 390,
-    "h": 844,
     "origen": "UsaStorefront/capturas-portfolio/pillows-movil-claro-C.png"
    },
    {
-    "f": "m-04.webp",
+    "f": "m-03.webp",
     "w": 390,
     "h": 844,
     "origen": "UsaStorefront/capturas-portfolio/samples-movil-claro-C.png"
