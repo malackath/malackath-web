@@ -410,16 +410,11 @@ body::before{content:'';position:fixed;inset:-10vmax;z-index:-1;pointer-events:n
 @media (prefers-reduced-motion:reduce){body::before{animation:none}}
 section.bg-surface-container-low,section.bg-surface-container-lowest,div.bg-surface-container-lowest.w-full{background-color:rgba(14,14,16,.42)!important}
 .rounded-xl.bg-surface-container,.rounded-xl.bg-surface-container-low,.rounded-lg.bg-surface-container,.bg-surface-container.p-space-md{
- background:linear-gradient(135deg,rgba(125,244,255,.07),rgba(208,188,255,.05) 45%,rgba(202,243,0,.05)) padding-box,
-  linear-gradient(rgba(28,27,30,.52),rgba(28,27,30,.52)) padding-box,
-  conic-gradient(from 210deg,rgba(202,243,0,.45),rgba(125,244,255,.4),rgba(208,188,255,.45),rgba(255,180,230,.3),rgba(202,243,0,.45)) border-box!important;
- border:1px solid transparent!important;
- -webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);
- box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 50px -20px rgba(0,0,0,.6)}
-.rounded-xl.bg-surface-container:hover,.rounded-xl.bg-surface-container-low:hover{
- background:linear-gradient(135deg,rgba(125,244,255,.11),rgba(208,188,255,.08) 45%,rgba(202,243,0,.08)) padding-box,
-  linear-gradient(rgba(42,42,44,.6),rgba(42,42,44,.6)) padding-box,
-  conic-gradient(from 210deg,rgba(202,243,0,.7),rgba(125,244,255,.6),rgba(208,188,255,.7),rgba(255,180,230,.5),rgba(202,243,0,.7)) border-box!important}
+ background:rgba(255,255,255,.045)!important;
+ border:1px solid rgba(255,255,255,.11)!important;
+ -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 1px 0 0 rgba(255,255,255,.07),inset 0 -1px 0 rgba(0,0,0,.35),inset -1px 0 0 rgba(0,0,0,.2),0 18px 40px -22px rgba(0,0,0,.6)}
+.rounded-xl.bg-surface-container:hover,.rounded-xl.bg-surface-container-low:hover{background:rgba(255,255,255,.07)!important}
 </style>"""
 
 
