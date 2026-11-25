@@ -108,7 +108,7 @@ def tarjeta_trabajo(c, i, total, ancho):
     if p.get("solo_logo"):
         img = (f'<img alt="Logo de {e(p["n"])}" loading="lazy" class="md:absolute md:inset-0 w-full h-full object-contain p-12 md:p-16 '
                f'transition-transform duration-700 group-hover:scale-105" src="{ruta(imagen(c, "logo"))}"/>')
-    elif imagen(c, "d") is None:   # RuVIA: solo celular
+    elif imagen(c, "d") is None or c == "ruvia":   # RuVIA: la tarjeta sigue mostrando el celular (la web nueva va en el portfolio)
         img = (f'<img alt="{e(p["n"])}: pantalla de la app" loading="lazy" class="md:absolute md:inset-0 w-full h-full object-contain py-space-md '
                f'transition-transform duration-700 group-hover:scale-105" src="{ruta(imagen(c, "m"))}"/>')
     else:
