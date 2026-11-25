@@ -21,7 +21,7 @@ Cambios permitidos sobre el HTML de Stitch (todos en `build.py`, nunca a mano en
 - `npm install` y después `npm run build` (genera las páginas y `public/css/estilos.css`).
 - Ver localmente: `npm run dev`.
 
-Páginas: `index.html` (home), `trabajo.html`, `estudio.html` (estudio + contacto), `casos/arma-partido.html`, `casos/pizcaya.html`. Cada una en español (raíz), inglés (`/en/`) y portugués (`/pt/`).
+Páginas: `index.html` (home), `trabajo.html`, `estudio.html` (estudio + contacto), `presupuesto.html` ("Armá tu presupuesto", 4 pasos, sin precios; arma un WhatsApp o mail con un código `MLK1:` para la herramienta interna), `casos/arma-partido.html`, `casos/pizcaya.html`. Cada una en español (raíz), inglés (`/en/`) y portugués (`/pt/`).
 
 ## Idiomas
 - El español es la fuente: sale de `build.py`. `i18n.py generar` traduce con `i18n/en.json` y `i18n/pt.json` (clave = texto en español) y agrega el selector ES / EN / PT al menú.
@@ -34,6 +34,11 @@ Sin servidor: el formulario arma un mail (mailto) y el botón de WhatsApp abre w
 ## Publicación
 - Hosting previsto: Firebase Hosting (`firebase.json`, carpeta `public/`), dominio malackath.com con DNS en Cloudflare.
 - **No hacer deploy sin el OK de Ber.** Nada de claves en el código.
+
+## Contratos y presupuestos (no se publican)
+- `contratos/`: plantillas de propuesta, contrato marco, SOW, T&M, mantenimiento, orden de cambio, términos de pago y NDA (es/; en/ y pt/ pendientes). Todo dato es un campo `{{...}}` que se completa por documento. A revisar por abogado y contador.
+- `herramientas/presupuestos/`: herramienta interna (HTML local) que arma propuesta y contratos y exporta PDF. Después de tocar una plantilla: `python3 herramientas/presupuestos/armar.py`.
+- Decisiones de Ber (2026-11-25): moneda US$ con opción $U/R$; IVA 22% a clientes de Uruguay y exportación sin IVA al exterior; mantenimiento = cuota con horas incluidas no acumulables.
 
 ## Pendientes
 Ver `docs/pendientes.md`.
