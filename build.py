@@ -362,6 +362,8 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
     # composición pedida por Ber (captura 2026-11-24): de 1280px para arriba el collage va a la derecha,
     # subido y montado sobre el titular, igual que su captura a 1512 px; los otros anchos, proporcionales.
     s = s.replace("</style>", """
+/* sombra del titular donde pisa las capturas del collage (pedido de Ber, 2026-11-25) */
+.hero-grilla h1 { text-shadow: 0 3px 10px rgba(0,0,0,.75), 0 10px 40px rgba(0,0,0,.9); }
 @media (min-width: 1280px) {
   .hero-grilla { pointer-events: none; }
   .hero-grilla a { pointer-events: auto; }
