@@ -87,7 +87,7 @@ def marcas(todos=False):
     Cada logo del home lleva a su tarjeta en marcas.html (pedido de Ber, 2026-11-25: no salir al portfolio)."""
     filas = []
     for c in CON_LOGO:
-        if c in FUERA_HOME and not todos:
+        if c in FUERA_HOME:   # también en la página de logos: un solo Marea Alta
             continue
         p = P[c]
         filas.append({"clave": c, "nombre": p["n"], "imagen": ruta(imagen(c, "logo")), "url": "marcas.html#" + c,
