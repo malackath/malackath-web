@@ -256,9 +256,10 @@ def fondo_caso(nombre, s):
 
 # Tarjetas de Trabajo en verde lima: SOLO las 8 que Ber marcó (2026-11-25, «solo donde indiqué»).
 # Número de tarjeta en trabajo.html. Las demás y Casos de estudio quedan como Stitch.
-# Degradé suave sobre el lima (pedido de Ber, 2026-11-25): luz arriba a la izquierda, lima más profundo abajo a la derecha.
-CSS_CAJA_LIMA = (".caja-lima{background:radial-gradient(120% 140% at 0% 0%,#E6FF5C 0%,rgba(230,255,92,0) 55%),"
-                 "linear-gradient(135deg,#D4FF00 0%,#CAF300 45%,#9FCC00 100%)}"
+# Degradé sobre el lima, opción C «Más vivo, hacia el verde» (Ber, 2026-11-25): luz amarilla arriba a la izquierda, verde intenso abajo a la derecha.
+CSS_CAJA_LIMA = (".caja-lima{background:radial-gradient(60% 100% at 0% 0%,rgba(255,255,170,.9) 0%,rgba(255,255,170,0) 60%),"
+                 "radial-gradient(90% 130% at 100% 100%,#4FC21A 0%,rgba(79,194,26,0) 60%),"
+                 "linear-gradient(135deg,#E8FF4A 0%,#CAF300 50%,#93DA00 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}"
                  ".group:hover .caja-lima{filter:brightness(1.04)}")
 TARJETAS_LIMA = {"01", "04", "07", "10", "13", "18", "20", "21"}
 FLECHA_GRIS = "rounded-full bg-surface-container-high group-hover:bg-primary-container text-primary group-hover:text-on-primary-fixed"
