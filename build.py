@@ -183,11 +183,12 @@ FONDOS_CASOS = {
 }
 FONDOS_SRC = Path(__file__).parent / "design" / "fondos-casos"
 CSS_FONDO = """<style>
-.caso-fondo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.caso-fondo{position:absolute;top:0;left:0;right:0;bottom:-64px;z-index:-1;pointer-events:none;overflow:hidden}
+main section{position:relative}
 .caso-fondo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.4s ease}
 .caso-fondo img.activa{opacity:1}
-.caso-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#131315 0%,rgba(19,19,21,.88) 38%,rgba(19,19,21,.55) 70%,rgba(19,19,21,.45) 100%),linear-gradient(0deg,#131315 0%,rgba(19,19,21,0) 45%)}
-@media (max-width:767px){.caso-fondo::after{background:linear-gradient(0deg,#131315 0%,rgba(19,19,21,.82) 55%,rgba(19,19,21,.6) 100%)}}
+.caso-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#131315 0%,rgba(19,19,21,.88) 38%,rgba(19,19,21,.55) 70%,rgba(19,19,21,.45) 100%),linear-gradient(0deg,#131315 0%,#131315 10%,rgba(19,19,21,.6) 32%,rgba(19,19,21,0) 62%)}
+@media (max-width:767px){.caso-fondo::after{background:linear-gradient(0deg,#131315 0%,#131315 8%,rgba(19,19,21,.82) 45%,rgba(19,19,21,.6) 100%)}}
 </style>"""
 JS_FONDO = """<script>(function(){var f=document.querySelector('.caso-fondo');if(!f)return;var im=f.querySelectorAll('img');
 if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var k=0;
