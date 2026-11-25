@@ -19,7 +19,7 @@ MAX = 14
 SALTEAR = {'mesaluma'}
 # Capturas de celular metidas en un lienzo de compu, montajes, o pantallas que no van.
 FUERA_PROY = {
- 'ruvia': re.compile(r'marco|pantallas|desktop', re.I),  # la web es un prototipo que no tiene el estilo de la app: solo celular
+ 'ruvia': re.compile(r'marco|pantallas|desktop', re.I),  # compu: la web nueva con el estilo de la app (RuVIA/ruvia-portfolio/web-ampliado, 14 pantallas en EXTRA_D)
  'nunca-te-falla': re.compile(r'desktop/app-', re.I),
  'velvet': re.compile(r'portada', re.I),            # portada = aviso de mayoría de edad
  'palquear': re.compile(r'Palquear/desktop-', re.I),  # las del zip: celular en lienzo de compu o repetidas de _palquear-desktop
@@ -33,7 +33,8 @@ FUERA_PROY = {
 }
 # Capturas reales de escritorio sacadas aparte (van primero).
 EXTRA_D = {'palquear': os.path.join(RAIZ, 'Malackath/_palquear-desktop'),
-           'jip': os.path.join(RAIZ, 'Malackath/_jip-desktop')}  # jip: "The good stuff" oscuro recortado de inicio_completa_oscuro (sin la barra gris)
+           'jip': os.path.join(RAIZ, 'Malackath/_jip-desktop'),  # jip: "The good stuff" oscuro recortado de inicio_completa_oscuro (sin la barra gris)
+           'ruvia': os.path.join(RAIZ, 'Malackath/_ruviaje-portfolio')}  # ruvia (RuVIAJE): 14 pantallas elegidas de web-ampliado (1440, claro y oscuro), tanda nueva 2026-11-25 10:21
 # Capturas nuevas sacadas de los sitios en vivo: si existen para un proyecto, reemplazan a las del zip.
 VIVAS = os.path.join(RAIZ, 'Malackath/_capturas-vivas')
 # Proporción mínima (alto/ancho) para que una captura llene el marco sin franjas.

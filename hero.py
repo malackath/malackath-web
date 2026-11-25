@@ -69,7 +69,7 @@ ROTACION = {
         dict(img="arma-partido-m-01-1e6e51fe.webp", url="casos/arma-partido.html", chip="App de pádel", titulo="Armá Partido"),
         dict(img="pizcaya-m-01-cae56888.webp", url="casos/pizcaya.html", chip="Aprender a cocinar", titulo="Pizcaya"),
         dict(img="palquear-m-01-d953f0cc.webp", url="https://palquear.arnelli.com", chip="Palcos de fútbol", titulo="Palquear"),
-        dict(img="ruvia-m-01-95ae4a53.webp", url=PF + "ruvia", chip="Transporte de Montevideo", titulo="RuVIA"),
+        dict(img="ruvia-m-01-102c3fa9.webp", url=PF + "ruvia", chip="Transporte de Montevideo", titulo="RuVIAJE"),
         dict(img="patovava-m-01-0659b4b2.webp", url=PF + "patovava", chip="Traslados de noche", titulo="PatovaVa"),
     ],
 }
