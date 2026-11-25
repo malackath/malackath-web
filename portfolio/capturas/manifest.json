@@ -3707,58 +3707,52 @@
     "f": "m-03.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/03-mozo-mesa-postre.png"
+    "origen": "_mesaluma-capturas/mob/04-reservas-web-restaurante.png"
    },
    {
     "f": "m-04.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/04-reservas-web-restaurante.png"
+    "origen": "_mesaluma-capturas/mob/05-reservas-portada.png"
    },
    {
     "f": "m-05.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/05-reservas-portada.png"
+    "origen": "_mesaluma-capturas/mob/06-reservas-mesa-y-turno.png"
    },
    {
     "f": "m-06.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/06-reservas-mesa-y-turno.png"
+    "origen": "_mesaluma-capturas/mob/07-reservas-experiencia.png"
    },
    {
     "f": "m-07.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/07-reservas-experiencia.png"
+    "origen": "_mesaluma-capturas/mob/08-reservas-alergias.png"
    },
    {
     "f": "m-08.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/08-reservas-alergias.png"
+    "origen": "_mesaluma-capturas/mob/09-reservas-prepedido-carta.png"
    },
    {
     "f": "m-09.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/09-reservas-prepedido-carta.png"
+    "origen": "_mesaluma-capturas/mob/10-reservas-confirmar.png"
    },
    {
     "f": "m-10.webp",
     "w": 390,
     "h": 844,
-    "origen": "_mesaluma-capturas/mob/10-reservas-confirmar.png"
-   },
-   {
-    "f": "m-11.webp",
-    "w": 390,
-    "h": 844,
     "origen": "_mesaluma-capturas/mob/11-reservas-confirmada.png"
    },
    {
-    "f": "m-12.webp",
+    "f": "m-11.webp",
     "w": 390,
     "h": 844,
     "origen": "_mesaluma-capturas/mob/12-reservas-mis-reservas.png"
