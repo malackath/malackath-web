@@ -153,7 +153,7 @@ def comun(s, pre, titulo, descripcion, activo=None):
         raise SystemExit("No encontré el logo de Kinetic")
     # links del menú y botones con data-path
     destinos = {"home": "index.html", "portfolio": "trabajo.html", "services": "estudio.html#capacidades",
-                "studio": "estudio.html", "case-studies": "casos/arma-partido.html", "contact": "estudio.html#contacto"}
+                "studio": "estudio.html", "case-studies": "casos-de-estudio.html", "contact": "estudio.html#contacto"}
     for clave, dest in destinos.items():
         s = re.sub(rf'data-path="{clave}" href="[^"]*"', f'data-path="{clave}" href="{pre}{dest}"', s)
         s = re.sub(rf'href="[^"]*" data-path="{clave}"', f'href="{pre}{dest}" data-path="{clave}"', s)
@@ -507,7 +507,7 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
 })();
 </script></body>""", 1)
     s = rep(s, "<!--MARCAS-->", seccion_marcas())
-    s = rep(s, "<span>VER CASOS EN VIVO</span>", "<span>CASOS DE ESTUDIO</span>")   # nombre pedido por Ber, 2026-11-25
+    s = rep(s, 'href="#casos-en-vivo">\n<span>VER CASOS EN VIVO</span>', 'href="casos-de-estudio.html">\n<span>CASOS DE ESTUDIO</span>')   # nombre pedido por Ber, 2026-11-25
     # «Explorar proyectos» lleva a la página con todos los proyectos (pedido de Ber, 2026-11-25)
     s = rep(s, 'shadow-xl" href="#proyectos">\n<span>EXPLORAR PROYECTOS</span>', 'shadow-xl" href="trabajo.html">\n<span>EXPLORAR PROYECTOS</span>')
     # links a todos los proyectos y a todos los logos (pedido de Ber, 2026-11-25); botón secundario de Stitch
@@ -718,8 +718,68 @@ def trabajo():
     # mismo aire arriba y abajo que las tarjetas grandes, para que rótulos y flechas queden en línea
     s = re.sub(r'(md:col-span-4 .*?class="p-space-lg) (flex flex-col justify-between flex-1)', r'\1 md:py-space-xl \2', s, flags=re.S)
     s = rep(s, "card.style.display = 'flex';", "card.style.display = '';")
+    casos_general(s)
     s = trabajo_portfolio(s)
     guardar("trabajo.html", s)
+
+
+def casos_general(s):
+    """Página «Casos de estudio» (pedido de Ber, 2026-11-25): la página Trabajo de Stitch con 5 casos.
+    Sale del HTML de Trabajo antes de sumarle el portfolio: mismas tarjetas, mismo encabezado."""
+    s = s.replace("<title>Trabajo · Malackath</title>", "<title>Casos de estudio · Malackath</title>")
+    s = re.sub(r'(<meta name="description" content=")[^"]*', r'\1Casos de estudio de Malackath: Armá Partido, Pizcaya, Palquear, Cartelera Uruguay y Mesaluma.', s, count=1)
+    # encabezado
+    s = rep(s, "\n          TRABAJO\n", "\n          CASOS DE ESTUDIO\n")
+    s = rep(s, "<span>SELECCIÓN</span>", "<span>CASOS</span>")
+    s = rep(s, "6 PROYECTOS", "5 CASOS")
+    s = rep(s, '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Proyectos</span>',
+            '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Casos</span>')
+    # sin filtros por categoría (son 5): queda solo Grilla / Índice
+    s = rep(s, 'id="filter-container"', 'id="filter-container" style="visibility:hidden"')
+    # RaveKit no es caso: afuera la tarjeta 05 y su fila del índice
+    i = s.find("<!-- Project 05"); j = s.find("<!-- Project 06")
+    assert 0 < i < j; s = s[:i] + s[j:]
+    i = s.find("<!-- Row 05 -->"); j = s.find("<!-- Row 06 -->")
+    assert 0 < i < j; s = s[:i] + s[j:]
+    # Mesaluma sola (La Gloria no es caso), a todo el ancho
+    for viejo, nuevo in [
+        ("MESALUMA &amp; LA GLORIA", "MESALUMA"),
+        ("Reservas con pedido anticipado para restaurantes y carta digital multilingüe para cafetería en Punta Fría.",
+         "Sistema de salón, reservas y comandas para restaurantes: app para mozos, reservas web y panel de cocina."),
+        ("Gastronomía · Web &amp; Menú QR", "Gastronomía · Reservas"),
+        ("RESTAURANTE &amp; CAFETERÍA", "RESTAURANTES"),
+        ("Pre-order • Menú QR Multilingüe", "Reservas • Salón • Cocina"),
+        ('<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Productos</span>\n<span class="font-label-md text-label-md font-bold text-primary-container">Reservas &amp; Carta Digital</span>',
+         '<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Sitio</span>\n<span class="font-label-md text-label-md font-bold text-primary-container">mesaluma.arnelli.com</span>'),
+        ("Restaurante y cafetería • Reservas y carta QR", "Restaurantes • Reservas y comandas"),
+    ]:
+        s = s.replace(viejo, nuevo)
+    i = s.find("<!-- Project 06")
+    s = s[:i] + s[i:].replace("md:col-span-6", "md:col-span-12", 1)
+    # numeración 01..05 // 05
+    n = iter(range(1, 6))
+    s = re.sub(r"\d\d // 06<", lambda m: f"{next(n):02d} // 05<", s)
+    n = iter(range(1, 6))
+    s = re.sub(r'(<div class="col-span-1 font-label-md text-label-md text-on-surface-variant font-mono">)\d\d(</div>)', lambda m: f"{m.group(1)}{next(n):02d}{m.group(2)}", s)
+    # cada tarjeta y fila lleva a su caso
+    s = rep(s, "\n              PALQUEAR\n", '\n              <a href="casos/palquear.html">PALQUEAR</a>\n')
+    s = rep(s, "\n              CARTELERA URUGUAY\n", '\n              <a href="casos/cartelera.html">CARTELERA URUGUAY</a>\n')
+    s = rep(s, "\n              MESALUMA\n", '\n              <a href="casos/mesaluma.html">MESALUMA</a>\n')
+    s = rep(s, 'href="https://palquear.arnelli.com"', 'href="casos/palquear.html"')
+    s = rep(s, 'href="https://cartelerauy.malackath.com"', 'href="casos/cartelera.html"')
+    s = rep(s, 'href="index.html#proyectos"', 'href="casos/mesaluma.html"')
+    s = rep(s, ">MESALUMA &amp; LA GLORIA</span>", ">MESALUMA</span>") if ">MESALUMA &amp; LA GLORIA</span>" in s else s
+    # la tarjeta de Mesaluma a todo el ancho: foto más baja para que no ocupe toda la pantalla
+    i = s.find("<!-- Project 06")
+    s = s[:i] + s[i:].replace("aspect-[16/11]", "aspect-[16/11] md:aspect-[21/8]", 1)
+    # en el menú se marca «Casos» y no «Trabajo»
+    act = re.search(r'<a aria-current="page" class="([^"]*)" data-path="portfolio"', s)
+    norm = re.search(r'<a class="([^"]*)" data-path="case-studies"', s)
+    if act and norm:
+        s = s.replace(act.group(0), f'<a class="{norm.group(1)}" data-path="portfolio"', 1)
+        s = s.replace(norm.group(0), f'<a aria-current="page" class="{act.group(1)}" data-path="case-studies"', 1)
+    s = celulares(s, "")
+    guardar("casos-de-estudio.html", s)
 
 
 def celulares(s, pre):
