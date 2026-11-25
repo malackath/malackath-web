@@ -2081,61 +2081,61 @@
     "f": "d-osc-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/01-hero.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-01-inicio.png"
    },
    {
     "f": "d-osc-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/02-negocios.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-02-negocios.png"
    },
    {
     "f": "d-osc-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/03-funciones.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-03-funciones.png"
    },
    {
     "f": "d-osc-04.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/04-como-funciona.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-04-como-funciona.png"
    },
    {
     "f": "d-osc-05.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/05-ahorro.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-05-ahorro.png"
    },
    {
     "f": "d-osc-06.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/06-comparacion.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-06-comparacion.png"
    },
    {
     "f": "d-osc-07.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/07-precios.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-07-precios.png"
    },
    {
     "f": "d-osc-08.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/08-preguntas.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-08-preguntas.png"
    },
    {
     "f": "d-osc-09.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/09-cierre.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-09-cierre.png"
    },
    {
     "f": "d-osc-10.webp",
     "w": 1280,
     "h": 800,
-    "origen": "RaveKit/desktop-oscuro/10-pie.png"
+    "origen": "Malackath/_capturas-vivas/ravekit/desktop-oscuro-10-pie.png"
    }
   ],
   "m_osc": [
@@ -2143,61 +2143,61 @@
     "f": "m-osc-01.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#1"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-01-inicio.png"
    },
    {
     "f": "m-osc-02.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#2"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-02-negocios.png"
    },
    {
     "f": "m-osc-03.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#3"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-03-funciones.png"
    },
    {
     "f": "m-osc-04.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#4"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-04-como-funciona.png"
    },
    {
     "f": "m-osc-05.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#5"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-05-ahorro.png"
    },
    {
     "f": "m-osc-06.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#6"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-06-comparacion.png"
    },
    {
     "f": "m-osc-07.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#7"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-07-precios.png"
    },
    {
     "f": "m-osc-08.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#8"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-08-preguntas.png"
    },
    {
     "f": "m-osc-09.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#9"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-09-cierre.png"
    },
    {
     "f": "m-osc-10.webp",
     "w": 390,
     "h": 844,
-    "origen": "RaveKit/movil-oscuro/00-pagina-completa.png#10"
+    "origen": "Malackath/_capturas-vivas/ravekit/movil-oscuro-10-pie.png"
    }
   ]
  },
