@@ -48,6 +48,8 @@ def imagen(c, cual):
         return _primera(f"{c}-logo-[0-9a-f]*.webp")
     if c == "sitios-gastro":
         return _primera(f"sitios-gastro-fuego-silvestre-{cual}-01-*.webp")
+    if c == "citadenta" and cual == "d":
+        return _primera("citadenta-d-09-*.webp")   # la pantalla de inicio (Ber, 2026-11-25: «poné la home»)
     return _primera(f"{c}-{cual}-01-*.webp")
 
 
