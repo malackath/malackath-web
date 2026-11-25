@@ -9,6 +9,7 @@ Regla: el diseño de Stitch se respeta tal cual. Solo se cambia:
 
 Uso: python3 build.py stitch public   (después: npm run css)
 """
+import glob
 import html
 import re
 import shutil
@@ -174,13 +175,16 @@ def comun(s, pre, titulo, descripcion, activo=None):
 # Pedido de Ber (2026-11-25): 2 fotos genéricas por caso, generadas en Flow (design/fondos-casos/,
 # prompts en /mnt/project-files/malackath/casos-fondos/prompts-flow.md), que se alternan cada 5 s
 # detrás del título, con velo oscuro para que el texto se lea.
-FONDOS_CASOS = {
-    "casos/arma-partido.html": ["armapartido-1-techada", "armapartido-2-aire-libre"],
-    "casos/pizcaya.html": ["pizcaya-1-mesada", "pizcaya-2-olla"],
-    "casos/palquear.html": ["palquear-1-campeon-del-siglo", "palquear-2-parque-central"],
-    "casos/cartelera.html": ["cartelera-1-concierto", "cartelera-2-teatro"],
-    "casos/mesaluma.html": ["mesaluma-1-salon", "mesaluma-2-cocina"],
-}
+def fotos_caso(nombre, tipo):
+    """Fotos de fondo de un caso por convención de nombre (vale para todos los casos, actuales y futuros):
+    design/fondos-casos/<clave>-1-*.webp y <clave>-2-*.webp → hero (se alternan); <clave>-pilares.webp → sección de pilares.
+    <clave> = nombre de la página sin guiones (casos/arma-partido.html → armapartido)."""
+    if not nombre.startswith("casos/"):
+        return []
+    clave = nombre[len("casos/"):-len(".html")].replace("-", "")
+    if tipo == "hero":
+        return [Path(f).stem for f in sorted(glob.glob(str(FONDOS_SRC / f"{clave}-[0-9]-*.webp")))]
+    return [clave + "-pilares"] if (FONDOS_SRC / f"{clave}-pilares.webp").exists() else []
 FONDOS_SRC = Path(__file__).parent / "design" / "fondos-casos"
 CSS_FONDO = """<style>
 .caso-fondo{position:absolute;top:0;left:0;right:0;bottom:-120px;z-index:-1;pointer-events:none;overflow:hidden}
@@ -195,9 +199,39 @@ if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;va
 setInterval(function(){im[k].classList.remove('activa');k=(k+1)%im.length;im[k].classList.add('activa');},5000);})();</script>"""
 
 
+# Sección de pilares (pedido de Ber): foto a todo el ancho detrás de las tarjetas, con velo oscuro.
+MARCAS_PILARES = ("<!-- SECTION: SOLUTION & ARCHITECTURE -->", "<!-- SECTION 5: Product Architecture & Technical Pillars -->")
+CSS_PILARES = """<style>
+.seccion-fondo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.seccion-fondo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.seccion-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#131315 0%,rgba(19,19,21,.55) 18%,rgba(19,19,21,.45) 50%,rgba(19,19,21,.55) 82%,#131315 100%)}
+</style>"""
+
+
+def fondo_pilares(nombre, s):
+    fotos = fotos_caso(nombre, "pilares")
+    marca = next((m for m in MARCAS_PILARES if m in s), None)
+    if not fotos or not marca:
+        return s
+    i = s.find("<section", s.find(marca))
+    j = s.find(">", i)
+    tag = re.sub(r"\sbg-surface[\w-]*", "", s[i:j]).replace('class="', 'class="relative isolate ', 1)
+    copiar_fondo(fotos[0])
+    img = f'<img alt="" loading="lazy" src="../img/casos-fondos/{fotos[0]}.webp"/>'
+    s = s[:i] + tag + f'>\n<div class="seccion-fondo" aria-hidden="true">{img}</div>' + s[j + 1:]
+    return s.replace("</head>", CSS_PILARES + "</head>", 1)
+
+
+def copiar_fondo(f):
+    d = OUT / "img" / "casos-fondos"
+    d.mkdir(parents=True, exist_ok=True)
+    shutil.copy(FONDOS_SRC / f"{f}.webp", d / f"{f}.webp")
+
+
 def fondo_caso(nombre, s):
-    fotos = FONDOS_CASOS.get(nombre)
-    if not fotos or not all((FONDOS_SRC / f"{f}.webp").exists() for f in fotos):
+    s = fondo_pilares(nombre, s)
+    fotos = fotos_caso(nombre, "hero")
+    if not fotos:
         return s
     i = s.find("<section", s.find("<main"))
     j = s.find(">", i)
@@ -206,9 +240,7 @@ def fondo_caso(nombre, s):
     imgs = "".join(f'<img alt="" {"" if k else "fetchpriority=\"high\" "}class="{"activa" if k == 0 else ""}" src="../img/casos-fondos/{f}.webp"/>'
                    for k, f in enumerate(fotos))
     for f in fotos:
-        d = OUT / "img" / "casos-fondos"
-        d.mkdir(parents=True, exist_ok=True)
-        shutil.copy(FONDOS_SRC / f"{f}.webp", d / f"{f}.webp")
+        copiar_fondo(f)
     s = s[:i] + tag + f'>\n<div class="caso-fondo" aria-hidden="true">{imgs}</div>' + s[j + 1:]
     s = s.replace("</head>", CSS_FONDO + "</head>", 1).replace("</body>", JS_FONDO + "</body>", 1)
     return s
@@ -588,6 +620,7 @@ def arma_partido():
     # demo navegable: no existe
     s = re.sub(r'<a [^>]*href="https://demo\.armapartido\.com/"[^>]*>.*?</a>', "", s, count=1, flags=re.S)
     s = textos(s, casos_textos.ARMA_PARTIDO)
+    s = panel_capturas(s, "#571BC1")
     alts = iter(casos_textos.ALT_ARMA_PARTIDO)
     s = re.sub(r'data-alt="[^"]*"', lambda m: f'data-alt="{next(alts)}"', s, count=len(casos_textos.ALT_ARMA_PARTIDO))
     guardar("casos/arma-partido.html", s)
@@ -667,6 +700,16 @@ def _hero_caso(d, pre):
 </div>
 </div>
 """
+
+
+def panel_capturas(s, color):
+    """Recuadro de las capturas con presencia (pedido de Ber): tono más claro, borde fino y brillo del color de la marca."""
+    s = rep(s, '<div class="relative w-full rounded-xl bg-surface-container-lowest p-space-lg md:p-space-2xl overflow-hidden shadow-2xl">',
+            '<div class="relative w-full rounded-xl bg-surface-container p-space-lg md:p-space-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">')
+    s = rep(s, '<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none"></div>\n<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/20 blur-[120px] pointer-events-none"></div>',
+            '<div class="absolute -top-24 -left-24 w-[32rem] h-[32rem] rounded-full bg-primary-container/20 blur-[110px] pointer-events-none"></div>\n'
+            f'<div class="absolute -bottom-32 -right-24 w-[36rem] h-[36rem] rounded-full blur-[120px] pointer-events-none" style="background:{color};opacity:.45"></div>')
+    return s
 
 
 def caso_nuevo(base, clave):
