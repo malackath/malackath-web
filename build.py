@@ -360,8 +360,33 @@ def _pintar_lima(a, fondo):
     return a
 
 
+# Cierres de las páginas internas con la letra ancha y gruesa del cierre del home (Ber, 2026-11-25:
+# «quiero esa tipografía», sobre «Construyamos tu próximo producto»). Mismo tamaño que antes.
+CSS_TITULO_CIERRE = """<style>@layer base {
+.titulo-cierre { font-weight: 800 !important; letter-spacing: -0.04em !important; line-height: 1.08 !important; }
+/* celular: la letra ancha no entraba; la caja usa el aire chico del sistema y la letra baja lo justo para «PRODUCCIÓN?» */
+@media (max-width: 767px) {
+  .titulo-cierre { font-size: min(1.75rem, calc((100vw - 88px) / 12.6)) !important; }
+  div:has(> div > .titulo-cierre).rounded-xl, div:has(> div > div > .titulo-cierre).rounded-xl { padding: 1.5rem !important; }
+}
+}</style>"""
+
+
+def titulo_cierre(s):
+    n0 = s.count("titulo-cierre")
+    s = re.sub(r'<h3 class="(font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase)">(\s*¿)',
+               r'<h3 class="titulo-cierre \1">\2', s)
+    s = re.sub(r'<h2 class="(font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-primary tracking-tight)">(\s*(?:¿TENÉS UN PROYECTO|Iniciemos un proyecto))',
+               r'<h2 class="titulo-cierre \1">\2', s)
+    if s.count("titulo-cierre") > n0:
+        s = s.replace("</head>", CSS_TITULO_CIERRE + "</head>", 1)
+    return s
+
+
 def guardar(nombre, s):
     s = fondo_caso(nombre, s)
+    if nombre != "index.html":
+        s = titulo_cierre(s)
     if nombre == "index.html":
         s = re.sub(r"<article class=\"lg:col-span.*?</article>", _home_lima, s, flags=re.S)
         s = re.sub(r'<a class="group shrink-0 w-72.*?</a>', _marca_lima, s, flags=re.S)
