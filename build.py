@@ -388,8 +388,9 @@ def guardar(nombre, s):
     if nombre != "index.html":
         s = titulo_cierre(s)
     if nombre == "index.html":
-        s = re.sub(r"<article class=\"lg:col-span.*?</article>", _home_lima, s, flags=re.S)
+        s = re.sub(r"<article class=\"(?:relative )?lg:col-span.*?</article>", _home_lima, s, flags=re.S)
         s = re.sub(r'<a class="group shrink-0 w-72.*?</a>', _marca_lima, s, flags=re.S)
+        s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
     if nombre == "marcas.html":
         s = _grilla_lima(s)
         s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
