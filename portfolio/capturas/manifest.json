@@ -1065,22 +1065,16 @@
     "f": "d-osc-01.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/05_inicio_oscuro.png"
+    "origen": "JLP/escritorio/06_cada_remera_oscuro.png"
    },
    {
     "f": "d-osc-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "JLP/escritorio/06_cada_remera_oscuro.png"
-   },
-   {
-    "f": "d-osc-03.webp",
-    "w": 1280,
-    "h": 800,
     "origen": "JLP/escritorio/07_prendas_oscuro.png"
    },
    {
-    "f": "d-osc-04.webp",
+    "f": "d-osc-03.webp",
     "w": 1280,
     "h": 800,
     "origen": "JLP/escritorio/08_fabula_oscuro.png"
@@ -1091,28 +1085,16 @@
     "f": "m-osc-01.webp",
     "w": 390,
     "h": 844,
-    "origen": "JLP/movil/oscuro_01_inicio.png"
+    "origen": "JLP/movil/oscuro_02_cada_remera.png"
    },
    {
     "f": "m-osc-02.webp",
     "w": 390,
     "h": 844,
-    "origen": "JLP/movil/oscuro_02_cada_remera.png"
-   },
-   {
-    "f": "m-osc-03.webp",
-    "w": 390,
-    "h": 844,
     "origen": "JLP/movil/oscuro_03_prendas.png"
    },
    {
-    "f": "m-osc-04.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "JLP/movil/oscuro_04_fabula.png"
-   },
-   {
-    "f": "m-osc-05.webp",
+    "f": "m-osc-03.webp",
     "w": 390,
     "h": 844,
     "origen": "JLP/movil/oscuro_05_fabula_relato.png"

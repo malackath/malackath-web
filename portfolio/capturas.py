@@ -29,6 +29,7 @@ FUERA_PROY = {
  'cartelera': re.compile(r'idioma-pt', re.I),         # versión en portugués = misma pantalla repetida
  'coinciva': re.compile(r'/sitio/|desktop-(02|10|11|12)-', re.I),  # celular: solo la app; compu: sin celulares metidos en la lámina
  'pizcaya': re.compile(r'12-tutor-ia', re.I),         # pantalla casi vacía
+ 'jip': re.compile(r'05_inicio_oscuro|oscuro_01_inicio|oscuro_04_fabula', re.I),  # oscuro con la barra de arriba gris clara (así es el sitio)
 }
 # Capturas reales de escritorio sacadas aparte (van primero).
 EXTRA_D = {'palquear': os.path.join(RAIZ, 'Malackath/_palquear-desktop')}
