@@ -297,7 +297,7 @@ def _caja_lima(m):
     return a[:i] + caja
 
 # Sombra de las imágenes sobre el lima y título con la letra del titular del hero (Ber, 2026-11-25)
-SOMBRA_SOBRE_LIMA = 'style="box-shadow:0 26px 50px -12px rgba(23,30,0,.7),0 8px 18px rgba(23,30,0,.35)" '
+SOMBRA_SOBRE_LIMA = 'style="box-shadow:0 8px 16px -8px rgba(23,30,0,.55),0 2px 4px rgba(23,30,0,.25)" '
 # Home, Proyectos destacados: tarjetas en verde lima con el mismo degradé que Trabajo (marcas de Ber, 2026-11-25)
 HOME_LIMA = {"Armá Partido", "RaveKit"}
 
