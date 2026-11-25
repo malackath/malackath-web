@@ -21,7 +21,7 @@ PUBLICOS = [
       logo='logo-transparente-para-fondo-oscuro.png', fondo='oscuro'),
  dict(c='pizcaya', n='Pizcaya', t='App', d='Aprender a cocinar jugando.',
       logo='logo-horizontal-transparente.png', fondo='claro'),
- dict(c='ruvia', n='RuVIA', t='App', d='Rutas, paradas y tarjeta STM del transporte de Montevideo.',
+ dict(c='ruvia', n='RuVIAJE', t='App', d='Rutas, paradas y tarjeta STM del transporte de Montevideo.',
       logo='RuVIA-logo-oscuro-transparente.png', fondo='oscuro'),
  dict(c='banana-team', n='The Banana Team', t='Empresa', d='Helping customers go live.',
       logo='02-logo-sobre-negro.png', fondo='lamina'),
