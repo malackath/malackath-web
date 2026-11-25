@@ -41,6 +41,8 @@ def imagen(c, cual):
             return "nunca-te-falla-logo.svg"
         if c == "marealta-consultora":
             return "marealta-consultora-logo.png"
+        if c == "ruvia":
+            return "ruvia-logo.png"     # logo nuevo de RuVIAJE (logo_archivo en proyectos.py)
         return _primera(f"{c}-logo-[0-9a-f]*.webp")
     if c == "sitios-gastro":
         return _primera(f"sitios-gastro-fuego-silvestre-{cual}-01-*.webp")

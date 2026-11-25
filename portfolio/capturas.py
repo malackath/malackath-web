@@ -34,7 +34,7 @@ FUERA_PROY = {
 # Capturas reales de escritorio sacadas aparte (van primero).
 EXTRA_D = {'palquear': os.path.join(RAIZ, 'Malackath/_palquear-desktop'),
            'jip': os.path.join(RAIZ, 'Malackath/_jip-desktop'),  # jip: "The good stuff" oscuro recortado de inicio_completa_oscuro (sin la barra gris)
-           'ruvia': os.path.join(RAIZ, 'Malackath/_ruvia-web-portfolio')}  # ruvia: 14 pantallas elegidas de web-ampliado (1440, claro y oscuro)
+           'ruvia': os.path.join(RAIZ, 'Malackath/_ruviaje-portfolio')}  # ruvia (RuVIAJE): 14 pantallas elegidas de web-ampliado (1440, claro y oscuro), tanda nueva 2026-11-25 10:21
 # Capturas nuevas sacadas de los sitios en vivo: si existen para un proyecto, reemplazan a las del zip.
 VIVAS = os.path.join(RAIZ, 'Malackath/_capturas-vivas')
 # Proporción mínima (alto/ancho) para que una captura llene el marco sin franjas.

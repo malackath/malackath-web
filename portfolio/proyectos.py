@@ -22,7 +22,7 @@ PUBLICOS = [
  dict(c='pizcaya', n='Pizcaya', t='App', d='Aprender a cocinar jugando.',
       logo='logo-horizontal-transparente.png', fondo='claro'),
  dict(c='ruvia', n='RuVIAJE', t='App', d='Rutas, paradas y tarjeta STM del transporte de Montevideo.',
-      logo='RuVIA-logo-oscuro-transparente.png', fondo='oscuro'),
+      logo=None, fondo='oscuro', logo_archivo='assets/ruviaje-logo-oscuro.png'),  # logo nuevo RuVIAJE (RuVIA/design/logo-ruviaje/final)
  dict(c='banana-team', n='The Banana Team', t='Empresa', d='Helping customers go live.',
       logo='02-logo-sobre-negro.png', fondo='lamina'),
  dict(c='nunca-te-falla', n='Nunca Te Falla', t='App', d='Marketplace de oficios: el cliente pide presupuesto y reserva, el profesional gestiona desde su panel.',
