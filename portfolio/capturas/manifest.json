@@ -1722,6 +1722,50 @@
     "origen": "Palquear/movil-claro-09-proyeccion.png"
    }
   ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_palquear-desktop/01-buscador-de-partidos-oscuro.png"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_palquear-desktop/02-mis-palcos-titular-oscuro.png"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_palquear-desktop/03-mapa-del-palco-oscuro.png"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_palquear-desktop/04-cobros-del-titular-oscuro.png"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_palquear-desktop/05-panel-del-club-oscuro.png"
+   },
+   {
+    "f": "d-osc-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_palquear-desktop/06-panel-del-club-nacional-oscuro.png"
+   },
+   {
+    "f": "d-osc-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Malackath/_palquear-desktop/07-proyeccion-a-5-anos-oscuro.png"
+   }
+  ],
   "m_osc": [
    {
     "f": "m-osc-01.webp",

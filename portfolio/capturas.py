@@ -78,7 +78,10 @@ def procesar(clave, fs, pre):
         if not listas['cla'][0] and listas['osc'][0]:
             listas['cla'], listas['osc'] = listas['osc'], ([], '')
         if t == 'd' and extra_fs:
-            listas['cla'] = ([(p, Image.open(p)) for p in extra_fs] + listas['cla'][0], listas['cla'][1])
+            ex_osc = [p for p in extra_fs if OSC.search(os.path.basename(p))]
+            ex_cla = [p for p in extra_fs if p not in ex_osc]
+            listas['cla'] = ([(p, Image.open(p)) for p in ex_cla] + listas['cla'][0], listas['cla'][1])
+            if ex_osc: listas['osc'] = ([(p, Image.open(p)) for p in ex_osc] + listas['osc'][0], listas['osc'][1])
         for tema, (lista, modo) in listas.items():
             if tema == 'osc' and len(lista) < 2: continue
             clave_res = t if tema == 'cla' else t + '_osc'
