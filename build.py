@@ -1462,6 +1462,9 @@ def servicios():
     s = rep(s, "ADN &amp; FILOSOFÍA", "FORMAS DE TRABAJAR")
     s = rep(s, "SIMPLICIDAD RADICAL.", "SERVICIOS.")
     s = rep(s, "OFICIO SIN ATAJOS.", "DE LA IDEA AL PRODUCTO.")
+    # «DE LA IDEA AL PRODUCTO.» en verde lima (Ber, 2026-11-25). Solo el color; letra, tamaño y lugar iguales.
+    s = re.sub(r'(<h1 class="[^"]*?)text-on-surface-variant/40 hover:text-primary ([^"]*">\s*DE LA IDEA AL PRODUCTO\.)',
+               r'\1text-primary-container \2', s, count=1)
     s = rep(s, "Sin vueltas de agencia tradicional. Diseñamos y construimos productos digitales donde la dirección de arte y la ingeniería trabajan juntas.",
             "Marca, diseño de producto y desarrollo bajo un mismo techo. Te acompañamos desde la primera idea hasta el producto funcionando, y después también.")
     tarjetas = "".join(
