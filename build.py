@@ -429,6 +429,12 @@ def pie(nombre, s):
     assert n == 1, f"{nombre}: redes del pie ({n})"
     f, n = re.subn(r'<div class="flex items-center gap-space-md font-label-sm[^"]*">(?:<a [^>]*href="#">[^<]*</a>(?:<span>/</span>)?)+</div>', "", f)
     assert n == 1, f"{nombre}: legales del pie ({n})"
+    # logo de Malackath en el pie, arriba de los husos horarios (pedido de Ber, 2026-11-25)
+    pre = "../" * nombre.count("/")
+    f, n = re.subn(r'(<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-xl pt-space-xl">)(<div class="flex flex-col gap-space-xs">)',
+                   r'\1<div class="flex flex-col gap-space-lg"><a href="' + pre + 'index.html" aria-label="Malackath"><img alt="Malackath" class="h-10 md:h-12 w-auto" src="' + pre + r'img/marca/malackath-horizontal-color-negativo.svg"/></a>\2', f)
+    assert n == 1, f"{nombre}: logo del pie ({n})"
+    f = f.replace('BRASIL [BRT]</span></div></div>', 'BRASIL [BRT]</span></div></div></div>', 1) if "BRASIL [BRT]" in f else f
     if nombre == "index.html":
         f, n = re.subn(r'<div class="flex flex-col gap-space-md"><span [^>]*>[^<]*</span><h2 [^>]*>[^<]*</h2></div>', "", f)
         assert n == 1, "home: título del pie"
