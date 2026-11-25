@@ -99,8 +99,9 @@ for n, p in enumerate(lista, 1):
         desk_o = copiar('d_osc') if len(man.get('d_osc', [])) >= max(3, len(man.get('d', [])) // 2) else []
         mob_o = copiar('m_osc') if len(man.get('m_osc', [])) >= max(3, len(man.get('m', [])) // 2) else []
         if desk_o or mob_o:
-            variantes = [('cla', 'Claro', sims), ('osc', 'Oscuro', visor(desk_o or desk, 'compu', 'Escritorio') + visor(mob_o or mob, 'cel', 'Celular'))]
-        etiqueta_sel = 'Modo de color'
+            et_c, et_o = p.get('temas', ('Claro', 'Oscuro'))
+            variantes = [('cla', et_c, sims), ('osc', et_o, visor(desk_o or desk, 'compu', 'Escritorio') + visor(mob_o or mob, 'cel', 'Celular'))]
+        etiqueta_sel = 'Versión' if p.get('temas') else 'Modo de color'
     firma = '<span class="firma">Marca y sitio: Malackath</span>' if datos_logo else ''
     temas, bloques = '', f'<div class="sims">{sims}</div>' if sims else ''
     if len(variantes) > 1:

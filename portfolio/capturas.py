@@ -25,6 +25,10 @@ FUERA_PROY = {
  'palquear': re.compile(r'Palquear/desktop-', re.I),  # las del zip: celular en lienzo de compu o repetidas de _palquear-desktop
  'marea-alta': re.compile(r'-pt-', re.I),            # versión en portugués = misma pantalla repetida
  'usa-storefront': re.compile(r'-A(-completa)?\.png$'),  # variante A: se sale del ancho del celular
+ 'patovava': re.compile(r'resumen', re.I),           # montajes de varias pantallas juntas
+ 'cartelera': re.compile(r'idioma-pt', re.I),         # versión en portugués = misma pantalla repetida
+ 'coinciva': re.compile(r'/sitio/|desktop-(02|10|11|12)-', re.I),  # celular: solo la app; compu: sin celulares metidos en la lámina
+ 'pizcaya': re.compile(r'12-tutor-ia', re.I),         # pantalla casi vacía
 }
 # Capturas reales de escritorio sacadas aparte (van primero).
 EXTRA_D = {'palquear': os.path.join(RAIZ, 'Malackath/_palquear-desktop')}

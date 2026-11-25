@@ -27,7 +27,7 @@ PUBLICOS = [
       logo='02-logo-sobre-negro.png', fondo='lamina'),
  dict(c='nunca-te-falla', n='Nunca Te Falla', t='App', d='Marketplace de oficios: el cliente pide presupuesto y reserva, el profesional gestiona desde su panel.',
       logo='ntf-logo-horizontal-negativo-2000.png', fondo='oscuro',
-      logo_archivo='assets/ntf-logo-horizontal-sobre-negro.svg'),  # sobre negro (pedido de Ber): crema pasa a lima, lima pasa a negro
+      logo_archivo='assets/ntf-logo-horizontal-sobre-negro.svg', temas=('Cliente', 'Profesional')),  # sobre negro (pedido de Ber): crema pasa a lima, lima pasa a negro
  dict(c='ravekit', n='RaveKit', t='App', d='Autonomous reputation.', logo='01-logo-fondo-oscuro.png', fondo='lamina'),
  dict(c='ecos', n='ECOS', t='App', d='Ecos de vos: comunidad de contención emocional.', logo='logo-02-fondo-oscuro.png', fondo='lamina'),
  dict(c='velvet', n='Velvet', t='App', d='Perfiles, agenda y reservas con seña en custodia.', logo='velvet-logo-light-outline-tight.png', fondo='oscuro'),
