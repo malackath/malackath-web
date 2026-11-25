@@ -11,6 +11,7 @@ Uso: python3 build.py stitch public   (después: npm run css)
 """
 import html
 import re
+import shutil
 import casos_textos
 import portfolio_web
 import sys
@@ -169,7 +170,51 @@ def comun(s, pre, titulo, descripcion, activo=None):
     return s
 
 
+# ------------------------------------------- FONDOS DE FOTO EN EL HERO DE LOS CASOS
+# Pedido de Ber (2026-11-25): 2 fotos genéricas por caso, generadas en Flow (design/fondos-casos/,
+# prompts en /mnt/project-files/malackath/casos-fondos/prompts-flow.md), que se alternan cada 5 s
+# detrás del título, con velo oscuro para que el texto se lea.
+FONDOS_CASOS = {
+    "casos/arma-partido.html": ["armapartido-1-techada", "armapartido-2-aire-libre"],
+    "casos/pizcaya.html": ["pizcaya-1-mesada", "pizcaya-2-olla"],
+    "casos/palquear.html": ["palquear-1-campeon-del-siglo", "palquear-2-parque-central"],
+    "casos/cartelera.html": ["cartelera-1-concierto", "cartelera-2-teatro"],
+    "casos/mesaluma.html": ["mesaluma-1-salon", "mesaluma-2-cocina"],
+}
+FONDOS_SRC = Path(__file__).parent / "design" / "fondos-casos"
+CSS_FONDO = """<style>
+.caso-fondo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.caso-fondo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.4s ease}
+.caso-fondo img.activa{opacity:1}
+.caso-fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#131315 0%,rgba(19,19,21,.88) 38%,rgba(19,19,21,.55) 70%,rgba(19,19,21,.45) 100%),linear-gradient(0deg,#131315 0%,rgba(19,19,21,0) 45%)}
+@media (max-width:767px){.caso-fondo::after{background:linear-gradient(0deg,#131315 0%,rgba(19,19,21,.82) 55%,rgba(19,19,21,.6) 100%)}}
+</style>"""
+JS_FONDO = """<script>(function(){var f=document.querySelector('.caso-fondo');if(!f)return;var im=f.querySelectorAll('img');
+if(im.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var k=0;
+setInterval(function(){im[k].classList.remove('activa');k=(k+1)%im.length;im[k].classList.add('activa');},5000);})();</script>"""
+
+
+def fondo_caso(nombre, s):
+    fotos = FONDOS_CASOS.get(nombre)
+    if not fotos or not all((FONDOS_SRC / f"{f}.webp").exists() for f in fotos):
+        return s
+    i = s.find("<section", s.find("<main"))
+    j = s.find(">", i)
+    tag = s[i:j]
+    tag = tag.replace('class="', 'class="relative isolate ', 1)
+    imgs = "".join(f'<img alt="" {"" if k else "fetchpriority=\"high\" "}class="{"activa" if k == 0 else ""}" src="../img/casos-fondos/{f}.webp"/>'
+                   for k, f in enumerate(fotos))
+    for f in fotos:
+        d = OUT / "img" / "casos-fondos"
+        d.mkdir(parents=True, exist_ok=True)
+        shutil.copy(FONDOS_SRC / f"{f}.webp", d / f"{f}.webp")
+    s = s[:i] + tag + f'>\n<div class="caso-fondo" aria-hidden="true">{imgs}</div>' + s[j + 1:]
+    s = s.replace("</head>", CSS_FONDO + "</head>", 1).replace("</body>", JS_FONDO + "</body>", 1)
+    return s
+
+
 def guardar(nombre, s):
+    s = fondo_caso(nombre, s)
     # anclas: el header fijo mide 80px; el destino queda debajo con aire (pedido de Ber 2026-11-24)
     s = s.replace("</head>", '<style>html{scroll-padding-top:112px}</style></head>', 1)
     if BORRADOR:
