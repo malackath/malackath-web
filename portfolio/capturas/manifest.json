@@ -269,6 +269,244 @@
    }
   ]
  },
+ "zoomi": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-01-hero.jpg"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-02-problema.jpg"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-03-detalles.jpg"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-04-modos.jpg"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-05-pasos.jpg"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-06-faq.jpg"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-07-compra.jpg"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-08-footer.jpg"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#1"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#2"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#3"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#4"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#5"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#6"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#7"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#8"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#9"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#10"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#11"
+   }
+  ],
+  "d_osc": [
+   {
+    "f": "d-osc-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-01-hero.jpg"
+   },
+   {
+    "f": "d-osc-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-02-problema.jpg"
+   },
+   {
+    "f": "d-osc-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-03-detalles.jpg"
+   },
+   {
+    "f": "d-osc-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-04-modos.jpg"
+   },
+   {
+    "f": "d-osc-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-05-pasos.jpg"
+   },
+   {
+    "f": "d-osc-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-06-faq.jpg"
+   },
+   {
+    "f": "d-osc-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-07-compra.jpg"
+   },
+   {
+    "f": "d-osc-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-08-footer.jpg"
+   }
+  ],
+  "m_osc": [
+   {
+    "f": "m-osc-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#1"
+   },
+   {
+    "f": "m-osc-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#2"
+   },
+   {
+    "f": "m-osc-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#3"
+   },
+   {
+    "f": "m-osc-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#4"
+   },
+   {
+    "f": "m-osc-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#5"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#6"
+   },
+   {
+    "f": "m-osc-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#7"
+   },
+   {
+    "f": "m-osc-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#8"
+   },
+   {
+    "f": "m-osc-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#9"
+   },
+   {
+    "f": "m-osc-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#10"
+   },
+   {
+    "f": "m-osc-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#11"
+   }
+  ]
+ },
  "pizcaya": {
   "d": [
    {
@@ -335,25 +573,25 @@
     "f": "d-11.webp",
     "w": 1280,
     "h": 800,
-    "origen": "CocinaApp/compu/claro/12-tutor-ia.png"
+    "origen": "CocinaApp/compu/claro/13-clase-mesada.png"
    },
    {
     "f": "d-12.webp",
     "w": 1280,
     "h": 800,
-    "origen": "CocinaApp/compu/claro/13-clase-mesada.png"
+    "origen": "CocinaApp/compu/claro/14-clase-plan.png"
    },
    {
     "f": "d-13.webp",
     "w": 1280,
     "h": 800,
-    "origen": "CocinaApp/compu/claro/14-clase-plan.png"
+    "origen": "CocinaApp/compu/claro/17-blog.png"
    },
    {
     "f": "d-14.webp",
     "w": 1280,
     "h": 800,
-    "origen": "CocinaApp/compu/claro/17-blog.png"
+    "origen": "CocinaApp/compu/claro/18-blog-receta.png"
    }
   ],
   "m": [
@@ -421,25 +659,25 @@
     "f": "m-11.webp",
     "w": 390,
     "h": 844,
-    "origen": "CocinaApp/celular/claro/12-tutor-ia.png"
+    "origen": "CocinaApp/celular/claro/13-clase-mesada.png"
    },
    {
     "f": "m-12.webp",
     "w": 390,
     "h": 844,
-    "origen": "CocinaApp/celular/claro/13-clase-mesada.png"
+    "origen": "CocinaApp/celular/claro/14-clase-plan.png"
    },
    {
     "f": "m-13.webp",
     "w": 390,
     "h": 844,
-    "origen": "CocinaApp/celular/claro/14-clase-plan.png"
+    "origen": "CocinaApp/celular/claro/17-blog.png"
    },
    {
     "f": "m-14.webp",
     "w": 390,
     "h": 844,
-    "origen": "CocinaApp/celular/claro/17-blog.png"
+    "origen": "CocinaApp/celular/claro/18-blog-receta.png"
    }
   ],
   "d_osc": [
@@ -483,64 +721,40 @@
     "f": "d-02.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-02-portada-telefonos.png"
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-03-concepto.png"
    },
    {
     "f": "d-03.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-03-concepto.png"
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-04-simbolo.png"
    },
    {
     "f": "d-04.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-04-simbolo.png"
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-06-exploracion-color.png"
    },
    {
     "f": "d-05.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-06-exploracion-color.png"
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-07-paleta.png"
    },
    {
     "f": "d-06.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-07-paleta.png"
+    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-08-tipografia.png"
    },
    {
     "f": "d-07.webp",
     "w": 1280,
     "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-08-tipografia.png"
-   },
-   {
-    "f": "d-08.webp",
-    "w": 1280,
-    "h": 800,
     "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-09-sistema.png"
    },
    {
-    "f": "d-09.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-10-app-llegar.png"
-   },
-   {
-    "f": "d-10.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-11-app-coincidir.png"
-   },
-   {
-    "f": "d-11.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-12-app-encontrarse.png"
-   },
-   {
-    "f": "d-12.webp",
+    "f": "d-08.webp",
     "w": 1280,
     "h": 800,
     "origen": "Coinciva/Coinciva/desktop/coinciva-desktop-13-entregables.png"
@@ -563,73 +777,61 @@
     "f": "m-03.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-01-portada.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-02-registro.png"
    },
    {
     "f": "m-04.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-02-registro.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-03-explorador.png"
    },
    {
     "f": "m-05.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-02-concepto.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-03b-checkin.png"
    },
    {
     "f": "m-06.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-03-explorador.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-04-radar.png"
    },
    {
     "f": "m-07.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-03b-checkin.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-04b-intencion.png"
    },
    {
     "f": "m-08.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-03-simbolo.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-05-coincidencia.png"
    },
    {
     "f": "m-09.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-04-radar.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-06-chat.png"
    },
    {
     "f": "m-10.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-04b-intencion.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-06b-encuentro.png"
    },
    {
     "f": "m-11.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-05-coincidencia.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-08-conexiones.png"
    },
    {
     "f": "m-12.webp",
     "w": 390,
     "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/sitio/coinciva-movil-05-exploracion-color.png"
-   },
-   {
-    "f": "m-13.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-06-chat.png"
-   },
-   {
-    "f": "m-14.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-06b-encuentro.png"
+    "origen": "Coinciva/Coinciva/movil-oscuro/app/coinciva-09-cierre.png"
    }
   ]
  },
@@ -1255,156 +1457,6 @@
    }
   ]
  },
- "mesaluma": {
-  "d": [
-   {
-    "f": "d-01.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/03-reservas-web-restaurante.png"
-   },
-   {
-    "f": "d-02.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/04-reservas-experiencia.png"
-   },
-   {
-    "f": "d-03.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/05-reservas-confirmada.png"
-   },
-   {
-    "f": "d-04.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/06-reservas-mail-confirmada.png"
-   },
-   {
-    "f": "d-05.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/07-panel-recepcion-plano.png"
-   },
-   {
-    "f": "d-06.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/08-panel-pase-qr-walkin.png"
-   },
-   {
-    "f": "d-07.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/09-panel-cocina-cola.png"
-   },
-   {
-    "f": "d-08.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/10-panel-cocina-estaciones.png"
-   },
-   {
-    "f": "d-09.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/11-panel-cocina-mise.png"
-   },
-   {
-    "f": "d-10.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/12-panel-tablero-turno.png"
-   },
-   {
-    "f": "d-11.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/13-panel-mesas-plano.png"
-   },
-   {
-    "f": "d-12.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "_mesaluma-capturas/desk/14-panel-carta-agotados.png"
-   }
-  ],
-  "m": [
-   {
-    "f": "m-01.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/01-mozo-mis-mesas.png"
-   },
-   {
-    "f": "m-02.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/02-mozo-detalle-mesa.png"
-   },
-   {
-    "f": "m-03.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/03-mozo-mesa-postre.png"
-   },
-   {
-    "f": "m-04.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/04-reservas-web-restaurante.png"
-   },
-   {
-    "f": "m-05.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/05-reservas-portada.png"
-   },
-   {
-    "f": "m-06.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/06-reservas-mesa-y-turno.png"
-   },
-   {
-    "f": "m-07.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/07-reservas-experiencia.png"
-   },
-   {
-    "f": "m-08.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/08-reservas-alergias.png"
-   },
-   {
-    "f": "m-09.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/09-reservas-prepedido-carta.png"
-   },
-   {
-    "f": "m-10.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/10-reservas-confirmar.png"
-   },
-   {
-    "f": "m-11.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/11-reservas-confirmada.png"
-   },
-   {
-    "f": "m-12.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "_mesaluma-capturas/mob/12-reservas-mis-reservas.png"
-   }
-  ]
- },
  "nunca-te-falla": {
   "d": [
    {
@@ -1782,18 +1834,6 @@
     "w": 1280,
     "h": 800,
     "origen": "PatovaVa/PatovaVa/escritorio/09-postular.png"
-   },
-   {
-    "f": "d-10.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "PatovaVa/PatovaVa/resumen-celular.png"
-   },
-   {
-    "f": "d-11.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "PatovaVa/PatovaVa/resumen-escritorio.png"
    }
   ],
   "m": [
@@ -2124,31 +2164,37 @@
     "f": "m-01.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-claro-01-buscar-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-claro-01a-buscar.png"
    },
    {
     "f": "m-02.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-claro-02-mapa-rutas-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-claro-02a-mapa-rutas.png"
    },
    {
     "f": "m-03.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-claro-03-tarjeta-stm-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-claro-03a-tarjeta-stm.png"
    },
    {
     "f": "m-04.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-claro-04-paradas-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-claro-03b-tarjeta-stm.png"
    },
    {
     "f": "m-05.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-claro-05-mas-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-claro-04a-paradas.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-claro-05a-mas.png"
    }
   ],
   "m_osc": [
@@ -2156,31 +2202,37 @@
     "f": "m-osc-01.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-oscuro-01-buscar-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-oscuro-01a-buscar.png"
    },
    {
     "f": "m-osc-02.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-oscuro-02-mapa-rutas-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-oscuro-02a-mapa-rutas.png"
    },
    {
     "f": "m-osc-03.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-oscuro-03-tarjeta-stm-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-oscuro-03a-tarjeta-stm.png"
    },
    {
     "f": "m-osc-04.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-oscuro-04-paradas-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-oscuro-03b-tarjeta-stm.png"
    },
    {
     "f": "m-osc-05.webp",
     "w": 390,
     "h": 844,
-    "origen": "RuVIA/movil/RuVIA-movil-oscuro-05-mas-scroll.png"
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-oscuro-04a-paradas.png"
+   },
+   {
+    "f": "m-osc-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Malackath/_capturas-vivas/ruvia/movil-oscuro-05a-mas.png"
    }
   ]
  },
@@ -2769,12 +2821,6 @@
     "w": 1280,
     "h": 800,
     "origen": "cartelerauy/compu/compu-claro-08-deportes.png"
-   },
-   {
-    "f": "d-09.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "cartelerauy/compu/compu-claro-09-idioma-pt.png"
    }
   ],
   "m": [
@@ -2825,12 +2871,6 @@
     "w": 390,
     "h": 844,
     "origen": "cartelerauy/celular/celular-claro-08-deportes.png"
-   },
-   {
-    "f": "m-09.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "cartelerauy/celular/celular-claro-09-idioma-pt.png"
    }
   ],
   "d_osc": [
@@ -3573,6 +3613,156 @@
    }
   ]
  },
+ "mesaluma": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/03-reservas-web-restaurante.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/04-reservas-experiencia.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/05-reservas-confirmada.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/06-reservas-mail-confirmada.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/07-panel-recepcion-plano.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/08-panel-pase-qr-walkin.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/09-panel-cocina-cola.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/10-panel-cocina-estaciones.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/11-panel-cocina-mise.png"
+   },
+   {
+    "f": "d-10.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/12-panel-tablero-turno.png"
+   },
+   {
+    "f": "d-11.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/13-panel-mesas-plano.png"
+   },
+   {
+    "f": "d-12.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "_mesaluma-capturas/desk/14-panel-carta-agotados.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/01-mozo-mis-mesas.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/02-mozo-detalle-mesa.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/03-mozo-mesa-postre.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/04-reservas-web-restaurante.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/05-reservas-portada.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/06-reservas-mesa-y-turno.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/07-reservas-experiencia.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/08-reservas-alergias.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/09-reservas-prepedido-carta.png"
+   },
+   {
+    "f": "m-10.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/10-reservas-confirmar.png"
+   },
+   {
+    "f": "m-11.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/11-reservas-confirmada.png"
+   },
+   {
+    "f": "m-12.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "_mesaluma-capturas/mob/12-reservas-mis-reservas.png"
+   }
+  ]
+ },
  "marealta-consultora": {
   "d": [
    {
@@ -3720,244 +3910,6 @@
     "w": 390,
     "h": 844,
     "origen": "_marealta-consultora-capturas/mob/16-escuela-preguntas.png"
-   }
-  ]
- },
- "zoomi": {
-  "d": [
-   {
-    "f": "d-01.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-01-hero.jpg"
-   },
-   {
-    "f": "d-02.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-02-problema.jpg"
-   },
-   {
-    "f": "d-03.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-03-detalles.jpg"
-   },
-   {
-    "f": "d-04.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-04-modos.jpg"
-   },
-   {
-    "f": "d-05.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-05-pasos.jpg"
-   },
-   {
-    "f": "d-06.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-06-faq.jpg"
-   },
-   {
-    "f": "d-07.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-07-compra.jpg"
-   },
-   {
-    "f": "d-08.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-08-footer.jpg"
-   }
-  ],
-  "m": [
-   {
-    "f": "m-01.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#1"
-   },
-   {
-    "f": "m-02.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#2"
-   },
-   {
-    "f": "m-03.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#3"
-   },
-   {
-    "f": "m-04.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#4"
-   },
-   {
-    "f": "m-05.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#5"
-   },
-   {
-    "f": "m-06.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#6"
-   },
-   {
-    "f": "m-07.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#7"
-   },
-   {
-    "f": "m-08.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#8"
-   },
-   {
-    "f": "m-09.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#9"
-   },
-   {
-    "f": "m-10.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#10"
-   },
-   {
-    "f": "m-11.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-claro-00-pagina-completa.jpg#11"
-   }
-  ],
-  "d_osc": [
-   {
-    "f": "d-osc-01.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-01-hero.jpg"
-   },
-   {
-    "f": "d-osc-02.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-02-problema.jpg"
-   },
-   {
-    "f": "d-osc-03.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-03-detalles.jpg"
-   },
-   {
-    "f": "d-osc-04.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-04-modos.jpg"
-   },
-   {
-    "f": "d-osc-05.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-05-pasos.jpg"
-   },
-   {
-    "f": "d-osc-06.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-06-faq.jpg"
-   },
-   {
-    "f": "d-osc-07.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-07-compra.jpg"
-   },
-   {
-    "f": "d-osc-08.webp",
-    "w": 1280,
-    "h": 800,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-escritorio-oscuro-08-footer.jpg"
-   }
-  ],
-  "m_osc": [
-   {
-    "f": "m-osc-01.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#1"
-   },
-   {
-    "f": "m-osc-02.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#2"
-   },
-   {
-    "f": "m-osc-03.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#3"
-   },
-   {
-    "f": "m-osc-04.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#4"
-   },
-   {
-    "f": "m-osc-05.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#5"
-   },
-   {
-    "f": "m-osc-06.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#6"
-   },
-   {
-    "f": "m-osc-07.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#7"
-   },
-   {
-    "f": "m-osc-08.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#8"
-   },
-   {
-    "f": "m-osc-09.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#9"
-   },
-   {
-    "f": "m-osc-10.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#10"
-   },
-   {
-    "f": "m-osc-11.webp",
-    "w": 390,
-    "h": 844,
-    "origen": "Coat n Nest/coatnnest/Zoomi/web/zoomi-movil-oscuro-00-pagina-completa.jpg#11"
    }
   ]
  }
