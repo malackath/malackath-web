@@ -21,7 +21,7 @@ SLOTS = {
     },
     # ventana de la izquierda (navegador inclinado)
     "izquierda": {
-        "imagen": "img/portfolio/ravekit-d-01-6c8c46e9.webp",
+        "imagen": "img/portfolio/ravekit-d-01-62343fe9.webp",
         "url": "https://getravekit.com",
         "barra": "getravekit.com",
         "chip": "RaveKit",
@@ -59,7 +59,7 @@ ROTACION = {
              tipo="App", rubro="Salón y reservas", titulo="Mesaluma", chip="App para mozos"),
     ],
     "izquierda": [   # barra, chip (nombre)
-        dict(img="ravekit-d-01-6c8c46e9.webp", url="https://getravekit.com", barra="getravekit.com", chip="RaveKit"),
+        dict(img="ravekit-d-01-62343fe9.webp", url="https://getravekit.com", barra="getravekit.com", chip="RaveKit"),
         dict(img="coinciva-d-01-1a29c0bc.webp", url=PF + "coinciva", barra="Coinciva", chip="Coinciva"),
         dict(img="zoomi-d-01-c4300158.webp", url=PF + "zoomi", barra="Zoomi", chip="Zoomi"),
         dict(img="jip-d-01-81bfe761.webp", url=PF + "jip", barra="JIP", chip="JIP"),
