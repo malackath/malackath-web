@@ -18,7 +18,7 @@ PUBLIC = Path("public")
 DIR = Path("i18n")
 IDIOMAS = {"es": "Español", "en": "English", "pt": "Português"}
 TRADUCIDOS = ["en", "pt"]
-PAGINAS = ["index.html", "trabajo.html", "casos-de-estudio.html", "estudio.html", "casos/arma-partido.html", "casos/pizcaya.html",
+PAGINAS = ["index.html", "trabajo.html", "casos-de-estudio.html", "estudio.html", "presupuesto.html", "casos/arma-partido.html", "casos/pizcaya.html",
            "casos/palquear.html", "casos/cartelera.html", "casos/mesaluma.html"]
 ATRIBUTOS = ("alt", "data-alt", "placeholder", "aria-label", "title")
 # textos dentro del <script> de cada página (no son nodos de texto)

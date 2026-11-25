@@ -1190,6 +1190,13 @@ def estudio():
     for viejo, nuevo in R:
         s = rep(s, viejo, nuevo)
     s = link(s, "\n              Escribir\n", WHATSAPP)
+    # acceso al formulario de presupuesto: mismo bloque de Stitch que "¿Preferís WhatsApp?"
+    s = rep(s, "<!-- Quick Calendar Booking Link -->",
+            '<div class="p-space-lg bg-surface-container rounded-xl flex items-center justify-between gap-space-md">'
+            '<div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase text-primary">¿Querés un presupuesto?</span>'
+            '<span class="font-label-sm text-label-sm text-on-surface-variant">Armalo en cuatro pasos</span></div>'
+            '<a class="shrink-0 px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-fixed hover:bg-primary-fixed-dim font-label-sm text-label-sm uppercase transition-all duration-300" href="presupuesto.html">Armar</a>'
+            '</div>\n<!-- Quick Calendar Booking Link -->')
     # anclas para el menú
     s = rep(s, '<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl relative">\n<div class="grid grid-cols-1 lg:grid-cols-12',
             '<section id="capacidades" class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-3xl relative">\n<div class="grid grid-cols-1 lg:grid-cols-12')
@@ -1206,6 +1213,186 @@ def estudio():
     guardar("estudio.html", s)
 
 
+# ------------------------------------------------------------- PRESUPUESTO
+# Formulario "Armá tu presupuesto" (como el de Marea Alta, aprobado por Ber 2026-11-25 con wireframe).
+# No hay pantalla de Stitch para esto: se arma con los mismos componentes del formulario de contacto
+# de la pantalla Estudio (chips, campos, botón, bloques) para no salirse del sistema.
+CHIP = "px-space-md py-space-xs rounded-full font-label-sm text-label-sm uppercase transition-all duration-200"
+CHIP_OFF = "bg-surface-container-high text-on-surface hover:text-primary"
+CAMPO = ("w-full bg-surface-container-lowest px-space-md py-space-sm rounded-lg text-primary placeholder-on-surface-variant/40 "
+         "font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary-container transition-all")
+ETQ = "font-label-sm text-label-sm uppercase text-on-surface-variant"
+AREAS = [  # las 4 áreas de la página Estudio, con sus servicios
+    ("Marca &amp; Estrategia", ["Posicionamiento", "Logo &amp; Símbolo", "Manual de Marca", "Tono de Voz"]),
+    ("Diseño de Producto (UI/UX)", ["Arquitectura de Producto", "Microinteracciones", "Prototipos Navegables", "Sistemas de Diseño"]),
+    ("Apps &amp; Plataformas Web", ["iOS &amp; Android", "Web Apps", "Reservas &amp; Pagos", "Paneles de Gestión"]),
+    ("Lanzamiento &amp; Operación", ["Firebase &amp; Google Cloud", "Dominios &amp; Correo", "App Store &amp; Google Play", "Medición", "Mantenimiento mensual"]),
+]
+
+
+def _chips(grupo, opciones, multi=False):
+    b = "".join(f'<button type="button" class="pz-chip {CHIP} {CHIP_OFF}" data-grupo="{grupo}"{" data-multi" if multi else ""}>{o}</button>'
+                for o in opciones)
+    return f'<div class="flex flex-wrap gap-space-xs">{b}</div>'
+
+
+def _paso(n, titulo, cuerpo, oculto=True):
+    return (f'<div class="pz-paso flex flex-col gap-space-lg{" hidden" if oculto else ""}" data-paso="{n}">'
+            f'<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-container">Paso 0{n} / 04</span>'
+            f'<h3 class="font-headline-sm text-headline-sm uppercase text-primary">{titulo}</h3>{cuerpo}</div>')
+
+
+def _campo(id_, etq, ph="", tipo="text", req=True, area=False):
+    r = ' required=""' if req else ""
+    ctrl = (f'<textarea class="{CAMPO} resize-none" id="{id_}" rows="4" placeholder="{ph}"{r}></textarea>' if area else
+            f'<input class="{CAMPO}" id="{id_}" type="{tipo}" placeholder="{ph}"{r}>')
+    return f'<div class="flex flex-col gap-space-xs"><label class="{ETQ}" for="{id_}">{etq}</label>{ctrl}</div>'
+
+
+def presupuesto():
+    s = leer("kinetic_studio_contact")
+    s = comun(s, "", "Armá tu presupuesto · Malackath",
+              "Marcá lo que necesitás y te mandamos una propuesta con alcance, plazos y precio. Sin compromiso.")
+    p1 = (f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="tipo">¿Qué querés hacer? *</span>'
+          + _chips("tipo", ["App Móvil", "Plataforma Web", "Sitio Web", "Tienda Online", "Marca", "Otro"]) + '</div>'
+          f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="etapa">¿En qué etapa está? *</span>'
+          + _chips("etapa", ["Es una idea", "Tengo el diseño", "Ya funciona: hay que mejorarlo o mantenerlo"]) + '</div>')
+    p2 = f'<p class="font-body-md text-body-md text-on-surface-variant">Marcá todo lo que quieras cotizar. Podés combinar áreas.</p>'
+    for i, (area, servs) in enumerate(AREAS, 1):
+        p2 += (f'<div class="flex flex-col gap-space-sm"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">[ 0{i} ] {area}</span>'
+               + _chips("servicios", servs, multi=True) + '</div>')
+    p3 = (f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="plazo">¿Para cuándo? *</span>'
+          + _chips("plazo", ["Sin apuro", "En 1 a 2 meses", "Urgente"]) + '</div>'
+          f'<div class="flex flex-col gap-space-sm"><span class="{ETQ}" data-et="modo">¿Cómo preferís trabajar? *</span>'
+          + _chips("modo", ["Precio cerrado", "Por horas", "Recomiéndenme"]) + '</div>')
+    p4 = ('<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">'
+          + _campo("pz-nombre", "Tu nombre *", "Nombre y apellido")
+          + _campo("pz-empresa", "Empresa o proyecto", "Nombre de la empresa", req=False)
+          + _campo("pz-pais", "País *", "Uruguay, Brasil...")
+          + _campo("pz-whatsapp", "WhatsApp *", "+598 ...", tipo="tel")
+          + '</div>' + _campo("pz-email", "Tu email *", "nombre@empresa.com", tipo="email")
+          + _campo("pz-mensaje", "Algo más que quieras contarnos", "Referencias, objetivos, fechas...", req=False, area=True))
+    form = (
+        '<div class="lg:col-span-7 bg-surface-container rounded-xl p-space-xl md:p-space-2xl shadow-xl flex flex-col gap-space-xl">'
+        '<ol class="grid grid-cols-4 gap-space-xs" id="pz-pasos">'
+        + "".join(f'<li class="pz-tab border-t-2 pt-space-xs font-label-sm text-label-sm uppercase {"border-primary-container text-primary" if n == 1 else "border-surface-container-highest text-on-surface-variant"}" data-tab="{n}">0{n} {t}</li>'
+                  for n, t in enumerate(["Proyecto", "Servicios", "Plazo", "Datos"], 1))
+        + '</ol>'
+        '<form class="flex flex-col gap-space-xl" id="pz-form" novalidate>'
+        + _paso(1, "¿Qué es tu proyecto?", p1, oculto=False) + _paso(2, "¿Qué necesitás?", p2)
+        + _paso(3, "¿Para cuándo y cómo?", p3) + _paso(4, "¿A quién le mandamos la propuesta?", p4)
+        + '<p class="hidden font-body-sm text-body-sm text-error" id="pz-error">Completá lo marcado con * para seguir.</p>'
+        '<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md pt-space-xs" id="pz-nav">'
+        f'<button type="button" class="invisible {CHIP} {CHIP_OFF} inline-flex items-center gap-space-xs" id="pz-atras"><span class="material-symbols-outlined text-[18px]">arrow_back</span><span>Volver</span></button>'
+        '<button class="group relative inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider hover:bg-primary-fixed-dim transition-all duration-300 transform active:scale-95 shadow-lg shadow-primary-container/10" id="pz-seguir" type="button">'
+        '<span>Seguir</span><span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span></button>'
+        '</div>'
+        '<div class="hidden flex-col gap-space-md" id="pz-enviar">'
+        '<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">¿Por dónde nos lo mandás?</span>'
+        '<div class="flex flex-col sm:flex-row gap-space-md">'
+        '<a class="group inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider hover:bg-primary-fixed-dim transition-all duration-300" id="pz-wa" href="#" target="_blank" rel="noopener"><span>Enviar por WhatsApp</span><span class="material-symbols-outlined text-[18px]">north_east</span></a>'
+        '<a class="inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-full bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-fixed font-label-md text-label-md uppercase tracking-wider transition-all duration-300" id="pz-mail" href="#"><span>Enviar por email</span><span class="material-symbols-outlined text-[18px]">mail</span></a>'
+        '</div>'
+        '<div class="p-space-md bg-surface-container-highest rounded-lg flex items-center gap-space-sm text-primary">'
+        '<span class="material-symbols-outlined text-primary-container">check_circle</span>'
+        '<span class="font-body-md text-body-md">Se abre tu WhatsApp o tu correo con el pedido ya escrito: solo tenés que enviarlo. Lo revisamos y te mandamos la propuesta.</span></div>'
+        '</div>'
+        '</form>'
+        # textos que usa el mensaje (se traducen con el resto de la página)
+        '<div class="hidden" id="pz-txt"><span data-t="titulo">Pedido de presupuesto</span><span data-t="servicios">Servicios</span>'
+        '<span data-t="nombre">Nombre</span><span data-t="empresa">Empresa</span><span data-t="pais">País</span>'
+        '<span data-t="email">Email</span><span data-t="mensaje">Mensaje</span><span data-t="codigo">Código para la propuesta (no borrar)</span></div>'
+        '</div>')
+    izq = (
+        '<div class="lg:col-span-5 flex flex-col gap-space-lg">'
+        '<div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">[ PRESUPUESTO ]</span>'
+        '<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-primary tracking-tight">Armá tu presupuesto</h1></div>'
+        '<p class="font-body-lg text-body-lg text-on-surface-variant">Marcá lo que necesitás. Revisamos tu pedido a mano y te mandamos una propuesta con alcance, plazos y precio. Sin compromiso y sin precios automáticos.</p>'
+        '<ol class="flex flex-col gap-space-sm mt-space-md">'
+        + "".join(f'<li class="p-space-md bg-surface-container-lowest rounded-lg flex gap-space-md"><span class="font-label-sm text-label-sm text-primary-container">0{n}</span>'
+                  f'<span class="flex flex-col gap-1"><span class="font-body-md text-body-md text-on-surface">{a}</span><span class="font-label-sm text-label-sm text-on-surface-variant">{b}</span></span></li>'
+                  for n, (a, b) in enumerate([("Marcás lo que necesitás", "En cuatro pasos, sin compromiso."),
+                                              ("Lo revisamos", "Si hace falta, te escribimos para aclarar algo."),
+                                              ("Te llega la propuesta", "Con alcance, plazos y precio, por escrito.")], 1))
+        + '</ol>'
+        '<div class="p-space-lg bg-surface-container rounded-xl flex items-center justify-between">'
+        '<div class="flex flex-col"><span class="font-headline-sm text-headline-sm uppercase text-primary">¿Preferís hablar?</span>'
+        '<span class="font-label-sm text-label-sm text-on-surface-variant">Respuesta directa</span></div>'
+        f'<a class="px-space-md py-space-xs rounded-full bg-surface-container-high text-primary hover:bg-primary-container hover:text-on-primary-fixed font-label-sm text-label-sm uppercase transition-all duration-300" href="{WHATSAPP}" target="_blank" rel="noopener">WhatsApp</a>'
+        '</div></div>')
+    seccion = ('<section class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin pt-space-xl pb-space-3xl bg-surface-container-low relative overflow-hidden" id="presupuesto">'
+               '<div class="absolute bottom-0 right-0 w-[45rem] h-[45rem] bg-primary-container/10 rounded-full blur-[170px] pointer-events-none"></div>'
+               '<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl relative z-10">' + izq + form + '</div></section>')
+    i, j = s.find('<main class="w-full pt-20 bg-background">'), s.find("</main>")
+    if i < 0 or j < 0:
+        raise SystemExit("presupuesto: no encontré <main>")
+    s = s[:i] + '<main class="w-full pt-20 bg-background">' + seccion + s[j:]
+    js = """<script>
+(() => {
+  const WA = '%s', MAIL = '%s';
+  const ON = '%s'.split(' '), OFF = '%s'.split(' ');
+  let paso = 1;
+  const $ = q => document.querySelector(q), $$ = q => [...document.querySelectorAll(q)];
+  const t = k => ($('#pz-txt [data-t="' + k + '"]') || {}).textContent || k;
+  const marcar = (b, on) => { ON.forEach(c => b.classList.toggle(c, on)); OFF.forEach(c => b.classList.toggle(c, !on)); b.setAttribute('aria-pressed', on); b.dataset.on = on ? '1' : ''; };
+  $$('.pz-chip').forEach(b => b.addEventListener('click', () => {
+    if (b.hasAttribute('data-multi')) return marcar(b, !b.dataset.on);
+    $$('.pz-chip[data-grupo="' + b.dataset.grupo + '"]').forEach(x => marcar(x, x === b));
+  }));
+  const elegidos = g => $$('.pz-chip[data-grupo="' + g + '"]').filter(b => b.dataset.on).map(b => b.textContent.trim());
+  const val = id => ($('#' + id).value || '').trim();
+  function valido(n) {
+    if (n === 1) return elegidos('tipo').length && elegidos('etapa').length;
+    if (n === 2) return elegidos('servicios').length;
+    if (n === 3) return elegidos('plazo').length && elegidos('modo').length;
+    return val('pz-nombre') && val('pz-pais') && val('pz-whatsapp') && /.+@.+\\..+/.test(val('pz-email'));
+  }
+  function ir(n) {
+    paso = n;
+    $$('.pz-paso').forEach(p => p.classList.toggle('hidden', +p.dataset.paso !== n));
+    $$('.pz-tab').forEach(x => { const on = +x.dataset.tab <= n;
+      ['border-primary-container', 'text-primary'].forEach(c => x.classList.toggle(c, on));
+      ['border-surface-container-highest', 'text-on-surface-variant'].forEach(c => x.classList.toggle(c, !on)); });
+    $('#pz-atras').classList.toggle('invisible', n === 1);
+    $('#pz-error').classList.add('hidden');
+    $('#presupuesto').scrollIntoView({ behavior: 'smooth' });
+  }
+  function codigo(d) {
+    const b = new TextEncoder().encode(JSON.stringify(d)); let s = '';
+    b.forEach(x => s += String.fromCharCode(x));
+    return 'MLK1:' + btoa(s).replace(/\\+/g, '-').replace(/\\//g, '_');
+  }
+  function preparar() {
+    const d = { v: 1, idioma: document.documentElement.lang, tipo: elegidos('tipo')[0], etapa: elegidos('etapa')[0],
+      servicios: elegidos('servicios'), plazo: elegidos('plazo')[0], modo: elegidos('modo')[0],
+      nombre: val('pz-nombre'), empresa: val('pz-empresa'), pais: val('pz-pais'), whatsapp: val('pz-whatsapp'),
+      email: val('pz-email'), mensaje: val('pz-mensaje') };
+    const et = k => (($('[data-et="' + k + '"]') || {}).textContent || k).replace(/\\s*\\*$/, '');
+    const txt = [t('titulo'), '',
+      et('tipo') + ' ' + d.tipo, et('etapa') + ' ' + d.etapa,
+      t('servicios') + ': ' + d.servicios.join(', '),
+      et('plazo') + ' ' + d.plazo, et('modo') + ' ' + d.modo, '',
+      t('nombre') + ': ' + d.nombre, d.empresa ? t('empresa') + ': ' + d.empresa : null, t('pais') + ': ' + d.pais,
+      'WhatsApp: ' + d.whatsapp, t('email') + ': ' + d.email, d.mensaje ? t('mensaje') + ': ' + d.mensaje : null, '',
+      t('codigo') + ':', codigo(d)].filter(x => x != null).join('\\n');
+    $('#pz-wa').href = WA + '?text=' + encodeURIComponent(txt);
+    $('#pz-mail').href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(t('titulo') + ': ' + (d.empresa || d.nombre)) + '&body=' + encodeURIComponent(txt);
+    $('#pz-nav').classList.add('hidden');
+    $('#pz-enviar').classList.remove('hidden'); $('#pz-enviar').classList.add('flex');
+  }
+  $('#pz-seguir').addEventListener('click', () => {
+    if (!valido(paso)) { $('#pz-error').classList.remove('hidden'); return; }
+    if (paso < 4) ir(paso + 1); else preparar();
+  });
+  $('#pz-atras').addEventListener('click', () => paso > 1 && ir(paso - 1));
+  const q = new URLSearchParams(location.search).get('tipo');
+  if (q) $$('.pz-chip[data-grupo="tipo"]').forEach(b => b.textContent.trim() === q && marcar(b, true));
+})();
+</script>""" % (WHATSAPP, MAIL, "bg-primary-container text-on-primary-fixed", CHIP_OFF)
+    s = s.replace("</body>", js + "</body>", 1)
+    guardar("presupuesto.html", s)
+
+
 if __name__ == "__main__":
     home()
     base_caso = arma_partido()
@@ -1215,3 +1402,4 @@ if __name__ == "__main__":
     trabajo()
     estudio()
     portfolio_web.copiar(OUT)
+    presupuesto()
