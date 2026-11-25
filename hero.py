@@ -10,27 +10,28 @@ Los textos marcados PLACEHOLDER son los de Stitch (inventados): Ber pasa los sit
 SLOTS = {
     # ventana grande del centro (navegador)
     "centro": {
-        "imagen": "img/hero/slot-1-placeholder.webp",
-        "url": None,
-        "barra": "monolith.spatial.os",          # PLACEHOLDER
-        "barra_derecha": "WEBGL / SHADER",       # PLACEHOLDER
-        "rubro": "Next-Gen FinTech",             # PLACEHOLDER
-        "titulo": "Monolith Quantum Yield",      # PLACEHOLDER
-        "chip": "+240% Conv Rate",               # PLACEHOLDER (métrica inventada)
+        # capturas reales del portfolio (pedido de Ber, 2026-11-25)
+        "imagen": "img/portfolio/cartelera-d-01-818af77e.webp",
+        "url": "https://cartelerauy.malackath.com",
+        "barra": "cartelerauy.malackath.com",
+        "barra_derecha": "APP",
+        "rubro": "Agenda cultural",
+        "titulo": "Cartelera Uruguay",
+        "chip": "19 departamentos",
     },
     # ventana de la izquierda (navegador inclinado)
     "izquierda": {
-        "imagen": "img/hero/slot-2-placeholder.webp",
-        "url": None,
-        "barra": "solana-orbit.app",             # PLACEHOLDER
-        "chip": "FWA of the Day",                # PLACEHOLDER (premio inventado)
+        "imagen": "img/portfolio/ravekit-d-01-6c8c46e9.webp",
+        "url": "https://getravekit.com",
+        "barra": "getravekit.com",
+        "chip": "RaveKit",
     },
     # celular de la derecha
     "celular": {
-        "imagen": "img/hero/slot-3-placeholder.webp",
-        "url": None,
-        "chip": "Apple Design Award Nominee",    # PLACEHOLDER (premio inventado)
-        "titulo": "Aura KineticOS",              # PLACEHOLDER
+        "imagen": "img/portfolio/arma-partido-m-01-1e6e51fe.webp",
+        "url": "casos/arma-partido.html",
+        "chip": "App de pádel",
+        "titulo": "Armá Partido",
     },
 }
 

@@ -232,6 +232,8 @@ def escenario_hero(pre=""):
         sl = next(slots)
         tag = m.group(0)
         if sl["imagen"]:
+            if sl["imagen"].startswith(portfolio_web.DEST):
+                portfolio_web.ruta(sl["imagen"][len(portfolio_web.DEST):])   # se copia desde el portfolio
             tag = re.sub(r'src="[^"]*"', f'src="{pre}{sl["imagen"]}"', tag)
             tag = re.sub(r'data-alt="[^"]*"', f'alt="{_h.escape(sl.get("titulo") or sl.get("barra"))}"', tag)
         tag = tag.replace('class="w-full h-full object-cover"', 'class="w-full h-full object-cover object-top"')
@@ -324,6 +326,11 @@ def seccion_marcas():
 
 
 
+BOTON_TODOS = ('<a class="self-start md:self-auto inline-flex items-center gap-space-xs px-space-lg py-space-md rounded-full bg-surface-container-high text-primary '
+               'font-label-md text-label-md uppercase tracking-wider hover:bg-surface-bright transition-colors" href="{href}">'
+               '<span>{texto}</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>')
+
+
 def home():
     s = leer("kinetic_home_proyectos_reales")
     s = comun(s, "", "Malackath · Estudio de diseño y producto digital",
@@ -414,6 +421,15 @@ h2.titulo-seccion { font-size: min(clamp(1.6rem, 7.6vw, 2.25rem), calc((100vw - 
 })();
 </script></body>""", 1)
     s = rep(s, "<!--MARCAS-->", seccion_marcas())
+    # links a todos los proyectos y a todos los logos (pedido de Ber, 2026-11-25); botón secundario de Stitch
+    s = rep(s, """<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+        Cada proyecto combina estrategia de producto, diseño de interfaz de alto contraste y desarrollo listo para producción.
+      </p>""", """<div class="flex flex-col gap-space-md md:items-end"><p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+        Cada proyecto combina estrategia de producto, diseño de interfaz de alto contraste y desarrollo listo para producción.
+      </p>""" + BOTON_TODOS.format(href="trabajo.html", texto="Ver todos los proyectos") + "</div>")
+    s = rep(s, '<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>',
+            '<div class="flex flex-col gap-space-md md:items-end"><p class="font-body-md text-body-md text-on-surface-variant max-w-md">Logos y sistemas visuales para marcas y proyectos.</p>'
+            + BOTON_TODOS.format(href=portfolio_web.PORTFOLIO, texto="Ver todos los logos") + '</div>')
     guardar("index.html", s)
 
 
