@@ -4091,5 +4091,119 @@
     "origen": "_marealta-consultora-capturas/mob/16-escuela-preguntas.png"
    }
   ]
+ },
+ "citadenta": {
+  "d": [
+   {
+    "f": "d-01.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/01-turnos-de-hoy.png"
+   },
+   {
+    "f": "d-02.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/02-ficha-paciente.png"
+   },
+   {
+    "f": "d-03.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/03-pacientes.png"
+   },
+   {
+    "f": "d-04.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/04-lista-de-espera.png"
+   },
+   {
+    "f": "d-05.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/05-informe-mensual.png"
+   },
+   {
+    "f": "d-06.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/06-probar-recepcionista.png"
+   },
+   {
+    "f": "d-07.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/07-datos-clinica-y-qr.png"
+   },
+   {
+    "f": "d-08.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/08-conexiones.png"
+   },
+   {
+    "f": "d-09.webp",
+    "w": 1280,
+    "h": 800,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/compu/00-ingreso.png"
+   }
+  ],
+  "m": [
+   {
+    "f": "m-01.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/01-turnos-de-hoy.png"
+   },
+   {
+    "f": "m-02.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/02-ficha-paciente.png"
+   },
+   {
+    "f": "m-03.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/03-pacientes.png"
+   },
+   {
+    "f": "m-04.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/04-lista-de-espera.png"
+   },
+   {
+    "f": "m-05.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/05-informe-mensual.png"
+   },
+   {
+    "f": "m-06.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/06-probar-recepcionista.png"
+   },
+   {
+    "f": "m-07.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/07-datos-clinica-y-qr.png"
+   },
+   {
+    "f": "m-08.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/08-conexiones.png"
+   },
+   {
+    "f": "m-09.webp",
+    "w": 390,
+    "h": 844,
+    "origen": "Projects/Citadenta-portfolio.zip/1-app/celular/00-ingreso.png"
+   }
+  ]
  }
 }

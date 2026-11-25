@@ -19,7 +19,7 @@ DIR = Path("i18n")
 IDIOMAS = {"es": "Español", "en": "English", "pt": "Português"}
 TRADUCIDOS = ["en", "pt"]
 PAGINAS = ["index.html", "trabajo.html", "casos-de-estudio.html", "estudio.html", "servicios.html", "presupuesto.html", "casos/arma-partido.html", "casos/pizcaya.html",
-           "casos/palquear.html", "casos/cartelera.html", "casos/mesaluma.html", "casos/ravekit.html", "marcas.html"]
+           "casos/palquear.html", "casos/cartelera.html", "casos/mesaluma.html", "casos/ravekit.html", "casos/citadenta.html", "marcas.html"]
 ATRIBUTOS = ("alt", "data-alt", "placeholder", "aria-label", "title")
 # textos dentro del <script> de cada página (no son nodos de texto)
 JS = {
@@ -179,6 +179,8 @@ def generar():
             s = re.sub(r'(<html[^>]*\blang=")es"', rf'\g<1>{idi}"', s, count=1)
             # recursos compartidos: un nivel más arriba
             s = re.sub(r'((?:src|href)=")((?:\.\./)*)(img/|css/)', r'\1../\2\3', s)
+            # también las imágenes de fondo en estilos (pantallas de los casos): en /en/ y /pt/ daban 404
+            s = re.sub(r"(url\(['\"]?)((?:\.\./)*)(img/)", r"\1../\2\3", s)
             s = poner_selector(s, idi, pagina)
             out = PUBLIC / idi / pagina
             out.parent.mkdir(parents=True, exist_ok=True)

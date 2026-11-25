@@ -29,6 +29,8 @@ PUBLICOS = [
       logo='ntf-logo-horizontal-negativo-2000.png', fondo='oscuro',
       logo_archivo='assets/ntf-logo-horizontal-sobre-negro.svg', temas=('Cliente', 'Profesional')),  # sobre negro (pedido de Ber): crema pasa a lima, lima pasa a negro
  dict(c='ravekit', n='RaveKit', t='App', d='Pedidos de reseñas de Google por WhatsApp y QR para comercios locales.', logo='01-logo-fondo-oscuro.png', fondo='lamina'),
+ dict(c='citadenta', n='Citadenta', t='App', d='Recepcionista con IA por WhatsApp para clínicas dentales: agenda turnos, avisa urgencias y arma la lista de espera.',
+      logo=None, fondo='oscuro', logo_archivo='assets/citadenta-logo-negativo.png'),
  dict(c='ecos', n='ECOS', t='App', d='Ecos de vos: comunidad de contención emocional.', logo='logo-02-fondo-oscuro.png', fondo='lamina'),
  dict(c='velvet', n='Velvet', t='App', d='Perfiles, agenda y reservas con seña en custodia.', logo='velvet-logo-light-outline-tight.png', fondo='oscuro'),
  dict(c='patovava', n='PatovaVa', t='App', d='Acompañantes verificadas que llevan y traen a tus hijos de noche.', logo='lockup-color-fondo-oscuro.png', fondo='oscuro'),
