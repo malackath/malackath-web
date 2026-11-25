@@ -157,7 +157,7 @@ def comun(s, pre, titulo, descripcion, activo=None):
     if n != 1:
         raise SystemExit("No encontré el logo de Kinetic")
     # links del menú y botones con data-path
-    destinos = {"home": "index.html", "portfolio": "trabajo.html", "services": "estudio.html#capacidades",
+    destinos = {"home": "index.html", "portfolio": "trabajo.html", "services": "servicios.html",
                 "studio": "estudio.html", "case-studies": "casos-de-estudio.html", "contact": "estudio.html#contacto"}
     for clave, dest in destinos.items():
         s = re.sub(rf'data-path="{clave}" href="[^"]*"', f'data-path="{clave}" href="{pre}{dest}"', s)
@@ -287,6 +287,11 @@ def _caja_lima(m):
     caja = re.sub(r"(?<![\w:-])text-primary(?![\w-])", "text-on-primary-fixed", caja)
     caja = re.sub(r"(?<![\w:-])bg-surface-container-high(?![\w-])", "bg-on-primary-fixed/10", caja)
     caja = caja.replace("@@FLECHA_CAJA@@", "rounded-full bg-on-primary-fixed text-primary-container group-hover:scale-110")
+    # Título con la letra del titular del hero, igual que las tarjetas verdes de la home (Ber, 2026-11-25:
+    # «todos los títulos de las tarjetas que tenían verde» van con esa tipografía).
+    caja = re.sub(r'<(h[23]) class="font-headline-(?:lg|md) ([^"]*)"',
+                  lambda t: f'<{t.group(1)} class="font-display-xl font-extrabold md:font-extrabold uppercase tracking-tighter md:tracking-[-0.04em] '
+                  + re.sub(r"md:font-headline-(?:lg|md) ?", "", t.group(2)) + '"', caja, count=1)
     return a[:i] + caja
 
 # Sombra de las imágenes sobre el lima y título con la letra del titular del hero (Ber, 2026-11-25)
@@ -1282,9 +1287,13 @@ def trabajo_portfolio(s):
 
 # ---------------------------------------------------------------- ESTUDIO
 def estudio():
+    guardar("estudio.html", _estudio_base("Estudio y contacto · Malackath",
+            "Malackath: estudio de diseño y producto digital en Uruguay y Brasil. Marca, diseño de producto, apps y web."))
+
+
+def _estudio_base(titulo, descripcion):
     s = leer("kinetic_studio_contact")
-    s = comun(s, "", "Estudio y contacto · Malackath",
-              "Malackath: estudio de diseño y producto digital en Uruguay y Brasil. Marca, diseño de producto, apps y web.")
+    s = comun(s, "", titulo, descripcion)
     # equipo de Stitch: personas inventadas -> se saca (PENDIENTE: ¿va Ber como fundador?)
     s = cortar(s, "<!-- Section 2: Core Visionaries / Team -->", "<!-- Section 3: Services & Capabilities")
     # presupuestos en dólares: decisión de negocio pendiente -> se saca el selector
@@ -1377,7 +1386,110 @@ def estudio():
             f"      location.href = 'mailto:{MAIL}?subject=' + encodeURIComponent('Proyecto: ' + tipo.trim() + ' / ' + nombre) +\n"
             "        '&body=' + encodeURIComponent(texto + '\\n\\n' + nombre + ' (' + email + ')');\n"
             "      btn.classList.add('hidden');\n      banner.classList.remove('hidden');")
-    guardar("estudio.html", s)
+    return s
+
+
+# ---------------------------------------------------------------- SERVICIOS
+# Página propia de Servicios (Ber, 2026-11-25: el menú «Servicios» caía a la mitad de Estudio).
+# Mismas piezas de la pantalla Estudio de Stitch (encabezado, tarjetas, lista de capacidades, contacto),
+# sin el manifiesto de Estudio. Las 4 áreas van abiertas y más desarrolladas.
+SERV_FORMAS = [
+    ("task_alt", "Proyecto cerrado", "Alcance, plazos y precio definidos por escrito antes de empezar. Para cuando ya sabés lo que necesitás."),
+    ("schedule", "Por horas", "Para proyectos que van cambiando sobre la marcha: trabajamos por horas con un informe claro de lo hecho."),
+    ("autorenew", "Acompañamiento mensual", "Una cuota fija con horas incluidas cada mes para mantener, actualizar y mejorar tu sitio o tu app."),
+]
+SERV_AREAS = [
+    ("Marca &amp; Estrategia",
+     "Identidades que se distinguen: desde el posicionamiento y el logo hasta el sistema visual completo y su manual, listas para usar en la web, en la app y en redes.",
+     ["Posicionamiento", "Logo &amp; Símbolo", "Paleta &amp; Tipografías", "Manual de Marca", "Tono de Voz", "Piezas para Redes"],
+     ("Ver identidades de marca", "marcas.html")),
+    ("Diseño de Producto (UI/UX)",
+     "Interfaces pensadas para el uso real: apps móviles, plataformas web y sistemas de gestión para negocios. Antes de programar, probás un prototipo navegable.",
+     ["Arquitectura de Producto", "Flujos &amp; Wireframes", "Prototipos Navegables", "Microinteracciones", "Sistemas de Diseño", "Diseño Responsive"],
+     ("Ver casos de estudio", "casos-de-estudio.html")),
+    ("Apps &amp; Plataformas Web",
+     "Desarrollo de apps para iOS y Android, sitios, tiendas online, plataformas con reservas y pagos y paneles de gestión, en varios idiomas y listos para salir a producción.",
+     ["iOS &amp; Android", "Web Apps", "Sitios Web", "Tiendas Online", "Reservas &amp; Pagos", "Paneles de Gestión", "Multilenguaje"],
+     ("Ver proyectos", "trabajo.html")),
+    ("Lanzamiento &amp; Operación",
+     "Publicamos y acompañamos: dominio, hosting, correo, tiendas de apps y medición. Con el acompañamiento mensual, tu producto queda monitoreado, con respaldos y actualizaciones.",
+     ["Firebase &amp; Google Cloud", "Cloudflare", "Dominios &amp; Correo", "App Store &amp; Google Play", "Medición", "Respaldos &amp; Seguridad", "Mantenimiento Mensual"],
+     ("Armá tu presupuesto", "presupuesto.html")),
+]
+SERV_PASOS = [
+    ("forum", "Conversación", "Nos contás qué querés lograr, para quién y para cuándo. Sin compromiso."),
+    ("description", "Propuesta", "Te mandamos alcance, plazos y precio por escrito, para que decidas con todo claro."),
+    ("draw", "Diseño", "Marca y pantallas en un prototipo navegable que probás antes de programar."),
+    ("code", "Desarrollo", "Construimos y te mostramos versiones de prueba para que veas el avance real."),
+    ("rocket_launch", "Lanzamiento", "Salimos a producción y, si querés, seguimos con el acompañamiento mensual."),
+]
+TARJ = "group relative bg-surface-container rounded-xl flex flex-col justify-between hover:bg-surface-container-high transition-all duration-300"
+RAYA = '<div class="h-1 w-8 bg-surface-container-highest group-hover:w-full group-hover:bg-primary-container transition-all duration-500 rounded-full"></div>'
+CHIP_SERV = "font-label-sm text-label-sm uppercase px-space-sm py-1 bg-surface-container-high text-on-surface rounded-full"
+
+
+def servicios():
+    s = _estudio_base("Servicios · Malackath",
+                      "Servicios de Malackath: marca, diseño de producto, apps y plataformas web, lanzamiento y acompañamiento mensual.")
+    # menú: activo «Servicios» en vez de «Estudio»
+    i, j = s.find("<nav "), s.find("</nav>")
+    nav = s[i:j]
+    act = re.search(r'<a aria-current="page" class="([^"]*)" data-path="studio"', nav).group(1)
+    nor = re.search(r'<a class="([^"]*)" data-path="services"', nav).group(1)
+    nav = nav.replace(f'<a aria-current="page" class="{act}" data-path="studio"', f'<a class="{nor}" data-path="studio"', 1)
+    nav = nav.replace(f'<a class="{nor}" data-path="services"', f'<a aria-current="page" class="{act}" data-path="services"', 1)
+    s = s[:i] + nav + s[j:]
+    # 1) encabezado: mismo bloque del manifiesto, con texto de Servicios y las 3 formas de trabajar
+    s = rep(s, "[ 001 // MANIFIESTO ]", "[ 001 // SERVICIOS ]")
+    s = rep(s, "ADN &amp; FILOSOFÍA", "FORMAS DE TRABAJAR")
+    s = rep(s, "SIMPLICIDAD RADICAL.", "SERVICIOS.")
+    s = rep(s, "OFICIO SIN ATAJOS.", "DE LA IDEA AL PRODUCTO.")
+    s = rep(s, "Sin vueltas de agencia tradicional. Diseñamos y construimos productos digitales donde la dirección de arte y la ingeniería trabajan juntas.",
+            "Marca, diseño de producto y desarrollo bajo un mismo techo. Te acompañamos desde la primera idea hasta el producto funcionando, y después también.")
+    tarjetas = "".join(
+        f'<div class="{TARJ} p-space-xl gap-space-xl"><div class="flex items-center justify-between">'
+        f'<span class="font-label-lg text-label-lg text-primary-container tracking-widest">0{n}</span>'
+        f'<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">{ic}</span></div>'
+        f'<div class="flex flex-col gap-space-sm"><h3 class="font-headline-md text-headline-md uppercase tracking-tight text-primary">{t}</h3>'
+        f'<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">{d}</p></div>{RAYA}</div>'
+        for n, (ic, t, d) in enumerate(SERV_FORMAS, 1))
+    s, n = re.subn(r'(<!-- Values Grid: Asymmetric Triple Modules -->\s*<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter pt-space-lg">).*?(</div>\s*</div>\s*</section>)',
+                   lambda m: m.group(1) + tarjetas + m.group(2), s, count=1, flags=re.S)
+    assert n == 1, "servicios: tarjetas"
+    # 2) capacidades: las 4 áreas abiertas y desarrolladas
+    areas = ""
+    for k, (t, d, chips, (lt, lh)) in enumerate(SERV_AREAS, 1):
+        areas += (f'<div class="accordion-item bg-surface-container rounded-xl overflow-hidden transition-all duration-300">'
+                  f'<div class="w-full p-space-lg md:p-space-xl pb-space-md md:pb-space-md flex items-center gap-space-md">'
+                  f'<span class="font-label-sm text-label-sm text-primary-container">[ 0{k} ]</span>'
+                  f'<h3 class="font-headline-md text-headline-md uppercase text-primary">{t}</h3></div>'
+                  f'<div class="accordion-body px-space-lg md:px-space-xl pb-space-lg md:pb-space-xl flex flex-col gap-space-md">'
+                  f'<p class="font-body-lg text-body-lg text-on-surface-variant">{d}</p>'
+                  f'<div class="flex flex-wrap gap-space-xs pt-space-xs">' + "".join(f'<span class="{CHIP_SERV}">{c}</span>' for c in chips) + '</div>'
+                  f'<a class="self-start inline-flex items-center gap-space-xs pt-space-sm font-label-md text-label-md uppercase tracking-wider text-primary-container hover:text-primary transition-colors" href="{lh}">'
+                  f'<span>{lt}</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div></div>')
+    s, n = re.subn(r'(<div class="lg:col-span-8 flex flex-col gap-space-sm" id="services-accordion">).*?(</div>\s*</div>\s*</section>)',
+                   lambda m: m.group(1) + areas + m.group(2), s, count=1, flags=re.S)
+    assert n == 1, "servicios: áreas"
+    # 3) proceso, antes del contacto (mismas tarjetas del encabezado)
+    pasos = "".join(
+        f'<div class="{TARJ} p-space-lg gap-space-lg"><div class="flex items-center justify-between">'
+        f'<span class="font-label-lg text-label-lg text-primary-container tracking-widest">0{n}</span>'
+        f'<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">{ic}</span></div>'
+        f'<div class="flex flex-col gap-space-sm"><h3 class="font-headline-sm text-headline-sm uppercase tracking-tight text-primary">{t}</h3>'
+        f'<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">{d}</p></div>{RAYA}</div>'
+        for n, (ic, t, d) in enumerate(SERV_PASOS, 1))
+    proceso = ('<section id="proceso" class="w-full px-margin-mobile md:px-margin-tablet lg:px-margin pb-space-3xl relative">'
+               '<div class="flex flex-col gap-space-xl"><div class="flex flex-col gap-space-lg max-w-2xl">'
+               '<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-container">[ 003 // PROCESO ]</span>'
+               '<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg uppercase text-primary tracking-tight">Cómo trabajamos</h2>'
+               '<p class="font-body-md text-body-md text-on-surface-variant">Cinco pasos, siempre con algo concreto para ver y aprobar antes de seguir.</p></div>'
+               f'<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter">{pasos}</div></div></section>\n')
+    s = rep(s, "<!-- Section 4: High-Converting Inquiry & Contact Section -->", proceso + "<!-- Section 4: High-Converting Inquiry & Contact Section -->")
+    s = rep(s, "[ 003 // CONTACTO ]", "[ 004 // CONTACTO ]")
+    s = s.replace('<section id="capacidades" ', '<section id="areas" ', 1)
+    s = s.replace('id="inquiry"><a id="contacto"></a>', 'id="inquiry">', 1)
+    guardar("servicios.html", s)
 
 
 # ------------------------------------------------------------- PRESUPUESTO
@@ -1568,5 +1680,6 @@ if __name__ == "__main__":
         caso_nuevo(base_caso, clave)
     trabajo()
     estudio()
+    servicios()
     portfolio_web.copiar(OUT)
     presupuesto()
