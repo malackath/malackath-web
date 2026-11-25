@@ -390,36 +390,16 @@ def titulo_cierre(s):
     return s
 
 
-# Fondos de página con tono tornasolado y tarjetas de vidrio esmerilado (Ber, 2026-11-25), en todas las páginas.
-# Usa los colores del propio sistema de Stitch (lima, violeta, cian) y su «Glassmorphic Substrate»
-# (desenfoque 24-40 px sobre superficie translúcida, ver stitch/DESIGN.md). Las tarjetas lima no se tocan.
+# Tarjetas de vidrio blanco transparente con borde biselado, sin tornasolado (Ber, 2026-11-25).
+# Fondo de página: el liso de siempre. Las tarjetas verdes (lima) no se tocan.
 CSS_VIDRIO = """<style>
-html{background:#131315}
-body.bg-background,main.bg-background,main .bg-background{background:transparent!important}
-body::before{content:'';position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;
- background:
-  radial-gradient(38vmax 38vmax at 12% 18%,rgba(202,243,0,.13),transparent 62%),
-  radial-gradient(46vmax 46vmax at 88% 22%,rgba(87,27,193,.34),transparent 62%),
-  radial-gradient(40vmax 40vmax at 72% 88%,rgba(125,244,255,.15),transparent 62%),
-  radial-gradient(36vmax 36vmax at 18% 86%,rgba(208,188,255,.17),transparent 62%),
-  #131315;
- animation:tornasol 26s ease-in-out infinite alternate}
-@keyframes tornasol{0%{filter:hue-rotate(-18deg);transform:translate3d(-2%,-1%,0) scale(1)}
- 50%{filter:hue-rotate(14deg);transform:translate3d(2%,1.5%,0) scale(1.04)}
- 100%{filter:hue-rotate(-6deg);transform:translate3d(-1%,2%,0) scale(1.02)}}
-@media (prefers-reduced-motion:reduce){body::before{animation:none}}
-section.bg-surface-container-low,section.bg-surface-container-lowest,div.bg-surface-container-lowest.w-full{background-color:rgba(14,14,16,.42)!important}
 .rounded-xl.bg-surface-container,.rounded-xl.bg-surface-container-low,.rounded-lg.bg-surface-container,.bg-surface-container.p-space-md{
- background:linear-gradient(135deg,rgba(125,244,255,.07),rgba(208,188,255,.05) 45%,rgba(202,243,0,.05)) padding-box,
-  linear-gradient(rgba(28,27,30,.52),rgba(28,27,30,.52)) padding-box,
-  conic-gradient(from 210deg,rgba(202,243,0,.45),rgba(125,244,255,.4),rgba(208,188,255,.45),rgba(255,180,230,.3),rgba(202,243,0,.45)) border-box!important;
- border:1px solid transparent!important;
- -webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);
- box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 50px -20px rgba(0,0,0,.6)}
+ background:rgba(255,255,255,.035)!important;
+ border:1px solid rgba(255,255,255,.12)!important;
+ -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+ box-shadow:inset 1px 1px 0 rgba(255,255,255,.16),inset -1px -1px 0 rgba(0,0,0,.35)}
 .rounded-xl.bg-surface-container:hover,.rounded-xl.bg-surface-container-low:hover{
- background:linear-gradient(135deg,rgba(125,244,255,.11),rgba(208,188,255,.08) 45%,rgba(202,243,0,.08)) padding-box,
-  linear-gradient(rgba(42,42,44,.6),rgba(42,42,44,.6)) padding-box,
-  conic-gradient(from 210deg,rgba(202,243,0,.7),rgba(125,244,255,.6),rgba(208,188,255,.7),rgba(255,180,230,.5),rgba(202,243,0,.7)) border-box!important}
+ background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.18)!important}
 </style>"""
 
 
