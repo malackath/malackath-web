@@ -24,7 +24,7 @@ OUT = Path(sys.argv[2])
 MAIL = "hola@malackath.com"          # elegido por Ber; la casilla falta crearla
 WHATSAPP = "https://wa.me/59894202607"  # WhatsApp de Ber
 # Vista previa: no indexar en buscadores. Pasar a False el día del lanzamiento.
-BORRADOR = True
+BORRADOR = False  # lanzamiento en malackath.com con OK de Ber (2026-11-25)
 
 
 def leer(nombre):
