@@ -287,6 +287,8 @@ def _caja_lima(m):
     caja = caja.replace("@@FLECHA_CAJA@@", "rounded-full bg-on-primary-fixed text-primary-container group-hover:scale-110")
     return a[:i] + caja
 
+# Sombra de las imágenes sobre el lima y título con la letra del titular del hero (Ber, 2026-11-25)
+SOMBRA_SOBRE_LIMA = 'style="box-shadow:0 22px 44px -14px rgba(23,30,0,.6),0 6px 14px rgba(23,30,0,.28)" '
 # Home, Proyectos destacados: tarjetas en verde lima con el mismo degradé que Trabajo (marcas de Ber, 2026-11-25)
 HOME_LIMA = {"Armá Partido", "RaveKit"}
 
@@ -298,6 +300,8 @@ def _home_lima(m):
         return a
     a = a.replace("bg-surface-container p-space-lg", "caja-lima p-space-lg", 1)
     a = a.replace("hover:bg-surface-container-high", "", 1)
+    a = a.replace('<div class="relative w-full h-', '<div ' + SOMBRA_SOBRE_LIMA + 'class="relative w-full h-', 1)
+    a = re.sub(r'<h3 class="font-headline-(?:lg|md) ', '<h3 class="font-display-xl font-extrabold uppercase tracking-tighter ', a, count=1)
     i = a.find('<div class="flex flex-col gap-space-sm">')
     if i < 0:
         return a
@@ -332,6 +336,7 @@ def _marca_lima(m):
     a = a.replace("<a class=", f'<a style="background:{fondo};box-shadow:inset 0 1px 0 rgba(255,255,255,.6)" class=', 1)
     a = re.sub(r"(?<![\w:-])text-primary-container(?![\w-])", "text-on-primary-fixed", a)
     a = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/75", a)
+    a = a.replace('<div class="w-full h-40', '<div ' + SOMBRA_SOBRE_LIMA + 'class="w-full h-40', 1)
     return a
 
 
