@@ -127,12 +127,14 @@ SAMPLE = ('<span class="self-start px-space-sm py-space-xs rounded-full bg-surfa
 def comun(s, pre, titulo, descripcion, activo=None):
     # idioma y <head>
     s = rep(s, '<html class="dark" lang="en">', '<html class="dark" lang="es">')
-    s = s.replace(
-        '<meta content="web_standard" name="shell-type"/>',
-        f'<title>{titulo}</title><meta name="description" content="{descripcion}"/>'
-        f'<link rel="icon" href="{pre}img/marca/favicon.svg" type="image/svg+xml"/>'
-        f'<link rel="alternate icon" href="{pre}img/marca/favicon.ico"/>'
-        f'<link rel="apple-touch-icon" href="{pre}img/marca/icono-app-blanco-180.png"/>', 1)
+    cabeza = (f'<title>{titulo}</title><meta name="description" content="{descripcion}"/>'
+              f'<link rel="icon" href="{pre}img/marca/favicon.svg" type="image/svg+xml"/>'
+              f'<link rel="alternate icon" href="{pre}img/marca/favicon.ico"/>'
+              f'<link rel="apple-touch-icon" href="{pre}img/marca/icono-app-blanco-180.png"/>')
+    # algunas pantallas de Stitch traen el meta sin la barra final (<meta ...>): Estudio y Presupuesto quedaban sin título
+    s, n = re.subn(r'<meta content="web_standard" name="shell-type"\s*/?>', lambda m: cabeza, s, count=1)
+    if n != 1:
+        raise SystemExit("No encontré el meta shell-type para poner el título")
     # Tailwind: en vez del CDN de Stitch, el CSS compilado con la misma config (ver tailwind.config.js)
     s, n = re.subn(r'<script src="https://cdn\.tailwindcss\.com[^"]*"></script><script id="tailwind-config">.*?</script>',
                    f'<link rel="stylesheet" href="{pre}css/estilos.css"/>', s, flags=re.S)
