@@ -271,6 +271,25 @@ FLECHA_LIMA = "rounded-full bg-primary-container text-on-primary-fixed group-hov
 
 
 
+def _home_citadenta(s):
+    """Home, Proyectos destacados: Citadenta en la segunda fila, a todo el ancho (Ber, 2026-11-25: «no abajo
+    del todo, en segunda línea»). Copia la tarjeta ancha de Mesaluma con la foto del equipo y el logo."""
+    arts = re.findall(r'<article class="relative lg:col-span-12.*?</article>', s, re.S)
+    mesa = [a for a in arts if "casos/mesaluma.html" in a][0]
+    t = re.sub(r'<img alt="Salón del restaurante con paredes de piedra"[^>]*/>(<div class="celu-real".*?</div><!-- celular real: Mesaluma -->)?',
+               '<img alt="Equipo de una clínica dental sonriendo, con el logo de Citadenta" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="img/proyectos/citadenta-equipo.webp"/>',
+               mesa, count=1, flags=re.S)
+    for viejo, nuevo in [("Gastronomía · Web &amp; Menú QR", "Salud · Clínicas dentales"), ("casos/mesaluma.html", "casos/citadenta.html"),
+                         (">Mesaluma &amp; La Gloria<", ">Citadenta<"),
+                         ("Reservas con pedido anticipado para restaurantes y carta digital multilingüe para cafetería en Punta Fría.",
+                          "Recepcionista con IA por WhatsApp para clínicas dentales: agenda turnos, avisa urgencias y arma la lista de espera."),
+                         (">Pre-order<", ">WhatsApp<"), (">Menú QR Multilingüe<", ">Google Calendar<")]:
+        assert viejo in t, viejo
+        t = t.replace(viejo, nuevo)
+    piz = [a for a in re.findall(r'<article class="(?:relative )?lg:col-span.*?</article>', s, re.S) if "Pizcaya" in a][0]
+    return s.replace(piz, piz + "\n<!-- Citadenta: segunda fila -->\n" + t, 1)
+
+
 def _caja_lima(m):
     """Caja de texto de la tarjeta en verde lima con letra oscura (decisión de Ber, 2026-11-25)."""
     a = m.group(0)
@@ -449,6 +468,7 @@ def guardar(nombre, s):
     if nombre == "index.html":
         s = re.sub(r"<article class=\"(?:relative )?lg:col-span.*?</article>", _home_lima, s, flags=re.S)
         s = re.sub(r'<a class="group shrink-0 w-72.*?</a>', _marca_lima, s, flags=re.S)
+        s = _home_citadenta(s)
         s = s.replace("</head>", "<style>" + CSS_CAJA_LIMA + "</style></head>", 1)
     if nombre == "marcas.html":
         s = _grilla_lima(s)

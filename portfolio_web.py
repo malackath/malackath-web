@@ -48,8 +48,6 @@ def imagen(c, cual):
         return _primera(f"{c}-logo-[0-9a-f]*.webp")
     if c == "sitios-gastro":
         return _primera(f"sitios-gastro-fuego-silvestre-{cual}-01-*.webp")
-    if c == "citadenta" and cual == "d":
-        return _primera("citadenta-d-09-*.webp")   # la pantalla de inicio (Ber, 2026-11-25: «poné la home»)
     return _primera(f"{c}-{cual}-01-*.webp")
 
 
@@ -135,6 +133,11 @@ def categoria(p):
 CATEGORIA_TXT = {"mobile": "App", "web": "Web", "branding": "Marca"}
 
 
+# Tarjetas con foto propia en lugar de una captura (Ber, 2026-11-25: Citadenta con «una persona, un médico,
+# una sonrisa y el loguito»: foto del equipo del folleto + logo, armada desde insumos/citadenta).
+FOTO_TARJETA = {"citadenta": ("img/proyectos/citadenta-equipo.webp", "Equipo de una clínica dental sonriendo, con el logo de Citadenta")}
+
+
 def tarjeta_trabajo(c, i, total, ancho):
     p = P[c]
     e = html.escape
@@ -142,6 +145,9 @@ def tarjeta_trabajo(c, i, total, ancho):
     if p.get("solo_logo"):
         img = (f'<img alt="Logo de {e(p["n"])}" loading="lazy" class="md:absolute md:inset-0 w-full h-full object-contain p-12 md:p-16 '
                f'transition-transform duration-700 group-hover:scale-105" src="{ruta(imagen(c, "logo"))}"/>')
+    elif c in FOTO_TARJETA:
+        img = (f'<img alt="{e(FOTO_TARJETA[c][1])}" loading="lazy" class="md:absolute md:inset-0 w-full h-full object-cover '
+               f'transition-transform duration-700 group-hover:scale-105" src="{FOTO_TARJETA[c][0]}"/>')
     elif imagen(c, "d") is None or c == "ruvia":   # RuVIAJE: la tarjeta sigue mostrando el celular (la web nueva va en el portfolio)
         img = (f'<img alt="{e(p["n"])}: pantalla de la app" loading="lazy" class="md:absolute md:inset-0 w-full h-full object-contain py-space-md '
                f'transition-transform duration-700 group-hover:scale-105" src="{ruta(imagen(c, "m"))}"/>')
