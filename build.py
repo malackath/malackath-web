@@ -277,7 +277,7 @@ def _home_citadenta(s):
     arts = re.findall(r'<article class="relative lg:col-span-12.*?</article>', s, re.S)
     mesa = [a for a in arts if "casos/mesaluma.html" in a][0]
     t = re.sub(r'<img alt="Salón del restaurante con paredes de piedra"[^>]*/>(<div class="celu-real".*?</div><!-- celular real: Mesaluma -->)?',
-               '<img alt="Equipo de una clínica dental sonriendo, con el logo de Citadenta" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="img/proyectos/citadenta-equipo.webp"/>',
+               '<img alt="Equipo de una clínica dental sonriendo, con el logo de Citadenta" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="img/proyectos/citadenta-equipo.webp"/>' + portfolio_web.PASTILLA_LOGO["citadenta"],
                mesa, count=1, flags=re.S)
     for viejo, nuevo in [("Gastronomía · Web &amp; Menú QR", "Salud · Clínicas dentales"), ("casos/mesaluma.html", "casos/citadenta.html"),
                          (">Mesaluma &amp; La Gloria<", ">Citadenta<"),

@@ -146,6 +146,11 @@ CATEGORIA_TXT = {"mobile": "App", "web": "Web", "branding": "Marca"}
 FOTO_TARJETA = {"citadenta": ("img/proyectos/citadenta-equipo.webp", "Equipo de una clínica dental sonriendo, con el logo de Citadenta")}
 
 
+# logo en una pastilla blanca, en la esquina de arriba a la derecha: no pisa caras en ningún ancho (Ber, 2026-11-25)
+PASTILLA_LOGO = {"citadenta": '<span class="absolute top-space-md right-space-md z-10 rounded-full bg-white/95 shadow-lg px-3 py-2 flex items-center">'
+                              '<img alt="Citadenta" class="h-4 md:h-5 w-auto" src="img/proyectos/citadenta-logo-color.png"/></span>'}
+
+
 def tarjeta_trabajo(c, i, total, ancho):
     p = P[c]
     e = html.escape
@@ -155,7 +160,7 @@ def tarjeta_trabajo(c, i, total, ancho):
                f'transition-transform duration-700 group-hover:scale-105" src="{ruta(imagen(c, "logo"))}"/>')
     elif c in FOTO_TARJETA:
         img = (f'<img alt="{e(FOTO_TARJETA[c][1])}" loading="lazy" class="md:absolute md:inset-0 w-full h-full object-cover '
-               f'transition-transform duration-700 group-hover:scale-105" src="{FOTO_TARJETA[c][0]}"/>')
+               f'transition-transform duration-700 group-hover:scale-105" src="{FOTO_TARJETA[c][0]}"/>' + PASTILLA_LOGO.get(c, ""))
     elif imagen(c, "d") is None or c == "ruvia":   # RuVIAJE: la tarjeta sigue mostrando el celular (la web nueva va en el portfolio)
         img = (f'<img alt="{e(p["n"])}: pantalla de la app" loading="lazy" class="md:absolute md:inset-0 w-full h-full object-contain py-space-md '
                f'transition-transform duration-700 group-hover:scale-105" src="{ruta(imagen(c, "m"))}"/>')
