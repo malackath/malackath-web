@@ -49,7 +49,7 @@ def imagen(c, cual):
     if c == "sitios-gastro":
         return _primera(f"sitios-gastro-fuego-silvestre-{cual}-01-*.webp")
     if c == "citadenta" and cual == "d":
-        return _primera("citadenta-d-09-*.webp")   # la pantalla de inicio (Ber, 2026-11-25: «poné la home»)
+        return "citadenta-tarjeta.webp"   # foto del equipo + logo (Ber, 2026-11-26); sale de design/tarjetas/
     return _primera(f"{c}-{cual}-01-*.webp")
 
 
@@ -65,7 +65,8 @@ def copiar(out):
     d = Path(out) / DEST
     d.mkdir(parents=True, exist_ok=True)
     for n in sorted(_USADAS):
-        shutil.copy(IMG_SRC / n, d / n)
+        src = AQUI / "design" / "tarjetas" / n
+        shutil.copy(src if src.exists() else IMG_SRC / n, d / n)
     print(f"portfolio: {len(_USADAS)} imágenes copiadas a {DEST}")
 
 
