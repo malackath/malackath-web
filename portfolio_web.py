@@ -45,6 +45,9 @@ def imagen(c, cual):
             return "ruvia-logo.png"     # logo nuevo de RuVIAJE (logo_archivo en proyectos.py)
         if c == "citadenta":
             return "citadenta-logo.png"   # logo_archivo en proyectos.py (negativo, para fondo oscuro)
+        if c == "sitios-gastro":
+            # Botánica Bistro recortado sin su fondo y al ras (design/tarjetas): más grande y legible (Ber, 2026-11-26)
+            return "sitios-gastro-logo-botanica-recorte.png"
         return _primera(f"{c}-logo-[0-9a-f]*.webp")
     if c == "sitios-gastro":
         return _primera(f"sitios-gastro-fuego-silvestre-{cual}-01-*.webp")
@@ -105,9 +108,10 @@ def marcas(todos=False):
         if c in FUERA_HOME:   # también en la página de logos: un solo Marea Alta
             continue
         p = P[c]
-        fondo = "blanco" if _fondo_blanco(imagen(c, "logo")) else p["fondo"]
+        fondo = "blanco" if (c == "sitios-gastro" or _fondo_blanco(imagen(c, "logo"))) else p["fondo"]
         filas.append({"clave": c, "nombre": p["n"], "imagen": ruta(imagen(c, "logo")), "url": "marcas.html#" + c,
-                      "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": fondo})
+                      "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": fondo,
+                      "grande": c == "sitios-gastro"})
     if todos:
         return filas
     fila_1, fila_2 = filas[:10], filas[10:]

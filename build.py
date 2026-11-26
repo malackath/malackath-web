@@ -383,6 +383,9 @@ def _pintar_lima(a, fondo):
     a = re.sub(r"(?<![\w:-])text-primary-container(?![\w-])", "text-on-primary-fixed", a)
     a = re.sub(r"(?<![\w:-])text-on-surface-variant(?![\w-])", "text-on-primary-fixed/75", a)
     a = a.replace('<div class="w-full h-40', '<div ' + SOMBRA_SOBRE_LIMA + 'class="w-full h-40', 1)
+    # NuncaTeFalla sobre verde: el texto del logo en blanco, la casa queda en lima (Ber, 2026-11-26)
+    if "nunca-te-falla-logo.svg" in a:
+        a = a.replace("nunca-te-falla-logo.svg", portfolio_web.ruta("nunca-te-falla-logo-texto-blanco.svg").rsplit("/", 1)[1])
     return a
 
 
@@ -733,6 +736,8 @@ def tarjeta_marca(m, i, grilla=False):
             caja = "bg-white"
         elif m.get("fondo") == "lamina":
             tam = "w-full h-full object-cover"
+        if m.get("grande"):   # logo apaisado recortado al ras (Botánica Bistro): ocupa más del recuadro
+            tam = "max-h-24 max-w-[86%] object-contain"
         logo = (f'<img src="{m["imagen"]}" alt="{_h.escape(m["nombre"])}" decoding="async" '
                 f'class="{tam} grayscale opacity-80 '
                 'group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"/>')
