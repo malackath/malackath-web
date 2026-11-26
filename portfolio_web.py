@@ -63,7 +63,8 @@ def copiar(out):
     d = Path(out) / DEST
     d.mkdir(parents=True, exist_ok=True)
     for n in sorted(_USADAS):
-        shutil.copy(IMG_SRC / n, d / n)
+        src = AQUI / "design" / "tarjetas" / n
+        shutil.copy(src if src.exists() else IMG_SRC / n, d / n)
     print(f"portfolio: {len(_USADAS)} imágenes copiadas a {DEST}")
 
 
@@ -109,7 +110,14 @@ def marcas(todos=False):
                       "caso": CASOS.get(c), "tipo": p["t"], "descripcion": p["d"], "fondo": fondo})
     if todos:
         return filas
-    return filas[:10], filas[10:]
+    fila_1, fila_2 = filas[:10], filas[10:]
+    # Citadenta en el medio de la segunda fila del home, no al final (Ber, 2026-11-26).
+    # El verde del home va por marca (MARCAS_LIMA), así que moverla no corre los verdes.
+    cit = [f for f in fila_2 if f["clave"] == "citadenta"]
+    if cit:
+        fila_2.remove(cit[0])
+        fila_2.insert(len(fila_2) // 2, cit[0])
+    return fila_1, fila_2
 
 
 # ------------------------------------------------------------ TRABAJO
